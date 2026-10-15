@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué es un algoritmo?</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF8EC;
+    --ink:#2B2D42;
+    --soft:#5C5F7A;
+    --coral:#FF6B6B;
+    --sun:#FFC93C;
+    --mint:#3DC47E;
+    --sky:#4D96FF;
+    --grape:#9B5DE5;
+    --pink:#F15BB5;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Nunito',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    background-image:
+      radial-gradient(circle at 10% 10%, #FFE3EC 0 120px, transparent 121px),
+      radial-gradient(circle at 92% 22%, #E3F0FF 0 160px, transparent 161px),
+      radial-gradient(circle at 85% 80%, #E6F9EE 0 140px, transparent 141px);
+    background-attachment:fixed;
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;line-height:1.2}
+  .wrap{max-width:1050px;margin:0 auto;padding:0 18px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:20;background:rgba(255,248,236,.92);backdrop-filter:blur(8px);border-bottom:3px dashed #FFD6A5}
+  nav .wrap{display:flex;gap:8px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;justify-content:center}
+  nav a{font-family:'Fredoka';font-weight:600;text-decoration:none;color:var(--white);padding:6px 14px;border-radius:999px;font-size:.92rem;transition:transform .15s}
+  nav a:hover{transform:translateY(-2px) rotate(-2deg)}
+  nav a:nth-child(1){background:var(--coral)}
+  nav a:nth-child(2){background:var(--grape)}
+  nav a:nth-child(3){background:var(--sky)}
+  nav a:nth-child(4){background:#00B8A9}
+  nav a:nth-child(5){background:var(--mint)}
+  nav a:nth-child(6){background:var(--pink)}
+  nav a:nth-child(7){background:#F4A100}
+
+  section{padding:56px 0}
+  .tag{display:inline-block;font-family:'Fredoka';font-weight:600;font-size:.85rem;padding:4px 14px;border-radius:999px;color:var(--white);margin-bottom:12px;letter-spacing:.5px}
+  .sec-title{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:10px}
+  .sec-sub{color:var(--soft);font-size:1.08rem;max-width:720px;margin-bottom:28px}
+
+  /* HERO */
+  .hero{padding:60px 0 40px;text-align:center}
+  .hero h1{font-size:clamp(2.4rem,7vw,4.4rem);font-weight:700}
+  .hero h1 .c1{color:var(--coral)} .hero h1 .c2{color:var(--sky)} .hero h1 .c3{color:var(--mint)} .hero h1 .c4{color:var(--grape)}
+  .hero p.lead{font-size:1.2rem;max-width:720px;margin:18px auto 0;color:var(--soft)}
+  .def{
+    margin:34px auto 0;max-width:780px;background:var(--white);border-radius:28px;padding:28px 30px;
+    border:4px solid var(--ink);box-shadow:10px 10px 0 var(--sun);text-align:left;font-size:1.15rem
+  }
+  .def strong{background:linear-gradient(transparent 60%, #FFE58A 60%)}
+  .emojis{font-size:2.4rem;margin-top:26px;letter-spacing:10px}
+
+  /* FLOW SIMPLE */
+  .pipeline{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin-top:26px}
+  .pipe{font-family:'Fredoka';font-weight:600;color:var(--white);padding:14px 22px;border-radius:18px;font-size:1.1rem;box-shadow:0 6px 0 rgba(0,0,0,.15)}
+  .arrow{font-size:1.8rem;color:var(--ink);font-weight:800}
+
+  /* ANALOGY */
+  .analogy{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{background:var(--white);border-radius:24px;padding:24px;border:3px solid var(--ink)}
+  .card h3{font-size:1.35rem;margin-bottom:10px}
+  .card ol{padding-left:22px}
+  .card li{margin:4px 0}
+  .card.warn{background:#FFF1F1;border-color:var(--coral)}
+
+  /* CHARACTERISTICS */
+  .chars{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+  .char{border-radius:22px;padding:22px 18px;color:var(--white);position:relative;overflow:hidden;transition:transform .2s}
+  .char:hover{transform:translateY(-6px) rotate(-1deg)}
+  .char .ico{font-size:2.2rem}
+  .char h3{font-size:1.3rem;margin:8px 0 6px}
+  .char p{font-size:.95rem;opacity:.96}
+  .char small{display:block;margin-top:10px;background:rgba(255,255,255,.22);padding:8px 10px;border-radius:12px;font-size:.85rem}
+
+  /* 5 STEPS */
+  .steps{display:grid;gap:16px}
+  .step{display:grid;grid-template-columns:90px 1fr;align-items:center;gap:18px;background:var(--white);border-radius:24px;padding:18px 22px;border:3px solid var(--ink);box-shadow:7px 7px 0 var(--c)}
+  .step .num{width:78px;height:78px;border-radius:50%;background:var(--c);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Fredoka';font-size:2.2rem;font-weight:700;border:3px solid var(--ink)}
+  .step h3{font-size:1.35rem;color:var(--ink)}
+  .step p{color:var(--soft)}
+
+  /* PSEUDOCODE SECTION */
+  .pc-intro{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-bottom:34px}
+  .pc-intro .card p{margin-bottom:10px}
+  .recipe{background:#FFF4D6;border:3px dashed #F4A100}
+  .h-sub{font-family:'Fredoka';font-size:1.5rem;margin:34px 0 14px}
+  .parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+  .part{border-radius:20px;padding:16px 14px;color:#fff;text-align:center;border:3px solid var(--ink)}
+  .part .n{font-family:'Fredoka';font-size:1.6rem;font-weight:700}
+  .part h4{font-family:'Fredoka';font-size:1.1rem;margin:2px 0 4px}
+  .part p{font-size:.85rem;font-weight:600}
+  .part code{display:inline-block;margin-top:8px;background:rgba(0,0,0,.18);padding:3px 8px;border-radius:8px;font-size:.8rem}
+  .table-wrap{overflow-x:auto;border-radius:20px;border:3px solid var(--ink);background:#fff}
+  table.kw-table{width:100%;border-collapse:collapse;min-width:560px}
+  .kw-table th{background:var(--ink);color:#fff;font-family:'Fredoka';font-weight:600;text-align:left;padding:12px 14px}
+  .kw-table td{padding:11px 14px;border-bottom:2px dotted #EEE;vertical-align:top}
+  .kw-table tr:last-child td{border-bottom:none}
+  .kw-table tr:nth-child(even) td{background:#FFFBF2}
+  .pill{display:inline-block;font-family:'Courier New',monospace;font-weight:700;color:#fff;padding:3px 10px;border-radius:8px;white-space:nowrap}
+  .mono{font-family:'Courier New',monospace;font-size:.92rem;color:#7A3EC8;font-weight:700}
+  .rules-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+  .rules ol{padding-left:22px}
+  .rules li{margin:6px 0}
+  .bad{background:#FFF1F1;border-color:var(--coral)}
+  .bad ul{padding-left:20px}
+  .bad li{margin:6px 0}
+  .anatomy{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  .anno{display:grid;gap:10px}
+  .anno div{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:10px 14px;font-weight:600}
+  .anno b{font-family:'Fredoka'}
+
+  /* EXAMPLE TABS */
+  .tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+  .tab{font-family:'Fredoka';font-weight:600;font-size:1rem;border:3px solid var(--ink);background:var(--white);color:var(--ink);padding:10px 16px;border-radius:16px;cursor:pointer;transition:all .15s}
+  .tab:hover{transform:translateY(-2px)}
+  .tab.active{background:var(--c);color:var(--white);box-shadow:4px 4px 0 var(--ink)}
+  .panel{display:none;background:var(--white);border-radius:26px;padding:26px 28px;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--c)}
+  .panel.active{display:block;animation:pop .3s ease}
+  @keyframes pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+  .panel h3{font-size:1.5rem;margin-bottom:12px;color:var(--c)}
+  .panel ul{list-style:none}
+  .panel li{padding:8px 0 8px 34px;position:relative;border-bottom:2px dotted #EEE}
+  .panel li:last-child{border-bottom:none}
+  .panel li::before{content:"✔";position:absolute;left:4px;top:8px;width:22px;height:22px;border-radius:50%;background:var(--c);color:#fff;font-size:.75rem;display:flex;align-items:center;justify-content:center}
+  .panel li b{color:var(--ink)}
+  ol.seq{counter-reset:s;list-style:none}
+  ol.seq li{counter-increment:s;padding-left:44px}
+  ol.seq li::before{content:counter(s);font-family:'Fredoka';font-size:.85rem}
+
+  pre.code{
+    background:#2B2D42;color:#F8F8F2;border-radius:18px;padding:22px;overflow-x:auto;
+    font-family:'Courier New',monospace;font-size:.95rem;line-height:1.55
+  }
+  .kw{color:#FF79C6;font-weight:700}
+  .cond{color:#FFD93D}
+  .cm{color:#8BE9FD}
+
+  /* LEGEND */
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .lg{background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:18px;text-align:center}
+  .lg .shape{margin:6px auto 12px}
+  .lg h4{font-family:'Fredoka';font-size:1.15rem}
+  .lg p{font-size:.92rem;color:var(--soft)}
+
+  /* SHAPES */
+  .oval{background:var(--grape);color:#fff;border-radius:999px;padding:12px 32px;display:inline-block;font-family:'Fredoka';font-weight:600;border:3px solid var(--ink)}
+  .rect{background:var(--sky);color:#fff;border-radius:8px;padding:12px 20px;display:inline-block;font-weight:700;border:3px solid var(--ink);max-width:260px}
+  .para{background:var(--mint);color:#fff;padding:12px 26px;display:inline-block;transform:skewX(-15deg);font-weight:700;border:3px solid var(--ink)}
+  .para span{display:inline-block;transform:skewX(15deg)}
+  .diamond{
+    width:230px;height:130px;background:var(--ink);display:inline-flex;align-items:center;justify-content:center;
+    clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);position:relative
+  }
+  .diamond::after{content:"";position:absolute;inset:4px;background:var(--sun);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+  .diamond span{position:relative;z-index:1;font-weight:800;font-size:.9rem;max-width:130px;text-align:center;line-height:1.2}
+  .diamond.sm{width:150px;height:84px}
+  .diamond.sm span{font-size:.75rem;max-width:90px}
+
+  /* FLOWCHART */
+  .flow{background:var(--white);border:4px solid var(--ink);border-radius:28px;padding:30px 16px;display:flex;flex-direction:column;align-items:center}
+  .flow .node{text-align:center}
+  .flow .down{width:4px;height:26px;background:var(--ink);position:relative;margin:0 auto}
+  .flow .down::after{content:"";position:absolute;bottom:-8px;left:-6px;border:8px solid transparent;border-top:10px solid var(--ink)}
+  .flow .gap{height:10px}
+  .branch{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:100%;max-width:620px;margin-top:6px}
+  .br{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+  .lbl{font-family:'Fredoka';font-weight:700;font-size:.85rem;padding:2px 12px;border-radius:999px;color:#fff}
+  .yes{background:var(--mint)} .no{background:var(--coral)}
+  .loop{font-size:.8rem;color:var(--coral);font-weight:800}
+  .skip{font-size:.85rem;color:var(--soft);font-style:italic;padding:12px}
+  .flow .rect{font-size:.95rem}
+
+  /* ACTIVITY / EXERCISES */
+  .general{background:var(--white);border:4px solid var(--ink);border-radius:24px;padding:20px 24px;box-shadow:8px 8px 0 #F4A100;margin-bottom:30px;font-size:1.05rem}
+  .general b{background:linear-gradient(transparent 60%, #FFE58A 60%)}
+  .ex{background:var(--white);border:4px solid var(--ink);border-radius:28px;overflow:hidden;margin-bottom:30px;box-shadow:10px 10px 0 var(--c)}
+  .ex-head{background:var(--c);color:#fff;padding:20px 26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .ex-head .e{font-size:2.6rem;line-height:1}
+  .ex-head small{font-family:'Fredoka';font-weight:600;letter-spacing:1px;opacity:.9}
+  .ex-head h3{font-size:clamp(1.3rem,3vw,1.75rem)}
+  .ex-body{padding:22px 26px;display:grid;gap:18px}
+  .blk h4{font-family:'Fredoka';font-size:1.05rem;letter-spacing:1px;color:var(--c);margin-bottom:6px}
+  .blk ul{padding-left:20px}
+  .blk li{margin:4px 0}
+  .data-row{display:flex;flex-wrap:wrap;gap:12px}
+  .data{background:#F3F7FF;border:3px solid var(--ink);border-radius:16px;padding:10px 16px;font-weight:700}
+  .data b{font-family:'Fredoka';font-size:1.4rem;color:var(--c);display:block}
+  .isteps{display:grid;gap:10px}
+  .istep{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;background:#FAFAFF;border:2px solid #E6E6F2;border-radius:16px;padding:10px 14px}
+  .istep .n{width:40px;height:40px;border-radius:50%;background:var(--sc);color:#fff;font-family:'Fredoka';font-weight:700;font-size:1.2rem;display:flex;align-items:center;justify-content:center;border:2px solid var(--ink)}
+  .istep b{font-family:'Fredoka';font-weight:600}
+  .istep code{font-family:'Courier New',monospace;background:#2B2D42;color:#FFD93D;padding:1px 6px;border-radius:6px;font-size:.88rem}
+  .rules-box{background:#FFF4D6;border:3px dashed #F4A100;border-radius:18px;padding:14px 18px}
+  .rules-box h4{color:#C27C00}
+
+  .delivery{background:var(--white);border:4px solid var(--ink);border-radius:28px;padding:26px;box-shadow:10px 10px 0 var(--coral)}
+  .date-badge{display:inline-block;background:var(--coral);color:#fff;font-family:'Fredoka';font-weight:700;font-size:1.3rem;padding:10px 20px;border-radius:18px;border:3px solid var(--ink);margin:6px 0 18px}
+  .where{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+  .where div{border-radius:20px;padding:16px 18px;color:#fff;border:3px solid var(--ink)}
+  .where h4{font-family:'Fredoka';font-size:1.2rem;margin-bottom:4px}
+  .checklist{list-style:none;display:grid;gap:8px}
+  .checklist label{display:flex;gap:12px;align-items:flex-start;background:#FAFAFF;border:2px solid #E6E6F2;border-radius:14px;padding:10px 14px;cursor:pointer;transition:background .15s}
+  .checklist input{width:22px;height:22px;accent-color:var(--mint);margin-top:2px;flex-shrink:0;cursor:pointer}
+  .checklist label:has(input:checked){background:#E6F9EE;border-color:var(--mint)}
+  .checklist label:has(input:checked) span{text-decoration:line-through;color:var(--soft)}
+  .progress{margin-top:14px;font-family:'Fredoka';font-weight:600;color:var(--mint)}
+
+  .closing{text-align:center;background:linear-gradient(135deg,var(--coral),var(--pink),var(--grape));color:#fff;border-radius:30px;padding:40px 26px;margin-top:10px}
+  .closing h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:10px}
+  .closing p{font-size:1.15rem;max-width:720px;margin:0 auto}
+
+  footer{text-align:center;padding:30px 0 50px;color:var(--soft);font-size:.9rem}
+
+  @media (max-width:700px){
+    .analogy,.pc-intro,.rules-grid,.anatomy,.where{grid-template-columns:1fr}
+    .step{grid-template-columns:1fr;text-align:center;justify-items:center}
+    .branch{gap:8px}
+    .flow .rect{font-size:.8rem;padding:10px 10px}
+    .diamond{width:190px;height:110px}
+    .diamond span{font-size:.78rem}
+    .panel{padding:20px 16px}
+    .ex-body{padding:18px 16px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#que-es">¿Qué es?</a>
+    <a href="#caracteristicas">Características</a>
+    <a href="#pasos">Los 5 pasos</a>
+    <a href="#pseudocodigo">Pseudocódigo</a>
+    <a href="#ejemplo">Ejemplo</a>
+    <a href="#diagrama">Diagrama</a>
+    <a href="#actividad">Actividad 1</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="que-es">
+  <div class="wrap">
+    <span class="tag" style="background:var(--coral)">Fundamentos de Programación</span>
+    <h1><span class="c1">¿Qué</span> <span class="c2">es</span> <span class="c3">un</span> <span class="c4">algoritmo?</span></h1>
+    <p class="lead">Spoiler: ya usas algoritmos todos los días, aunque no lo sepas 😉</p>
+
+    <div class="def">
+      Un <strong>algoritmo</strong> es una serie de <strong>pasos ordenados, claros y finitos</strong> que seguimos para <strong>resolver un problema</strong> o lograr un objetivo.
+    </div>
+
+    <div class="emojis">⏰🚿👗☕🎒📱🚌</div>
+    <p class="lead">Tu rutina para llegar a clase en la mañana... ¡es un algoritmo!</p>
+
+    <div class="pipeline">
+      <div class="pipe" style="background:var(--coral)">Problema</div><span class="arrow">➜</span>
+      <div class="pipe" style="background:var(--sun);color:var(--ink)">Algoritmo</div><span class="arrow">➜</span>
+      <div class="pipe" style="background:var(--sky)">Programa</div><span class="arrow">➜</span>
+      <div class="pipe" style="background:var(--mint)">Solución</div>
+    </div>
+  </div>
+</header>
+
+<!-- ANALOGY -->
+<section>
+  <div class="wrap">
+    <span class="tag" style="background:var(--sky)">¿Por qué importa el orden?</span>
+    <h2 class="sec-title">El orden de los pasos cambia el resultado</h2>
+    <p class="sec-sub">La computadora no piensa: hace <b>exactamente</b> lo que le decimos y en el orden que se lo decimos.</p>
+    <div class="analogy">
+      <div class="card">
+        <h3>✅ Así sí</h3>
+        <ol>
+          <li>5:30 Bañarme</li>
+          <li>5:55 Vestirme</li>
+          <li>6:00 Peinarme y maquillarme</li>
+          <li>6:30 Salir a clase</li>
+        </ol>
+      </div>
+      <div class="card warn">
+        <h3>❌ Así no</h3>
+        <ol>
+          <li>5:30 Vestirme</li>
+          <li>6:00 Peinarme y maquillarme</li>
+          <li>6:30 Bañarme 😱</li>
+          <li>7:00 Salir a clase con la ropa mojada</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTERISTICS -->
+<section id="caracteristicas">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">Características</span>
+    <h2 class="sec-title">¿Qué hace bueno a un algoritmo?</h2>
+    <p class="sec-sub">Pasa el cursor por cada tarjeta 👆</p>
+    <div class="chars">
+      <div class="char" style="background:var(--coral)">
+        <div class="ico">🎯</div><h3>Preciso</h3>
+        <p>Cada paso es claro, sin dudas.</p>
+        <small>"Revisa que el cel tenga más de 50%" y no "revisa el cel"</small>
+      </div>
+      <div class="char" style="background:#F4A100">
+        <div class="ico">🔢</div><h3>Ordenado</h3>
+        <p>Los pasos siguen una secuencia lógica.</p>
+        <small>Primero me baño, luego me visto</small>
+      </div>
+      <div class="char" style="background:var(--mint)">
+        <div class="ico">🏁</div><h3>Finito</h3>
+        <p>Tiene un inicio y un fin.</p>
+        <small>Empieza con la alarma y termina al llegar a clase</small>
+      </div>
+      <div class="char" style="background:var(--sky)">
+        <div class="ico">🔁</div><h3>Definido</h3>
+        <p>Con la misma situación, da el mismo resultado.</p>
+        <small>Si hace frío, siempre elijo ropa abrigadora</small>
+      </div>
+      <div class="char" style="background:var(--pink)">
+        <div class="ico">📥</div><h3>Entrada, proceso y salida</h3>
+        <p>Recibe datos, los trabaja y entrega un resultado.</p>
+        <small>Hora y clima ➜ decido ➜ llego a tiempo</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 STEPS -->
+<section id="pasos">
+  <div class="wrap">
+    <span class="tag" style="background:var(--mint)">Método</span>
+    <h2 class="sec-title">¿Cómo soluciono un problema usando algoritmos?</h2>
+    <p class="sec-sub">Estos son los 5 pasos que vamos a seguir siempre.</p>
+    <div class="steps">
+      <div class="step" style="--c:var(--coral)">
+        <div class="num">1</div>
+        <div><h3>Entiende el problema</h3><p>¿Qué me piden? ¿Qué quiero lograr? ¿Qué datos tengo?</p></div>
+      </div>
+      <div class="step" style="--c:#F4A100">
+        <div class="num">2</div>
+        <div><h3>Identifica las operaciones necesarias</h3><p>¿Qué acciones tengo que hacer? ¿Qué decisiones tengo que tomar?</p></div>
+      </div>
+      <div class="step" style="--c:var(--mint)">
+        <div class="num">3</div>
+        <div><h3>Planea la secuencia</h3><p>¿En qué orden van las acciones? ¿Qué va primero y qué después?</p></div>
+      </div>
+      <div class="step" style="--c:var(--sky)">
+        <div class="num">4</div>
+        <div><h3>Escribe el pseudocódigo</h3><p>Escribe los pasos en español, con palabras clave como <strong>Inicio, Si, Entonces, Sino y Fin.</strong></p>
+        </div>
+      </div>
+      <div class="step" style="--c:var(--grape)">
+        <div class="num">5</div>
+        <div><h3>Realiza el diagrama</h3><p>Dibuja el algoritmo con figuras y flechas en LucidChart o Visio.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PSEUDOCODE -->
+<section id="pseudocodigo">
+  <div class="wrap">
+    <span class="tag" style="background:#00B8A9">Paso 4 a detalle</span>
+    <h2 class="sec-title">¿Cómo se construye un pseudocódigo? ✍️</h2>
+    <p class="sec-sub">El pseudocódigo tiene partes y palabras clave. Si las usas bien, cualquier persona entiende tu algoritmo igual que tú.</p>
+
+    <div class="pc-intro">
+      <div class="card">
+        <h3>¿Qué es?</h3>
+        <p>Es escribir un algoritmo <b>en español, paso por paso</b>, usando algunas <b>palabras clave</b> (frases especiales) que todos entendemos igual.</p>
+        <p>Es como un <b>borrador del programa</b>: todavía no es código, pero ya tiene su forma.</p>
+      </div>
+      <div class="card recipe">
+        <h3>🍳 ¿Por qué usamos palabras clave?</h3>
+        <p>Porque le dan <b>estructura</b>. Igual que una receta tiene "Ingredientes" y "Preparación", el pseudocódigo tiene palabras que indican <b>dónde empieza, qué datos recibe, qué hace, qué decide y dónde termina</b>.</p>
+      </div>
+    </div>
+
+    <h3 class="h-sub">🧩 Las 7 partes de un pseudocódigo</h3>
+    <div class="parts">
+      <div class="part" style="background:var(--grape)"><div class="n">1</div><h4>Inicio</h4><p>Dónde empieza</p><code>Inicio</code></div>
+      <div class="part" style="background:var(--pink)"><div class="n">2</div><h4>Datos</h4><p>La información que usamos (variables)</p><code>duracionViaje</code></div>
+      <div class="part" style="background:var(--mint)"><div class="n">3</div><h4>Entrada</h4><p>Pedir o recibir datos</p><code>Leer hora</code></div>
+      <div class="part" style="background:var(--sky)"><div class="n">4</div><h4>Proceso</h4><p>Acciones o cálculos</p><code>Bañarme</code></div>
+      <div class="part" style="background:#F4A100"><div class="n">5</div><h4>Decisiones</h4><p>Elegir un camino</p><code>Si ... Entonces</code></div>
+      <div class="part" style="background:#00B8A9"><div class="n">6</div><h4>Salida</h4><p>Mostrar un resultado</p><code>Escribir</code></div>
+      <div class="part" style="background:var(--coral)"><div class="n">7</div><h4>Fin</h4><p>Dónde termina</p><code>Fin</code></div>
+    </div>
+
+    <h3 class="h-sub">🔑 Las palabras clave (las frases importantes)</h3>
+    <div class="table-wrap">
+      <table class="kw-table">
+        <tr><th>Palabra clave</th><th>Significado</th><th>Ejemplo</th></tr>
+        <tr><td><span class="pill" style="background:var(--grape)">Inicio / Fin</span></td><td>Abren y cierran el algoritmo</td><td class="mono">Inicio ... Fin</td></tr>
+        <tr><td><span class="pill" style="background:var(--mint)">Leer</span></td><td>Recibir un dato (entrada)</td><td class="mono">Leer horaActual</td></tr>
+        <tr><td><span class="pill" style="background:#00B8A9">Escribir</span></td><td>Mostrar un mensaje o resultado (salida)</td><td class="mono">Escribir "Ya llegué"</td></tr>
+        <tr><td><span class="pill" style="background:var(--sky)">←</span></td><td>Guardar un valor en una variable ("se le asigna")</td><td class="mono">sobrante ← 180 - 178.5</td></tr>
+        <tr><td><span class="pill" style="background:#F4A100">Si ... Entonces</span></td><td>Pregunta: si se cumple, hago esto</td><td class="mono">Si hay fila Entonces</td></tr>
+        <tr><td><span class="pill" style="background:#F4A100">Sino</span></td><td>Lo que hago si NO se cumple</td><td class="mono">Sino</td></tr>
+        <tr><td><span class="pill" style="background:#F4A100">FinSi</span></td><td>Cierra la decisión</td><td class="mono">FinSi</td></tr>
+        <tr><td><span class="pill" style="background:var(--pink)">Mientras ... Hacer</span></td><td>Repetir algo mientras se cumpla una condición (se cierra con FinMientras)</td><td class="mono">Mientras tenga sueño Hacer</td></tr>
+        <tr><td><span class="pill" style="background:var(--soft)">//</span></td><td>Comentario: una nota para quien lo lee, no es una acción</td><td class="mono">// 6:00 a.m.</td></tr>
+      </table>
+    </div>
+
+    <div class="rules-grid" style="margin-top:28px">
+      <div class="card rules">
+        <h3>📏 Reglas para escribirlo bien</h3>
+        <ol>
+          <li><b>Siempre empieza con Inicio y termina con Fin.</b></li>
+          <li><b>Una acción por línea.</b> Mal: "Me baño y me visto". Bien: dos líneas separadas.</li>
+          <li><b>Usa verbos claros</b> al inicio de cada línea: Bañarme, Revisar, Calcular, Pedir, Pagar.</li>
+          <li><b>Usa sangría</b> (espacio a la izquierda) dentro de cada Si, Sino y Mientras.</li>
+          <li><b>Toda decisión se cierra:</b> cada Si lleva su FinSi y cada Mientras lleva su FinMientras.</li>
+          <li><b>Las condiciones se responden con Sí o No.</b> Mal: "Si la ropa". Bien: "Si la ropa está limpia".</li>
+          <li><b>Nombres de variables sin espacios</b> y que digan qué guardan: duracionCancion, no x.</li>
+        </ol>
+      </div>
+      <div class="card bad">
+        <h3>🚫 Errores comunes</h3>
+        <ul>
+          <li>Olvidar el FinSi.</li>
+          <li>Escribir decisiones que no son preguntas de Sí o No.</li>
+          <li>Juntar varias acciones en una sola línea.</li>
+          <li>Saltarse pasos "obvios" (para la computadora nada es obvio).</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="h-sub">🔍 Mini ejemplo con todas sus partes</h3>
+    <div class="anatomy">
+<pre class="code"><span class="kw">Inicio</span>
+   <span class="kw">Leer</span> horaActual
+   <span class="kw">Si</span> <span class="cond">horaActual es antes de las 6:20</span> <span class="kw">Entonces</span>
+      Irme en camión
+   <span class="kw">Sino</span>
+      Pedir un Uber
+   <span class="kw">FinSi</span>
+   <span class="kw">Escribir</span> "Voy en camino"
+<span class="kw">Fin</span></pre>
+      <div class="anno">
+        <div><b style="color:var(--grape)">Inicio:</b> empieza el algoritmo</div>
+        <div><b style="color:var(--mint)">Entrada:</b> Leer horaActual (el dato es la hora)</div>
+        <div><b style="color:#F4A100">Decisión:</b> Si / Sino / FinSi</div>
+        <div><b style="color:var(--sky)">Proceso:</b> irme en camión o pedir Uber</div>
+        <div><b style="color:#00B8A9">Salida:</b> Escribir "Voy en camino"</div>
+        <div><b style="color:var(--coral)">Fin:</b> termina el algoritmo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMPLE -->
+<section id="ejemplo">
+  <div class="wrap">
+    <span class="tag" style="background:var(--pink)">Ejemplo resuelto</span>
+    <h2 class="sec-title">Prepararme y llegar a tiempo a mi primera clase 🚌✨</h2>
+    <p class="sec-sub">Da clic en cada paso para verlo resuelto.</p>
+
+    <div class="tabs">
+      <button class="tab active" style="--c:var(--coral)" data-p="p1">Paso 1. Entiende</button>
+      <button class="tab" style="--c:#F4A100" data-p="p2">Paso 2. Operaciones</button>
+      <button class="tab" style="--c:var(--mint)" data-p="p3">Paso 3. Secuencia</button>
+      <button class="tab" style="--c:var(--sky)" data-p="p4">Paso 4. Pseudocódigo</button>
+      <button class="tab" style="--c:var(--grape)" data-p="p5">Paso 5. Diagrama</button>
+    </div>
+
+    <div class="panel active" id="p1" style="--c:var(--coral)">
+      <h3>PASO 1: Entiende el problema</h3>
+      <ul>
+        <li>Mi clase empieza a las <b>7:00</b></li>
+        <li>Quiero llegar <b>a tiempo, desayunada y super bonita</b></li>
+        <li>No quiero que se me <b>olvide nada</b> en casa</li>
+        <li>Necesito <b>organizar todo lo que hago en la mañana</b> para que me alcance el tiempo</li>
+      </ul>
+    </div>
+
+    <div class="panel" id="p2" style="--c:#F4A100">
+      <h3>PASO 2: Identifica las operaciones necesarias</h3>
+      <ul>
+        <li><b>Despertar:</b> apagar la alarma y levantarme</li>
+        <li><b>Bañarme y arreglarme:</b> elegir la ropa, vestirme, peinarme y maquillarme</li>
+        <li><b>Desayunar:</b> decidir si me da tiempo de desayunar en casa o me llevo algo</li>
+        <li><b>Revisar la mochila:</b> cuaderno, laptop, cargador, credencial, cartera y llaves</li>
+        <li><b>Revisar el celular:</b> ver si tiene pila suficiente o necesito cargarlo</li>
+        <li><b>Elegir transporte:</b> camión, Uber o raite según la hora</li>
+      </ul>
+    </div>
+
+    <div class="panel" id="p3" style="--c:var(--mint)">
+      <h3>PASO 3: Planea la secuencia</h3>
+      <ol class="seq">
+        <li>Despertar y levantarme</li>
+        <li>Poner el celular a cargar si tiene poca pila</li>
+        <li>Bañarme</li>
+        <li>Seleccionar la ropa y vestirme</li>
+        <li>Arreglarme (peinado y maquillaje)</li>
+        <li>Desayunar o llevarme algo para el camino</li>
+        <li>Revisar la mochila</li>
+        <li>Desconectar el celular y guardarlo</li>
+        <li>Revisar la hora y elegir transporte</li>
+        <li>Salir de casa y llegar a clase</li>
+      </ol>
+    </div>
+
+    <div class="panel" id="p4" style="--c:var(--sky)">
+      <h3>PASO 4: Escribe el pseudocódigo</h3>
+<pre class="code"><span class="kw">Inicio</span>
+   Sonar la alarma
+   <span class="kw">Si</span> <span class="cond">ya son más de las 5:30</span> <span class="kw">Entonces</span>
+      Levantarme de inmediato
+   <span class="kw">Sino</span>
+      Posponer la alarma 5 minutos
+   <span class="kw">FinSi</span>
+   Revisar la pila del celular
+   <span class="kw">Si</span> <span class="cond">la pila es menor a 50%</span> <span class="kw">Entonces</span>
+      Poner el celular a cargar
+   <span class="kw">FinSi</span>
+   Bañarme
+   Revisar el clima
+   <span class="kw">Si</span> <span class="cond">hace frío</span> <span class="kw">Entonces</span>
+      Elegir ropa abrigadora
+   <span class="kw">Sino</span>
+      Elegir ropa fresca
+   <span class="kw">FinSi</span>
+   Vestirme
+   Peinarme y maquillarme
+   <span class="kw">Si</span> <span class="cond">tengo más de 15 minutos libres</span> <span class="kw">Entonces</span>
+      Desayunar en casa
+   <span class="kw">Sino</span>
+      Llevarme una fruta o un pan
+   <span class="kw">FinSi</span>
+   Revisar la mochila
+   <span class="kw">Si</span> <span class="cond">falta algo (cuaderno, laptop, cargador, credencial, llaves)</span> <span class="kw">Entonces</span>
+      Guardarlo en la mochila
+   <span class="kw">FinSi</span>
+   Desconectar el celular y guardarlo
+   Revisar la hora
+   <span class="kw">Si</span> <span class="cond">faltan más de 40 minutos para la clase</span> <span class="kw">Entonces</span>
+      Irme en camión
+   <span class="kw">Sino</span>
+      Pedir un Uber o pedir raite
+   <span class="kw">FinSi</span>
+   Llegar a clase super bonita y a tiempo
+<span class="kw">Fin</span></pre>
+    </div>
+
+    <div class="panel" id="p5" style="--c:var(--grape)">
+      <h3>PASO 5: Realiza el diagrama en LucidChart o Visio</h3>
+      <p>Cada línea del pseudocódigo se convierte en una figura. Baja a la sección <a href="#diagrama" style="color:var(--grape);font-weight:800">Diagrama</a> para ver el diagrama completo de este ejemplo 👇</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEGEND + FLOWCHART -->
+<section id="diagrama">
+  <div class="wrap">
+    <span class="tag" style="background:var(--sky)">Diagrama de flujo</span>
+    <h2 class="sec-title">Las figuras del diagrama</h2>
+    <p class="sec-sub">Cada figura tiene un significado. Así las usamos en LucidChart o Visio:</p>
+
+    <div class="legend">
+      <div class="lg"><div class="shape"><span class="oval">Inicio</span></div><h4>Círculo</h4>
+      <p>Marca el inicio y el fin</p></div>
+      <div class="lg"><div class="shape"><span class="para"><span>Dato</span></span></div><h4>Paralelogramo</h4><p>Entrada o salida de información</p></div>
+      <div class="lg"><div class="shape"><span class="rect">Acción</span></div><h4>Rectángulo</h4><p>Una acción o proceso</p></div>
+      <div class="lg"><div class="shape"><span class="diamond sm"><span>¿Pregunta?</span></span></div><h4>Rombo</h4><p>Una decisión: Sí o No</p></div>
+      <div class="lg"><div class="shape" style="font-size:2rem;font-weight:800">➜</div><h4>Flecha</h4><p>Indica el orden a seguir</p></div>
+    </div>
+
+    <h2 class="sec-title" style="margin-top:46px">Diagrama de mi mañana ☀️</h2>
+    <p class="sec-sub">Así se ve el algoritmo completo. ¡Tiene 6 decisiones!</p>
+
+    <div class="flow">
+      <div class="node"><span class="oval">Inicio</span></div>
+      <div class="down"></div><div class="gap"></div>
+      <div class="node"><span class="para"><span>⏰ Suena la alarma</span></span></div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="diamond"><span>¿Ya son más de las 5:30?</span></span></div>
+      <div class="branch">
+        <div class="br"><span class="lbl yes">Sí</span><span class="rect">Levantarme</span></div>
+        <div class="br"><span class="lbl no">No</span><span class="rect">Posponer 5 min</span><span class="loop">↺ regresa a la pregunta</span></div>
+      </div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="diamond"><span>¿La pila es menor a 50%?</span></span></div>
+      <div class="branch">
+        <div class="br"><span class="lbl yes">Sí</span><span class="rect">📱 Poner a cargar</span></div>
+        <div class="br"><span class="lbl no">No</span><span class="skip">continuar</span></div>
+      </div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="rect">🚿 Bañarme</span></div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="diamond"><span>¿Hace frío?</span></span></div>
+      <div class="branch">
+        <div class="br"><span class="lbl yes">Sí</span><span class="rect">🧥 Ropa abrigadora</span></div>
+        <div class="br"><span class="lbl no">No</span><span class="rect">👕 Ropa fresca</span></div>
+      </div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="rect">👗 Vestirme</span></div>
+      <div class="down"></div><div class="gap"></div>
+      <div class="node"><span class="rect">💄 Peinarme y maquillarme</span></div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="diamond"><span>¿Tengo más de 15 min libres?</span></span></div>
+      <div class="branch">
+        <div class="br"><span class="lbl yes">Sí</span><span class="rect">☕ Desayunar en casa</span></div>
+        <div class="br"><span class="lbl no">No</span><span class="rect">🍎 Llevarme algo</span></div>
+      </div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="diamond"><span>¿Falta algo en la mochila?</span></span></div>
+      <div class="branch">
+        <div class="br"><span class="lbl yes">Sí</span><span class="rect">🎒 Guardarlo</span></div>
+        <div class="br"><span class="lbl no">No</span><span class="skip">continuar</span></div>
+      </div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="rect">🔌 Desconectar el celular</span></div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="diamond"><span>¿Faltan más de 40 min?</span></span></div>
+      <div class="branch">
+        <div class="br"><span class="lbl yes">Sí</span><span class="rect">🚌 Camión</span></div>
+        <div class="br"><span class="lbl no">No</span><span class="rect">🚗 Uber o raite</span></div>
+      </div>
+      <div class="down"></div><div class="gap"></div>
+
+      <div class="node"><span class="para"><span>✨ Llegar a clase</span></span></div>
+      <div class="down"></div><div class="gap"></div>
+      <div class="node"><span class="oval">Fin</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITY 1 -->
+<section id="actividad">
+  <div class="wrap">
+    <span class="tag" style="background:#F4A100">¡Tu turno!</span>
+    <h2 class="sec-title">Actividad 1: Elige una situación y resuélvela</h2>
+    <p class="sec-sub">Vas a resolver 3 ejercicios aplicando todo lo que vimos.</p>
+
+    <div class="general">
+      📌 <b>Para los 3 ejercicios:</b> sigue los <b>5 pasos</b> (1. Entiende el problema, 2. Identifica las operaciones necesarias, 3. Planea la secuencia, 4. Escribe el pseudocódigo, 5. Realiza el diagrama) y tu algoritmo debe tener <b>mínimo 15 pasos (acciones)</b>.
+    </div>
+
+    <!-- EJERCICIO 1 -->
+    <div class="ex" style="--c:var(--coral)">
+      <div class="ex-head">
+        <div class="e">⏰</div>
+        <div><small>EJERCICIO 1</small><h3>Prepararme para ir a la escuela y llegar a clase a las 7:00 a.m.</h3></div>
+      </div>
+      <div class="ex-body">
+        <div class="blk"><h4>🎯 OBJETIVO</h4><p>Crear un algoritmo con todo lo que haces desde que te despiertas hasta que llegas a tu clase de las 7:00 a.m., indicando la <b>hora</b> de cada acción.</p></div>
+        <div class="blk"><h4>❓ PROBLEMA</h4><p>Tu clase empieza a las 7:00 a.m. Necesitas organizar tu mañana (despertar, bañarte, arreglarte, desayunar, revisar tu mochila, tu celular y tu transporte) para llegar a tiempo y sin olvidar nada.</p></div>
+        <div class="blk">
+          <h4>📝 INSTRUCCIONES</h4>
+          <div class="isteps">
+            <div class="istep" style="--sc:var(--coral)"><div class="n">1</div><div><b>Entiende el problema:</b> escribe qué quieres lograr y qué te puede atrasar en la mañana.</div></div>
+            <div class="istep" style="--sc:#F4A100"><div class="n">2</div><div><b>Identifica las operaciones necesarias:</b> lista todas las acciones (despertar, bañarte, vestirte, desayunar, etc.) y las decisiones que tomas (¿hace frío?, ¿tengo pila?, ¿me da tiempo de desayunar?).</div></div>
+            <div class="istep" style="--sc:var(--mint)"><div class="n">3</div><div><b>Planea la secuencia:</b> ordena tus acciones y ponle <b>hora</b> a cada una. Ejemplo: 5:30 Despertar / 5:35 Poner el celular a cargar / 5:40 Bañarme.</div></div>
+            <div class="istep" style="--sc:var(--sky)"><div class="n">4</div><div><b>Escribe el pseudocódigo:</b> con las palabras clave. Pon la hora como comentario. Ejemplo: <code>Bañarme  // 5:40 a.m.</code></div></div>
+            <div class="istep" style="--sc:var(--grape)"><div class="n">5</div><div><b>Realiza el diagrama:</b> en LucidChart o Visio, con la hora dentro de cada figura.</div></div>
+          </div>
+        </div>
+        <div class="blk rules-box">
+          <h4>📏 REGLAS</h4>
+          <ul>
+            <li>Mínimo <b>15 pasos (acciones)</b>.</li>
+            <li>Cada acción debe tener su <b>hora</b>.</li>
+            <li>La última acción debe ser <b>llegar a clase a las 7:00 a.m. o antes</b>.</li>
+            <li>Incluye al menos <b>2 decisiones</b> (rombos).</li>
+            <li>Las horas deben ir en orden y ser realistas (no te bañes en 1 minuto 😉).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- EJERCICIO 2 -->
+    <div class="ex" style="--c:var(--sky)">
+      <div class="ex-head">
+        <div class="e">🍔</div>
+        <div><small>EJERCICIO 2</small><h3>Comer entre clases</h3></div>
+      </div>
+      <div class="ex-body">
+        <div class="blk"><h4>🎯 OBJETIVO</h4><p>Crear un algoritmo para comer algo entre clases sin llegar tarde a la siguiente.</p></div>
+        <div class="blk"><h4>❓ PROBLEMA</h4><p>Tienes 20 minutos libres entre una clase y otra y tienes hambre. Necesitas decidir dónde comprar, qué comer, cómo pagar y regresar a tiempo a tu salón.</p></div>
+        <div class="blk">
+          <h4>📝 INSTRUCCIONES</h4>
+          <div class="isteps">
+            <div class="istep" style="--sc:var(--coral)"><div class="n">1</div><div><b>Entiende el problema:</b> escribe cuánto tiempo tienes, qué quieres lograr y qué te puede complicar (fila, dinero, tiempo).</div></div>
+            <div class="istep" style="--sc:#F4A100"><div class="n">2</div><div><b>Identifica las operaciones necesarias:</b> lista acciones (salir del salón, caminar a la cafetería, elegir, pagar, comer, regresar) y decisiones (¿hay mucha fila?, ¿me alcanza el dinero?, ¿pago con tarjeta o efectivo?, ¿me da tiempo de comer ahí o me lo llevo?).</div></div>
+            <div class="istep" style="--sc:var(--mint)"><div class="n">3</div><div><b>Planea la secuencia:</b> ordena las acciones de principio a fin.</div></div>
+            <div class="istep" style="--sc:var(--sky)"><div class="n">4</div><div><b>Escribe el pseudocódigo:</b> con Inicio, Si, Entonces, Sino, FinSi y Fin.</div></div>
+            <div class="istep" style="--sc:var(--grape)"><div class="n">5</div><div><b>Realiza el diagrama:</b> en LucidChart o Visio.</div></div>
+          </div>
+        </div>
+        <div class="blk rules-box">
+          <h4>📏 REGLAS</h4>
+          <ul>
+            <li>Mínimo <b>15 pasos (acciones)</b>.</li>
+            <li>Incluye al menos <b>2 decisiones</b> (rombos).</li>
+            <li>El algoritmo termina cuando <b>regresas a tu salón a tiempo</b>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- EJERCICIO 3 -->
+    <div class="ex" style="--c:var(--grape)">
+      <div class="ex-head">
+        <div class="e">🎧</div>
+        <div><small>EJERCICIO 3</small><h3>Canciones en el viaje</h3></div>
+      </div>
+      <div class="ex-body">
+        <div class="blk"><h4>🎯 OBJETIVO</h4><p>Crear un algoritmo que calcule cuántas canciones puedes escuchar en un viaje y cuánto tiempo te sobrará.</p></div>
+        <div class="blk"><h4>❓ PROBLEMA</h4><p>Vas a hacer un viaje en autobús que dura 180 minutos (3 horas) y cada canción dura 3.5 minutos. Quieres saber: ¿cuántas canciones completas puedes escuchar? y ¿cuántos minutos te sobrarán al final del viaje?</p></div>
+        <div class="blk">
+          <h4>📊 DATOS QUE TIENES</h4>
+          <div class="data-row">
+            <div class="data"><b>180 min</b>Duración del viaje</div>
+            <div class="data"><b>3.5 min</b>Duración promedio de cada canción</div>
+          </div>
+        </div>
+        <div class="blk">
+          <h4>🧮 LO QUE DEBES CALCULAR</h4>
+          <ul>
+            <li>Número de canciones completas que puedes escuchar</li>
+            <li>Tiempo sobrante (minutos que quedan después de las canciones completas)</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>📝 INSTRUCCIONES</h4>
+          <div class="isteps">
+            <div class="istep" style="--sc:var(--coral)"><div class="n">1</div><div><b>Entiende el problema:</b> escribe con tus palabras qué datos tienes y qué te piden.</div></div>
+            <div class="istep" style="--sc:#F4A100"><div class="n">2</div><div><b>Identifica las operaciones necesarias:</b> explica para qué usas cada operación: <b>división</b> (cuántas canciones caben), <b>multiplicación</b> (cuánto tiempo ocupan las canciones completas) y <b>resta</b> (cuánto tiempo sobra).</div></div>
+            <div class="istep" style="--sc:var(--mint)"><div class="n">3</div><div><b>Planea la secuencia:</b> ordena los cálculos (no puedes restar antes de multiplicar).</div></div>
+            <div class="istep" style="--sc:var(--sky)"><div class="n">4</div><div><b>Escribe el pseudocódigo:</b> usa variables con nombres claros (<code>duracionViaje</code>, <code>duracionCancion</code>, <code>canciones</code>, <code>tiempoUsado</code>, <code>sobrante</code>), <code>Leer</code> para pedir los datos, <code>←</code> para guardar los resultados y <code>Escribir</code> para mostrarlos. Usa <code>Entero( )</code> para quedarte solo con la parte entera de la división.</div></div>
+            <div class="istep" style="--sc:var(--grape)"><div class="n">5</div><div><b>Realiza el diagrama:</b> en LucidChart o Visio, usando paralelogramos para los datos que entran y los resultados que salen, y rectángulos para los cálculos.</div></div>
+          </div>
+        </div>
+        <div class="blk rules-box">
+          <h4>📏 REGLAS</h4>
+          <ul>
+            <li>Solo cuentan <b>canciones completas</b> (no puedes escuchar media canción).</li>
+            <li>Usa operaciones matemáticas básicas: <b>división, multiplicación y resta</b>.</li>
+            <li>Mínimo <b>15 pasos</b>. Pista: cuenta también los mensajes al usuario (Escribir), pedir cada dato (Leer), cada cálculo y al menos una <b>decisión</b>, por ejemplo: revisar que los datos sean mayores a 0, o revisar si sobra tiempo o el viaje queda exacto.</li>
+            <li>Comprueba tu resultado haciendo las operaciones a mano o con calculadora.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DELIVERY -->
+    <div class="delivery">
+      <h2 class="sec-title" style="font-size:clamp(1.6rem,3.5vw,2.2rem)">📦 Entrega</h2>
+      <div class="date-badge">📅 Viernes 16 de octubre, 23:59</div>
+      <p style="margin-bottom:18px">Entrega <b>un documento de Word</b> con los <b>3 ejercicios</b>, cada uno con sus <b>5 pasos completos</b> y la <b>imagen de su diagrama</b>.</p>
+
+      <div class="where">
+        <div style="background:var(--ink)">
+          <h4>🐙 GitHub</h4>
+          <p>Sube el Word al <b>repositorio que creaste para la Actividad 1</b>.</p>
+        </div>
+        <div style="background:var(--coral)">
+          <h4>🎓 Canvas</h4>
+          <p>Sube el <b>mismo Word</b>, y <b>dentro del documento</b> pega el <b>enlace a tu repositorio de GitHub</b>.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:12px">✅ Antes de entregar tu documento de Word, verifica:</h3>
+      <ul class="checklist" id="checklist">
+        <li><label><input type="checkbox"><span>Tu documento tiene una <b>portada</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Hay un <b>índice</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Hay un <b>título para cada ejercicio</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Hay un <b>título para cada paso</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Hay una <b>sección para el enlace de GitHub</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Los 3 ejercicios tienen los <b>5 pasos con su nombre</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Cada ejercicio tiene <b>mínimo 15 pasos</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>El ejercicio 1 tiene la <b>hora en cada acción</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Cada pseudocódigo empieza con <b>Inicio</b>, termina con <b>Fin</b> y cada <b>Si</b> tiene su <b>FinSi</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Están los <b>3 diagramas</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>El <b>enlace de GitHub funciona</b>: ábrelo en otra pestaña (o en modo incógnito), confirma que lleva a tu repositorio y que lo incluiste en tu Word.</span></label></li>
+      </ul>
+      <div class="progress" id="progress">0 de 11 listos</div>
+    </div>
+
+    <div class="closing" style="margin-top:36px">
+      <h2>No necesitas ser programador para pensar como uno 💡</h2>
+      <p>Diseñar un proceso de ventas, controlar un inventario o atender a un cliente paso a paso también es crear algoritmos. ¡Esa habilidad te va a servir en todo tu camino en comercio!</p>
+    </div>
+  </div>
+</section>
+
+<footer>Fundamentos de Programación · Algoritmos</footer>
+
+<script>
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+      document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('active')});
+      t.classList.add('active');
+      document.getElementById(t.dataset.p).classList.add('active');
+    });
+  });
+
+  (function(){
+    var boxes = document.querySelectorAll('#checklist input');
+    var out = document.getElementById('progress');
+    function update(){
+      var n = 0;
+      boxes.forEach(function(b){ if(b.checked) n++; });
+      out.textContent = n === boxes.length ? '🎉 ¡Todo listo! Ya puedes entregar' : n + ' de ' + boxes.length + ' listos';
+    }
+    boxes.forEach(function(b){ b.addEventListener('change', update); });
+  })();
+</script>
+</body>
+</html>
