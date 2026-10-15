@@ -1,2 +1,2 @@
-# pythonfundamentals
+# PythonFundamentals
 Python Fundamentals
