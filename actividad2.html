@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actividad 02 · Python</title>
+<link rel="stylesheet" href="estilos.css">
+
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#teoria">Teoría</a>
+    <a href="#actividad">Actividad 02</a>
+    <a href="#martes">Martes</a>
+    <a href="#miercoles">Miércoles</a>
+    <a href="#jueves">Jueves</a>
+    <a href="#entrega">Entrega</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="tag" style="background:var(--coral)">Fundamentos de Programación</span>
+    <h1><span class="c1">Mis</span> <span class="c2">primeros</span> <span class="c3">programas</span> <span class="c4">en</span> <span class="c5">Python</span></h1>
+    <p class="lead">Música, videojuegos, mascotas, series y redes... pero ahora con código 🐍🎮🎧</p>
+    <div class="badges">
+      <span class="badge">📝 Actividad 02</span>
+      <span class="badge">👤 Individual</span>
+      <span class="badge due">⏰ Viernes 23 de octubre, 23:59</span>
+    </div>
+  </div>
+</header>
+
+<!-- TEORIA -->
+<section id="teoria">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">Teoría</span>
+    <h2 class="title">Lo que necesitas saber</h2>
+    <p class="sub">Diez ideas cortas. Con esto puedes resolver todos los ejercicios de la semana.</p>
+
+    <div class="theory">
+
+      <div class="card" style="--c:var(--coral)">
+        <h3><span class="n">1</span>¿Qué es un programa?</h3>
+        <p>Es una <strong>lista de instrucciones</strong> que la computadora sigue en orden, de arriba hacia abajo, <strong>igual que un algoritmo</strong>. <br>
+        Si una línea tiene <strong>error</strong>, el <strong>programa</strong> <strong>se</strong> <strong>detiene</strong> ahí.</p>
+      </div>
+
+      <div class="card" style="--c:var(--grape)">
+        <h3><span class="n">2</span>print(): hablarle al usuario</h3>
+        <p>Muestra información en la pantalla (la terminal).</p>
+<pre class="code">print("Hola, mundo")
+print("Mi juego favorito es Minecraft")</pre>
+      </div>
+
+      <div class="card" style="--c:var(--sky)">
+        <h3><span class="n">3</span>Comentarios</h3>
+        <p>Todo lo que va después de <code class="inline">#</code> es una nota para humanos. Python la ignora. En esta actividad son <strong>obligatorios para nosotros porque son las notas para saber que hace el código</strong>.</p>
+<pre class="code"># Esto es un comentario, Python no lo ejecuta
+print("Esto sí se ejecuta")</pre>
+      </div>
+
+      <div class="card" style="--c:var(--mint)">
+        <h3><span class="n">4</span>¿Qué es una variable?</h3>
+        <p>Una <strong>cajita con nombre</strong> donde guardamos un dato. <br>
+        El signo <code class="inline">=</code> no significa "es igual a", significa <strong>"guarda esto aquí"</strong>.<br>
+		El doble <code class="inline">= =</code> ese sí es el igual al que conocemos de clase de matemáticas.<br>
+        <br>
+        </p>
+<pre class="code">artista = "Peso Pluma"
+seguidores = 1500 # aquí se asigna el valor de 1500 a la variable seguidores
+x == 12           # este si significa el igual de clase de mate</pre>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <tr><th>✅ Sí se puede</th><th>❌ No se puede</th></tr>
+            <tr><td><code class="inline">edad_mascota</code>, <code class="inline">vida2</code></td><td><code class="inline">2vida</code> (no empieza con número)</td></tr>
+            <tr><td>Guion bajo para separar palabras</td><td><code class="inline">edad mascota</code> (no debe tener espacios porque son dos variables, edad y mascota)</td></tr>
+            <tr><td>Letras sin acento, números y _</td><td><code class="inline">año</code>, <code class="inline">canción</code> (evita ñ y acentos)</td></tr>
+          </table>
+        </div>
+        <div class="tip">Python distingue mayúsculas: <code class="inline">Vida</code> y <code class="inline">vida</code> son <strong>cajitas</strong> <strong>distintas</strong>.</div>
+      </div>
+
+      <div class="card" style="--c:var(--pink)">
+        <h3><span class="n">5</span>Tipos de datos</h3>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <tr><th>Tipo</th><th>Qué es</th><th>Ejemplo</th></tr>
+            <tr><td><code class="inline">str</code></td><td>Texto, se pone entre comillas</td><td><code class="inline">"Fortnite"</code></td></tr>
+            <tr><td><code class="inline">int</code></td><td>Número entero</td><td><code class="inline">87</code></td></tr>
+            <tr><td><code class="inline">float</code></td><td>Número con decimales</td><td><code class="inline">3.5</code></td></tr>
+            <tr><td><code class="inline">bool</code></td><td>Verdadero o falso</td><td><code class="inline">True</code> / <code class="inline">False</code></td></tr>
+          </table>
+        </div>
+<pre class="code">nivel = 87
+print(type(nivel))   # muestra &lt;el tipo de variable que es nivel, en este caso 'int' (número)&gt;</pre>
+        <div class="warn">Ojo: "87" con comillas es texto, no número.</div>
+      </div>
+
+      <div class="card" style="--c:var(--orange)">
+        <h3><span class="n">6</span>f-strings</h3>
+        <p>Con una <code class="inline">f</code> antes de las comillas metes variables dentro del texto usando <code class="inline">{ }</code>.</p>
+<pre class="code">mascota = "Michi"
+edad = 3
+print(f"Mi gato {mascota} tiene {edad} años")
+
+horas = 41.666666
+print(f"Son {horas:.1f} horas")   # Como usamos .1f redondea a 1 decimal, por eso es 41.7 horas</pre>
+        <div class="tip"><code class="inline">:.1f</code> muestra un decimal y <code class="inline">:.2f</code> dos decimales (ideal para dinero).</div>
+      </div>
+
+      <div class="card" style="--c:var(--coral)">
+        <h3><span class="n">7</span>¿Qué es un operador?</h3>
+        <p>Un <strong>símbolo que le dice a Python qué cálculo hacer</strong>.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <tr><th>Operador</th><th>Qué hace</th><th>Ejemplo</th></tr>
+            <tr><td><code class="inline">+</code></td><td>Suma</td><td>10 + 3 = 13</td></tr>
+            <tr><td><code class="inline">-</code></td><td>Resta</td><td>10 - 3 = 7</td></tr>
+            <tr><td><code class="inline">*</code></td><td>Multiplicación</td><td>10 * 3 = 30</td></tr>
+            <tr><td><code class="inline">/</code></td><td>División (da decimal)</td><td>10 / 3 = 3.33</td></tr>
+            <tr><td><code class="inline">//</code></td><td>División entera</td><td>10 // 3 = 3</td></tr>
+            <tr><td><code class="inline">%</code></td><td>Residuo (lo que sobra)</td><td>10 % 3 = 1</td></tr>
+            <tr><td><code class="inline">**</code></td><td>Potencia</td><td>2 ** 3 = 8</td></tr>
+          </table>
+        </div>
+<pre class="code">
+# Aquí aplican las reglas de matemáticas PEMDAS (Parentesis, Exponentes, Mult, Div, Sum, Resta)
+print(2 + 3 * 4)     # 14 (primero multiplica)
+print((2 + 3) * 4)   # 20 (primero el paréntesis)</pre>
+      </div>
+
+      <div class="card" style="--c:var(--grape)">
+        <h3><span class="n">8</span>// y %: minutos y segundos</h3>
+        <p>Nadie dice "3.58 minutos". Decimos "3 minutos con 35 segundos".</p>
+<pre class="code">segundos_totales = 215
+minutos = segundos_totales // 60    # 3 minutos completos
+segundos = segundos_totales % 60    # sobran 35 segundos
+print(f"{minutos} minutos con {segundos} segundos")</pre>
+      </div>
+
+      <div class="card" style="--c:var(--sky)">
+        <h3><span class="n">9</span>Variables que cambian</h3>
+        <p>Python primero calcula lo que está a la derecha del <code class="inline">=</code> y después lo guarda en la cajita.</p>
+<pre class="code">vida = 100
+nueva_vida = vida - 25   # vida vale 100, y nueva_vida vale 100 - 25, que es 75
+</pre>
+      </div>
+
+      <div class="card" style="--c:var(--mint)">
+        <h3><span class="n">10</span>input(): el programa te pregunta</h3>
+<pre class="code">nombre = input("¿Cómo te llamas? ")
+print(f"Hola, {nombre}")</pre>
+        <div class="warn">input() SIEMPRE devuelve texto. Si escribes 2 y 2, "2" + "2" da "22" 😱</div>
+<pre class="code">edad = int(input("Edad: "))          # int() para enteros
+precio = float(input("Precio: $"))   # float() para decimales</pre>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD -->
+<section id="actividad">
+  <div class="wrap">
+    <span class="tag" style="background:var(--coral)">Instrucciones</span>
+    <h2 class="title">Actividad 02</h2>
+    <p class="sub">Esta actividad se hace de forma <strong>individual</strong>. Fecha límite: <strong>viernes 23 de octubre a las 23:59</strong>.</p>
+
+    <div class="card">
+      <h3><span class="step-num" style="background:var(--coral)">1</span>Documento Word</h3>
+      <p>Deberás entregar un documento Word con lo siguiente, en este orden:</p>
+      <ol>
+        <li><strong>Portada:</strong> nombre completo, matrícula, materia, nombre de la actividad, profesora y fecha.</li>
+        <li><strong>Índice.</strong></li>
+        <li><strong>Ejercicios del martes:</strong> un título por ejercicio (por ejemplo "Ejercicio 1: Mi perfil gamer") y debajo las capturas de pantalla de tu código en VS Code y del resultado en la terminal.</li>
+        <li><strong>Ejercicios del miércoles:</strong> con el mismo formato.</li>
+        <li><strong>Ejercicios del jueves:</strong> con el mismo formato.</li>
+        <li><strong>Ejercicios del viernes:</strong> con el mismo formato.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3><span class="step-num" style="background:var(--grape)">2</span>Archivos de Python (.py)</h3>
+      <p>Los archivos de los ejercicios de cada día:</p>
+      <ul>
+        <li><code class="inline">actividad2_ejercicios_martes.py</code></li>
+        <li><code class="inline">actividad2_ejercicios_miercoles.py</code></li>
+        <li><code class="inline">actividad2_ejercicios_jueves.py</code></li>
+        <li><code class="inline">actividad2_ejercicios_viernes.py</code></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="step-num" style="background:var(--sky)">3</span>Repositorio en GitHub</h3>
+      <ol>
+        <li>Crea el repositorio <code class="inline">Actividad2_Mimatricula</code> (cambia "Mimatricula" por tu matrícula).</li>
+        <li>Sube ahí los archivos: tu <strong>Word</strong> y los <strong>archivos de Python</strong> de cada día.</li>
+        <li>Envía el <strong>enlace del repositorio</strong> en la Actividad 02.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- MARTES -->
+<section id="martes">
+  <div class="wrap">
+    <div class="day-head" style="background:linear-gradient(135deg,var(--sky),var(--grape))">
+      <h2>🗓️ Martes</h2>
+      <p>Variables, tipos de datos y operadores básicos</p>
+      <div class="topics"><span>print()</span><span>variables</span><span>type()</span><span>+ - * /</span><span>f-strings</span></div>
+    </div>
+    <span class="file">📄 actividad2_ejercicios_martes.py</span>
+
+    <!-- EJ 1 -->
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">🎮</span><div><span class="lbl">Ejercicio 1</span><h3>Mi perfil gamer</h3></div></div>
+      <div class="ex-body">
+        <p>Crea variables con tu gamertag, edad, juego favorito, nivel, horas jugadas y si eres main de soporte (True/False). Muéstralas en pantalla y usa <code class="inline">type()</code> para ver el tipo de cuatro de ellas.</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/02_ejercicio01.png" alt="Código del ejercicio 1" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <!-- EJ 2 -->
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">🐶</span><div><span class="lbl">Ejercicio 2</span><h3>Mi mascota en años humanos</h3></div></div>
+      <div class="ex-body">
+        <p>Guarda el nombre, tipo y edad de tu mascota (o la que te gustaría tener). Calcula su edad en años humanos multiplicando por 7 y muéstralo con una f-string.</p>
+        <h4>Código</h4>
+         <figure class="shot"><img src="img/02_ejercicio02.png" alt="Código del ejercicio 1" class="chica60"></figure>
+
+      </div>
+    </div>
+
+    <!-- EJ 3 -->
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">🎧</span><div><span class="lbl">Ejercicio 3</span><h3>¿Cuánto escucho a mi artista favorito?</h3></div></div>
+      <div class="ex-body">
+        <p>Con las canciones que escuchas al día y la duración promedio de cada una, calcula cuántos minutos al día, minutos al año, horas al año y días completos le dedicas.</p>
+        <h4>Código</h4>
+         <figure class="shot"><img src="img/02_ejercicio03.png" alt="Código del ejercicio 1" class="chica60"></figure>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MIERCOLES -->
+<section id="miercoles">
+  <div class="wrap">
+    <div class="day-head" style="background:linear-gradient(135deg,var(--mint),var(--sky))">
+      <h2>🗓️ Miércoles</h2>
+      <p>Operaciones encadenadas, división entera, residuo y variables que cambian</p>
+      <div class="topics"><span>//</span><span>%</span><span>vida = vida - 25</span><span>:.1f</span></div>
+    </div>
+    <span class="file">📄 actividad2_ejercicios_miercoles.py</span>
+
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">📺</span><div><span class="lbl">Ejercicio 4</span><h3>Maratón de serie</h3></div></div>
+      <div class="ex-body">
+        <p>Con el número de temporadas, episodios por temporada y minutos por episodio de tu serie favorita, calcula el total de episodios, minutos y horas. Después calcula en cuántos días la terminas si ves 3 horas diarias.</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/ejercicio04.png" alt="Código del ejercicio 4"><span class="ph">&nbsp;</span>
+      </div>
+    </div>
+
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">🎶</span><div><span class="lbl">Ejercicio 5</span><h3>Playlist para la fiesta</h3></div></div>
+      <div class="ex-body">
+        <p>Guarda la duración en segundos de 5 canciones. Calcula el total y muéstralo en minutos y segundos usando <code class="inline">//</code> y <code class="inline">%</code>.</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/ejercicio05.png" alt="Código del ejercicio 5"><span class="ph">&nbsp;</span>
+
+      </div>
+    </div>
+
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">⚔️</span><div><span class="lbl">Ejercicio 6</span><h3>Vidas y daño</h3></div></div>
+      <div class="ex-body">
+        <p>Tu personaje empieza con 100 HP, recibe 3 golpes de distinto daño y toma una poción. Actualiza la variable <code class="inline">vida</code> después de cada evento y muestra cómo va cambiando.</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/ejercicio06.png" alt="Código del ejercicio 4"><span class="ph">&nbsp;</span>
+
+      </div>
+    </div>
+
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">⭐</span><div><span class="lbl">Ejercicio 7</span><h3>Subir de nivel</h3></div></div>
+      <div class="ex-body">
+        <p>Con tu XP actual, la XP del siguiente nivel y la XP que ganas por partida, calcula cuánta XP te falta y cuántas partidas necesitas.</p>
+        <h4>Código</h4>
+                <figure class="shot"><img src="img/ejercicio07.png" alt="Código del ejercicio 7"><span class="ph">&nbsp;</span>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JUEVES -->
+<section id="jueves">
+  <div class="wrap">
+    <div class="day-head" style="background:linear-gradient(135deg,var(--pink),var(--coral))">
+      <h2>🗓️ Jueves</h2>
+      <p>El programa platica con el usuario</p>
+      <div class="topics"><span>input()</span><span>int()</span><span>float()</span><span>( paréntesis )</span></div>
+    </div>
+    <span class="file">📄 actividad2_ejercicios_jueves.py</span>
+
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">📱</span><div><span class="lbl">Ejercicio 8 · Calentamiento</span><h3>Mi tiempo de pantalla</h3></div></div>
+      <div class="ex-body">
+        <p>Con las horas diarias que pasas en tu red social favorita, calcula cuántas horas y cuántos días completos se van al año.</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/ejercicio08.png" alt="Código del ejercicio 8"><span class="ph">&nbsp;</span>
+
+      </div>
+    </div>
+
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">🐾</span><div><span class="lbl">Ejercicio 9</span><h3>Tienda de mascotas interactiva</h3></div></div>
+      <div class="ex-body">
+        <p>Pide al usuario qué mascota quiere, su precio, el precio de un mes de croquetas y cuántos meses comprará. Calcula y muestra el total a pagar.</p>
+        <div class="warn">Recuerda: input() devuelve texto. Convierte con int() o float() antes de hacer cuentas.</div>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/ejercicio09.png" alt="Código del ejercicio 9"><span class="ph">&nbsp;</span>
+
+      </div>
+    </div>
+
+    <div class="ex">
+      <div class="ex-top"><span class="emoji">🔥</span><div><span class="lbl">Ejercicio 10 · Reto final</span><h3>¿Soy viral?</h3></div></div>
+      <div class="ex-body">
+        <p>Pide al usuario su nombre de usuario, seguidores, likes y comentarios de su último post. Calcula su engagement con la fórmula:</p>
+<pre class="code">engagement = (likes + comentarios) / seguidores * 100</pre>
+        <div class="tip">En marketing digital, un engagement arriba de 3% ya se considera bueno.</div>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/ejercicio06.png" alt="Código del ejercicio 4"><span class="ph">&nbsp;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGA -->
+<section id="entrega">
+  <div class="wrap">
+    <span class="tag" style="background:var(--orange)">Entrega</span>
+    <h2 class="title">¿Qué entregas?</h2>
+    <p class="sub">Fecha límite: <strong>viernes 23 de octubre a las 23:59</strong>.</p>
+
+    <div class="deliver">
+      <div style="background:var(--sky)"><span class="e">📄</span><h4>Documento Word</h4><p>Portada, índice y capturas de código y resultado de cada ejercicio, separados por día. También se sube al repositorio.</p></div>
+      <div style="background:var(--grape)"><span class="e">🐍</span><h4>Archivos de Python</h4><p>Los cuatro archivos .py: martes, miércoles, jueves y viernes.</p></div>
+      <div style="background:var(--mint)"><span class="e">🔗</span><h4>Enlace de GitHub</h4><p>De tu repositorio Actividad2_Mimatricula, enviado en la Actividad 02.</p></div>
+    </div>
+
+    <div class="card" style="margin-top:24px">
+      <h3>✅ Antes de entregar, revisa</h3>
+      <ul class="checklist" id="checklist">
+        <li><label><input type="checkbox"><span>Tengo los <b>4 archivos .py</b> (martes, miércoles, jueves y viernes).</span></label></li>
+        <li><label><input type="checkbox"><span>Cada ejercicio tiene su comentario con <b>número y nombre</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Mi código tiene <b>comentarios</b> que explican lo que hace.</span></label></li>
+        <li><label><input type="checkbox"><span>Todos mis <b>ejercicios corren</b> sin errores.</span></label></li>
+        <li><label><input type="checkbox"><span>Usé <b>mis propios datos</b> (mi artista, mi serie, mi mascota...).</span></label></li>
+        <li><label><input type="checkbox"><span>Mi Word tiene <b>portada</b> e <b>índice</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Cada ejercicio tiene <b>título</b>, captura del <b>código</b> y captura del <b>resultado</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>Mi repositorio se llama <b>Actividad2_</b> + mi matrícula y tiene mi <b>Word</b> y mis <b>archivos .py</b>.</span></label></li>
+        <li><label><input type="checkbox"><span>El <b>enlace de GitHub funciona</b> (lo abrí en modo incógnito) y lo envié en la Actividad 02.</span></label></li>
+      </ul>
+      <div class="progress" id="progress">0 de 9 listos</div>
+    </div>
+
+    <div class="closing">
+      <h2>No necesitas amar la programación para dominarla 💡</h2>
+      <p>Calcular engagement, precios o tiempos con unas cuantas líneas de código es una habilidad que vas a usar en marketing, ventas y negocios.</p>
+    </div>
+  </div>
+</section>
+
+<footer>Fundamentos de Programación · Actividad 02 · Variables y operadores en Python</footer>
+
+<script>
+  // Espacio para capturas: si la imagen no existe, se muestra el recuadro punteado
+  document.querySelectorAll('.shot img').forEach(function(img){
+    function empty(){ img.parentElement.classList.add('empty'); img.style.display = 'none'; }
+    if (img.complete && img.naturalWidth === 0) empty();
+    img.addEventListener('error', empty);
+  });
+
+  // Colorear comentarios y textos en los bloques de código + botón copiar
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  document.querySelectorAll('pre.code').forEach(function(pre){
+    var raw = pre.textContent;
+    var html = raw.split('\n').map(function(line){
+      var out = '', i = 0, q = null, buf = '';
+      while (i < line.length){
+        var ch = line[i];
+        if (q){
+          buf += ch;
+          if (ch === q){ out += '<span class="st">' + esc(buf) + '</span>'; buf = ''; q = null; }
+        } else if (ch === '"' || ch === "'"){
+          q = ch; buf = ch;
+        } else if (ch === '#'){
+          out += '<span class="cm">' + esc(line.slice(i)) + '</span>'; i = line.length; continue;
+        } else {
+          out += esc(ch);
+        }
+        i++;
+      }
+      if (buf) out += esc(buf);
+      return out;
+    }).join('\n');
+    pre.innerHTML = html;
+  });
+
+  // Checklist con contador
+  (function(){
+    var boxes = document.querySelectorAll('#checklist input');
+    var out = document.getElementById('progress');
+    function update(){
+      var n = 0;
+      boxes.forEach(function(b){ if (b.checked) n++; });
+      out.textContent = n === boxes.length ? '🎉 ¡Todo listo! Ya puedes entregar' : n + ' de ' + boxes.length + ' listos';
+    }
+    boxes.forEach(function(b){ b.addEventListener('change', update); });
+  })();
+</script>
+</body>
+</html>
