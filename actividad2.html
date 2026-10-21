@@ -4,21 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Actividad 02 · Python</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="estilos.css">
-
+<script src="menu.js" defer></script>
 </head>
 <body>
 
-<nav>
-  <div class="wrap">
-    <a href="#teoria">Teoría</a>
-    <a href="#actividad">Actividad 02</a>
-    <a href="#martes">Martes</a>
-    <a href="#miercoles">Miércoles</a>
-    <a href="#jueves">Jueves</a>
-    <a href="#entrega">Entrega</a>
-  </div>
-</nav>
+<div class="wrap menu-pagina">
+  <a href="#teoria">Teoría</a>
+  <a href="#actividad">Actividad 02</a>
+  <a href="#martes">Martes</a>
+  <a href="#miercoles">Miércoles</a>
+  <a href="#jueves">Jueves</a>
+  <a href="#entrega">Entrega</a>
+</div>
 
 <!-- HERO -->
 <header class="hero">
@@ -45,8 +44,8 @@
 
       <div class="card" style="--c:var(--coral)">
         <h3><span class="n">1</span>¿Qué es un programa?</h3>
-        <p>Es una <strong>lista de instrucciones</strong> que la computadora sigue en orden, de arriba hacia abajo, <strong>igual que un algoritmo</strong>. <br>
-        Si una línea tiene <strong>error</strong>, el <strong>programa</strong> <strong>se</strong> <strong>detiene</strong> ahí.</p>
+        <p>Es una <strong>lista de instrucciones</strong> que la computadora sigue en orden, de arriba hacia abajo, <strong>igual que un algoritmo</strong>.<br>
+        Si una línea tiene <strong>error</strong>, el <strong>programa se detiene</strong> ahí.</p>
       </div>
 
       <div class="card" style="--c:var(--grape)">
@@ -58,21 +57,19 @@ print("Mi juego favorito es Minecraft")</pre>
 
       <div class="card" style="--c:var(--sky)">
         <h3><span class="n">3</span>Comentarios</h3>
-        <p>Todo lo que va después de <code class="inline">#</code> es una nota para humanos. Python la ignora. En esta actividad son <strong>obligatorios para nosotros porque son las notas para saber que hace el código</strong>.</p>
+        <p>Todo lo que va después de <code class="inline">#</code> es una nota para humanos. Python la ignora. En esta actividad son <strong>obligatorios para nosotros porque son las notas para saber qué hace el código</strong>.</p>
 <pre class="code"># Esto es un comentario, Python no lo ejecuta
 print("Esto sí se ejecuta")</pre>
       </div>
 
       <div class="card" style="--c:var(--mint)">
         <h3><span class="n">4</span>¿Qué es una variable?</h3>
-        <p>Una <strong>cajita con nombre</strong> donde guardamos un dato. <br>
+        <p>Una <strong>cajita con nombre</strong> donde guardamos un dato.<br>
         El signo <code class="inline">=</code> no significa "es igual a", significa <strong>"guarda esto aquí"</strong>.<br>
-		El doble <code class="inline">= =</code> ese sí es el igual al que conocemos de clase de matemáticas.<br>
-        <br>
-        </p>
+        El doble <code class="inline">==</code> ese sí es el igual al que conocemos de clase de matemáticas.</p>
 <pre class="code">artista = "Peso Pluma"
 seguidores = 1500 # aquí se asigna el valor de 1500 a la variable seguidores
-x == 12           # este si significa el igual de clase de mate</pre>
+x == 12           # este sí significa el igual de clase de mate</pre>
         <div class="tbl-wrap">
           <table class="tbl">
             <tr><th>✅ Sí se puede</th><th>❌ No se puede</th></tr>
@@ -81,7 +78,7 @@ x == 12           # este si significa el igual de clase de mate</pre>
             <tr><td>Letras sin acento, números y _</td><td><code class="inline">año</code>, <code class="inline">canción</code> (evita ñ y acentos)</td></tr>
           </table>
         </div>
-        <div class="tip">Python distingue mayúsculas: <code class="inline">Vida</code> y <code class="inline">vida</code> son <strong>cajitas</strong> <strong>distintas</strong>.</div>
+        <div class="tip">Python distingue mayúsculas: <code class="inline">Vida</code> y <code class="inline">vida</code> son <strong>cajitas distintas</strong>.</div>
       </div>
 
       <div class="card" style="--c:var(--pink)">
@@ -127,8 +124,7 @@ print(f"Son {horas:.1f} horas")   # Como usamos .1f redondea a 1 decimal, por es
             <tr><td><code class="inline">**</code></td><td>Potencia</td><td>2 ** 3 = 8</td></tr>
           </table>
         </div>
-<pre class="code">
-# Aquí aplican las reglas de matemáticas PEMDAS (Parentesis, Exponentes, Mult, Div, Sum, Resta)
+<pre class="code"># Aquí aplican las reglas de matemáticas PEMDAS (Paréntesis, Exponentes, Mult, Div, Suma, Resta)
 print(2 + 3 * 4)     # 14 (primero multiplica)
 print((2 + 3) * 4)   # 20 (primero el paréntesis)</pre>
       </div>
@@ -146,8 +142,7 @@ print(f"{minutos} minutos con {segundos} segundos")</pre>
         <h3><span class="n">9</span>Variables que cambian</h3>
         <p>Python primero calcula lo que está a la derecha del <code class="inline">=</code> y después lo guarda en la cajita.</p>
 <pre class="code">vida = 100
-nueva_vida = vida - 25   # vida vale 100, y nueva_vida vale 100 - 25, que es 75
-</pre>
+nueva_vida = vida - 25   # vida vale 100, y nueva_vida vale 100 - 25, que es 75</pre>
       </div>
 
       <div class="card" style="--c:var(--mint)">
@@ -231,8 +226,7 @@ precio = float(input("Precio: $"))   # float() para decimales</pre>
       <div class="ex-body">
         <p>Guarda el nombre, tipo y edad de tu mascota (o la que te gustaría tener). Calcula su edad en años humanos multiplicando por 7 y muéstralo con una f-string.</p>
         <h4>Código</h4>
-         <figure class="shot"><img src="img/02_ejercicio02.png" alt="Código del ejercicio 1" class="chica60"></figure>
-
+        <figure class="shot"><img src="img/02_ejercicio02.png" alt="Código del ejercicio 2" class="chica60"></figure>
       </div>
     </div>
 
@@ -242,8 +236,7 @@ precio = float(input("Precio: $"))   # float() para decimales</pre>
       <div class="ex-body">
         <p>Con las canciones que escuchas al día y la duración promedio de cada una, calcula cuántos minutos al día, minutos al año, horas al año y días completos le dedicas.</p>
         <h4>Código</h4>
-         <figure class="shot"><img src="img/02_ejercicio03.png" alt="Código del ejercicio 1" class="chica60"></figure>
-
+        <figure class="shot"><img src="img/02_ejercicio03.png" alt="Código del ejercicio 3" class="chica60"></figure>
       </div>
     </div>
   </div>
@@ -259,42 +252,43 @@ precio = float(input("Precio: $"))   # float() para decimales</pre>
     </div>
     <span class="file">📄 actividad2_ejercicios_miercoles.py</span>
 
+    <!-- EJ 4 -->
     <div class="ex">
       <div class="ex-top"><span class="emoji">📺</span><div><span class="lbl">Ejercicio 4</span><h3>Maratón de serie</h3></div></div>
       <div class="ex-body">
         <p>Con el número de temporadas, episodios por temporada y minutos por episodio de tu serie favorita, calcula el total de episodios, minutos y horas. Después calcula en cuántos días la terminas si ves 3 horas diarias.</p>
         <h4>Código</h4>
-        <figure class="shot"><img src="img/ejercicio04.png" alt="Código del ejercicio 4"><span class="ph">&nbsp;</span>
+        <figure class="shot"><img src="img/ejercicio04.png" alt="Código del ejercicio 4"></figure>
       </div>
     </div>
 
+    <!-- EJ 5 -->
     <div class="ex">
       <div class="ex-top"><span class="emoji">🎶</span><div><span class="lbl">Ejercicio 5</span><h3>Playlist para la fiesta</h3></div></div>
       <div class="ex-body">
         <p>Guarda la duración en segundos de 5 canciones. Calcula el total y muéstralo en minutos y segundos usando <code class="inline">//</code> y <code class="inline">%</code>.</p>
         <h4>Código</h4>
-        <figure class="shot"><img src="img/ejercicio05.png" alt="Código del ejercicio 5"><span class="ph">&nbsp;</span>
-
+        <figure class="shot"><img src="img/ejercicio05.png" alt="Código del ejercicio 5"></figure>
       </div>
     </div>
 
+    <!-- EJ 6 -->
     <div class="ex">
       <div class="ex-top"><span class="emoji">⚔️</span><div><span class="lbl">Ejercicio 6</span><h3>Vidas y daño</h3></div></div>
       <div class="ex-body">
         <p>Tu personaje empieza con 100 HP, recibe 3 golpes de distinto daño y toma una poción. Actualiza la variable <code class="inline">vida</code> después de cada evento y muestra cómo va cambiando.</p>
         <h4>Código</h4>
-        <figure class="shot"><img src="img/ejercicio06.png" alt="Código del ejercicio 4"><span class="ph">&nbsp;</span>
-
+        <figure class="shot"><img src="img/ejercicio06.png" alt="Código del ejercicio 6"></figure>
       </div>
     </div>
 
+    <!-- EJ 7 -->
     <div class="ex">
       <div class="ex-top"><span class="emoji">⭐</span><div><span class="lbl">Ejercicio 7</span><h3>Subir de nivel</h3></div></div>
       <div class="ex-body">
         <p>Con tu XP actual, la XP del siguiente nivel y la XP que ganas por partida, calcula cuánta XP te falta y cuántas partidas necesitas.</p>
         <h4>Código</h4>
-                <figure class="shot"><img src="img/ejercicio07.png" alt="Código del ejercicio 7"><span class="ph">&nbsp;</span>
-
+        <figure class="shot"><img src="img/ejercicio07.png" alt="Código del ejercicio 7"></figure>
       </div>
     </div>
   </div>
@@ -310,27 +304,28 @@ precio = float(input("Precio: $"))   # float() para decimales</pre>
     </div>
     <span class="file">📄 actividad2_ejercicios_jueves.py</span>
 
+    <!-- EJ 8 -->
     <div class="ex">
       <div class="ex-top"><span class="emoji">📱</span><div><span class="lbl">Ejercicio 8 · Calentamiento</span><h3>Mi tiempo de pantalla</h3></div></div>
       <div class="ex-body">
         <p>Con las horas diarias que pasas en tu red social favorita, calcula cuántas horas y cuántos días completos se van al año.</p>
         <h4>Código</h4>
-        <figure class="shot"><img src="img/ejercicio08.png" alt="Código del ejercicio 8"><span class="ph">&nbsp;</span>
-
+        <figure class="shot"><img src="img/ejercicio08.png" alt="Código del ejercicio 8"></figure>
       </div>
     </div>
 
+    <!-- EJ 9 -->
     <div class="ex">
       <div class="ex-top"><span class="emoji">🐾</span><div><span class="lbl">Ejercicio 9</span><h3>Tienda de mascotas interactiva</h3></div></div>
       <div class="ex-body">
         <p>Pide al usuario qué mascota quiere, su precio, el precio de un mes de croquetas y cuántos meses comprará. Calcula y muestra el total a pagar.</p>
         <div class="warn">Recuerda: input() devuelve texto. Convierte con int() o float() antes de hacer cuentas.</div>
         <h4>Código</h4>
-        <figure class="shot"><img src="img/ejercicio09.png" alt="Código del ejercicio 9"><span class="ph">&nbsp;</span>
-
+        <figure class="shot"><img src="img/ejercicio09.png" alt="Código del ejercicio 9"></figure>
       </div>
     </div>
 
+    <!-- EJ 10 -->
     <div class="ex">
       <div class="ex-top"><span class="emoji">🔥</span><div><span class="lbl">Ejercicio 10 · Reto final</span><h3>¿Soy viral?</h3></div></div>
       <div class="ex-body">
@@ -338,7 +333,7 @@ precio = float(input("Precio: $"))   # float() para decimales</pre>
 <pre class="code">engagement = (likes + comentarios) / seguidores * 100</pre>
         <div class="tip">En marketing digital, un engagement arriba de 3% ya se considera bueno.</div>
         <h4>Código</h4>
-        <figure class="shot"><img src="img/ejercicio06.png" alt="Código del ejercicio 4"><span class="ph">&nbsp;</span>
+        <figure class="shot"><img src="img/ejercicio10.png" alt="Código del ejercicio 10"></figure>
       </div>
     </div>
   </div>
@@ -385,12 +380,12 @@ precio = float(input("Precio: $"))   # float() para decimales</pre>
 <script>
   // Espacio para capturas: si la imagen no existe, se muestra el recuadro punteado
   document.querySelectorAll('.shot img').forEach(function(img){
-    function empty(){ img.parentElement.classList.add('empty'); img.style.display = 'none'; }
+    function empty(){ img.parentElement.classList.add('empty'); }
     if (img.complete && img.naturalWidth === 0) empty();
     img.addEventListener('error', empty);
   });
 
-  // Colorear comentarios y textos en los bloques de código + botón copiar
+  // Colorear comentarios y textos en los bloques de código
   function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   document.querySelectorAll('pre.code').forEach(function(pre){
     var raw = pre.textContent;
