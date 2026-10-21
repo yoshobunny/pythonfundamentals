@@ -325,3 +325,63 @@ ol.seq li::before{content:counter(s);font-family:'Fredoka';font-size:.85rem}
   .panel{padding:20px 16px}
   .reto-body{padding:18px 16px}
 }
+
+/* Si la imagen no carga, se esconde y queda el recuadro punteado */
+.shot.empty img{display:none}
+
+/* =========================================
+   TEMAS DE CLASE (semana2 y siguientes)
+   ========================================= */
+.topic{background:var(--white);border:3px solid var(--ink);border-radius:24px;padding:24px 26px;margin-bottom:26px;box-shadow:8px 8px 0 var(--c,var(--sky))}
+.topic > p{margin:10px 0}
+.topic h3{font-size:1.4rem;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.topic h3 .num{background:var(--c,var(--sky));color:#fff;border-radius:10px;padding:2px 10px;font-size:.95rem;border:2px solid var(--ink)}
+.topic ol,.topic ul{padding-left:22px;margin:8px 0}
+.topic li{margin:4px 0}
+.topic .pipeline{margin:18px 0}
+.topic .analogy,.topic .table-wrap,.topic .lado,.topic .qs{margin:14px 0}
+
+.hl{background:linear-gradient(transparent 60%,#FFE58A 60%);font-weight:700}
+.card h4{font-size:1.15rem;margin-bottom:6px}
+.card.warm{background:#FFF4D6;border-color:var(--orange)}
+.card.alt{background:#EAF3FF;border-color:var(--sky)}
+
+/* Código */
+code.in{font-family:'JetBrains Mono',monospace;background:#F3EEFF;color:#6B2FC4;padding:2px 7px;border-radius:7px;font-size:.88em}
+.code .str{color:#FFC93C}
+.lado{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.lado .code{margin-top:8px}
+.label{display:inline-block;font-family:'Fredoka';font-weight:600;font-size:.85rem;background:var(--ink);color:#fff;padding:3px 12px;border-radius:999px}
+
+/* Lista con palomitas */
+.checks{list-style:none;padding-left:0 !important}
+.checks li{position:relative;padding:6px 0 6px 34px}
+.checks li::before{content:"✔";position:absolute;left:0;top:7px;width:22px;height:22px;border-radius:50%;background:var(--c,var(--mint));color:#fff;font-size:.75rem;display:flex;align-items:center;justify-content:center}
+
+/* Preguntas con "Ver respuesta" */
+.qs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.q{border-radius:20px;padding:18px;color:#fff;border:3px solid var(--ink);display:flex;flex-direction:column;gap:8px}
+.q h4{font-size:1.25rem}
+.q p{font-size:.95rem}
+.btn{align-self:flex-start;font-family:'Fredoka';font-weight:600;font-size:.9rem;background:var(--white);color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:5px 14px;cursor:pointer;margin-top:auto;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.ans{background:var(--white);color:var(--ink);border-radius:14px;padding:10px 12px;font-size:.92rem}
+.ans[hidden]{display:none}
+
+/* Pasos de instalación (dentro de .reto) */
+.reto-head .n{width:52px;height:52px;border-radius:50%;background:var(--white);color:var(--c);display:flex;align-items:center;justify-content:center;font-family:'Fredoka';font-weight:700;font-size:1.6rem;border:3px solid var(--ink);flex-shrink:0}
+.istep .sn{width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;font-family:'Fredoka';font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--ink)}
+.istep a{color:var(--sky);font-weight:700;overflow-wrap:anywhere}
+.win{background:#EAF3FF;border:3px dashed var(--sky);border-radius:18px;padding:12px 16px}
+.win h4{color:var(--sky);margin-bottom:4px}
+
+/* Recordatorio */
+.rem{list-style:none;display:grid;gap:8px}
+.rem li{background:#FAFAFF;border:2px solid #E6E6F2;border-radius:14px;padding:10px 14px 10px 42px;position:relative}
+.rem li::before{content:"📌";position:absolute;left:12px;top:9px}
+.rem a{color:var(--coral);font-weight:800}
+
+@media (max-width:700px){
+  .topic{padding:18px 16px}
+  .lado{grid-template-columns:1fr}
+}

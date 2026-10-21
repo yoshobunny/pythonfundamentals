@@ -4,183 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Módulo 1 Python</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#FFF8EC;
-    --ink:#2B2D42;
-    --soft:#5C5F7A;
-    --coral:#FF6B6B;
-    --sun:#FFC93C;
-    --mint:#3DC47E;
-    --sky:#4D96FF;
-    --grape:#9B5DE5;
-    --pink:#F15BB5;
-    --teal:#00B8A9;
-    --orange:#F4A100;
-    --white:#FFFFFF;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:'Nunito',sans-serif;
-    background:var(--bg);
-    color:var(--ink);
-    line-height:1.6;
-    background-image:
-      radial-gradient(circle at 10% 10%, #FFE3EC 0 120px, transparent 121px),
-      radial-gradient(circle at 92% 22%, #E3F0FF 0 160px, transparent 161px),
-      radial-gradient(circle at 85% 80%, #E6F9EE 0 140px, transparent 141px);
-    background-attachment:fixed;
-  }
-  h1,h2,h3,h4{font-family:'Fredoka',sans-serif;line-height:1.2}
-  .wrap{max-width:1050px;margin:0 auto;padding:0 18px}
-  p{margin-bottom:10px}
-  a{color:var(--sky);font-weight:800;word-break:break-all}
-
-  /* NAV */
-  nav{position:sticky;top:0;z-index:20;background:rgba(255,248,236,.92);backdrop-filter:blur(8px);border-bottom:3px dashed #FFD6A5}
-  nav .wrap{display:flex;gap:8px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;justify-content:center}
-  nav a{font-family:'Fredoka';font-weight:600;text-decoration:none;color:var(--white);padding:6px 14px;border-radius:999px;font-size:.92rem;transition:transform .15s;word-break:normal}
-  nav a:hover{transform:translateY(-2px) rotate(-2deg)}
-  nav a:nth-child(1){background:var(--coral)}
-  nav a:nth-child(2){background:var(--grape)}
-  nav a:nth-child(3){background:var(--sky)}
-  nav a:nth-child(4){background:var(--mint)}
-
-  section{padding:56px 0}
-  .tag{display:inline-block;font-family:'Fredoka';font-weight:600;font-size:.85rem;padding:4px 14px;border-radius:999px;color:var(--white);margin-bottom:12px;letter-spacing:.5px}
-  .sec-title{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:10px}
-  .sec-sub{color:var(--soft);font-size:1.08rem;max-width:720px;margin-bottom:28px}
-
-  /* HERO */
-  .hero{padding:60px 0 40px;text-align:center}
-  .hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:700}
-  .hero h1 .c1{color:var(--coral)} .hero h1 .c2{color:var(--sky)} .hero h1 .c3{color:var(--mint)} .hero h1 .c4{color:var(--grape)}
-  .hero p.lead{font-size:1.2rem;max-width:720px;margin:18px auto 0;color:var(--soft)}
-  .def{
-    margin:34px auto 0;max-width:780px;background:var(--white);border-radius:28px;padding:28px 30px;
-    border:4px solid var(--ink);box-shadow:10px 10px 0 var(--sun);text-align:left;font-size:1.15rem
-  }
-  .def strong{background:linear-gradient(transparent 60%, #FFE58A 60%)}
-
-  /* TOPIC BLOCKS */
-  .topic{background:var(--white);border:3px solid var(--ink);border-radius:24px;padding:24px 26px;margin-bottom:28px;box-shadow:8px 8px 0 var(--c)}
-  .topic h3{font-size:clamp(1.3rem,3vw,1.6rem);margin-bottom:12px;color:var(--ink)}
-  .topic h3 .num{display:inline-block;background:var(--c);color:var(--white);border:2px solid var(--ink);border-radius:12px;padding:2px 10px;margin-right:8px;font-size:.95rem;vertical-align:middle}
-  .topic ol,.topic ul{padding-left:24px;margin:8px 0 12px}
-  .topic li{margin:4px 0}
-  .topic p{max-width:780px}
-  .hl{background:linear-gradient(transparent 60%, #FFE58A 60%);font-weight:800}
-
-  /* PIPELINE */
-  .pipeline{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin:18px 0}
-  .pipe{font-family:'Fredoka';font-weight:600;color:var(--white);padding:12px 20px;border-radius:18px;font-size:1.05rem;box-shadow:0 6px 0 rgba(0,0,0,.15)}
-  .arrow{font-size:1.6rem;color:var(--ink);font-weight:800}
-
-  /* TWO CARDS */
-  .analogy{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}
-  .card{background:var(--white);border-radius:20px;padding:20px;border:3px solid var(--ink)}
-  .card h4{font-size:1.2rem;margin-bottom:8px}
-  .card.alt{background:#F3F7FF;border-color:var(--sky)}
-  .card.warm{background:#FFF4D6;border:3px dashed var(--orange)}
-
-  /* TABLES */
-  .table-wrap{overflow-x:auto;border-radius:20px;border:3px solid var(--ink);background:#fff;margin:14px 0}
-  table.kw-table{width:100%;border-collapse:collapse;min-width:560px}
-  .kw-table th{background:var(--ink);color:#fff;font-family:'Fredoka';font-weight:600;text-align:left;padding:12px 14px}
-  .kw-table td{padding:11px 14px;border-bottom:2px dotted #EEE;vertical-align:top}
-  .kw-table tr:last-child td{border-bottom:none}
-  .kw-table tr:nth-child(even) td{background:#FFFBF2}
-
-  /* CODE */
-  pre.code{
-    background:#2B2D42;color:#F8F8F2;border-radius:18px;padding:18px 22px;overflow-x:auto;
-    font-family:'Courier New',monospace;font-size:1rem;line-height:1.55;margin:10px 0
-  }
-  .kw{color:#FF79C6;font-weight:700}
-  .str{color:#FFD93D}
-  .cm{color:#8BE9FD}
-  code.in{font-family:'Courier New',monospace;background:#2B2D42;color:#FFD93D;padding:1px 7px;border-radius:6px;font-size:.92rem}
-  .label{font-family:'Fredoka';font-weight:600;color:var(--soft);font-size:.95rem}
-
-  /* SIDE BY SIDE */
-  .lado{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;margin:14px 0}
-  .lado > *{min-width:0}
-
-  /* IMAGES */
-  figure{margin:16px 0}
-  figure img{display:block;width:100%;max-width:480px;height:auto;border:3px solid var(--ink);border-radius:16px;background:#fff}
-  figcaption{font-size:.9rem;color:var(--soft);margin-top:6px;font-weight:600}
-  figure.grande img{max-width:100%}
-  figure.grande80 img{max-width:80%}
-
-	.vacio img{display:none}
-  .vacio::before{
-    content:"Espacio para imagen";display:grid;place-items:center;max-width:480px;aspect-ratio:16/9;
-    border:3px dashed var(--soft);border-radius:16px;color:var(--soft);font-family:'Fredoka';font-weight:600;background:#fff
-  }
-
-  /* QUESTIONS (toggle) */
-  .qs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:14px}
-  .q{border-radius:22px;padding:20px 18px;color:var(--white);border:3px solid var(--ink)}
-  .q h4{font-size:1.5rem;margin-bottom:4px}
-  .q p{font-size:.98rem;margin-bottom:12px}
-  .btn{font-family:'Fredoka';font-weight:600;font-size:1rem;border:3px solid var(--ink);background:var(--white);color:var(--ink);padding:8px 16px;border-radius:14px;cursor:pointer;transition:transform .15s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-  .ans{margin-top:12px;background:rgba(255,255,255,.95);color:var(--ink);border-radius:14px;padding:12px 14px;font-size:.95rem;animation:pop .3s ease}
-  .ans p{margin:0}
-  @keyframes pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
-
-  /* LIST WITH CHECKS */
-  .checks{list-style:none;padding-left:0 !important}
-  .checks li{padding:8px 0 8px 34px;position:relative;border-bottom:2px dotted #EEE}
-  .checks li:last-child{border-bottom:none}
-  .checks li::before{content:"✔";position:absolute;left:4px;top:9px;width:22px;height:22px;border-radius:50%;background:var(--c);color:#fff;font-size:.75rem;display:flex;align-items:center;justify-content:center}
-
-  /* INSTALL STEPS */
-  .ex{background:var(--white);border:4px solid var(--ink);border-radius:28px;overflow:hidden;margin-bottom:30px;box-shadow:10px 10px 0 var(--c)}
-  .ex-head{background:var(--c);color:#fff;padding:18px 26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-  .ex-head .n{width:56px;height:56px;border-radius:50%;background:var(--white);color:var(--c);font-family:'Fredoka';font-weight:700;font-size:1.8rem;display:flex;align-items:center;justify-content:center;border:3px solid var(--ink)}
-  .ex-head small{font-family:'Fredoka';font-weight:600;letter-spacing:1px;opacity:.9}
-  .ex-head h3{font-size:clamp(1.3rem,3vw,1.7rem)}
-  .ex-body{padding:22px 26px;display:grid;gap:14px}
-  .isteps{display:grid;gap:10px}
-  .istep{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;background:#FAFAFF;border:2px solid #E6E6F2;border-radius:16px;padding:10px 14px}
-  .istep .sn{width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;font-family:'Fredoka';font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;border:2px solid var(--ink)}
-  .istep > div{min-width:0}
-  .win{background:#FFF4D6;border:3px dashed var(--orange);border-radius:18px;padding:12px 16px}
-  .win h4{color:#C27C00;margin-bottom:4px}
-
-  /* REMINDER */
-  .delivery{background:var(--white);border:4px solid var(--ink);border-radius:28px;padding:26px;box-shadow:10px 10px 0 var(--coral)}
-  .date-badge{display:inline-block;background:var(--coral);color:#fff;font-family:'Fredoka';font-weight:700;font-size:1.2rem;padding:8px 18px;border-radius:18px;border:3px solid var(--ink);margin:6px 0 16px}
-  .rem{list-style:none;display:grid;gap:10px}
-  .rem li{background:#FAFAFF;border:2px solid #E6E6F2;border-radius:14px;padding:12px 16px;font-weight:700}
-
-  .closing{text-align:center;background:linear-gradient(135deg,var(--coral),var(--pink),var(--grape));color:#fff;border-radius:30px;padding:40px 26px;margin-top:36px}
-  .closing h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:10px}
-  .closing p{font-size:1.15rem;max-width:720px;margin:0 auto}
-
-  footer{text-align:center;padding:30px 0 50px;color:var(--soft);font-size:.9rem}
-
-  @media (max-width:700px){
-    .analogy,.lado{grid-template-columns:1fr}
-    .topic{padding:20px 16px}
-    .ex-body{padding:18px 16px}
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<script src="menu.js" defer></script>
 </head>
 <body>
 
-<nav>
-  <div class="wrap">
-    <a href="#seccion1">Sección 1</a>
-    <a href="#seccion2">Sección 2</a>
-    <a href="#instalacion">Instalación</a>
-    <a href="#recordatorio">Recordatorio</a>
-  </div>
-</nav>
+<div class="wrap menu-pagina">
+  <a href="#seccion1">Sección 1</a>
+  <a href="#seccion2">Sección 2</a>
+  <a href="#instalacion">Instalación</a>
+  <a href="#recordatorio">Recordatorio</a>
+</div>
 
 <!-- HERO -->
 <header class="hero">
@@ -207,8 +42,8 @@
       <p>Una computadora, por sí sola, no sabe hacer nada. Es muy rápida, pero no piensa. Solo sigue instrucciones al pie de la letra.</p>
       <p>Un <b>programa</b> es una lista de instrucciones que le dice a la computadora qué hacer, paso por paso. Piensen en una receta de cocina: si la receta dice "agrega 2 tazas de harina", el cocinero no se pregunta si mejor 3. Hace exactamente lo que dice.</p>
 
-      <figure>
-        <img src="img/computadora.png" alt="Diagrama de entrada, proceso y salida en la caja de una tienda" onerror="this.parentElement.classList.add('vacio')">
+      <figure class="shot">
+        <img src="img/computadora.png" class="mediana70" alt="Programas en macOS" onerror="this.parentElement.classList.add('empty')">
         <figcaption>Programas en macOS</figcaption>
       </figure>
 
@@ -296,8 +131,8 @@
           <span class="label">Código</span>
           <pre class="code"><span class="kw">print</span>(<span class="str">"Hola Lics"</span>)</pre>
         </div>
-        <figure>
-          <img src="img/vscode-consola.png" alt="Visual Studio Code mostrando Hola lics en la terminal" onerror="this.parentElement.classList.add('vacio')">
+        <figure class="shot">
+          <img src="img/vscode-consola.png" class="completa" alt="Visual Studio Code mostrando Hola Lics en la terminal" onerror="this.parentElement.classList.add('empty')">
           <figcaption>Resultado en la terminal de Visual Studio Code</figcaption>
         </figure>
       </div>
@@ -475,7 +310,7 @@
           <p>La versión actual. <strong>Es la que vamos a instalar.</strong></p>
         </div>
       </div>
-      <p>Son como dos versiones de una app: si alguien les pasa código viejo de Python 2, puede que no funcione en Python 3, igual que una app vieja que ya no abre en tu celular nuevo.&nbsp;</p>
+      <p>Son como dos versiones de una app: si alguien les pasa código viejo de Python 2, puede que no funcione en Python 3, igual que una app vieja que ya no abre en tu celular nuevo.</p>
       <p><span class="hl">Regla para ustedes: siempre Python 3.</span></p>
     </div>
 
@@ -493,7 +328,7 @@
         </table>
       </div>
       <p>Piensen en el español: es el mismo idioma, pero hay diferentes "versiones" según el país. Todos se entienden, pero cada uno tiene sus particularidades.</p>
-      <div class="card warm" style="margin-top:14px">
+      <div class="card warm" style="margin-top:14px;margin-bottom:0">
         <h4>¿Y cuál vamos a usar nosotros?</h4>
         <ul class="checks" style="--c:var(--orange)">
           <li><b>Python 3</b>, la versión actual</li>
@@ -514,18 +349,18 @@
     <p class="sec-sub">Sigan los pasos en orden. Las imágenes son de Mac.</p>
 
     <!-- PASO 1 -->
-    <div class="ex" style="--c:var(--coral)">
-      <div class="ex-head">
+    <div class="reto" style="--c:var(--coral)">
+      <div class="reto-head">
         <div class="n">1</div>
         <div><small>PASO 1</small><h3>Descargar e instalar Python</h3></div>
       </div>
-      <div class="ex-body">
+      <div class="reto-body">
         <div class="isteps">
           <div class="istep"><div class="sn">1</div><div>Entren a: <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">https://www.python.org/downloads/</a></div></div>
           <div class="istep"><div class="sn">2</div><div>Den clic en el botón amarillo <b>Download Python</b> que indica la imagen.</div></div>
         </div>
-        <figure>
-          <img src="img/python.png" alt="Página de descargas de python.org con el botón Download Python señalado" onerror="this.parentElement.classList.add('vacio')">
+        <figure class="shot">
+          <img src="img/python.png" class="grande80" alt="Página de descargas de python.org con el botón Download Python señalado" onerror="this.parentElement.classList.add('empty')">
           <figcaption>Botón de descarga en python.org (Mac)</figcaption>
         </figure>
         <div class="isteps">
@@ -534,25 +369,25 @@
         </div>
         <div class="win">
           <h4>Solo en Windows</h4>
-          <p style="margin:0">Antes de instalar, marquen la casilla <b>"Add python.exe to PATH"</b>.</p>
+          <p>Antes de instalar, marquen la casilla <b>"Add python.exe to PATH"</b>.</p>
         </div>
       </div>
     </div>
 
     <!-- PASO 2 -->
-    <div class="ex" style="--c:var(--sky)">
-      <div class="ex-head">
+    <div class="reto" style="--c:var(--sky)">
+      <div class="reto-head">
         <div class="n">2</div>
         <div><small>PASO 2</small><h3>Descargar e instalar Visual Studio Code</h3></div>
       </div>
-      <div class="ex-body">
-        <p style="margin:0">Visual Studio Code (VS Code) es un <b>IDE (Integrated Development Environment, entorno de desarrollo integrado)</b>: el programa donde escribimos código de forma cómoda, con colores, ayudas y un botón para ejecutarlo.</p>
+      <div class="reto-body">
+        <p>Visual Studio Code (VS Code) es un <b>IDE (Integrated Development Environment, entorno de desarrollo integrado)</b>: el programa donde escribimos código de forma cómoda, con colores, ayudas y un botón para ejecutarlo.</p>
         <div class="isteps">
           <div class="istep"><div class="sn">1</div><div>Entren a: <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></div></div>
           <div class="istep"><div class="sn">2</div><div>Descarguen lo que indica la imagen: <b>Download for macOS</b>.</div></div>
         </div>
-        <figure>
-          <img src="img/vscode.png" alt="Página de Visual Studio Code con el botón Download for macOS señalado" onerror="this.parentElement.classList.add('vacio')">
+        <figure class="shot">
+          <img src="img/vscode.png" class="grande80" alt="Página de Visual Studio Code con el botón Download for macOS señalado" onerror="this.parentElement.classList.add('empty')">
           <figcaption>Botón de descarga en code.visualstudio.com (Mac)</figcaption>
         </figure>
         <div class="isteps">
@@ -562,51 +397,52 @@
         </div>
         <div class="win">
           <h4>Solo en Windows</h4>
-          <p style="margin:0">Marquen las casillas <b>"Agregar a PATH"</b> y <b>"Agregar la acción Abrir con Code"</b>.</p>
+          <p>Marquen las casillas <b>"Agregar a PATH"</b> y <b>"Agregar la acción Abrir con Code"</b>.</p>
         </div>
       </div>
     </div>
 
     <!-- PASO 3 -->
-    <div class="ex" style="--c:var(--mint)">
-      <div class="ex-head">
+    <div class="reto" style="--c:var(--mint)">
+      <div class="reto-head">
         <div class="n">3</div>
         <div><small>PASO 3</small><h3>Instalar las extensiones de Python en VS Code</h3></div>
       </div>
-      <div class="ex-body">
+      <div class="reto-body">
         <div class="isteps">
           <div class="istep"><div class="sn">1</div><div>En la barra izquierda de VS Code, den clic en el ícono de <b>Extensiones</b> (cuadritos), o presionen <code class="in">Cmd + Shift + X</code> en Mac (<code class="in">Ctrl + Shift + X</code> en Windows).</div></div>
           <div class="istep"><div class="sn">2</div><div>Escriban <b>python</b> en el buscador.</div></div>
           <div class="istep"><div class="sn">3</div><div><b>Instalen todas</b> las de <b>Microsoft</b> (palomita azul): Python, Python Debugger, Pylance y Python Environments.</div></div>
         </div>
-        <figure>
-          <img src="img/extensiones.png" alt="Panel de extensiones de VS Code con las extensiones de Python de Microsoft" onerror="this.parentElement.classList.add('vacio')">
+        <figure class="shot">
+          <img src="img/extensiones.png" class="mediana70" alt="Panel de extensiones de VS Code con las extensiones de Python de Microsoft" onerror="this.parentElement.classList.add('empty')">
           <figcaption>Extensiones de Python de Microsoft</figcaption>
         </figure>
       </div>
     </div>
 
     <!-- PASO 4 -->
-    <div class="ex" style="--c:var(--grape)">
-      <div class="ex-head">
+    <div class="reto" style="--c:var(--grape)">
+      <div class="reto-head">
         <div class="n">4</div>
         <div><small>PASO 4</small><h3>Su primer programa</h3></div>
       </div>
-      <div class="ex-body">
+      <div class="reto-body">
         <div class="isteps">
           <div class="istep"><div class="sn">1</div><div>Creen una carpeta llamada <code class="in">Python_Semana2_MiMatricula</code>.</div></div>
           <div class="istep"><div class="sn">2</div><div>En VS Code: <b>File &gt; Open Folder</b> y abran esa carpeta.</div></div>
           <div class="istep"><div class="sn">3</div><div>Creen un archivo nuevo llamado <code class="in">hola.py</code>.</div></div>
           <div class="istep"><div class="sn">4</div><div>Escriban el código:
-			  <figure class="grande"><img src="img/printholalics.png" alt="hola lics" width="500" onerror="this.parentElement.classList.add('vacio')">
-			  </figure>
-		  </div></div>
+            <figure class="shot">
+              <img src="img/printholalics.png" class="chica60" alt="Código print Hola Lics" onerror="this.parentElement.classList.add('empty')">
+            </figure>
+          </div></div>
           <div class="istep"><div class="sn">5</div><div>Guarden con <code class="in">Cmd + S</code> (Mac) o <code class="in">Ctrl + S</code> (Windows).</div></div>
           <div class="istep"><div class="sn">6</div><div>Den clic en el botón <b>Run</b> (icono de play) arriba a la derecha.</div></div>
           <div class="istep"><div class="sn">7</div><div>Si todo está bien escrito, abajo en la <b>Terminal</b> aparece el resultado.</div></div>
         </div>
-        <figure class="grande80">
-          <img src="img/vscode-consola.png" alt="Pasos en VS Code: escribir el código, dar clic en Run y ver el resultado en la terminal" onerror="this.parentElement.classList.add('vacio')">
+        <figure class="shot">
+          <img src="img/vscode-consola.png" class="grande80" alt="Pasos en VS Code: escribir el código, dar clic en Run y ver el resultado en la terminal" onerror="this.parentElement.classList.add('empty')">
           <figcaption>1. Escribe el código, 2. da clic en Run, 3. mira el resultado</figcaption>
         </figure>
       </div>
@@ -620,14 +456,13 @@
         <li>Tener instalado Python y Visual Studio Code, porque vamos a hacer ejercicios prácticos</li>
         <li>Entrega en Canvas del Módulo 1 completo al 100%</li>
         <li>Examen aprobado con mínimo 70</li>
-        <li>Mañana la clase es por Teams a las 7:15 am, debes entrar con tu cuenta de Tecmilenio:&nbsp; <a href="https://teams.microsoft.com/meet/2293151809784693?p=qbLpoYSZIjN14LcpHz">Enlace para acceder a la clase</a>
-</li>
+        <li>Mañana la clase es por Teams a las 7:15 am, debes entrar con tu cuenta de Tecmilenio: <a href="https://teams.microsoft.com/meet/2293151809784693?p=qbLpoYSZIjN14LcpHz">Enlace para acceder a la clase</a></li>
       </ul>
     </div>
 
     <div class="closing">
       <h2>¡Felicidades! Ya son programadores</h2>
-      <p>Con una sola línea de Python ya le dieron una instrucción a la computadora. <br>
+      <p>Con una sola línea de Python ya le dieron una instrucción a la computadora.<br>
       De aquí en adelante, todo es practicar.</p>
     </div>
   </div>
