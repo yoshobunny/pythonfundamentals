@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3 Python</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<script src="menu.js" defer></script>
+</head>
+<body>
+
+<div class="wrap menu-pagina">
+  <a href="#seccion1">Comparaciones</a>
+  <a href="#seccion2">if, else y elif</a>
+  <a href="#seccion3">and, or, not</a>
+  <a href="#errores">Errores comunes</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">Fundamentos de Programación · Módulo 3</span>
+    <h1><span class="c1">Python</span> <span class="c2">también</span> <span class="c3">toma</span> <span class="c4">decisiones</span></h1>
+    <p class="lead">Esta semana le vamos a enseñar a la computadora a decidir qué hacer dependiendo de la situación, igual que tú lo haces todos los días.</p>
+    <div class="def">
+      El <strong>if</strong> (que significa <strong>"si"</strong> en inglés) es la instrucción que le permite a un programa <strong>tomar decisiones</strong>. Le hace una pregunta a la computadora y, dependiendo de la respuesta, ejecuta o no un bloque de código.
+    </div>
+  </div>
+</header>
+
+<!-- ================= SECCIÓN 1 ================= -->
+<section id="seccion1">
+  <div class="wrap">
+    <span class="tag" style="background:var(--coral)">Sección 1</span>
+    <h2 class="sec-title">Las preguntas que entiende Python</h2>
+    <p class="sec-sub">Antes de decidir, hay que saber preguntar.</p>
+
+    <!-- 3.1.1 -->
+    <div class="topic" style="--c:var(--coral)">
+      <h3><span class="num">3.1.1</span>¿Qué es tomar una decisión?</h3>
+      <p>En la vida tomamos decisiones todo el tiempo: <b>si</b> llueve, llevo paraguas; <b>si</b> tengo hambre, como algo; <b>si</b> mi celular tiene poca batería, lo conecto.</p>
+      <p>Los programas también necesitan decidir qué hacer dependiendo de la situación. Para eso le hacen una <b>pregunta</b> a la computadora, y esa pregunta siempre tiene solo dos respuestas posibles: <b>verdadero</b> (<code class="in">True</code>) o <b>falso</b> (<code class="in">False</code>).</p>
+      <div class="pipeline">
+        <div class="pipe" style="background:var(--coral)">Pregunta: ¿tengo poca batería?</div><span class="arrow">➜</span>
+        <div class="pipe" style="background:var(--orange)">Respuesta: True o False</div><span class="arrow">➜</span>
+        <div class="pipe" style="background:var(--mint)">Acción: aviso o nada</div>
+      </div>
+    </div>
+
+    <!-- 3.1.2 -->
+    <div class="topic" style="--c:var(--orange)">
+      <h3><span class="num">3.1.2</span>Operadores de comparación</h3>
+      <p>Para hacer preguntas, Python usa <b>operadores de comparación</b>:</p>
+      <div class="table-wrap">
+        <table class="kw-table">
+          <tr><th>Operador</th><th>Significado</th><th>Ejemplo</th><th>Resultado</th></tr>
+          <tr><td><code class="in">==</code></td><td>¿es igual a?</td><td><code class="in">15 == 15</code></td><td>True</td></tr>
+          <tr><td><code class="in">!=</code></td><td>¿es diferente de?</td><td><code class="in">15 != 18</code></td><td>True</td></tr>
+          <tr><td><code class="in">&gt;</code></td><td>¿es mayor que?</td><td><code class="in">10 &gt; 20</code></td><td>False</td></tr>
+          <tr><td><code class="in">&lt;</code></td><td>¿es menor que?</td><td><code class="in">10 &lt; 20</code></td><td>True</td></tr>
+          <tr><td><code class="in">&gt;=</code></td><td>¿es mayor o igual que?</td><td><code class="in">18 &gt;= 18</code></td><td>True</td></tr>
+          <tr><td><code class="in">&lt;=</code></td><td>¿es menor o igual que?</td><td><code class="in">5 &lt;= 3</code></td><td>False</td></tr>
+        </table>
+      </div>
+      <div class="card warm" style="margin-top:14px">
+        <h4>¡Ojo! = no es lo mismo que ==</h4>
+        <p><code class="in">=</code> sirve para <b>guardar</b> un valor en una variable. <code class="in">==</code> sirve para <b>preguntar</b> si dos cosas son iguales. Uno es una flecha que mete el valor, el otro es una pregunta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECCIÓN 2 ================= -->
+<section id="seccion2">
+  <div class="wrap">
+    <span class="tag" style="background:var(--sky)">Sección 2</span>
+    <h2 class="sec-title">Las tres formas del if</h2>
+    <p class="sec-sub">De una opción, de dos opciones y de muchas opciones.</p>
+
+    <!-- 3.2.1 -->
+    <div class="topic" style="--c:var(--mint)">
+      <h3><span class="num">3.2.1</span>Forma 1: if simple</h3>
+      <p>Se ejecuta algo <b>solo si</b> la condición es verdadera. Si es falsa, no pasa nada y el programa sigue.</p>
+      <p>Por ejemplo, cuando la batería de tu celular baja al 20% o menos, te aparece el aviso "Batería baja, conecta tu cargador". Pero si tu batería está al 80%, el celular no te dice nada, simplemente sigue funcionando.</p>
+      <div class="lado">
+        <div>
+          <span class="label">Código</span>
+<pre class="code">bateria = 15
+
+<span class="kw">if</span> bateria &lt;= 20:
+    <span class="kw">print</span>(<span class="str">"Batería baja, conecta tu cargador"</span>)</pre>
+        </div>
+        <div>
+          <span class="label">¿Qué pasa?</span>
+          <p>Python pregunta: ¿15 es menor o igual a 20? <b>Sí</b>, entonces muestra el mensaje.</p>
+          <p>Si <code class="in">bateria</code> valiera 80, la respuesta sería <b>no</b> y no aparecería nada.</p>
+        </div>
+      </div>
+      <ul class="checks" style="--c:var(--mint)">
+        <li>Después de la condición van <b>dos puntos</b> <code class="in">:</code></li>
+        <li>Lo que está "adentro" del if lleva <b>sangría</b> (4 espacios). Así Python sabe qué instrucciones dependen de la decisión.</li>
+      </ul>
+
+      <div class="card alt" style="margin:14px 0">
+        <h4>Ejemplo 1: Notificación de mensajes</h4>
+        <p>Tu celular te muestra un aviso solo si tienes mensajes nuevos. Si no tienes ninguno, no te avisa.</p>
+<pre class="code">mensajes_nuevos = 4
+
+<span class="kw">if</span> mensajes_nuevos &gt; 0:
+    <span class="kw">print</span>(<span class="str">"Tienes mensajes sin leer"</span>)</pre>
+      </div>
+      <div class="card warm" style="margin:14px 0">
+        <h4>Ejemplo 2: Récord en un videojuego</h4>
+        <p>El juego te felicita solo si superaste tu récord anterior. ¿620 es mayor que 500? Sí, entonces aparece la felicitación.</p>
+<pre class="code">record = 500
+puntos = 620
+
+<span class="kw">if</span> puntos &gt; record:
+    <span class="kw">print</span>(<span class="str">"¡Nuevo récord!"</span>)</pre>
+      </div>
+      <div class="card alt" style="margin:14px 0 0">
+        <h4>Ejemplo 3: Clima</h4>
+        <p>Una app te recomienda llevar suéter solo si la temperatura es baja.</p>
+<pre class="code">temperatura = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">"¿Qué temperatura hace hoy? "</span>))
+
+<span class="kw">if</span> temperatura &lt; 15:
+    <span class="kw">print</span>(<span class="str">"Hace frío, lleva suéter"</span>)</pre>
+      </div>
+    </div>
+
+    <!-- 3.2.2 -->
+    <div class="topic" style="--c:var(--sky)">
+      <h3><span class="num">3.2.2</span>Forma 2: if con else</h3>
+      <p>En la Forma 1, cuando la condición era falsa <b>no pasaba nada</b>. Pero muchas veces queremos que el programa haga algo en los dos casos: cuando la respuesta es "sí" y cuando es "no".</p>
+      <p>Para eso existe <code class="in">else</code>, que significa <b>"si no"</b> o <b>"en cualquier otro caso"</b>.</p>
+      <ul>
+        <li>Si la condición es <b>verdadera</b>, se ejecuta lo que está debajo del <code class="in">if</code></li>
+        <li>Si la condición es <b>falsa</b>, se ejecuta lo que está debajo del <code class="in">else</code></li>
+      </ul>
+      <p>Siempre se ejecuta <span class="hl">uno de los dos caminos, nunca ambos</span>. Es como llegar a una bifurcación: o vas a la derecha o vas a la izquierda.</p>
+      <p>Por ejemplo, en el examen del Módulo 2 de Cisco necesitas sacar <b>70 o más</b> para aprobar. Entonces solo hay dos posibilidades: si sacaste 70 o más, apruebas; si no, repruebas.</p>
+      <div class="lado">
+        <div>
+          <span class="label">Código</span>
+<pre class="code">calificacion = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">"¿Qué calificación sacaste? "</span>))
+
+<span class="kw">if</span> calificacion &gt;= 70:
+    <span class="kw">print</span>(<span class="str">"¡Aprobaste!"</span>)
+<span class="kw">else</span>:   <span class="com"># si no</span>
+    <span class="kw">print</span>(<span class="str">"Reprobaste, pero puedes recuperarte"</span>)</pre>
+        </div>
+        <div>
+          <span class="label">¿Qué pasa?</span>
+          <p>Si sacaste <b>85</b>: ¿85 es mayor o igual a 70? Sí, entonces imprime "¡Aprobaste!" y se salta el else.</p>
+          <p>Si sacaste <b>60</b>: ¿60 es mayor o igual a 70? No, entonces se salta el if y entra al else.</p>
+        </div>
+      </div>
+      <p>Fíjate que el <code class="in">else</code> <b>no lleva condición</b>. No necesita preguntar nada, porque es simplemente "todo lo demás".</p>
+
+      <div class="card warm" style="margin:14px 0">
+        <h4>Ejemplo 1: Entrar al concierto</h4>
+        <p>En la entrada te escanean el boleto. Si el boleto es válido, entras; si no, no te dejan pasar.</p>
+<pre class="code">boleto_valido = True
+
+<span class="kw">if</span> boleto_valido:
+    <span class="kw">print</span>(<span class="str">"Bienvenido al concierto"</span>)
+<span class="kw">else</span>:   <span class="com"># si no</span>
+    <span class="kw">print</span>(<span class="str">"Boleto no válido, no puedes entrar"</span>)</pre>
+      </div>
+      <div class="card alt" style="margin:14px 0 0">
+        <h4>Ejemplo 2: Par o impar</h4>
+        <p>Un número es par si al dividirlo entre 2 no sobra nada. El operador <code class="in">%</code> nos da el residuo de una división (lo vimos en el Módulo 2). Si escribes 8, el residuo es 0 y es par. Si escribes 7, el residuo es 1 y entra al else.</p>
+<pre class="code">numero = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">"Escribe un número: "</span>))
+
+<span class="kw">if</span> numero % 2 == 0:
+    <span class="kw">print</span>(<span class="str">"Es par"</span>)
+<span class="kw">else</span>:   <span class="com"># si no</span>
+    <span class="kw">print</span>(<span class="str">"Es impar"</span>)</pre>
+      </div>
+    </div>
+
+    <!-- 3.2.3 -->
+    <div class="topic" style="--c:var(--grape)">
+      <h3><span class="num">3.2.3</span>Forma 3: if, elif y else</h3>
+      <p>A veces la vida no es solo "sí o no", hay más opciones. Por ejemplo, en una calificación no solo importa si aprobaste o no, también importa si fue excelente, buena o regular.</p>
+      <p><code class="in">elif</code> es la unión de <b>else + if</b> y significa <b>"si no, entonces pregunta otra cosa"</b>. Python revisa las condiciones <b>en orden, de arriba hacia abajo</b>, y entra <b>solo a la primera que sea verdadera</b>. En cuanto encuentra una, ya no revisa las demás.</p>
+
+      <h4 style="margin-top:16px">¿Cuál es la diferencia entre else y elif?</h4>
+      <div class="table-wrap">
+        <table class="kw-table">
+          <tr><th>Uso</th><th>Cuántas opciones</th><th>Ejemplo</th></tr>
+          <tr><td><code class="in">if</code> solo</td><td>1 (pasa algo o no pasa nada)</td><td>Aviso de batería baja</td></tr>
+          <tr><td><code class="in">if</code> + <code class="in">else</code></td><td>2 opciones</td><td>Aprobado o reprobado</td></tr>
+          <tr><td><code class="in">if</code> + <code class="in">elif</code> + <code class="in">else</code></td><td>3 o más opciones</td><td>Rango Bronce, Plata, Oro o Leyenda</td></tr>
+        </table>
+      </div>
+      <ul class="checks" style="--c:var(--grape)">
+        <li><code class="in">else</code> <b>no lleva condición</b>: es "todo lo demás"</li>
+        <li><code class="in">elif</code> <b>sí lleva condición</b>: hace una nueva pregunta</li>
+        <li>Puedes poner <b>todos los elif que necesites</b>, pero solo hay <b>un if al inicio</b> y <b>un else al final</b> (el else es opcional)</li>
+      </ul>
+
+      <p>Por ejemplo, imagina que tu mamá tiene una regla para los videojuegos: según cuántas horas llevas jugando hoy, te dice algo diferente.</p>
+      <ul>
+        <li>Si no has jugado nada: "Hoy descansaste del juego"</li>
+        <li>Si llevas 2 horas o menos: "Vas bien, es un tiempo equilibrado"</li>
+        <li>Si llevas 5 horas o menos: "Ya fue bastante, toma un descanso"</li>
+        <li>Si llevas más de 5: "¡Modo maratón! Apágalo y ve a dormir"</li>
+      </ul>
+<pre class="code">horas_jugando = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">"¿Cuántas horas llevas jugando hoy? "</span>))
+
+<span class="kw">if</span> horas_jugando == 0:
+    <span class="kw">print</span>(<span class="str">"Hoy descansaste del juego"</span>)
+<span class="kw">elif</span> horas_jugando &lt;= 2:   <span class="com"># si no, pregunta esto</span>
+    <span class="kw">print</span>(<span class="str">"Vas bien, es un tiempo equilibrado"</span>)
+<span class="kw">elif</span> horas_jugando &lt;= 5:   <span class="com"># si no, pregunta esto otro</span>
+    <span class="kw">print</span>(<span class="str">"Ya fue bastante, toma un descanso"</span>)
+<span class="kw">else</span>:                      <span class="com"># en cualquier otro caso</span>
+    <span class="kw">print</span>(<span class="str">"¡Modo maratón! Apágalo y ve a dormir"</span>)</pre>
+      <p>Veamos qué pasa si llevas <b>4 horas</b>:</p>
+      <ol>
+        <li>¿4 es igual a 0? <b>No</b>, pasa a la siguiente</li>
+        <li>¿4 es menor o igual a 2? <b>No</b>, pasa a la siguiente</li>
+        <li>¿4 es menor o igual a 5? <b>Sí</b>, imprime "Ya fue bastante, toma un descanso"</li>
+        <li>Ya encontró una verdadera, así que <b>ya no revisa el else</b></li>
+      </ol>
+      <p>Y si llevas <b>8 horas</b>, ninguna de las tres preguntas es verdadera, entonces entra al else.</p>
+      <div class="card warm" style="margin-top:14px">
+        <h4>¿Por qué importa el orden?</h4>
+        <p>1 hora también es menor o igual a 5. Pero como Python se detiene en la <b>primera</b> verdadera, si llevas 1 hora entra en "Vas bien" y nunca llega a "Ya fue bastante".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECCIÓN 3 ================= -->
+<section id="seccion3">
+  <div class="wrap">
+    <span class="tag" style="background:var(--teal)">Sección 3</span>
+    <h2 class="sec-title">Combinando condiciones: and, or, not</h2>
+    <p class="sec-sub">Hasta ahora cada if hacía una sola pregunta. Pero en la vida real muchas decisiones dependen de dos cosas a la vez.</p>
+
+    <!-- 3.3.1 -->
+    <div class="topic" style="--c:var(--coral)">
+      <h3><span class="num">3.3.1</span>and significa "y": se tienen que cumplir LAS DOS</h3>
+      <p>Imagina que tus papás te dicen: <b>"Puedes ir a la fiesta si terminaste la tarea Y limpiaste tu cuarto."</b> No basta con una. Si terminaste la tarea pero tu cuarto está desordenado, no vas.</p>
+      <div class="table-wrap">
+        <table class="kw-table">
+          <tr><th>¿Terminaste la tarea?</th><th>¿Limpiaste el cuarto?</th><th>¿Vas a la fiesta?</th></tr>
+          <tr><td>Sí</td><td>Sí</td><td><b>Sí</b></td></tr>
+          <tr><td>Sí</td><td>No</td><td>No</td></tr>
+          <tr><td>No</td><td>Sí</td><td>No</td></tr>
+          <tr><td>No</td><td>No</td><td>No</td></tr>
+        </table>
+      </div>
+      <p>Con <code class="in">and</code>, solo hay <span class="hl">una forma de que sea verdadero: que todo se cumpla</span>.</p>
+<pre class="code">tarea_terminada = True
+cuarto_limpio = False
+
+<span class="kw">if</span> tarea_terminada <span class="kw">and</span> cuarto_limpio:
+    <span class="kw">print</span>(<span class="str">"Puedes ir a la fiesta"</span>)
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">"Todavía no puedes ir"</span>)</pre>
+      <p>Aquí imprime "Todavía no puedes ir", porque aunque terminaste la tarea, el cuarto no está limpio.</p>
+    </div>
+
+    <!-- 3.3.2 -->
+    <div class="topic" style="--c:var(--sky)">
+      <h3><span class="num">3.3.2</span>or significa "o": basta con que se cumpla UNA</h3>
+      <p>Ahora imagina la cafetería de la escuela: <b>"Puedes pagar con efectivo O con tarjeta."</b> No necesitas las dos. Con tener cualquiera, ya puedes pagar.</p>
+      <div class="table-wrap">
+        <table class="kw-table">
+          <tr><th>¿Traes efectivo?</th><th>¿Traes tarjeta?</th><th>¿Puedes pagar?</th></tr>
+          <tr><td>Sí</td><td>Sí</td><td><b>Sí</b></td></tr>
+          <tr><td>Sí</td><td>No</td><td><b>Sí</b></td></tr>
+          <tr><td>No</td><td>Sí</td><td><b>Sí</b></td></tr>
+          <tr><td>No</td><td>No</td><td>No</td></tr>
+        </table>
+      </div>
+      <p>Con <code class="in">or</code>, solo hay <span class="hl">una forma de que sea falso: que no se cumpla nada</span>.</p>
+<pre class="code">efectivo = False
+tarjeta = True
+
+<span class="kw">if</span> efectivo <span class="kw">or</span> tarjeta:
+    <span class="kw">print</span>(<span class="str">"Puedes comprar tu lunch"</span>)
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">"No traes con qué pagar"</span>)</pre>
+      <p>Aquí imprime "Puedes comprar tu lunch", porque aunque no traes efectivo, sí traes tarjeta.</p>
+    </div>
+
+    <!-- 3.3.3 -->
+    <div class="topic" style="--c:var(--mint)">
+      <h3><span class="num">3.3.3</span>not significa "no": le da la vuelta a la respuesta</h3>
+      <p><code class="in">not</code> convierte lo verdadero en falso y lo falso en verdadero. Es como decir lo contrario. Por ejemplo: <b>"Si NO está lloviendo, vamos al parque."</b></p>
+<pre class="code">lloviendo = False
+
+<span class="kw">if</span> <span class="kw">not</span> lloviendo:
+    <span class="kw">print</span>(<span class="str">"Vamos al parque"</span>)</pre>
+      <p><code class="in">lloviendo</code> es falso, pero <code class="in">not</code> lo convierte en verdadero, así que sí vamos al parque. Si estuviera lloviendo (<code class="in">True</code>), not lo convertiría en falso y no iríamos.</p>
+    </div>
+
+    <!-- 3.3.4 -->
+    <div class="topic" style="--c:var(--orange)">
+      <h3><span class="num">3.3.4</span>Un truco para recordarlo</h3>
+      <ul class="checks" style="--c:var(--orange)">
+        <li><b>and</b> es estricto: <b>todos</b> deben decir que sí</li>
+        <li><b>or</b> es relajado: con que <b>uno</b> diga que sí, es suficiente</li>
+        <li><b>not</b> es el contreras: siempre dice <b>lo opuesto</b></li>
+      </ul>
+    </div>
+
+    <!-- 3.3.5 -->
+    <div class="topic" style="--c:var(--pink)">
+      <h3><span class="num">3.3.5</span>¿Qué responde Python?</h3>
+      <p>Antes de ver la respuesta, piensen: <b>¿True o False?</b></p>
+      <div class="qs">
+        <div class="q" style="background:var(--coral)">
+          <h4>Pregunta 1</h4>
+          <p><code class="in">True and False</code></p>
+          <button class="btn" type="button" aria-expanded="false" aria-controls="r1">Ver respuesta</button>
+          <div class="ans" id="r1" hidden><p><b>False</b>. Con and las dos tienen que ser verdaderas, y una es falsa.</p></div>
+        </div>
+        <div class="q" style="background:var(--sky)">
+          <h4>Pregunta 2</h4>
+          <p><code class="in">True or False</code></p>
+          <button class="btn" type="button" aria-expanded="false" aria-controls="r2">Ver respuesta</button>
+          <div class="ans" id="r2" hidden><p><b>True</b>. Con or basta con que una sea verdadera.</p></div>
+        </div>
+        <div class="q" style="background:var(--mint)">
+          <h4>Pregunta 3</h4>
+          <p><code class="in">not True</code></p>
+          <button class="btn" type="button" aria-expanded="false" aria-controls="r3">Ver respuesta</button>
+          <div class="ans" id="r3" hidden><p><b>False</b>. not siempre dice lo contrario.</p></div>
+        </div>
+        <div class="q" style="background:var(--grape)">
+          <h4>Pregunta 4</h4>
+          <p>Tienes 16 años y boleto. ¿Entras? <code class="in">edad &gt;= 15 and boleto</code></p>
+          <button class="btn" type="button" aria-expanded="false" aria-controls="r4">Ver respuesta</button>
+          <div class="ans" id="r4" hidden><p><b>True</b>. 16 es mayor o igual a 15 y sí tienes boleto, se cumplen las dos.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ERRORES COMUNES ================= -->
+<section id="errores">
+  <div class="wrap">
+    <span class="tag" style="background:var(--orange)">Cuidado</span>
+    <h2 class="sec-title">Errores comunes</h2>
+    <p class="sec-sub">Los vas a ver seguido, y está bien. Así se aprende.</p>
+
+    <div class="topic" style="--c:var(--pink)">
+      <ul class="rem">
+        <li><b>Olvidar los dos puntos</b> <code class="in">:</code> al final de la condición del if, elif o else</li>
+        <li><b>No poner sangría</b> en el código que va adentro del if</li>
+        <li><b>Usar = en lugar de ==</b> al comparar</li>
+        <li><b>Comparar texto con número:</b> <code class="in">input()</code> siempre devuelve texto, por eso usamos <code class="in">int()</code> para convertirlo</li>
+        <li><b>Mayúsculas y minúsculas:</b> para Python, <code class="in">"Sí"</code> y <code class="in">"sí"</code> son textos diferentes</li>
+      </ul>
+    </div>
+
+    <div class="closing">
+      <h2>¡Ahora a practicar!</h2>
+      <p>Ya saben cómo hacer que Python tome decisiones.<br>
+      Vamos a los ejercicios del <a href="avance.html" style="color:inherit;text-decoration:underline">Avance del proyecto</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer>Fundamentos de Programación · Módulo 3 · Python</footer>
+
+<script>
+  document.querySelectorAll('.q .btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var r = document.getElementById(btn.getAttribute('aria-controls'));
+      var abierto = !r.hidden;
+      r.hidden = abierto;
+      btn.setAttribute('aria-expanded', String(!abierto));
+      btn.textContent = abierto ? 'Ver respuesta' : 'Ocultar respuesta';
+    });
+  });
+</script>
+</body>
+</html>
