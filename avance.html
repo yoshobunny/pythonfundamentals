@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actividad 3 Avance</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<script src="menu.js" defer></script>
+</head>
+<body>
+
+<div class="wrap menu-pagina">
+  <a href="#instrucciones">Instrucciones</a>
+  <a href="#lunes">Lunes</a>
+  <a href="#martes">Martes</a>
+  <a href="#miercoles">Miércoles</a>
+  <a href="#entrega">Entrega</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="tag" style="background:var(--coral)">Módulo 2</span>
+    <h1><span class="c1">Avance</span> <span class="c2">del</span> <span class="c3">proyecto</span></h1>
+    <p class="lead">Practica if, else, elif, and, or y not con situaciones de tu día a día, y presenta el avance de tu proyecto.</p>
+    <div class="def">
+      Esta actividad se hace en <strong>equipo de dos personas</strong>. Fecha límite: <strong>viernes 30 de octubre a las 23:59</strong>.
+    </div>
+  </div>
+</header>
+
+<!-- ================= INSTRUCCIONES ================= -->
+<section id="instrucciones">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">¿Qué vas a entregar?</span>
+    <h2 class="sec-title">Instrucciones</h2>
+    <p class="sec-sub">Son tres entregables: un documento Word, tus archivos de Python y tu repositorio de GitHub.</p>
+
+    <!-- 1 -->
+    <div class="topic" style="--c:var(--coral)">
+      <h3><span class="num">1</span>Documento Word</h3>
+      <p>Deberás subir a Canvas un documento Word con lo siguiente, en este orden:</p>
+      <ol>
+        <li><b>Portada:</b> nombre completo de cada integrante, matrícula, materia, nombre de la actividad, profesora y fecha.</li>
+        <li><b>Índice.</b></li>
+        <li><b>Ejercicios del lunes:</b> un título por ejercicio (por ejemplo, "Ejercicio 1: Estado de mi celular") y debajo las capturas de pantalla de tu código en VS Code y del resultado en la terminal.</li>
+        <li><b>Ejercicios del martes:</b> con el mismo formato.</li>
+        <li><b>Ejercicios del miércoles:</b> con el mismo formato.</li>
+        <li><b>Avance del proyecto:</b> diagramas de flujo del sistema asignado.</li>
+        <li><b>Enlace del repositorio de GitHub.</b></li>
+      </ol>
+    </div>
+
+    <!-- 2 -->
+    <div class="topic" style="--c:var(--sky)">
+      <h3><span class="num">2</span>Archivos de Python (.py)</h3>
+      <p>Los archivos de los ejercicios de cada día deben nombrarse así:</p>
+      <ul class="checks" style="--c:var(--sky)">
+        <li><b>Lunes:</b> <code class="in">Avance_ejercicio1_mimatricula.py</code>, <code class="in">Avance_ejercicio2_mimatricula.py</code>, etc.</li>
+        <li><b>Martes:</b> <code class="in">Avance_ejercicio9_mimatricula.py</code>, etc.</li>
+        <li><b>Miércoles:</b> <code class="in">Avance_ejercicio15_mimatricula.py</code>, etc.</li>
+      </ul>
+      <div class="card alt" style="margin-top:14px">
+        <h4>Cada programa debe empezar así</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">"*** Nombres: ***"</span>)
+<span class="kw">print</span>(<span class="str">"*** Matrículas: ***"</span>)
+<span class="kw">print</span>(<span class="str">"*** Ejercicio 1: Nombre del ejercicio ***"</span>)</pre>
+      </div>
+      <div class="card warm" style="margin-top:14px;margin-bottom:0">
+        <h4>Tip</h4>
+        <p>No uses espacios ni acentos en los nombres de los archivos.</p>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="topic" style="--c:var(--mint)">
+      <h3><span class="num">3</span>Repositorio en GitHub (individual)</h3>
+      <ol>
+        <li>Cada integrante del equipo deberá crear, de forma individual, su repositorio <code class="in">Actividad3_Mimatricula</code> (cambia "Mimatricula" por tu matrícula).</li>
+        <li>Sube ahí el documento Word y los archivos de Python de cada día.</li>
+        <li>Envía el enlace de tu repositorio en la Avance de Canvas.</li>
+      </ol>
+      <p>Tu enlace se verá algo así: <code class="in">https://github.com/MiUsuario/Avance_Mimatricula</code></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LUNES ================= -->
+<section id="lunes">
+  <div class="wrap">
+    <span class="tag" style="background:var(--coral)">Lunes 26</span>
+    <h2 class="sec-title">Ejercicios del lunes</h2>
+    <p class="sec-sub">if simple e if con else.</p>
+
+    <div class="reto" style="--c:var(--coral)">
+      <div class="reto-head">
+        <div class="n">1</div>
+        <div><small>LUNES · EJERCICIO 1</small><h3>Estado de mi celular</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Tu celular revisa varias cosas al mismo tiempo y solo te avisa de lo que necesita atención.</p>
+        <p><b>Lo que debe hacer tu programa:</b></p>
+        <ol>
+          <li>Pedir el porcentaje de batería, los GB libres de almacenamiento y cuántas notificaciones sin leer tiene.</li>
+          <li>Si la batería es 20 o menos, mostrar "Batería baja, conecta tu cargador".</li>
+          <li>Si tiene menos de 5 GB libres, mostrar "Poco espacio, borra fotos o apps que no uses".</li>
+          <li>Si tiene notificaciones, mostrar cuántas son. Si no, mostrar "Estás al día, no tienes notificaciones".</li>
+        </ol>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_lunes_ejercicio01.png" alt="Código del ejercicio 1 del lunes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--orange)">
+      <div class="reto-head">
+        <div class="n">2</div>
+        <div><small>LUNES · EJERCICIO 2</small><h3>Crea tu cuenta</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Las redes sociales piden mínimo 13 años para crear una cuenta, y 18 años para hacer compras dentro de la app.</p>
+        <p><b>Lo que debe hacer tu programa:</b></p>
+        <ol>
+          <li>Pedir el nombre, el año de nacimiento y su red social favorita.</li>
+          <li>Calcular la edad (2026 menos el año de nacimiento) y mostrarla.</li>
+          <li>Si tiene 13 años o más, mostrar que su cuenta fue creada. Si no, mostrar cuántos años le faltan.</li>
+          <li>Si tiene 18 años o más, mostrar "Compras dentro de la app activadas". Si no, mostrar "Compras dentro de la app desactivadas".</li>
+        </ol>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_lunes_ejercicio02.png" alt="Código del ejercicio 2 del lunes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--mint)">
+      <div class="reto-head">
+        <div class="n">3</div>
+        <div><small>LUNES · EJERCICIO 3</small><h3>Wi-Fi del café</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>En tu café favorito el Wi-Fi tiene contraseña, y si consumes $100 o más te regalan más tiempo de conexión.</p>
+        <p><b>Lo que debe hacer tu programa:</b></p>
+        <ol>
+          <li>Guardar en una variable la contraseña <code class="in">"Latte2026"</code>.</li>
+          <li>Pedir el nombre, la contraseña y cuánto gastó en el café.</li>
+          <li>Si la contraseña es correcta, mostrar "Conectado al Wi-Fi, bienvenida [nombre]". Si no, mostrar "Contraseña incorrecta".</li>
+          <li>Si gastó $100 o más, mostrar "Tienes 1 hora de Wi-Fi". Si no, mostrar "Tienes 30 minutos de Wi-Fi".</li>
+        </ol>
+        <p><b>Pregunta para pensar:</b> prueba escribiendo <code class="in">latte2026</code>. ¿Por qué no funciona si es la misma palabra?</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_lunes_ejercicio03.png" alt="Código del ejercicio 3 del lunes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--sky)">
+      <div class="reto-head">
+        <div class="n">4</div>
+        <div><small>LUNES · EJERCICIO 4</small><h3>Mis estadísticas de creador</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>En una app de videos necesitas 1000 seguidores para hacer lives, y un video se considera viral si tiene más likes que seguidores tiene la cuenta.</p>
+        <p><b>Lo que debe hacer tu programa:</b></p>
+        <ol>
+          <li>Pedir el nombre de usuario, el número de seguidores y los likes de su último video.</li>
+          <li>Si tiene 1000 seguidores o más, mostrar "Ya puedes hacer lives". Si no, mostrar cuántos seguidores le faltan.</li>
+          <li>Si los likes son más que los seguidores, mostrar "¡Tu último video se hizo viral!". Si no, mostrar "Sigue publicando, vas bien".</li>
+        </ol>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_lunes_ejercicio04.png" alt="Código del ejercicio 4 del lunes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--grape)">
+      <div class="reto-head">
+        <div class="n">5</div>
+        <div><small>LUNES · EJERCICIO 5</small><h3>Tienda de accesorios</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Una tienda de accesorios (aretes, pulseras, fundas de celular) da 15% de descuento si la compra es mayor a $300.</p>
+        <p><b>Lo que debe hacer tu programa:</b></p>
+        <ol>
+          <li>Pedir el nombre y el precio de dos productos, y cuánto dinero trae.</li>
+          <li>Sumar y mostrar el total de la compra.</li>
+          <li>Si el total es mayor a $300, aplicar el 15% de descuento y mostrar cuánto pagará. Si no, mostrar cuánto le falta para llegar a $300.</li>
+          <li>Si le alcanza con lo que trae, mostrar cuánto le sobra. Si no, mostrar cuánto le falta.</li>
+        </ol>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_lunes_ejercicio05.png" alt="Código del ejercicio 5 del lunes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--pink)">
+      <div class="reto-head">
+        <div class="n">6</div>
+        <div><small>LUNES · EJERCICIO 6</small><h3>Meta de ahorro</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Quieres comprarte algo que te gusta mucho (unos tenis, una paleta de maquillaje, unos audífonos) y estás ahorrando cada semana.</p>
+        <p><b>Lo que debe hacer tu programa:</b></p>
+        <ol>
+          <li>Pedir qué quiere comprar, cuánto cuesta, cuánto tiene ahorrado y cuánto ahorra por semana.</li>
+          <li>Si le alcanza, mostrar "¡Ya puedes comprar tus [producto]!".</li>
+          <li>Si no le alcanza, mostrar cuánto le falta y en cuántas semanas lo tendrá (lo que falta entre lo que ahorra por semana).</li>
+        </ol>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_lunes_ejercicio06.png" alt="Código del ejercicio 6 del lunes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--teal)">
+      <div class="reto-head">
+        <div class="n">7</div>
+        <div><small>LUNES · EJERCICIO 7</small><h3>Control de tiempo de pantalla</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Tu celular tiene una función de bienestar digital que suma el tiempo que pasas en cada tipo de app.</p>
+        <p><b>Lo que debe hacer tu programa:</b></p>
+        <ol>
+          <li>Pedir el nombre, el límite de horas que se propuso, las horas en redes sociales y las horas en videojuegos.</li>
+          <li>Sumar y mostrar el total de horas.</li>
+          <li>Si el total es mayor al límite, mostrar cuántas horas se pasó. Si no, felicitarla por cumplir su meta.</li>
+          <li>Si pasó más tiempo en redes que en videojuegos, mostrar "Lo que más usaste fueron las redes sociales". Si no, mostrar "Lo que más usaste fueron los videojuegos".</li>
+        </ol>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_lunes_ejercicio07.png" alt="Código del ejercicio 7 del lunes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--coral)">
+      <div class="reto-head">
+        <div class="n">8</div>
+        <div><small>LUNES · EJERCICIO 8</small><h3>Cuenta entre amigxs</h3>
+        </div>
+      </div>
+      <div class="reto-body">
+        <p>Salieron a comer, van a dejar 10% de propina y dividir la cuenta en partes iguales.</p>
+        <p><b>Lo que debe hacer tu programa:</b></p>
+        <ol>
+          <li>Pedir el total de la cuenta, cuántas personas van a pagar y cuánto dinero trae.</li>
+          <li>Calcular y mostrar el total con 10% de propina y cuánto le toca a cada persona.</li>
+          <li>Si le alcanza, mostrar cuánto le sobra. Si no, mostrar cuánto le falta.</li>
+          <li>Si a cada persona le toca más de $300, mostrar "Salió caro, la próxima busquen promo". Si no, mostrar "¡Buen precio!".</li>
+        </ol>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_lunes_ejercicio08.png" alt="Código del ejercicio 8 del lunes" class="mediana70"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARTES ================= -->
+<section id="martes">
+  <div class="wrap">
+    <span class="tag" style="background:var(--sky)">Martes 27</span>
+    <h2 class="sec-title">Ejercicios del martes</h2>
+    <p class="sec-sub">if, elif y else: cuando hay más de dos opciones.</p>
+
+    <div class="reto" style="--c:var(--sky)">
+      <div class="reto-head">
+        <div class="n">1</div>
+        <div><small>MARTES · EJERCICIO 1</small><h3>Tamaño de tu bebida</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>En una tienda de bebidas (frappés, tés, bubble tea) hay tres tamaños. Muestra el menú y pide al usuario que elija:</p>
+        <ul>
+          <li>1 = Chico ($55)</li>
+          <li>2 = Mediano ($70)</li>
+          <li>3 = Grande ($85)</li>
+        </ul>
+        <p>Si escribe otro número, muestra "Opción no válida".</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_martes_ejercicio01.png" alt="Código del ejercicio 1 del martes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--grape)">
+      <div class="reto-head">
+        <div class="n">2</div>
+        <div><small>MARTES · EJERCICIO 2</small><h3>Nivel de influencer</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Pide el número de seguidores y muestra el nivel:</p>
+        <ul>
+          <li>Menos de 1,000: Principiante</li>
+          <li>De 1,000 a 9,999: Microinfluencer</li>
+          <li>De 10,000 a 99,999: Influencer</li>
+          <li>100,000 o más: Celebridad digital</li>
+        </ul>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_martes_ejercicio02.png" alt="Código del ejercicio 2 del martes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--orange)">
+      <div class="reto-head">
+        <div class="n">3</div>
+        <div><small>MARTES · EJERCICIO 3</small><h3>¿Qué me pongo hoy?</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Pide la temperatura del día y recomienda un outfit:</p>
+        <ul>
+          <li>Menos de 10 grados: chamarra, bufanda y botas</li>
+          <li>De 10 a 19: sudadera y jeans</li>
+          <li>De 20 a 29: playera y tenis</li>
+          <li>30 o más: short, gorra y mucha agua</li>
+        </ul>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_martes_ejercicio03.png" alt="Código del ejercicio 3 del martes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--pink)">
+      <div class="reto-head">
+        <div class="n">4</div>
+        <div><small>MARTES · EJERCICIO 4</small><h3>Playlist según tu mood</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Pregunta al usuario cómo se siente y recomiéndale un tipo de música:</p>
+        <ul>
+          <li>1 = Feliz: pop</li>
+          <li>2 = Triste: baladas</li>
+          <li>3 = Con energía: reggaetón o K-pop</li>
+          <li>4 = Estudiando: lo-fi</li>
+        </ul>
+        <p>Si escribe otra opción, muestra "Ese mood no está en la lista".</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_martes_ejercicio04.png" alt="Código del ejercicio 4 del martes" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--mint)">
+      <div class="reto-head">
+        <div class="n">5</div>
+        <div><small>MARTES · EJERCICIO 5</small><h3>Mensaje según tu calificación</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Pide la calificación del examen de Cisco (0 a 100) y muestra:</p>
+        <ul>
+          <li>90 o más: "¡Excelente! Eres crack"</li>
+          <li>De 80 a 89: "Muy bien"</li>
+          <li>De 70 a 79: "Aprobaste, pero puedes mejorar"</li>
+          <li>Menos de 70: "Reprobaste, ¡a estudiar!"</li>
+        </ul>
+        <p><b>Reto extra:</b> si escribe un número mayor a 100 o menor a 0, muestra "Calificación no válida". (Pista: ponlo como la primera condición.)</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_martes_ejercicio05.png" alt="Código del ejercicio 5 del martes" class="mediana70"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MIÉRCOLES ================= -->
+<section id="miercoles">
+  <div class="wrap">
+    <span class="tag" style="background:var(--teal)">Miércoles 28</span>
+    <h2 class="sec-title">Ejercicios del miércoles</h2>
+    <p class="sec-sub">and, or y not: decisiones que dependen de dos cosas a la vez.</p>
+
+    <div class="reto" style="--c:var(--teal)">
+      <div class="reto-head">
+        <div class="n">1</div>
+        <div><small>MIÉRCOLES · EJERCICIO 1</small><h3>Entrada al concierto</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Para entrar al concierto necesitas <b>tener boleto y tener 15 años o más</b>. Pregunta al usuario si tiene boleto (s/n) y su edad. Dile si puede entrar.</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_miercoles_ejercicio01.png" alt="Código del ejercicio 1 del miércoles" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--coral)">
+      <div class="reto-head">
+        <div class="n">2</div>
+        <div><small>MIÉRCOLES · EJERCICIO 2</small><h3>Permiso para la pijamada</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Tus papás te dejan ir a la pijamada <b>si terminaste la tarea y ayudaste en la casa</b>. Pregunta ambas cosas (s/n) y dile al usuario si tiene permiso.</p>
+        <p><b>Reto extra:</b> si no tiene permiso, dile exactamente qué le falta (la tarea, ayudar en casa o las dos).</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_miercoles_ejercicio02.png" alt="Código del ejercicio 2 del miércoles" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--sky)">
+      <div class="reto-head">
+        <div class="n">3</div>
+        <div><small>MIÉRCOLES · EJERCICIO 3</small><h3>¿Es fin de semana?</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Pide al usuario el día de la semana. Si es sábado <b>o</b> domingo, muestra "¡Es fin de semana, a descansar!". Si no, muestra "Día de escuela".</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_miercoles_ejercicio03.png" alt="Código del ejercicio 3 del miércoles" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--orange)">
+      <div class="reto-head">
+        <div class="n">4</div>
+        <div><small>MIÉRCOLES · EJERCICIO 4</small><h3>Recordatorio de bloqueador</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Pide el índice UV del día (de 1 a 11) y pregunta si ya se puso bloqueador (s/n). Si el índice es 6 o más <b>y no</b> se ha puesto bloqueador, muestra "¡Ponte bloqueador, el sol está fuerte!". En cualquier otro caso, muestra "Todo bien, disfruta tu día".</p>
+        <p>Usa <code class="in">not</code> en tu condición.</p>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_miercoles_ejercicio04.png" alt="Código del ejercicio 4 del miércoles" class="mediana70"></figure>
+      </div>
+    </div>
+
+    <div class="reto" style="--c:var(--grape)">
+      <div class="reto-head">
+        <div class="n">5</div>
+        <div><small>MIÉRCOLES · RETO INTEGRADOR</small><h3>Taquilla del cine</h3></div>
+      </div>
+      <div class="reto-body">
+        <p>Crea el sistema de una taquilla de cine:</p>
+        <ol>
+          <li>Pide la edad del usuario y la clasificación de la película (A, B o C).</li>
+          <li>Revisa si puede entrar: clasificación A, cualquier edad; clasificación B, 12 años o más; clasificación C, 18 años o más.</li>
+          <li>Si puede entrar, pregunta si es estudiante (s/n) y qué día es.</li>
+          <li>El boleto cuesta $90, pero cuesta $60 <b>si es estudiante o si es miércoles</b>.</li>
+        </ol>
+        <h4>Código</h4>
+        <figure class="shot"><img src="img/03_miercoles_ejercicio05.png" alt="Código del ejercicio 5 del miércoles" class="mediana70"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENTREGA ================= -->
+<section id="entrega">
+  <div class="wrap">
+    <div class="delivery">
+      <h2 class="sec-title" style="font-size:clamp(1.6rem,3.5vw,2.2rem)">Antes de entregar, revisa</h2>
+      <div class="date-badge">Viernes 30 de octubre · 23:59</div>
+      <ul class="rem">
+        <li>El Word tiene portada, índice, los ejercicios de los tres días, el avance del proyecto y el enlace de GitHub</li>
+        <li>Cada ejercicio tiene la captura del código en VS Code y la del resultado en la terminal</li>
+        <li>Cada programa empieza con los nombres, las matrículas y el nombre del ejercicio</li>
+        <li>Los archivos .py tienen el nombre correcto, con la matrícula</li>
+        <li>Cada integrante tiene su propio repositorio <code class="in">Avance_Mimatricula</code> con el Word y los .py</li>
+        <li>El enlace del repositorio está enviado en el Avance&nbsp; 3 de Canvas</li>
+      </ul>
+    </div>
+
+    <div class="closing">
+      <h2>¡Ustedes pueden!</h2>
+      <p>Cada if que escriben es una decisión que la computadora ya sabe tomar gracias a ustedes.</p>
+    </div>
+  </div>
+</section>
+
+<footer>Fundamentos de Programación · Módulo 3 · Actividad 3</footer>
+</body>
+</html>
