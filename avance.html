@@ -58,8 +58,8 @@
       <p>Los archivos de los ejercicios de cada día deben nombrarse así:</p>
       <ul class="checks" style="--c:var(--sky)">
         <li><b>Lunes:</b> <code class="in">Avance_ejercicio1_mimatricula.py</code>, <code class="in">Avance_ejercicio2_mimatricula.py</code>, etc.</li>
-        <li><b>Martes:</b> <code class="in">Avance_ejercicio9_mimatricula.py</code>, etc.</li>
-        <li><b>Miércoles:</b> <code class="in">Avance_ejercicio15_mimatricula.py</code>, etc.</li>
+        <li><b>Martes:</b> <code class="in">Avance_ejercicio9_mimatricula.py</code> al <code class="in">Avance_ejercicio16_mimatricula.py</code></li>
+        <li><b>Miércoles:</b> <code class="in">Avance_ejercicio17_mimatricula.py</code>, etc.</li>
       </ul>
       <div class="card alt" style="margin-top:14px">
         <h4>Cada programa debe empezar así</h4>
@@ -254,95 +254,721 @@
     <h2 class="sec-title">Ejercicios del martes</h2>
     <p class="sec-sub">if, elif y else: cuando hay más de dos opciones.</p>
 
+    <div class="topic" style="--c:var(--sky)">
+      <h3><span class="num">!</span>¿Qué cambia hoy?</h3>
+      <p>El lunes cada <code class="in">if</code> era una pregunta <b>independiente</b>: Python las revisaba todas y podían salir varios mensajes al mismo tiempo (por ejemplo, batería baja <b>y</b> poco espacio).</p>
+      <p>Hoy usamos <code class="in">elif</code>, que significa <b>"si no, entonces pregunta esto otro"</b>. Con <code class="in">if / elif / else</code> Python revisa las preguntas <b>en orden</b> y <b>se detiene en la primera que sea True</b>. Por eso siempre sale <b>un solo resultado</b>.</p>
+      <div class="card warm" style="margin-top:14px;margin-bottom:0">
+        <h4>Tip</h4>
+        <p>Antes de correr cada prueba, adivina qué mensaje va a salir. Si aciertas, ya entendiste la lógica.</p>
+      </div>
+    </div>
+
+    <!-- EJERCICIO 9 -->
     <div class="reto" style="--c:var(--sky)">
       <div class="reto-head">
-        <div class="n">1</div>
-        <div><small>MARTES · EJERCICIO 1</small><h3>Tamaño de tu bebida</h3></div>
+        <div class="n">9</div>
+        <div><small>MARTES · EJERCICIO 9</small><h3>Tamaño de tu bebida</h3></div>
       </div>
       <div class="reto-body">
-        <p>En una tienda de bebidas (frappés, tés, bubble tea) hay tres tamaños. Muestra el menú y pide al usuario que elija:</p>
-        <ul>
-          <li>1 = Chico ($55)</li>
-          <li>2 = Mediano ($70)</li>
-          <li>3 = Grande ($85)</li>
-        </ul>
-        <p>Si escribe otro número, muestra "Opción no válida".</p>
-        <h4>Código</h4>
-        <figure class="shot"><img src="img/03_martes_ejercicio01.png" alt="Código del ejercicio 1 del martes" class="mediana70"></figure>
+        <div class="blk">
+          <h4>¿De qué se trata?</h4>
+          <p>En una tienda de bebidas (frappés, tés, bubble tea) hay tres tamaños. El programa muestra el menú, el usuario elige un número y el programa le dice qué tamaño eligió y cuánto cuesta.</p>
+        </div>
+        <div class="blk">
+          <h4>La lógica del programa</h4>
+          <p>Solo puedes elegir <b>un tamaño</b> (no puedes pedir chico y grande en el mismo vaso). Por eso usamos <code class="in">elif</code>, que significa <b>"si no, entonces pregunta esto otro"</b>. Python revisa las preguntas <b>en orden</b> y <b>se detiene en la primera que dé True</b>. Las demás ya ni las revisa.</p>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Orden</th><th>Pregunta</th><th>Si es SÍ (True)</th><th>Si es NO (False)</th></tr>
+<tr><td>1</td><td>¿Escribió 1?</td><td>Chico, $55, y <b>termina</b></td><td>Pasa a la pregunta 2</td></tr>
+<tr><td>2</td><td>¿Escribió 2?</td><td>Mediano, $70, y <b>termina</b></td><td>Pasa a la pregunta 3</td></tr>
+<tr><td>3</td><td>¿Escribió 3?</td><td>Grande, $85, y <b>termina</b></td><td>Se va al <code class="in">else</code></td></tr>
+<tr><td>4</td><td><code class="in">else</code> (ninguna de las anteriores)</td><td>"Opción no válida"</td><td></td></tr>
+</table></div>
+          <div class="tip">Es como un mesero tomando tu pedido: "¿chico? No. ¿Mediano? No. ¿Grande? Sí". En cuanto dices que sí, deja de preguntar. <b>Siempre sale un solo mensaje</b>, nunca dos y nunca ninguno.</div>
+        </div>
+        <div class="blk">
+          <h4>Pasos</h4>
+          <ol>
+            <li>Mostrar el menú con los tres tamaños y sus precios.</li>
+            <li>Pedir al usuario que escriba 1, 2 o 3.</li>
+            <li>Revisar en orden qué número escribió y mostrar el tamaño y el precio.</li>
+            <li>Si escribió otro número, mostrar "Opción no válida".</li>
+          </ol>
+        </div>
+        <div class="blk">
+          <h4>Código</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Nombre 1:    Matricula:     ***&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;*** Nombre 2:    Matricula:     ***\n&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;*** Ejercicio 9 Tamaño de tu bebida ***&quot;</span>)
+
+<span class="com">#Mostramos el menú para que el usuario sepa qué puede elegir</span>
+<span class="kw">print</span>(<span class="str">&quot;\n===== MENÚ DE TAMAÑOS =====&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;1 = Chico   ($55)&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;2 = Mediano ($70)&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;3 = Grande  ($85)&quot;</span>)
+
+<span class="com">#input() pregunta y guarda la respuesta como TEXTO</span>
+<span class="com">#int() la convierte a número entero para poder compararla con 1, 2 y 3</span>
+opcion = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;\n¿Qué tamaño quieres? Escribe 1, 2 o 3: &quot;</span>))
+<span class="com">#Si el usuario escribe 2, ahora opcion vale 2</span>
+
+<span class="com">#PREGUNTA 1: ¿2 es igual a 1? Respuesta: False, entonces pasa a la siguiente pregunta</span>
+<span class="kw">if</span> opcion == 1:
+    <span class="kw">print</span>(<span class="str">&quot;Elegiste tamaño CHICO, son $55&quot;</span>)
+
+<span class="com">#PREGUNTA 2: ¿2 es igual a 2? Respuesta: True, entonces muestra este mensaje</span>
+<span class="com">#y Python YA NO revisa las preguntas de abajo</span>
+<span class="kw">elif</span> opcion == 2:
+    <span class="kw">print</span>(<span class="str">&quot;Elegiste tamaño MEDIANO, son $70&quot;</span>)
+
+<span class="com">#PREGUNTA 3: solo se revisa si las dos anteriores fueron False</span>
+<span class="kw">elif</span> opcion == 3:
+    <span class="kw">print</span>(<span class="str">&quot;Elegiste tamaño GRANDE, son $85&quot;</span>)
+
+<span class="com">#else: entra aquí solo si NINGUNA pregunta fue True (escribió 4, 7, 0, etc.)</span>
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">&quot;Opción no válida, elige 1, 2 o 3&quot;</span>)
+
+<span class="com">#Esta línea no tiene sangría, no pertenece al if, por eso se muestra siempre</span>
+<span class="kw">print</span>(<span class="str">&quot;\n¡Gracias por tu compra!&quot;</span>)</pre>
+        </div>
+        <div class="blk">
+          <h4>Pruébalo con estos datos</h4>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Prueba</th><th>Escribe</th><th>¿Qué sale?</th><th>¿Por qué?</th></tr>
+<tr><td>1</td><td>1</td><td>Chico, $55</td><td>La pregunta 1 fue True y ahí se detuvo</td></tr>
+<tr><td>2</td><td>3</td><td>Grande, $85</td><td>Las preguntas 1 y 2 fueron False, la 3 fue True</td></tr>
+<tr><td>3</td><td>7</td><td>Opción no válida</td><td>Ninguna pregunta fue True, entonces entró al <code class="in">else</code></td></tr>
+</table></div>
+        </div>
       </div>
     </div>
 
+    <!-- EJERCICIO 10 -->
     <div class="reto" style="--c:var(--grape)">
       <div class="reto-head">
-        <div class="n">2</div>
-        <div><small>MARTES · EJERCICIO 2</small><h3>Nivel de influencer</h3></div>
+        <div class="n">10</div>
+        <div><small>MARTES · EJERCICIO 10</small><h3>Nivel de influencer</h3></div>
       </div>
       <div class="reto-body">
-        <p>Pide el número de seguidores y muestra el nivel:</p>
-        <ul>
-          <li>Menos de 1,000: Principiante</li>
-          <li>De 1,000 a 9,999: Microinfluencer</li>
-          <li>De 10,000 a 99,999: Influencer</li>
-          <li>100,000 o más: Celebridad digital</li>
-        </ul>
-        <h4>Código</h4>
-        <figure class="shot"><img src="img/03_martes_ejercicio02.png" alt="Código del ejercicio 2 del martes" class="mediana70"></figure>
+        <div class="blk">
+          <h4>¿De qué se trata?</h4>
+          <p>En redes sociales, el nivel de una cuenta depende de cuántos seguidores tiene. El programa pide el número de seguidores y dice en qué nivel está:</p>
+          <ul>
+            <li>Menos de 1,000: Principiante</li>
+            <li>De 1,000 a 9,999: Microinfluencer</li>
+            <li>De 10,000 a 99,999: Influencer</li>
+            <li>100,000 o más: Celebridad digital</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>La lógica del programa</h4>
+          <p>Python revisa las preguntas <b>de arriba hacia abajo</b> y se detiene en la primera que sea True. El truco es que <b>cada pregunta ya sabe lo que respondieron las de arriba</b>: si llegamos a la pregunta 2, es porque la 1 fue False, o sea que ya sabemos que tiene 1,000 o más. Por eso no hay que volver a preguntarlo.</p>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Orden</th><th>Pregunta</th><th>Si es SÍ (True)</th><th>Si es NO (False)</th></tr>
+<tr><td>1</td><td>¿Tiene menos de 1,000?</td><td>Principiante, y <b>termina</b></td><td>Ya sabemos que tiene 1,000 o más. Pasa a la 2</td></tr>
+<tr><td>2</td><td>¿Tiene menos de 10,000?</td><td>Microinfluencer, y <b>termina</b></td><td>Ya sabemos que tiene 10,000 o más. Pasa a la 3</td></tr>
+<tr><td>3</td><td>¿Tiene menos de 100,000?</td><td>Influencer, y <b>termina</b></td><td>Se va al <code class="in">else</code></td></tr>
+<tr><td>4</td><td><code class="in">else</code></td><td>Celebridad digital</td><td></td></tr>
+</table></div>
+          <div class="tip"><b>El orden importa.</b> Si pusieras primero <code class="in">seguidores &lt; 100000</code>, alguien con 500 seguidores saldría como Influencer, porque 500 también es menor que 100,000 y Python se detiene ahí.</div>
+        </div>
+        <div class="blk">
+          <h4>Pasos</h4>
+          <ol>
+            <li>Pedir el nombre de usuario y el número de seguidores.</li>
+            <li>Revisar en orden, de menor a mayor, en qué nivel está.</li>
+            <li>Mostrar el nivel.</li>
+          </ol>
+        </div>
+        <div class="blk">
+          <h4>Código</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Nombre 1:    Matricula:     ***&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;*** Nombre 2:    Matricula:     ***\n&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;*** Ejercicio 10 Nivel de influencer ***&quot;</span>)
+
+<span class="com">#input() guarda texto; el usuario es texto, así que no lo convertimos</span>
+usuario = <span class="kw">input</span>(<span class="str">&quot;\nTu usuario: @&quot;</span>)
+<span class="com">#int() convierte a número entero para poder comparar</span>
+seguidores = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;¿Cuántos seguidores tienes? &quot;</span>))
+<span class="com">#Si el usuario escribe 25000, ahora seguidores vale 25000</span>
+
+<span class="kw">print</span>(<span class="str">f&quot;\n===== NIVEL DE @{usuario} =====&quot;</span>)
+
+<span class="com">#PREGUNTA 1: ¿25000 es menor que 1000? Respuesta: False, pasa a la siguiente</span>
+<span class="kw">if</span> seguidores &lt; 1000:
+    <span class="kw">print</span>(<span class="str">&quot;Nivel: Principiante&quot;</span>)
+
+<span class="com">#PREGUNTA 2: si llegamos aquí, YA SABEMOS que tiene 1000 o más</span>
+<span class="com">#¿25000 es menor que 10000? Respuesta: False, pasa a la siguiente</span>
+<span class="kw">elif</span> seguidores &lt; 10000:
+    <span class="kw">print</span>(<span class="str">&quot;Nivel: Microinfluencer&quot;</span>)
+
+<span class="com">#PREGUNTA 3: si llegamos aquí, YA SABEMOS que tiene 10000 o más</span>
+<span class="com">#¿25000 es menor que 100000? Respuesta: True, muestra el mensaje y TERMINA</span>
+<span class="kw">elif</span> seguidores &lt; 100000:
+    <span class="kw">print</span>(<span class="str">&quot;Nivel: Influencer&quot;</span>)
+
+<span class="com">#else: si ninguna fue True, tiene 100000 o más</span>
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">&quot;Nivel: Celebridad digital&quot;</span>)</pre>
+        </div>
+        <div class="blk">
+          <h4>Pruébalo con estos datos</h4>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Prueba</th><th>Usuario</th><th>Seguidores</th><th>¿Qué sale?</th><th>¿Por qué?</th></tr>
+<tr><td>1</td><td>ana</td><td>500</td><td>Principiante</td><td>La pregunta 1 fue True</td></tr>
+<tr><td>2</td><td>ana</td><td>25000</td><td>Influencer</td><td>Las preguntas 1 y 2 fueron False, la 3 fue True</td></tr>
+<tr><td>3</td><td>ana</td><td>150000</td><td>Celebridad digital</td><td>Ninguna fue True, entró al <code class="in">else</code></td></tr>
+</table></div>
+        </div>
       </div>
     </div>
 
+    <!-- EJERCICIO 11 -->
     <div class="reto" style="--c:var(--orange)">
       <div class="reto-head">
-        <div class="n">3</div>
-        <div><small>MARTES · EJERCICIO 3</small><h3>¿Qué me pongo hoy?</h3></div>
+        <div class="n">11</div>
+        <div><small>MARTES · EJERCICIO 11</small><h3>¿Qué me pongo hoy?</h3></div>
       </div>
       <div class="reto-body">
-        <p>Pide la temperatura del día y recomienda un outfit:</p>
-        <ul>
-          <li>Menos de 10 grados: chamarra, bufanda y botas</li>
-          <li>De 10 a 19: sudadera y jeans</li>
-          <li>De 20 a 29: playera y tenis</li>
-          <li>30 o más: short, gorra y mucha agua</li>
-        </ul>
-        <h4>Código</h4>
-        <figure class="shot"><img src="img/03_martes_ejercicio03.png" alt="Código del ejercicio 3 del martes" class="mediana70"></figure>
+        <div class="blk">
+          <h4>¿De qué se trata?</h4>
+          <p>Antes de salir revisas el clima para decidir qué ponerte. El programa pide la temperatura del día y recomienda un outfit:</p>
+          <ul>
+            <li>Menos de 10 grados: chamarra, bufanda y botas</li>
+            <li>De 10 a 19: sudadera y jeans</li>
+            <li>De 20 a 29: playera y tenis</li>
+            <li>30 o más: short, gorra y mucha agua</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>La lógica del programa</h4>
+          <p>Igual que en el ejercicio anterior, Python va <b>de arriba hacia abajo</b> y se detiene en la primera pregunta que sea True. Solo puede salir <b>un outfit</b>.</p>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Orden</th><th>Pregunta</th><th>Si es SÍ (True)</th><th>Si es NO (False)</th></tr>
+<tr><td>1</td><td>¿Hace menos de 10 grados?</td><td>Chamarra, bufanda y botas</td><td>Pasa a la 2</td></tr>
+<tr><td>2</td><td>¿Hace menos de 20 grados?</td><td>Sudadera y jeans</td><td>Pasa a la 3</td></tr>
+<tr><td>3</td><td>¿Hace menos de 30 grados?</td><td>Playera y tenis</td><td>Se va al <code class="in">else</code></td></tr>
+<tr><td>4</td><td><code class="in">else</code></td><td>Short, gorra y mucha agua</td><td></td></tr>
+</table></div>
+          <div class="tip">Fíjate en los límites: si hace exactamente 20 grados, la pregunta 2 (<code class="in">20 &lt; 20</code>) es False, así que le toca playera y tenis.</div>
+        </div>
+        <div class="blk">
+          <h4>Pasos</h4>
+          <ol>
+            <li>Pedir la temperatura del día.</li>
+            <li>Revisar en orden, de la más fría a la más caliente.</li>
+            <li>Mostrar el outfit recomendado.</li>
+          </ol>
+        </div>
+        <div class="blk">
+          <h4>Código</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Nombre 1:    Matricula:     ***&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;*** Nombre 2:    Matricula:     ***\n&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;*** Ejercicio 11 ¿Qué me pongo hoy? ***&quot;</span>)
+
+<span class="com">#int() convierte el texto a número entero para poder comparar</span>
+temperatura = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;\n¿Cuántos grados hace hoy? &quot;</span>))
+<span class="com">#Si el usuario escribe 15, ahora temperatura vale 15</span>
+
+<span class="kw">print</span>(<span class="str">&quot;\n===== OUTFIT DEL DÍA =====&quot;</span>)
+
+<span class="com">#PREGUNTA 1: ¿15 es menor que 10? Respuesta: False, pasa a la siguiente</span>
+<span class="kw">if</span> temperatura &lt; 10:
+    <span class="kw">print</span>(<span class="str">&quot;Hace mucho frío: chamarra, bufanda y botas&quot;</span>)
+
+<span class="com">#PREGUNTA 2: ya sabemos que hace 10 o más</span>
+<span class="com">#¿15 es menor que 20? Respuesta: True, muestra el mensaje y TERMINA</span>
+<span class="kw">elif</span> temperatura &lt; 20:
+    <span class="kw">print</span>(<span class="str">&quot;Está fresco: sudadera y jeans&quot;</span>)
+
+<span class="com">#PREGUNTA 3: ya sabemos que hace 20 o más</span>
+<span class="kw">elif</span> temperatura &lt; 30:
+    <span class="kw">print</span>(<span class="str">&quot;Está agradable: playera y tenis&quot;</span>)
+
+<span class="com">#else: hace 30 o más</span>
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">&quot;Hace mucho calor: short, gorra y mucha agua&quot;</span>)</pre>
+        </div>
+        <div class="blk">
+          <h4>Pruébalo con estos datos</h4>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Prueba</th><th>Temperatura</th><th>¿Qué sale?</th><th>¿Por qué?</th></tr>
+<tr><td>1</td><td>5</td><td>Chamarra, bufanda y botas</td><td>La pregunta 1 fue True</td></tr>
+<tr><td>2</td><td>20</td><td>Playera y tenis</td><td>20 no es menor que 20, así que la 2 fue False y la 3 fue True</td></tr>
+<tr><td>3</td><td>33</td><td>Short, gorra y mucha agua</td><td>Ninguna fue True, entró al <code class="in">else</code></td></tr>
+</table></div>
+        </div>
       </div>
     </div>
 
+    <!-- EJERCICIO 12 -->
     <div class="reto" style="--c:var(--pink)">
       <div class="reto-head">
-        <div class="n">4</div>
-        <div><small>MARTES · EJERCICIO 4</small><h3>Playlist según tu mood</h3></div>
+        <div class="n">12</div>
+        <div><small>MARTES · EJERCICIO 12</small><h3>Playlist según tu mood</h3></div>
       </div>
       <div class="reto-body">
-        <p>Pregunta al usuario cómo se siente y recomiéndale un tipo de música:</p>
-        <ul>
-          <li>1 = Feliz: pop</li>
-          <li>2 = Triste: baladas</li>
-          <li>3 = Con energía: reggaetón o K-pop</li>
-          <li>4 = Estudiando: lo-fi</li>
-        </ul>
-        <p>Si escribe otra opción, muestra "Ese mood no está en la lista".</p>
-        <h4>Código</h4>
-        <figure class="shot"><img src="img/03_martes_ejercicio04.png" alt="Código del ejercicio 4 del martes" class="mediana70"></figure>
+        <div class="blk">
+          <h4>¿De qué se trata?</h4>
+          <p>Las apps de música te recomiendan canciones según cómo te sientes. El programa muestra un menú de moods y recomienda un tipo de música:</p>
+          <ul>
+            <li>1 = Feliz: pop</li>
+            <li>2 = Triste: baladas</li>
+            <li>3 = Con energía: reggaetón o K-pop</li>
+            <li>4 = Estudiando: lo-fi</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>La lógica del programa</h4>
+          <p>Es igual que el menú de bebidas: el usuario escribe un número y Python lo compara con <code class="in">==</code> en orden. Solo puede salir <b>una playlist</b>.</p>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Orden</th><th>Pregunta</th><th>Si es SÍ (True)</th><th>Si es NO (False)</th></tr>
+<tr><td>1</td><td>¿Escribió 1?</td><td>Pop</td><td>Pasa a la 2</td></tr>
+<tr><td>2</td><td>¿Escribió 2?</td><td>Baladas</td><td>Pasa a la 3</td></tr>
+<tr><td>3</td><td>¿Escribió 3?</td><td>Reggaetón o K-pop</td><td>Pasa a la 4</td></tr>
+<tr><td>4</td><td>¿Escribió 4?</td><td>Lo-fi</td><td>Se va al <code class="in">else</code></td></tr>
+<tr><td>5</td><td><code class="in">else</code></td><td>"Ese mood no está en la lista"</td><td></td></tr>
+</table></div>
+          <div class="tip">Puedes poner todos los <code class="in">elif</code> que necesites. Aquí hay 3, pero podrían ser 10.</div>
+        </div>
+        <div class="blk">
+          <h4>Pasos</h4>
+          <ol>
+            <li>Mostrar el menú de moods.</li>
+            <li>Pedir al usuario que escriba un número del 1 al 4.</li>
+            <li>Revisar en orden qué número escribió y recomendar la música.</li>
+            <li>Si escribió otra opción, mostrar "Ese mood no está en la lista".</li>
+          </ol>
+        </div>
+        <div class="blk">
+          <h4>Código</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Nombre 1:    Matricula:     ***&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;*** Nombre 2:    Matricula:     ***\n&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;*** Ejercicio 12 Playlist según tu mood ***&quot;</span>)
+
+<span class="com">#Mostramos el menú de opciones</span>
+<span class="kw">print</span>(<span class="str">&quot;\n===== ¿CÓMO TE SIENTES HOY? =====&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;1 = Feliz&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;2 = Triste&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;3 = Con energía&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;4 = Estudiando&quot;</span>)
+
+<span class="com">#int() convierte el texto a número para compararlo con 1, 2, 3 y 4</span>
+mood = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;\nEscribe el número de tu mood: &quot;</span>))
+<span class="com">#Si el usuario escribe 4, ahora mood vale 4</span>
+
+<span class="com">#Python revisa en orden y se detiene en la primera que sea True</span>
+<span class="com">#¿4 es igual a 1? False, pasa a la siguiente</span>
+<span class="kw">if</span> mood == 1:
+    <span class="kw">print</span>(<span class="str">&quot;Te recomiendo una playlist de pop&quot;</span>)
+<span class="com">#¿4 es igual a 2? False, pasa a la siguiente</span>
+<span class="kw">elif</span> mood == 2:
+    <span class="kw">print</span>(<span class="str">&quot;Te recomiendo una playlist de baladas&quot;</span>)
+<span class="com">#¿4 es igual a 3? False, pasa a la siguiente</span>
+<span class="kw">elif</span> mood == 3:
+    <span class="kw">print</span>(<span class="str">&quot;Te recomiendo una playlist de reggaetón o K-pop&quot;</span>)
+<span class="com">#¿4 es igual a 4? True, muestra el mensaje y TERMINA</span>
+<span class="kw">elif</span> mood == 4:
+    <span class="kw">print</span>(<span class="str">&quot;Te recomiendo una playlist de lo-fi para concentrarte&quot;</span>)
+<span class="com">#else: escribió un número que no está en el menú</span>
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">&quot;Ese mood no está en la lista&quot;</span>)</pre>
+        </div>
+        <div class="blk">
+          <h4>Pruébalo con estos datos</h4>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Prueba</th><th>Escribe</th><th>¿Qué sale?</th><th>¿Por qué?</th></tr>
+<tr><td>1</td><td>1</td><td>Pop</td><td>La pregunta 1 fue True</td></tr>
+<tr><td>2</td><td>4</td><td>Lo-fi</td><td>Las preguntas 1, 2 y 3 fueron False, la 4 fue True</td></tr>
+<tr><td>3</td><td>9</td><td>Ese mood no está en la lista</td><td>Ninguna fue True, entró al <code class="in">else</code></td></tr>
+</table></div>
+        </div>
       </div>
     </div>
 
+    <!-- EJERCICIO 13 -->
     <div class="reto" style="--c:var(--mint)">
       <div class="reto-head">
-        <div class="n">5</div>
-        <div><small>MARTES · EJERCICIO 5</small><h3>Mensaje según tu calificación</h3></div>
+        <div class="n">13</div>
+        <div><small>MARTES · EJERCICIO 13</small><h3>Mensaje según tu calificación</h3></div>
       </div>
       <div class="reto-body">
-        <p>Pide la calificación del examen de Cisco (0 a 100) y muestra:</p>
-        <ul>
-          <li>90 o más: "¡Excelente! Eres crack"</li>
-          <li>De 80 a 89: "Muy bien"</li>
-          <li>De 70 a 79: "Aprobaste, pero puedes mejorar"</li>
-          <li>Menos de 70: "Reprobaste, ¡a estudiar!"</li>
-        </ul>
-        <p><b>Reto extra:</b> si escribe un número mayor a 100 o menor a 0, muestra "Calificación no válida". (Pista: ponlo como la primera condición.)</p>
-        <h4>Código</h4>
-        <figure class="shot"><img src="img/03_martes_ejercicio05.png" alt="Código del ejercicio 5 del martes" class="mediana70"></figure>
+        <div class="blk">
+          <h4>¿De qué se trata?</h4>
+          <p>Ya hiciste el examen de Cisco (de 0 a 100). El programa pide la calificación y muestra un mensaje:</p>
+          <ul>
+            <li>Mayor a 100 o menor a 0: "Calificación no válida"</li>
+            <li>90 o más: "¡Excelente! Eres crack"</li>
+            <li>De 80 a 89: "Muy bien"</li>
+            <li>De 70 a 79: "Aprobaste, pero puedes mejorar"</li>
+            <li>Menos de 70: "Reprobaste, ¡a estudiar!"</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>La lógica del programa</h4>
+          <p>Aquí lo nuevo es que <b>primero revisamos si el dato es válido</b>. Si alguien escribe 150, no queremos que le diga "Excelente". Por eso las preguntas de "no válida" van <b>hasta arriba</b>: si una es True, Python se detiene ahí y ya no revisa las demás.</p>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Orden</th><th>Pregunta</th><th>Si es SÍ (True)</th><th>Si es NO (False)</th></tr>
+<tr><td>1</td><td>¿Es mayor a 100?</td><td>"Calificación no válida"</td><td>Pasa a la 2</td></tr>
+<tr><td>2</td><td>¿Es menor a 0?</td><td>"Calificación no válida"</td><td>Pasa a la 3</td></tr>
+<tr><td>3</td><td>¿Es 90 o más?</td><td>"¡Excelente! Eres crack"</td><td>Pasa a la 4</td></tr>
+<tr><td>4</td><td>¿Es 80 o más?</td><td>"Muy bien"</td><td>Pasa a la 5</td></tr>
+<tr><td>5</td><td>¿Es 70 o más?</td><td>"Aprobaste, pero puedes mejorar"</td><td>Se va al <code class="in">else</code></td></tr>
+<tr><td>6</td><td><code class="in">else</code></td><td>"Reprobaste, ¡a estudiar!"</td><td></td></tr>
+</table></div>
+          <div class="tip">Ahora vamos <b>de mayor a menor</b> (90, 80, 70). También funciona, siempre que respetes el orden. Mañana veremos <code class="in">or</code>, que sirve para juntar las preguntas 1 y 2 en una sola.</div>
+        </div>
+        <div class="blk">
+          <h4>Pasos</h4>
+          <ol>
+            <li>Pedir la calificación del examen.</li>
+            <li>Revisar primero si la calificación es válida (entre 0 y 100).</li>
+            <li>Si es válida, revisar de mayor a menor qué mensaje le toca.</li>
+            <li>Mostrar el mensaje.</li>
+          </ol>
+        </div>
+        <div class="blk">
+          <h4>Código</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Nombre 1:    Matricula:     ***&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;*** Nombre 2:    Matricula:     ***\n&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;*** Ejercicio 13 Mensaje según tu calificación ***&quot;</span>)
+
+<span class="com">#int() convierte el texto a número entero para poder comparar</span>
+calificacion = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;\n¿Qué calificación sacaste en el examen de Cisco? &quot;</span>))
+<span class="com">#Si el usuario escribe 85, ahora calificacion vale 85</span>
+
+<span class="kw">print</span>(<span class="str">&quot;\n===== RESULTADO =====&quot;</span>)
+
+<span class="com">#PRIMERO revisamos que la calificación sea válida</span>
+<span class="com">#¿85 es mayor que 100? False, pasa a la siguiente</span>
+<span class="kw">if</span> calificacion &gt; 100:
+    <span class="kw">print</span>(<span class="str">&quot;Calificación no válida, debe ser de 0 a 100&quot;</span>)
+
+<span class="com">#¿85 es menor que 0? False, pasa a la siguiente</span>
+<span class="kw">elif</span> calificacion &lt; 0:
+    <span class="kw">print</span>(<span class="str">&quot;Calificación no válida, debe ser de 0 a 100&quot;</span>)
+
+<span class="com">#Si llegamos aquí, YA SABEMOS que la calificación es válida</span>
+<span class="com">#¿85 es mayor o igual que 90? False, pasa a la siguiente</span>
+<span class="kw">elif</span> calificacion &gt;= 90:
+    <span class="kw">print</span>(<span class="str">&quot;¡Excelente! Eres crack&quot;</span>)
+
+<span class="com">#¿85 es mayor o igual que 80? True, muestra el mensaje y TERMINA</span>
+<span class="kw">elif</span> calificacion &gt;= 80:
+    <span class="kw">print</span>(<span class="str">&quot;Muy bien&quot;</span>)
+
+<span class="com">#Ya sabemos que es menor que 80</span>
+<span class="kw">elif</span> calificacion &gt;= 70:
+    <span class="kw">print</span>(<span class="str">&quot;Aprobaste, pero puedes mejorar&quot;</span>)
+
+<span class="com">#else: es menor que 70</span>
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">&quot;Reprobaste, ¡a estudiar!&quot;</span>)</pre>
+        </div>
+        <div class="blk">
+          <h4>Pruébalo con estos datos</h4>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Prueba</th><th>Calificación</th><th>¿Qué sale?</th><th>¿Por qué?</th></tr>
+<tr><td>1</td><td>95</td><td>¡Excelente! Eres crack</td><td>Las preguntas 1 y 2 fueron False, la 3 fue True</td></tr>
+<tr><td>2</td><td>75</td><td>Aprobaste, pero puedes mejorar</td><td>La primera True fue la 5</td></tr>
+<tr><td>3</td><td>120</td><td>Calificación no válida</td><td>La pregunta 1 fue True y ahí se detuvo</td></tr>
+</table></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EJERCICIO 14 -->
+    <div class="reto" style="--c:var(--teal)">
+      <div class="reto-head">
+        <div class="n">14</div>
+        <div><small>MARTES · EJERCICIO 14</small><h3>Costo de envío</h3></div>
+      </div>
+      <div class="reto-body">
+        <div class="blk">
+          <h4>¿De qué se trata?</h4>
+          <p>Pediste algo en una app de entregas y el costo de envío depende de qué tan lejos vives:</p>
+          <ul>
+            <li>3 km o menos: envío gratis</li>
+            <li>Más de 3 y hasta 10 km: $39</li>
+            <li>Más de 10 y hasta 20 km: $69</li>
+            <li>Más de 20 km: no hay envío, lo recoges en tienda (envío $0)</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>La lógica del programa</h4>
+          <p>Esta vez, en lugar de solo mostrar un mensaje, <b>adentro de cada opción guardamos un valor</b> en la variable <code class="in">costo_envio</code>. Solo una opción se ejecuta, así que la variable termina con un solo valor. Al final, <b>afuera del if</b>, sumamos el pedido más el envío.</p>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Orden</th><th>Pregunta</th><th>Si es SÍ (True)</th><th>Si es NO (False)</th></tr>
+<tr><td>1</td><td>¿Vive a 3 km o menos?</td><td>costo_envio = 0</td><td>Pasa a la 2</td></tr>
+<tr><td>2</td><td>¿Vive a 10 km o menos?</td><td>costo_envio = 39</td><td>Pasa a la 3</td></tr>
+<tr><td>3</td><td>¿Vive a 20 km o menos?</td><td>costo_envio = 69</td><td>Se va al <code class="in">else</code></td></tr>
+<tr><td>4</td><td><code class="in">else</code></td><td>costo_envio = 0 y aviso de recoger en tienda</td><td></td></tr>
+</table></div>
+          <div class="tip">La suma del total <b>no tiene sangría</b>, por eso se hace siempre, sin importar qué opción se eligió.</div>
+        </div>
+        <div class="blk">
+          <h4>Pasos</h4>
+          <ol>
+            <li>Pedir el total del pedido y la distancia en km.</li>
+            <li>Revisar en orden la distancia y guardar el costo de envío.</li>
+            <li>Sumar el pedido más el envío.</li>
+            <li>Mostrar el costo de envío y el total a pagar.</li>
+          </ol>
+        </div>
+        <div class="blk">
+          <h4>Código</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Nombre 1:    Matricula:     ***&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;*** Nombre 2:    Matricula:     ***\n&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;*** Ejercicio 14 Costo de envío ***&quot;</span>)
+
+<span class="com">#float() convierte a número con decimales, porque el dinero y los km pueden tener decimales</span>
+pedido = <span class="kw">float</span>(<span class="kw">input</span>(<span class="str">&quot;\n¿Cuánto es tu pedido? $&quot;</span>))
+<span class="com">#Si el usuario escribe 250, ahora pedido vale 250.0</span>
+distancia = <span class="kw">float</span>(<span class="kw">input</span>(<span class="str">&quot;¿A cuántos km vives de la tienda? &quot;</span>))
+<span class="com">#Si el usuario escribe 8, ahora distancia vale 8.0</span>
+
+<span class="com">#En cada opción GUARDAMOS el costo de envío en la misma variable</span>
+<span class="com">#¿8.0 es menor o igual que 3? False, pasa a la siguiente</span>
+<span class="kw">if</span> distancia &lt;= 3:
+    costo_envio = 0
+    <span class="kw">print</span>(<span class="str">&quot;\n¡Envío gratis!&quot;</span>)
+
+<span class="com">#¿8.0 es menor o igual que 10? True, guarda 39 y TERMINA</span>
+<span class="kw">elif</span> distancia &lt;= 10:
+    costo_envio = 39
+    <span class="kw">print</span>(<span class="str">&quot;\nEl envío cuesta $39&quot;</span>)
+
+<span class="kw">elif</span> distancia &lt;= 20:
+    costo_envio = 69
+    <span class="kw">print</span>(<span class="str">&quot;\nEl envío cuesta $69&quot;</span>)
+
+<span class="com">#else: vive a más de 20 km</span>
+<span class="kw">else</span>:
+    costo_envio = 0
+    <span class="kw">print</span>(<span class="str">&quot;\nNo hacemos envíos a más de 20 km, recoge tu pedido en tienda&quot;</span>)
+
+<span class="com">#Esta parte no tiene sangría, se hace SIEMPRE</span>
+<span class="com">#Ahora costo_envio vale 39, esta fórmula dice: total = 250.0 + 39</span>
+total = pedido + costo_envio
+<span class="kw">print</span>(<span class="str">f&quot;Pedido: ${pedido:.2f}&quot;</span>)
+<span class="kw">print</span>(<span class="str">f&quot;Envío: ${costo_envio:.2f}&quot;</span>)
+<span class="kw">print</span>(<span class="str">f&quot;TOTAL A PAGAR: ${total:.2f}&quot;</span>)</pre>
+        </div>
+        <div class="blk">
+          <h4>Pruébalo con estos datos</h4>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Prueba</th><th>Pedido</th><th>Km</th><th>¿Qué sale?</th><th>¿Por qué?</th></tr>
+<tr><td>1</td><td>250</td><td>2</td><td>Envío gratis, total $250.00</td><td>La pregunta 1 fue True</td></tr>
+<tr><td>2</td><td>250</td><td>8</td><td>Envío $39, total $289.00</td><td>La 1 fue False, la 2 fue True</td></tr>
+<tr><td>3</td><td>250</td><td>25</td><td>Recoger en tienda, total $250.00</td><td>Ninguna fue True, entró al <code class="in">else</code></td></tr>
+</table></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EJERCICIO 15 -->
+    <div class="reto" style="--c:var(--coral)">
+      <div class="reto-head">
+        <div class="n">15</div>
+        <div><small>MARTES · EJERCICIO 15</small><h3>Rango en tu videojuego</h3></div>
+      </div>
+      <div class="reto-body">
+        <div class="blk">
+          <h4>¿De qué se trata?</h4>
+          <p>En tu videojuego favorito subes de rango según tus puntos. El programa dice en qué rango estás y cuántos puntos te faltan para el siguiente:</p>
+          <ul>
+            <li>Menos de 1,000: Bronce (el siguiente es Plata, en 1,000)</li>
+            <li>De 1,000 a 1,999: Plata (el siguiente es Oro, en 2,000)</li>
+            <li>De 2,000 a 2,999: Oro (el siguiente es Diamante, en 3,000)</li>
+            <li>3,000 o más: Diamante, el rango máximo</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>La lógica del programa</h4>
+          <p>Ahora empezamos por <b>el rango más alto</b> y vamos bajando. Adentro de cada opción hacemos una cuenta distinta para saber cuántos puntos faltan.</p>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Orden</th><th>Pregunta</th><th>Si es SÍ (True)</th><th>Si es NO (False)</th></tr>
+<tr><td>1</td><td>¿Tiene 3,000 o más?</td><td>Diamante, rango máximo</td><td>Pasa a la 2</td></tr>
+<tr><td>2</td><td>¿Tiene 2,000 o más?</td><td>Oro, faltan 3000 menos sus puntos</td><td>Pasa a la 3</td></tr>
+<tr><td>3</td><td>¿Tiene 1,000 o más?</td><td>Plata, faltan 2000 menos sus puntos</td><td>Se va al <code class="in">else</code></td></tr>
+<tr><td>4</td><td><code class="in">else</code></td><td>Bronce, faltan 1000 menos sus puntos</td><td></td></tr>
+</table></div>
+          <div class="tip">Adentro de un <code class="in">if</code>, <code class="in">elif</code> o <code class="in">else</code> puede haber varias líneas, hasta cuentas. Todo lo que tenga sangría le pertenece.</div>
+        </div>
+        <div class="blk">
+          <h4>Pasos</h4>
+          <ol>
+            <li>Pedir los puntos del jugador.</li>
+            <li>Revisar en orden, del rango más alto al más bajo.</li>
+            <li>Mostrar el rango y calcular cuántos puntos faltan para el siguiente.</li>
+          </ol>
+        </div>
+        <div class="blk">
+          <h4>Código</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Nombre 1:    Matricula:     ***&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;*** Nombre 2:    Matricula:     ***\n&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;*** Ejercicio 15 Rango en tu videojuego ***&quot;</span>)
+
+<span class="com">#int() convierte el texto a número entero para poder comparar y hacer cuentas</span>
+puntos = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;\n¿Cuántos puntos tienes? &quot;</span>))
+<span class="com">#Si el usuario escribe 2500, ahora puntos vale 2500</span>
+
+<span class="kw">print</span>(<span class="str">&quot;\n===== TU RANGO =====&quot;</span>)
+
+<span class="com">#Empezamos por el rango MÁS ALTO</span>
+<span class="com">#¿2500 es mayor o igual que 3000? False, pasa a la siguiente</span>
+<span class="kw">if</span> puntos &gt;= 3000:
+    <span class="kw">print</span>(<span class="str">&quot;Rango: DIAMANTE&quot;</span>)
+    <span class="kw">print</span>(<span class="str">&quot;¡Ya estás en el rango máximo!&quot;</span>)
+
+<span class="com">#¿2500 es mayor o igual que 2000? True, entra aquí y TERMINA</span>
+<span class="kw">elif</span> puntos &gt;= 2000:
+    <span class="com">#Esta fórmula dice: faltan = 3000 - 2500</span>
+    faltan = 3000 - puntos
+    <span class="com">#Ahora faltan vale 500</span>
+    <span class="kw">print</span>(<span class="str">&quot;Rango: ORO&quot;</span>)
+    <span class="kw">print</span>(<span class="str">f&quot;Te faltan {faltan} puntos para Diamante&quot;</span>)
+
+<span class="kw">elif</span> puntos &gt;= 1000:
+    faltan = 2000 - puntos
+    <span class="kw">print</span>(<span class="str">&quot;Rango: PLATA&quot;</span>)
+    <span class="kw">print</span>(<span class="str">f&quot;Te faltan {faltan} puntos para Oro&quot;</span>)
+
+<span class="com">#else: tiene menos de 1000</span>
+<span class="kw">else</span>:
+    faltan = 1000 - puntos
+    <span class="kw">print</span>(<span class="str">&quot;Rango: BRONCE&quot;</span>)
+    <span class="kw">print</span>(<span class="str">f&quot;Te faltan {faltan} puntos para Plata&quot;</span>)</pre>
+        </div>
+        <div class="blk">
+          <h4>Pruébalo con estos datos</h4>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Prueba</th><th>Puntos</th><th>¿Qué sale?</th><th>¿Por qué?</th></tr>
+<tr><td>1</td><td>500</td><td>Bronce, faltan 500 para Plata</td><td>Ninguna fue True, entró al <code class="in">else</code></td></tr>
+<tr><td>2</td><td>2500</td><td>Oro, faltan 500 para Diamante</td><td>La 1 fue False, la 2 fue True</td></tr>
+<tr><td>3</td><td>3200</td><td>Diamante, rango máximo</td><td>La pregunta 1 fue True</td></tr>
+</table></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EJERCICIO 16 -->
+    <div class="reto" style="--c:var(--grape)">
+      <div class="reto-head">
+        <div class="n">16</div>
+        <div><small>MARTES · RETO INTEGRADOR</small><h3>Reto: arma tu bubble tea</h3></div>
+      </div>
+      <div class="reto-body">
+        <div class="blk">
+          <h4>¿De qué se trata?</h4>
+          <p>Vas a armar el pedido completo de un bubble tea. El usuario elige el tamaño y el topping, y el programa calcula el total:</p>
+          <ul>
+            <li>Tamaño: 1 = Chico ($55), 2 = Mediano ($70), 3 = Grande ($85). Si escribe otro número, se le da tamaño chico.</li>
+            <li>Topping: 1 = Perlas de tapioca ($15), 2 = Jelly de frutas ($12), 3 = Sin topping ($0). Si escribe otro número, va sin topping.</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>La lógica del programa</h4>
+          <p>Aquí hay <b>dos decisiones separadas</b>: una para el tamaño y otra para el topping. Son <b>dos bloques</b> de <code class="in">if/elif/else</code>, uno después del otro. Cada bloque guarda un precio en su variable, y al final, afuera de los dos, sumamos.</p>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Parte</th><th>Qué revisa</th><th>Qué guarda</th><th></th></tr>
+<tr><td>Bloque 1</td><td>¿Qué tamaño eligió? (1, 2, 3 o else)</td><td>Guarda precio_bebida</td><td>Siempre guarda un precio, porque tiene else</td></tr>
+<tr><td>Bloque 2</td><td>¿Qué topping eligió? (1, 2, 3 o else)</td><td>Guarda precio_topping</td><td>Siempre guarda un precio, porque tiene else</td></tr>
+<tr><td>Al final</td><td>total = precio_bebida + precio_topping</td><td>Se calcula siempre</td><td></td></tr>
+</table></div>
+          <div class="tip">Que el bloque 1 termine <b>no</b> significa que el programa termine. Python sigue con el bloque 2, porque es otra decisión diferente.</div>
+        </div>
+        <div class="blk">
+          <h4>Pasos</h4>
+          <ol>
+            <li>Mostrar el menú de tamaños, pedir la opción y guardar el precio de la bebida.</li>
+            <li>Mostrar el menú de toppings, pedir la opción y guardar el precio del topping.</li>
+            <li>Sumar los dos precios.</li>
+            <li>Mostrar el resumen del pedido y el total.</li>
+          </ol>
+        </div>
+        <div class="blk">
+          <h4>Código</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Nombre 1:    Matricula:     ***&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;*** Nombre 2:    Matricula:     ***\n&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;*** Ejercicio 16 Reto: arma tu bubble tea ***&quot;</span>)
+
+<span class="com">#===== DECISIÓN 1: EL TAMAÑO =====</span>
+<span class="kw">print</span>(<span class="str">&quot;\n===== TAMAÑOS =====&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;1 = Chico ($55)   2 = Mediano ($70)   3 = Grande ($85)&quot;</span>)
+tamano = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;Elige tu tamaño: &quot;</span>))
+<span class="com">#Si el usuario escribe 2, ahora tamano vale 2</span>
+
+<span class="com">#En cada opción guardamos el nombre y el precio del tamaño</span>
+<span class="kw">if</span> tamano == 1:
+    nombre_tamano = <span class="str">&quot;Chico&quot;</span>
+    precio_bebida = 55
+<span class="com">#¿2 es igual a 2? True, guarda Mediano y 70, y TERMINA este bloque</span>
+<span class="kw">elif</span> tamano == 2:
+    nombre_tamano = <span class="str">&quot;Mediano&quot;</span>
+    precio_bebida = 70
+<span class="kw">elif</span> tamano == 3:
+    nombre_tamano = <span class="str">&quot;Grande&quot;</span>
+    precio_bebida = 85
+<span class="com">#else: opción no válida, le damos chico</span>
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">&quot;Opción no válida, te damos tamaño chico&quot;</span>)
+    nombre_tamano = <span class="str">&quot;Chico&quot;</span>
+    precio_bebida = 55
+
+<span class="com">#===== DECISIÓN 2: EL TOPPING =====</span>
+<span class="com">#Este es OTRO bloque, Python lo revisa aunque el anterior ya haya terminado</span>
+<span class="kw">print</span>(<span class="str">&quot;\n===== TOPPINGS =====&quot;</span>)
+<span class="kw">print</span>(<span class="str">&quot;1 = Perlas de tapioca ($15)   2 = Jelly de frutas ($12)   3 = Sin topping ($0)&quot;</span>)
+topping = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;Elige tu topping: &quot;</span>))
+<span class="com">#Si el usuario escribe 1, ahora topping vale 1</span>
+
+<span class="com">#¿1 es igual a 1? True, guarda Perlas y 15, y TERMINA este bloque</span>
+<span class="kw">if</span> topping == 1:
+    nombre_topping = <span class="str">&quot;Perlas de tapioca&quot;</span>
+    precio_topping = 15
+<span class="kw">elif</span> topping == 2:
+    nombre_topping = <span class="str">&quot;Jelly de frutas&quot;</span>
+    precio_topping = 12
+<span class="kw">elif</span> topping == 3:
+    nombre_topping = <span class="str">&quot;Sin topping&quot;</span>
+    precio_topping = 0
+<span class="com">#else: opción no válida, va sin topping</span>
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">&quot;Opción no válida, va sin topping&quot;</span>)
+    nombre_topping = <span class="str">&quot;Sin topping&quot;</span>
+    precio_topping = 0
+
+<span class="com">#===== TOTAL =====</span>
+<span class="com">#Sin sangría: se hace SIEMPRE. Esta fórmula dice: total = 70 + 15</span>
+total = precio_bebida + precio_topping
+<span class="com">#Ahora total vale 85</span>
+
+<span class="kw">print</span>(<span class="str">&quot;\n===== TU PEDIDO =====&quot;</span>)
+<span class="kw">print</span>(<span class="str">f&quot;Tamaño: {nombre_tamano}  ${precio_bebida}&quot;</span>)
+<span class="kw">print</span>(<span class="str">f&quot;Topping: {nombre_topping}  ${precio_topping}&quot;</span>)
+<span class="kw">print</span>(<span class="str">f&quot;TOTAL: ${total}&quot;</span>)</pre>
+        </div>
+        <div class="blk">
+          <h4>Pruébalo con estos datos</h4>
+          <div class="tbl-wrap"><table class="tbl">
+<tr><th>Prueba</th><th>Tamaño</th><th>Topping</th><th>¿Qué sale?</th><th>¿Por qué?</th></tr>
+<tr><td>1</td><td>2</td><td>1</td><td>Mediano + Perlas, total $85</td><td>Bloque 1 entró a la opción 2, bloque 2 a la opción 1</td></tr>
+<tr><td>2</td><td>3</td><td>3</td><td>Grande sin topping, total $85</td><td>Bloque 1 entró a la opción 3, bloque 2 a la opción 3</td></tr>
+<tr><td>3</td><td>7</td><td>2</td><td>Aviso de no válida, Chico + Jelly, total $67</td><td>Bloque 1 entró al <code class="in">else</code>, bloque 2 a la opción 2</td></tr>
+</table></div>
+        </div>
       </div>
     </div>
   </div>
