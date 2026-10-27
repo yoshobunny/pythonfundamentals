@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagramas if else</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<div class="wrap menu-pagina">
+  <a href="#figuras">Figuras</a>
+  <a href="#if">if</a>
+  <a href="#else">if y else</a>
+  <a href="#elif">if, elif y else</a>
+  <a href="#comparar">Lunes vs martes</a>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag" style="background:var(--sky)">Martes 27</span>
+    <h1><span class="c1">¿Cómo</span> <span class="c2">decide</span> <span class="c3">Python?</span></h1>
+    <p class="lead">El rombo de los diagramas de flujo ahora en Python: if, else y elif.</p>
+    <div class="def">Cada diagrama tiene su <strong>programa en Python</strong>. Córrelo con los datos de la tabla y sigue el camino en el diagrama con el dedo: <strong>lo que sale en la terminal es el camino que tomó Python</strong>.</div>
+  </div>
+</header>
+
+<!-- FIGURAS -->
+<section id="figuras">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">Antes de empezar</span>
+    <h2 class="sec-title">¿Qué significa cada figura?</h2>
+    <p class="sec-sub">Son las mismas figuras que usamos en los diagramas de flujo de algoritmos. Cada una corresponde a una parte del código.</p>
+    <div class="tbl-wrap"><table class="tbl"><tr><th>Figura</th><th>Qué significa</th><th>En Python</th></tr><tr><td><span class="oval" style="padding:6px 18px">Inicio / Fin</span></td><td>Dónde empieza y dónde termina el programa</td><td>La primera y la última línea</td></tr><tr><td><span class="para" style="padding:6px 18px"><span>Leer</span></span></td><td>El usuario escribe un dato</td><td><code class="in">input()</code></td></tr><tr><td><span style="display:inline-block;background:var(--sun);border:3px solid var(--ink);padding:4px 14px;font-weight:800;transform:rotate(-3deg)">◆ Rombo</span></td><td>Una pregunta de Sí o No</td><td><code class="in">if</code>, <code class="in">elif</code></td></tr><tr><td><span class="rect" style="padding:6px 18px">Rectángulo</span></td><td>Una acción: mostrar algo</td><td><code class="in">print()</code></td></tr></table></div>
+  </div>
+</section>
+
+<!-- 1 IF -->
+<section id="if" style="padding-top:0">
+  <div class="wrap">
+    <div class="topic" style="--c:var(--mint)">
+      <h3><span class="num">1</span>if: si pasa algo, hago algo</h3>
+      <p><b>¿Qué hace este programa?</b> Pregunta cuánta batería tienes. Si tienes 20% o menos, te avisa que conectes el cargador. Si tienes más, no te dice nada de la batería. Al final, siempre muestra "Revisión terminada".</p>
+      <svg viewBox="0 0 600 620" role="img" aria-label="Diagrama de if simple" style="width:100%;max-width:600px;height:auto;display:block;margin:10px auto"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker></defs><rect x="160" y="18" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="230" y="40.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Inicio</text><polyline points="230,62 230,96" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="134.0,98.0 354.0,98.0 326.0,152.0 106.0,152.0" fill="#3DC47E" stroke="#2B2D42" stroke-width="3"/><text x="230" y="125.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Leer bateria</text><polyline points="230,152 230,196" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="230,196.0 340.0,252 230,308.0 120.0,252" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="230" y="252.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿bateria &lt;= 20?</text><polyline points="340,252 470,252 470,322" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="350.5" y="222" width="99" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="400" y="235.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí (True)</text><rect x="365.0" y="322.0" width="210" height="56" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="470" y="341.6" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Batería baja,</text><text x="470" y="358.4" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">conecta tu cargador</text><polyline points="470,378 470,440 238,440" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polyline points="230,308 230,450" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="118.0" y="358" width="108" height="24" rx="12" fill="#FF6B6B" stroke="#2B2D42" stroke-width="2"/><text x="172" y="371.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">No (False)</text><rect x="125.0" y="450.0" width="210" height="56" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="230" y="478.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Revisión terminada</text><polyline points="230,506 230,548" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="160" y="550" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="230" y="572.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Fin</text></svg>
+      <h4 style="margin-top:6px">Cómo se lee el diagrama</h4>
+      <ol>
+        <li>Empieza en <b>Inicio</b> y lee la batería (paralelogramo verde).</li>
+        <li>Llega al <b>rombo</b> y hace la pregunta: <code class="in">¿bateria &lt;= 20?</code></li>
+        <li>Si la respuesta es <b>Sí</b>, va a la derecha, muestra "Batería baja, conecta tu cargador" y <b>regresa</b> al camino principal.</li>
+        <li>Si la respuesta es <b>No</b>, baja directo y <b>se salta</b> el aviso.</li>
+        <li>Por los dos caminos llega a "Revisión terminada" y termina.</li>
+      </ol>
+      <h4>Código (ejemplo1_bateria.py)</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Ejemplo 1: if simple, la batería ***\n&quot;</span>)
+
+<span class="com">#LEER BATERIA (paralelogramo verde)</span>
+<span class="com">#int() convierte el texto a número entero para poder comparar</span>
+bateria = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;¿Cuánta batería tienes? &quot;</span>))
+<span class="com">#Si el usuario escribe 15, ahora bateria vale 15</span>
+
+<span class="com">#LA PREGUNTA (rombo amarillo)</span>
+<span class="com">#¿15 es menor o igual que 20? Respuesta: True, entonces SÍ entra</span>
+<span class="com">#Si escribiera 80, la respuesta sería False y Python se SALTA lo de adentro</span>
+<span class="kw">if</span> bateria &lt;= 20:
+    <span class="com">#CAMINO DEL SÍ (rectángulo de la derecha)</span>
+    <span class="com">#Tiene sangría, por eso solo se ejecuta si la respuesta es True</span>
+    <span class="kw">print</span>(<span class="str">&quot;Batería baja, conecta tu cargador&quot;</span>)
+
+<span class="com">#CAMINO PRINCIPAL (rectángulo de abajo)</span>
+<span class="com">#No tiene sangría, por aquí pasan el Sí y el No</span>
+<span class="kw">print</span>(<span class="str">&quot;Revisión terminada&quot;</span>)</pre>
+      <h4>Pruébalo con estos datos</h4>
+      <div class="tbl-wrap"><table class="tbl"><tr><th>Escribe</th><th>Lo que sale en la terminal</th><th>Camino en el diagrama</th></tr><tr><td>15</td><td><code class="in">Batería baja, conecta tu cargador</code><br><code class="in">Revisión terminada</code></td><td>Sí: va a la derecha, muestra el aviso y regresa al camino principal</td></tr><tr><td>80</td><td><code class="in">Revisión terminada</code></td><td>No: baja directo y se salta el aviso</td></tr><tr><td>20</td><td><code class="in">Batería baja, conecta tu cargador</code><br><code class="in">Revisión terminada</code></td><td>Sí, porque la pregunta es menor <b>o igual</b></td></tr></table></div>
+      <div class="tip">Si un mensaje no sale, <b>no es error</b>: Python tomó el camino del No y se lo saltó.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 ELSE -->
+<section id="else" style="padding-top:0">
+  <div class="wrap">
+    <div class="topic" style="--c:var(--pink)">
+      <h3><span class="num">2</span>if y else: el plan B</h3>
+      <p><b>¿Qué hace este programa?</b> Pregunta cuántos grados hace. Si hace menos de 15, te dice que te pongas sudadera. <b>Si no</b> (<code class="in">else</code>), te dice que te pongas playera. Al final, siempre te desea buen día.</p>
+      <svg viewBox="0 0 600 640" role="img" aria-label="Diagrama de if con else" style="width:100%;max-width:600px;height:auto;display:block;margin:10px auto"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker></defs><rect x="230" y="18" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="300" y="40.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Inicio</text><polyline points="300,62 300,96" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="204.0,98.0 424.0,98.0 396.0,152.0 176.0,152.0" fill="#3DC47E" stroke="#2B2D42" stroke-width="3"/><text x="300" y="125.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Leer temperatura</text><polyline points="300,152 300,196" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="300,196.0 410.0,252 300,308.0 190.0,252" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="300" y="252.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿temperatura &lt; 15?</text><polyline points="190,252 120,252 120,322" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="120.5" y="222" width="99" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="170" y="235.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí (True)</text><polyline points="410,252 480,252 480,322" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="376.0" y="222" width="108" height="24" rx="12" fill="#FF6B6B" stroke="#2B2D42" stroke-width="2"/><text x="430" y="235.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">No (False)</text><rect x="15.0" y="322.0" width="210" height="56" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="120" y="341.6" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">if:</text><text x="120" y="358.4" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Hace frío, ponte sudadera</text><rect x="375.0" y="322.0" width="210" height="56" rx="8" fill="#F15BB5" stroke="#2B2D42" stroke-width="3"/><text x="480" y="341.6" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">else:</text><text x="480" y="358.4" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Hace calor, ponte playera</text><polyline points="120,378 120,430 292,430" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" /><polyline points="480,378 480,430 308,430" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" /><polyline points="292,430 300,430 300,470" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="195.0" y="470.0" width="210" height="56" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="300" y="498.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">¡Que tengas buen día!</text><polyline points="300,526 300,568" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="230" y="570" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="300" y="592.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Fin</text></svg>
+      <h4 style="margin-top:6px">Cómo se lee el diagrama</h4>
+      <ol>
+        <li>Lee la temperatura.</li>
+        <li>Llega al rombo: <code class="in">¿temperatura &lt; 15?</code></li>
+        <li>Si es <b>Sí</b>, se va a la <b>izquierda</b> (el <code class="in">if</code>): "Hace frío, ponte sudadera".</li>
+        <li>Si es <b>No</b>, se va a la <b>derecha</b> (el <code class="in">else</code>): "Hace calor, ponte playera".</li>
+        <li>Los dos caminos se juntan en "¡Que tengas buen día!".</li>
+      </ol>
+      <h4>Código (ejemplo2_temperatura.py)</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Ejemplo 2: if y else, ¿qué me pongo? ***\n&quot;</span>)
+
+<span class="com">#LEER TEMPERATURA (paralelogramo verde)</span>
+temperatura = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;¿Cuántos grados hace? &quot;</span>))
+<span class="com">#Si el usuario escribe 10, ahora temperatura vale 10</span>
+
+<span class="com">#LA PREGUNTA (rombo amarillo)</span>
+<span class="com">#¿10 es menor que 15? Respuesta: True, entonces va por el camino del if</span>
+<span class="kw">if</span> temperatura &lt; 15:
+    <span class="com">#CAMINO DEL SÍ (rectángulo azul de la izquierda)</span>
+    <span class="kw">print</span>(<span class="str">&quot;Hace frío, ponte sudadera&quot;</span>)
+<span class="com">#else significa &quot;si no&quot;: aquí entra solo si la respuesta fue False</span>
+<span class="kw">else</span>:
+    <span class="com">#CAMINO DEL NO (rectángulo rosa de la derecha)</span>
+    <span class="kw">print</span>(<span class="str">&quot;Hace calor, ponte playera&quot;</span>)
+
+<span class="com">#CAMINO PRINCIPAL: los dos caminos se juntan aquí</span>
+<span class="kw">print</span>(<span class="str">&quot;¡Que tengas buen día!&quot;</span>)</pre>
+      <h4>Pruébalo con estos datos</h4>
+      <div class="tbl-wrap"><table class="tbl"><tr><th>Escribe</th><th>Lo que sale en la terminal</th><th>Camino en el diagrama</th></tr><tr><td>10</td><td><code class="in">Hace frío, ponte sudadera</code><br><code class="in">¡Que tengas buen día!</code></td><td>Sí: camino de la izquierda (if)</td></tr><tr><td>30</td><td><code class="in">Hace calor, ponte playera</code><br><code class="in">¡Que tengas buen día!</code></td><td>No: camino de la derecha (else)</td></tr><tr><td>15</td><td><code class="in">Hace calor, ponte playera</code><br><code class="in">¡Que tengas buen día!</code></td><td>No, porque 15 no es <b>menor</b> que 15</td></tr></table></div>
+      <div class="tip">Con <code class="in">if</code> y <code class="in">else</code> siempre se toma <b>un</b> camino: nunca los dos y nunca ninguno.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 ELIF -->
+<section id="elif" style="padding-top:0">
+  <div class="wrap">
+    <div class="topic" style="--c:var(--sky)">
+      <h3><span class="num">3</span>if, elif y else: varias opciones</h3>
+      <p><b>¿Qué hace este programa?</b> Muestra los tres tamaños de bebida y pide que elijas uno. Dice qué tamaño elegiste y cuánto cuesta. Si escribes un número que no está en el menú, dice "Opción no válida".</p>
+      <p><code class="in">elif</code> significa <b>"si no, entonces pregunta esto otro"</b>.</p>
+      <svg viewBox="0 0 640 960" role="img" aria-label="Diagrama de if, elif y else" style="width:100%;max-width:640px;height:auto;display:block;margin:10px auto"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker></defs><rect x="140" y="18" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="210" y="40.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Inicio</text><polyline points="210,62 210,92" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="114.0,93.0 334.0,93.0 306.0,147.0 86.0,147.0" fill="#3DC47E" stroke="#2B2D42" stroke-width="3"/><text x="210" y="120.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Leer opcion</text><polyline points="210,147 210,180" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="210,184.0 310.0,236 210,288.0 110.0,236" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="210" y="236.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿opcion == 1?</text><polyline points="310,236 405,236" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="342.0" y="206" width="36" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="360" y="219.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí</text><rect x="410.0" y="207.0" width="180" height="58" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="500" y="227.6" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">if:</text><text x="500" y="244.4" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Chico $55</text><polyline points="590,236 600,236" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" /><polyline points="210,288 210,352" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="152.0" y="310" width="36" height="24" rx="12" fill="#FF6B6B" stroke="#2B2D42" stroke-width="2"/><text x="170" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">No</text><polygon points="210,354.0 310.0,406 210,458.0 110.0,406" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="210" y="406.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿opcion == 2?</text><polyline points="310,406 405,406" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="342.0" y="376" width="36" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="360" y="389.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí</text><rect x="410.0" y="377.0" width="180" height="58" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="500" y="397.6" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">elif:</text><text x="500" y="414.4" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Mediano $70</text><polyline points="590,406 600,406" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" /><polyline points="210,458 210,522" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="152.0" y="480" width="36" height="24" rx="12" fill="#FF6B6B" stroke="#2B2D42" stroke-width="2"/><text x="170" y="493.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">No</text><polygon points="210,524.0 310.0,576 210,628.0 110.0,576" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="210" y="576.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿opcion == 3?</text><polyline points="310,576 405,576" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="342.0" y="546" width="36" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="360" y="559.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí</text><rect x="410.0" y="547.0" width="180" height="58" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="500" y="567.6" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">elif:</text><text x="500" y="584.4" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Grande $85</text><polyline points="590,576 600,576" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" /><polyline points="210,628 210,700" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="152.0" y="650" width="36" height="24" rx="12" fill="#FF6B6B" stroke="#2B2D42" stroke-width="2"/><text x="170" y="663.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">No</text><rect x="115.0" y="701.0" width="190" height="58" rx="8" fill="#FF6B6B" stroke="#2B2D42" stroke-width="3"/><text x="210" y="721.6" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">else:</text><text x="210" y="738.4" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Opción no válida</text><polyline points="600,236 600,800 218,800" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polyline points="210,759 210,830" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="100.0" y="830.0" width="220" height="56" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="210" y="858.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">¡Gracias por tu compra!</text><polyline points="210,886 210,904" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="140" y="906" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="210" y="928.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Fin</text><text x="470" y="690.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="14" font-weight="700" fill="#5C5F7A">En cuanto una respuesta es Sí,</text><text x="470" y="712.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="14" font-weight="700" fill="#5C5F7A">Python sale por la derecha</text><text x="470" y="734.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="14" font-weight="700" fill="#5C5F7A">y ya NO revisa las de abajo.</text></svg>
+      <h4 style="margin-top:6px">Cómo se lee el diagrama</h4>
+      <ol>
+        <li>Lee la opción.</li>
+        <li>Baja por la izquierda haciendo preguntas, <b>una por una</b>.</li>
+        <li>En cuanto una respuesta es <b>Sí</b>, sale por la derecha, muestra el tamaño y se va al final. <b>Ya no revisa los rombos de abajo.</b></li>
+        <li>Si llega hasta abajo sin ningún Sí, cae en el <code class="in">else</code>: "Opción no válida".</li>
+        <li>Todos los caminos se juntan en "¡Gracias por tu compra!".</li>
+      </ol>
+      <h4>Código (ejemplo3_bebida.py)</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Ejemplo 3: if, elif y else, tamaño de tu bebida ***\n&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;1 = Chico ($55)   2 = Mediano ($70)   3 = Grande ($85)&quot;</span>)
+
+<span class="com">#LEER OPCION (paralelogramo verde)</span>
+opcion = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;Elige tu tamaño: &quot;</span>))
+<span class="com">#Si el usuario escribe 2, ahora opcion vale 2</span>
+
+<span class="com">#ROMBO 1: ¿2 es igual a 1? False, baja al siguiente rombo</span>
+<span class="kw">if</span> opcion == 1:
+    <span class="kw">print</span>(<span class="str">&quot;Chico $55&quot;</span>)
+<span class="com">#ROMBO 2: ¿2 es igual a 2? True, sale por la derecha y YA NO revisa los de abajo</span>
+<span class="kw">elif</span> opcion == 2:
+    <span class="kw">print</span>(<span class="str">&quot;Mediano $70&quot;</span>)
+<span class="com">#ROMBO 3: solo se revisa si los dos anteriores fueron False</span>
+<span class="kw">elif</span> opcion == 3:
+    <span class="kw">print</span>(<span class="str">&quot;Grande $85&quot;</span>)
+<span class="com">#ELSE (rectángulo rojo): entra solo si NINGÚN rombo fue True</span>
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">&quot;Opción no válida&quot;</span>)
+
+<span class="com">#CAMINO PRINCIPAL: aquí llegan todos los caminos</span>
+<span class="kw">print</span>(<span class="str">&quot;¡Gracias por tu compra!&quot;</span>)</pre>
+      <h4>Pruébalo con estos datos</h4>
+      <div class="tbl-wrap"><table class="tbl"><tr><th>Escribe</th><th>Lo que sale en la terminal</th><th>Camino en el diagrama</th></tr><tr><td>1</td><td><code class="in">Chico $55</code><br><code class="in">¡Gracias por tu compra!</code></td><td>Rombo 1 fue Sí. Los rombos 2 y 3 ni se revisan</td></tr><tr><td>2</td><td><code class="in">Mediano $70</code><br><code class="in">¡Gracias por tu compra!</code></td><td>Rombo 1 fue No, rombo 2 fue Sí. El rombo 3 ya no se revisa</td></tr><tr><td>7</td><td><code class="in">Opción no válida</code><br><code class="in">¡Gracias por tu compra!</code></td><td>Los 3 rombos fueron No, entonces cae en el else</td></tr></table></div>
+      <div class="tip">Es como un mesero: "¿Chico? No. ¿Mediano? Sí". En cuanto dices que sí, deja de preguntar.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 COMPARAR -->
+<section id="comparar" style="padding-top:0">
+  <div class="wrap">
+    <div class="topic" style="--c:var(--orange)">
+      <h3><span class="num">4</span>Lunes vs martes</h3>
+      <p>Los dos programas tienen 3 preguntas, pero Python las recorre de forma distinta. Fíjate <b>a dónde va la flecha después de un Sí</b>.</p>
+      <div class="lado">
+        <div>
+          <span class="label">Lunes: varios if separados</span>
+          <p style="margin-top:8px">Después de un Sí, la flecha <b>regresa</b> al camino y sigue con la siguiente pregunta. Python revisa <b>las 3</b>. Pueden salir varios mensajes.</p>
+          <svg viewBox="0 0 330 760" role="img" aria-label="Lunes: if separados" style="width:100%;max-width:330px;height:auto;display:block;margin:10px auto"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker></defs><rect x="50" y="12" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="120" y="34.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Inicio</text><polyline points="120,56 120,100" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="120,102.0 200.0,150 120,198.0 40.0,150" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="120" y="150.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿bateria &lt;= 20?</text><polyline points="200,150 262,150 262,200" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="222.0" y="121" width="36" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="240" y="134.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí</text><rect x="202.0" y="201.0" width="120" height="44" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="262" y="223.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Batería baja</text><polyline points="262,245 262,268 124,268" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polyline points="120,198 120,272" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="120,272.0 200.0,320 120,368.0 40.0,320" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="120" y="320.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿espacio &lt; 5?</text><polyline points="200,320 262,320 262,370" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="222.0" y="291" width="36" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="240" y="304.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí</text><rect x="202.0" y="371.0" width="120" height="44" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="262" y="393.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Poco espacio</text><polyline points="262,415 262,438 124,438" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polyline points="120,368 120,442" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="120,442.0 200.0,490 120,538.0 40.0,490" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="120" y="481.6" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿notificaciones</text><text x="120" y="498.4" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">&gt; 0?</text><polyline points="200,490 262,490 262,540" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="222.0" y="461" width="36" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="240" y="474.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí</text><rect x="202.0" y="541.0" width="120" height="44" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="262" y="563.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Tienes notif.</text><polyline points="262,585 262,608 124,608" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polyline points="120,538 120,642" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="35.0" y="642.0" width="170" height="44" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="120" y="664.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Revisión terminada</text><polyline points="120,686 120,708" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="50" y="708" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="120" y="730.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Fin</text></svg>
+        </div>
+        <div>
+          <span class="label">Martes: if, elif y else</span>
+          <p style="margin-top:8px">Después de un Sí, la flecha se va <b>directo al final</b>. Python se detiene en la primera que es Sí. Siempre sale <b>un solo</b> mensaje.</p>
+          <svg viewBox="0 0 330 760" role="img" aria-label="Martes: if, elif y else" style="width:100%;max-width:330px;height:auto;display:block;margin:10px auto"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker></defs><rect x="50" y="12" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="120" y="34.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Inicio</text><polyline points="120,56 120,100" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="120,102.0 200.0,150 120,198.0 40.0,150" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="120" y="150.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿opcion == 1?</text><polyline points="200,150 238,150" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="202.0" y="118" width="36" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="220" y="131.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí</text><rect x="238.0" y="128.0" width="80" height="44" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="278" y="150.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Chico</text><polyline points="318,150 322,150" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" /><polyline points="120,198 120,252" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="120,252.0 200.0,300 120,348.0 40.0,300" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="120" y="300.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿opcion == 2?</text><polyline points="200,300 238,300" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="202.0" y="268" width="36" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="220" y="281.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí</text><rect x="238.0" y="278.0" width="80" height="44" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="278" y="300.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Mediano</text><polyline points="318,300 322,300" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" /><polyline points="120,348 120,402" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polygon points="120,402.0 200.0,450 120,498.0 40.0,450" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="120" y="450.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="800" fill="#2B2D42">¿opcion == 3?</text><polyline points="200,450 238,450" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="202.0" y="418" width="36" height="24" rx="12" fill="#3DC47E" stroke="#2B2D42" stroke-width="2"/><text x="220" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="12.5" font-weight="800" fill="#fff">Sí</text><rect x="238.0" y="428.0" width="80" height="44" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="278" y="450.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">Grande</text><polyline points="318,450 322,450" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" /><polyline points="120,498 120,542" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="40.0" y="544.0" width="160" height="44" rx="8" fill="#FF6B6B" stroke="#2B2D42" stroke-width="3"/><text x="120" y="566.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">else: No válida</text><polyline points="322,150 322,616 124,616" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><polyline points="120,588 120,642" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="35.0" y="642.0" width="170" height="44" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="120" y="664.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="13.5" font-weight="700" fill="#fff">¡Gracias!</text><polyline points="120,686 120,708" fill="none" stroke="#2B2D42" stroke-width="3" stroke-linejoin="round" marker-end="url(#ah)"/><rect x="50" y="708" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="120" y="730.0" text-anchor="middle" dominant-baseline="middle" font-family="Nunito, sans-serif" font-size="15" font-weight="700" fill="#fff">Fin</text></svg>
+        </div>
+      </div>
+      <h4>Código del lado izquierdo (ejemplo4_celular.py)</h4>
+<pre class="code"><span class="kw">print</span>(<span class="str">&quot;\n*** Ejemplo 4: varios if separados, estado de mi celular ***\n&quot;</span>)
+
+bateria = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;¿Cuánta batería tienes? &quot;</span>))
+espacio = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;¿Cuántos GB libres tienes? &quot;</span>))
+notificaciones = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">&quot;¿Cuántas notificaciones sin leer tienes? &quot;</span>))
+<span class="kw">print</span>()
+
+<span class="com">#PREGUNTA 1: Python SIEMPRE la revisa</span>
+<span class="kw">if</span> bateria &lt;= 20:
+    <span class="kw">print</span>(<span class="str">&quot;Batería baja, conecta tu cargador&quot;</span>)
+
+<span class="com">#PREGUNTA 2: Python SIEMPRE la revisa, aunque la 1 haya sido True</span>
+<span class="kw">if</span> espacio &lt; 5:
+    <span class="kw">print</span>(<span class="str">&quot;Poco espacio, borra fotos o apps que no uses&quot;</span>)
+
+<span class="com">#PREGUNTA 3: Python SIEMPRE la revisa</span>
+<span class="kw">if</span> notificaciones &gt; 0:
+    <span class="kw">print</span>(<span class="str">&quot;Tienes&quot;</span>, notificaciones, <span class="str">&quot;notificaciones sin leer&quot;</span>)
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">&quot;Estás al día, no tienes notificaciones&quot;</span>)
+
+<span class="kw">print</span>(<span class="str">&quot;Revisión terminada&quot;</span>)</pre>
+      <h4>Pruébalo con estos datos</h4>
+      <div class="tbl-wrap"><table class="tbl"><tr><th>Batería, GB, notificaciones</th><th>Lo que sale en la terminal</th><th>¿Por qué?</th></tr><tr><td>15, 3, 0</td><td><code class="in">Batería baja, conecta tu cargador</code><br><code class="in">Poco espacio, borra fotos o apps que no uses</code><br><code class="in">Estás al día, no tienes notificaciones</code><br><code class="in">Revisión terminada</code></td><td>Las 3 preguntas se revisan. Las dos primeras fueron Sí</td></tr><tr><td>80, 20, 12</td><td><code class="in">Tienes 12 notificaciones sin leer</code><br><code class="in">Revisión terminada</code></td><td>Las 3 se revisan. Las dos primeras fueron No, por eso no salen sus avisos</td></tr><tr><td>50, 2, 5</td><td><code class="in">Poco espacio, borra fotos o apps que no uses</code><br><code class="in">Tienes 5 notificaciones sin leer</code><br><code class="in">Revisión terminada</code></td><td>Solo la pregunta 2 y la 3 fueron Sí</td></tr></table></div>
+      <h4>¿Cuándo uso cada uno?</h4>
+      <div class="tbl-wrap"><table class="tbl"><tr><th>Si...</th><th>Usa</th><th>Ejemplo</th></tr><tr><td>Pueden pasar <b>varias cosas al mismo tiempo</b></td><td>Varios <code class="in">if</code> separados</td><td>Batería baja <b>y</b> poco espacio</td></tr><tr><td>Solo puede pasar <b>una</b> opción</td><td><code class="in">if</code>, <code class="in">elif</code> y <code class="in">else</code></td><td>Elegir <b>un</b> tamaño de bebida</td></tr></table></div>
+    </div>
+  </div>
+</section>
+
+<footer>Fundamentos de Programación · Semana 3 · Diagramas de if, else y elif</footer>
+</body>
+</html>
