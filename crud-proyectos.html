@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto CRUD | Fundamentos de Programación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">Python Fundamentals · Proyecto con Tkinter</span>
+    <h1><span class="c1">Altas</span>, <span class="c2">Bajas</span>, <span class="c3">Cambios</span> y <span class="c4">Consultas</span></h1>
+    <p class="lead">Instagram, Spotify o la tienda donde ves tus tenis favoritos hacen cuatro cosas con los datos: <b>agregarlos, verlos, modificarlos y borrarlos</b>. Hoy eliges tu proyecto y diseñas el diagrama de flujo completo de su menú.</p>
+    <div class="badges">
+      <span class="badge">🧩 18 proyectos</span>
+      <span class="badge">📋 Menú + 5 submenús</span>
+      <span class="badge">🐍 Python + Tkinter</span>
+      <span class="badge due">✏️ Hoy: diagrama del menú</span>
+    </div>
+    <nav class="menu-pagina">
+      <a href="#crud">¿Qué es CRUD?</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#menu">Menú CRUD</a>
+      <a href="#diagrama">Actividad</a>
+      <a href="#tkinter">Lo que viene</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- 1. CRUD -->
+<section id="crud">
+  <span class="tag" style="background:var(--coral)">Tema 1</span>
+  <h2 class="title">¿Qué son las operaciones CRUD?</h2>
+  <p class="sub">Son las cuatro operaciones básicas que cualquier programa hace con un conjunto de datos.</p>
+
+  <div class="def">
+    <strong>CRUD</strong> son las siglas en inglés de <b>Create, Read, Update, Delete</b> (Crear, Leer, Actualizar, Borrar). En español también se conocen como <strong>ABCC</strong> (Altas, Bajas, Cambios y Consultas). En nuestro sistema agregamos una opción más: <strong>Imprimir</strong>, que muestra todos los registros juntos.
+  </div>
+
+  <h3 class="h-sub">Las 4 operaciones con el ejemplo de la Tienda de Sneakers 👟</h3>
+  <div class="chars">
+    <div class="char" style="background:var(--mint)">
+      <div class="ico">➕</div>
+      <h3>C · Create</h3>
+      <p><b>Alta.</b> Agregar un registro nuevo a la lista.</p>
+      <small>Registrar unos tenis nuevos: modelo, talla y precio.</small>
+    </div>
+    <div class="char" style="background:var(--sky)">
+      <div class="ico">🔍</div>
+      <h3>R · Read</h3>
+      <p><b>Consulta.</b> Mostrar o buscar los registros que ya existen.</p>
+      <small>Ver todos los tenis, o buscar solo los de talla 26.</small>
+    </div>
+    <div class="char" style="background:var(--orange)">
+      <div class="ico">✏️</div>
+      <h3>U · Update</h3>
+      <p><b>Cambio.</b> Modificar uno o más datos de un registro.</p>
+      <small>Bajar el precio de unos tenis porque entraron en oferta.</small>
+    </div>
+    <div class="char" style="background:var(--coral)">
+      <div class="ico">🗑️</div>
+      <h3>D · Delete</h3>
+      <p><b>Baja.</b> Eliminar un registro de la lista.</p>
+      <small>Quitar un modelo que se agotó y no volverá.</small>
+    </div>
+  </div>
+
+</section>
+
+<!-- 2. PROYECTOS -->
+<section id="proyectos">
+  <span class="tag" style="background:var(--sky)">Tema 2</span>
+  <h2 class="title">Elige tu proyecto (18 opciones)</h2>
+  <p class="sub">Cada proyecto trae los campos sugeridos y un ejemplo de cada operación. Puedes agregar o cambiar campos si tu idea lo necesita.</p>
+
+  <div class="warn">🔑 Regla: cada registro debe tener un campo <b>clave</b> (ej. código del tenis, número de pedido, gamertag). Con ese dato lo vas a encontrar en Bajas, Cambios y Consultas.</div>
+  <br>
+
+  <div class="general">
+    🎲 ¿No te decides? <button class="btn" id="sortear" type="button">Sortear un proyecto</button>
+    <p id="resultado" style="margin-top:10px" hidden></p>
+  </div>
+
+  <div class="table-wrap">
+    <table class="kw-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Proyecto</th>
+          <th>Campos sugeridos</th>
+          <th>➕ Alta</th>
+          <th>🗑️ Baja</th>
+          <th>✏️ Cambio</th>
+          <th>🔍 Consulta</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr id="p1">
+            <td><span class="pill" style="background:var(--coral)">01</span></td>
+            <td><b>👟 Tienda de Sneakers</b></td>
+            <td><span class="mono">modelo, marca, talla, precio, stock</span></td>
+            <td>Registrar un modelo nuevo</td>
+            <td>Quitar un modelo agotado</td>
+            <td>Cambiar precio o stock</td>
+            <td>Buscar por talla o marca</td>
+          </tr>
+          <tr id="p2">
+            <td><span class="pill" style="background:var(--grape)">02</span></td>
+            <td><b>🧁 Cafetería Cute</b></td>
+            <td><span class="mono">producto, tipo, tamaño, precio, disponible</span></td>
+            <td>Agregar un frappé o postre al menú</td>
+            <td>Retirar un producto de temporada</td>
+            <td>Actualizar precio o disponibilidad</td>
+            <td>Ver el menú por tipo (bebida, postre)</td>
+          </tr>
+          <tr id="p3">
+            <td><span class="pill" style="background:var(--sky)">03</span></td>
+            <td><b>🎮 Biblioteca de Videojuegos</b></td>
+            <td><span class="mono">título, consola, género, horas jugadas, calificación</span></td>
+            <td>Agregar un juego a tu colección</td>
+            <td>Borrar un juego que vendiste</td>
+            <td>Sumar horas jugadas o cambiar calificación</td>
+            <td>Filtrar por consola o género</td>
+          </tr>
+          <tr id="p4">
+            <td><span class="pill" style="background:var(--teal)">04</span></td>
+            <td><b>🧋 Boba Tea Shop</b></td>
+            <td><span class="mono">cliente, sabor, toppings, tamaño, total</span></td>
+            <td>Tomar un pedido nuevo</td>
+            <td>Cancelar un pedido</td>
+            <td>Cambiar sabor o toppings</td>
+            <td>Ver pedidos de un cliente</td>
+          </tr>
+          <tr id="p5">
+            <td><span class="pill" style="background:var(--mint)">05</span></td>
+            <td><b>🎧 Mi Playlist</b></td>
+            <td><span class="mono">canción, artista, género, duración, favorita</span></td>
+            <td>Agregar una canción</td>
+            <td>Eliminar una canción que ya no te gusta</td>
+            <td>Marcar o desmarcar favorita</td>
+            <td>Buscar canciones por artista</td>
+          </tr>
+          <tr id="p6">
+            <td><span class="pill" style="background:var(--pink)">06</span></td>
+            <td><b>🏆 Equipo de eSports</b></td>
+            <td><span class="mono">gamertag, rol, rango, partidas ganadas</span></td>
+            <td>Registrar un jugador</td>
+            <td>Dar de baja a un jugador</td>
+            <td>Actualizar rango o victorias</td>
+            <td>Ver jugadores por rol</td>
+          </tr>
+          <tr id="p7">
+            <td><span class="pill" style="background:var(--orange)">07</span></td>
+            <td><b>📚 Colección de Manga y Cómics</b></td>
+            <td><span class="mono">título, tomo, autor, estado (leyendo o terminado)</span></td>
+            <td>Agregar un tomo nuevo</td>
+            <td>Quitar un tomo que prestaste</td>
+            <td>Cambiar el estado de lectura</td>
+            <td>Ver los que vas leyendo</td>
+          </tr>
+          <tr id="p8">
+            <td><span class="pill" style="background:var(--coral)">08</span></td>
+            <td><b>🐶 Refugio de Mascotas</b></td>
+            <td><span class="mono">nombre, especie, edad, estado (disponible o adoptado)</span></td>
+            <td>Registrar una mascota rescatada</td>
+            <td>Eliminar el registro de una mascota</td>
+            <td>Marcar como adoptada</td>
+            <td>Buscar por especie</td>
+          </tr>
+          <tr id="p9">
+            <td><span class="pill" style="background:var(--grape)">09</span></td>
+            <td><b>📝 Agenda de Tareas</b></td>
+            <td><span class="mono">materia, tarea, fecha de entrega, estado</span></td>
+            <td>Anotar una tarea nueva</td>
+            <td>Borrar una tarea cancelada</td>
+            <td>Marcar como entregada</td>
+            <td>Ver pendientes por materia</td>
+          </tr>
+          <tr id="p10">
+            <td><span class="pill" style="background:var(--sky)">10</span></td>
+            <td><b>🃏 Álbum de Cartas Coleccionables</b></td>
+            <td><span class="mono">carta, tipo, rareza, valor, repetida</span></td>
+            <td>Agregar una carta que conseguiste</td>
+            <td>Quitar una carta que intercambiaste</td>
+            <td>Actualizar valor o si está repetida</td>
+            <td>Buscar por rareza</td>
+          </tr>
+          <tr id="p11">
+            <td><span class="pill" style="background:var(--teal)">11</span></td>
+            <td><b>🎬 Reseñas de Pelis y Series</b></td>
+            <td><span class="mono">título, plataforma, género, estrellas, reseña</span></td>
+            <td>Escribir una reseña nueva</td>
+            <td>Borrar una reseña</td>
+            <td>Cambiar estrellas o texto</td>
+            <td>Ver las mejor calificadas</td>
+          </tr>
+          <tr id="p12">
+            <td><span class="pill" style="background:var(--mint)">12</span></td>
+            <td><b>🎤 Tienda de Merch de Bandas</b></td>
+            <td><span class="mono">artículo, banda, talla, precio, stock</span></td>
+            <td>Agregar una playera o lightstick</td>
+            <td>Retirar un artículo</td>
+            <td>Actualizar stock después de una venta</td>
+            <td>Buscar merch por banda</td>
+          </tr>
+          <tr id="p13">
+            <td><span class="pill" style="background:var(--pink)">13</span></td>
+            <td><b>🛹 Renta de Bicis y Scooters</b></td>
+            <td><span class="mono">vehículo, color, precio por hora, disponible</span></td>
+            <td>Registrar un vehículo</td>
+            <td>Dar de baja uno descompuesto</td>
+            <td>Cambiar a disponible o rentado</td>
+            <td>Ver los disponibles</td>
+          </tr>
+          <tr id="p14">
+            <td><span class="pill" style="background:var(--orange)">14</span></td>
+            <td><b>👕 Closet Virtual</b></td>
+            <td><span class="mono">prenda, color, temporada, ocasión</span></td>
+            <td>Agregar una prenda</td>
+            <td>Eliminar ropa que donaste</td>
+            <td>Cambiar ocasión o temporada</td>
+            <td>Armar outfit: buscar por color</td>
+          </tr>
+          <tr id="p15">
+            <td><span class="pill" style="background:var(--coral)">15</span></td>
+            <td><b>⚽ Torneo de la Escuela</b></td>
+            <td><span class="mono">equipo, capitán, partidos jugados, puntos</span></td>
+            <td>Inscribir un equipo</td>
+            <td>Eliminar un equipo que se retiró</td>
+            <td>Actualizar puntos tras un partido</td>
+            <td>Ver la tabla de posiciones</td>
+          </tr>
+          <tr id="p16">
+            <td><span class="pill" style="background:var(--grape)">16</span></td>
+            <td><b>🍕 Recetario de Snacks</b></td>
+            <td><span class="mono">receta, ingredientes, tiempo, dificultad</span></td>
+            <td>Agregar una receta</td>
+            <td>Borrar una receta que no salió</td>
+            <td>Cambiar tiempo o ingredientes</td>
+            <td>Buscar recetas rápidas</td>
+          </tr>
+          <tr id="p17">
+            <td><span class="pill" style="background:var(--sky)">17</span></td>
+            <td><b>🪴 Mis Plantas</b></td>
+            <td><span class="mono">planta, tipo, días entre riego, ubicación</span></td>
+            <td>Registrar una planta nueva</td>
+            <td>Eliminar una planta</td>
+            <td>Cambiar frecuencia de riego</td>
+            <td>Ver cuáles toca regar</td>
+          </tr>
+          <tr id="p18">
+            <td><span class="pill" style="background:var(--teal)">18</span></td>
+            <td><b>🎟️ Boletos para Conciertos</b></td>
+            <td><span class="mono">evento, fecha, zona, precio, disponibles</span></td>
+            <td>Dar de alta un concierto</td>
+            <td>Cancelar un evento</td>
+            <td>Actualizar boletos disponibles</td>
+            <td>Buscar por fecha o zona</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 3. MENU -->
+<section id="menu">
+  <span class="tag" style="background:var(--grape)">Tema 3</span>
+  <h2 class="title">¿Qué tendrá tu menú CRUD?</h2>
+  <p class="sub">Tu sistema tiene un <b>menú principal</b> y cada opción abre su propio <b>submenú</b>. Cambia lo que está entre corchetes por los datos de tu proyecto.</p>
+
+  <div class="topic" style="--c:var(--grape)">
+    <h3><span class="num">0</span> Menú principal</h3>
+    <div class="code">===== [NOMBRE DE TU SISTEMA] =====
+1. Altas
+2. Bajas
+3. Cambios
+4. Consultas
+5. Imprimir
+6. Salir
+Elige una opción:</div>
+    <p>El programa lee la opción y decide con <code class="in">if</code> / <code class="in">elif</code> / <code class="in">else</code>. Si el número no está en el menú, muestra <b>"Opción no válida"</b>.</p>
+  </div>
+
+  <div class="topic" style="--c:var(--mint)">
+    <h3><span class="num">1</span> Altas <small>(agregar un registro)</small></h3>
+    <ul class="checks" style="--c:var(--mint)">
+      <li>Pedir la <b>clave</b> del registro nuevo</li>
+      <li>Pedir cada uno de los demás campos de tu proyecto</li>
+      <li>Preguntar <b>"¿Deseas guardar? (S/N)"</b></li>
+      <li>Si es S: mostrar "Registro agregado"</li>
+      <li>Si es N: mostrar "Alta cancelada"</li>
+    </ul>
+  </div>
+
+  <div class="topic" style="--c:var(--coral)">
+    <h3><span class="num">2</span> Bajas <small>(eliminar un registro)</small></h3>
+    <ul class="checks" style="--c:var(--coral)">
+      <li>Pedir la <b>clave</b> del registro a eliminar</li>
+      <li>Si no existe: mostrar "Registro no encontrado"</li>
+      <li>Si existe: mostrar sus datos y preguntar <b>"¿Seguro que deseas eliminarlo? (S/N)"</b></li>
+      <li>Si es S: mostrar "Registro eliminado"</li>
+      <li>Si es N: mostrar "Baja cancelada"</li>
+    </ul>
+  </div>
+
+  <div class="topic" style="--c:var(--orange)">
+    <h3><span class="num">3</span> Cambios <small>(modificar un registro)</small></h3>
+    <ul class="checks" style="--c:var(--orange)">
+      <li>Pedir la <b>clave</b> del registro a modificar</li>
+      <li>Si no existe: mostrar "Registro no encontrado"</li>
+      <li>Si existe: mostrar sus datos y este submenú</li>
+    </ul>
+    <div class="code">¿Qué deseas cambiar?
+1. [Campo 1]
+2. [Campo 2]
+3. [Campo 3]
+4. Cancelar</div>
+    <ul class="checks" style="--c:var(--orange)">
+      <li>Pedir el nuevo valor del campo elegido</li>
+      <li>Mostrar "Registro actualizado"</li>
+    </ul>
+  </div>
+
+  <div class="topic" style="--c:var(--sky)">
+    <h3><span class="num">4</span> Consultas <small>(buscar registros)</small></h3>
+    <div class="code">¿Cómo deseas buscar?
+1. Por clave
+2. Por [otro campo de tu proyecto]
+3. Regresar</div>
+    <ul class="checks" style="--c:var(--sky)">
+      <li>Pedir el dato a buscar (ej. marca, consola, especie)</li>
+      <li>Si lo encuentra: mostrar los datos</li>
+      <li>Si no: mostrar "No hay resultados"</li>
+    </ul>
+  </div>
+
+  <div class="topic" style="--c:var(--teal)">
+    <h3><span class="num">5</span> Imprimir <small>(mostrar todo)</small></h3>
+    <ul class="checks" style="--c:var(--teal)">
+      <li>Si no hay registros: mostrar "No hay registros"</li>
+      <li>Si hay: mostrar todos los registros en forma de tabla, con un encabezado</li>
+    </ul>
+  </div>
+
+  <div class="topic" style="--c:var(--pink)">
+    <h3><span class="num">6</span> Salir</h3>
+    <ul class="checks" style="--c:var(--pink)">
+      <li>Mostrar un mensaje de despedida, ej. "Gracias por usar [nombre de tu sistema]"</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4. ACTIVIDAD -->
+<section id="diagrama">
+  <span class="tag" style="background:var(--mint)">Actividad de hoy</span>
+  <h2 class="title">Tu diagrama de flujo</h2>
+  <p class="sub">Vas a diseñar el diagrama <b>completo</b> de tu sistema en <b>LucidChart</b> o <b>Visio</b>: el menú principal y todos sus submenús.</p>
+
+  <h3 class="h-sub">Las figuras que vas a usar</h3>
+  <div class="legend">
+    <div class="lg">
+      <div class="shape"><span class="oval">Inicio</span></div>
+      <h4>Inicio / Fin</h4>
+      <p>Dónde empieza y dónde termina el programa.</p>
+    </div>
+    <div class="lg">
+      <div class="shape"><span class="para"><span>Leer opción</span></span></div>
+      <h4>Entrada / Salida</h4>
+      <p>Mostrar un menú o mensaje, o leer lo que escribe el usuario.</p>
+    </div>
+    <div class="lg">
+      <div class="shape"><span class="rect">Guardar registro</span></div>
+      <h4>Proceso</h4>
+      <p>Una acción que hace el programa.</p>
+    </div>
+    <div class="lg">
+      <div class="shape"><span class="diamond"><span>¿opción 1?</span></span></div>
+      <h4>Decisión</h4>
+      <p>Una pregunta con dos caminos: Sí o No (un <code class="in">if</code>).</p>
+    </div>
+  </div>
+
+  <h3 class="h-sub">Lo que debe incluir</h3>
+  <div class="reto" style="--c:var(--mint)">
+    <div class="reto-head">
+      <span class="e">🧭</span>
+      <div>
+        <small>ACTIVIDAD</small>
+        <h3>El diagrama de flujo de mi sistema CRUD</h3>
+      </div>
+    </div>
+    <div class="reto-body">
+      <div class="isteps">
+        <div class="istep" style="--sc:var(--grape)"><span class="n">1</span><div><b>Inicio.</b> Óvalo de inicio con el nombre de tu sistema.</div></div>
+        <div class="istep" style="--sc:var(--mint)"><span class="n">2</span><div><b>Menú principal.</b> Con sus 6 opciones.</div></div>
+        <div class="istep" style="--sc:var(--mint)"><span class="n">3</span><div><b>Lectura de la opción.</b> El usuario escribe un número.</div></div>
+        <div class="istep" style="--sc:var(--orange)"><span class="n">4</span><div><b>Decisiones.</b> Un rombo por cada opción (<code>if</code> / <code>elif</code> / <code>else</code>), con sus salidas <b>Sí</b> y <b>No</b> marcadas.</div></div>
+        <div class="istep" style="--sc:var(--coral)"><span class="n">5</span><div><b>Opción no válida.</b> El camino para cuando el número no está en el menú.</div></div>
+        <div class="istep" style="--sc:var(--sky)"><span class="n">6</span><div><b>Cada submenú completo.</b> Con sus propias lecturas, decisiones y mensajes.</div></div>
+        <div class="istep" style="--sc:var(--pink)"><span class="n">7</span><div><b>Tu proyecto.</b> Usa los nombres y campos de <b>tu</b> proyecto, no genéricos.</div></div>
+        <div class="istep" style="--sc:var(--grape)"><span class="n">8</span><div><b>Fin.</b> Óvalo de fin.</div></div>
+      </div>
+      <div class="rules-box">
+        <h4>✅ Antes de entregar, revisa</h4>
+        <ul class="checks">
+          <li>Todos los rombos tienen dos salidas: Sí y No.</li>
+          <li>Bajas, Cambios y Consultas consideran qué pasa si el registro no existe.</li>
+          <li>Altas y Bajas piden confirmación (S/N).</li>
+          <li>Todos los caminos llegan al óvalo de fin.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. TKINTER -->
+<section id="tkinter">
+  <span class="tag" style="background:var(--pink)">Lo que viene</span>
+  <h2 class="title">Así se verá en Tkinter</h2>
+  <p class="sub">Tkinter es la librería de Python para crear una <b>GUI</b> (Graphical User Interface, interfaz gráfica de usuario). Tu menú de texto se va a convertir en una ventana con botones.</p>
+  <div class="parts">
+    <div class="part" style="background:var(--mint)"><div class="n">➕</div><h4>Alta</h4><p>Cajas para escribir los datos y un botón "Agregar".</p><code>Entry · Button</code></div>
+    <div class="part" style="background:var(--sky)"><div class="n">🔍</div><h4>Consulta</h4><p>Una lista que muestra todos los registros.</p><code>Listbox</code></div>
+    <div class="part" style="background:var(--orange)"><div class="n">✏️</div><h4>Cambio</h4><p>Seleccionas, editas y das clic en "Guardar".</p><code>Entry · Button</code></div>
+    <div class="part" style="background:var(--coral)"><div class="n">🗑️</div><h4>Baja</h4><p>Seleccionas y confirmas antes de eliminar.</p><code>messagebox</code></div>
+    <div class="part" style="background:var(--teal)"><div class="n">🖨️</div><h4>Imprimir</h4><p>Muestra todos los registros en una tabla.</p><code>Treeview</code></div>
+  </div>
+
+  <div class="closing">
+    <h2>Primero el plan, luego el código 🚀</h2>
+    <p>Un buen diagrama de flujo hace que programar tu menú en Python sea mucho más fácil.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>Fundamentos de Programación · Python Fundamentals · Proyecto CRUD</footer>
+
+<script src="menu.js"></script>
+<script>
+  const filas = document.querySelectorAll(".kw-table tbody tr");
+  document.getElementById("sortear").addEventListener("click", () => {
+    filas.forEach(f => f.querySelectorAll("td").forEach(td => td.style.background = ""));
+    const i = Math.floor(Math.random() * filas.length);
+    const fila = filas[i];
+    fila.querySelectorAll("td").forEach(td => td.style.background = "#FFE58A");
+    const res = document.getElementById("resultado");
+    res.innerHTML = "Te tocó el proyecto <b>#" + (i + 1) + ": " + fila.cells[1].textContent + "</b>";
+    res.hidden = false;
+    fila.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+</script>
+</body>
+</html>
