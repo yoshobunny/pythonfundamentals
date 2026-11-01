@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actividad 03: Ciclos y Listas | Fundamentos de Programación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">Fundamentos de Programación</span>
+    <h1><span class="c1">Actividad 3.</span> Uso de los ciclos (<span class="c3">While</span>, <span class="c2">For</span>) y <span class="c4">Listas</span> en Python</h1>
+    <div class="badges">
+      <span class="badge">📝 Actividad 03</span>
+      <span class="badge">👤 Individual</span>
+      <span class="badge due">⏰ Viernes 06 de noviembre, 23:59</span>
+    </div>
+    <nav class="menu-pagina">
+      <a href="#actividad">Actividad 03</a>
+      <a href="#ejercicios" data-tab="while">While</a>
+      <a href="#ejercicios" data-tab="for">For</a>
+      <a href="#ejercicios" data-tab="listas">List</a>
+      <a href="#entrega">Viernes entrega</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- INSTRUCCIONES -->
+<section id="actividad">
+  <span class="tag" style="background:var(--coral)">Instrucciones</span>
+  <h2 class="title">Actividad 3</h2>
+  <p class="sub">Esta actividad se hace de forma <b>individual</b>. Fecha límite: <b>viernes 06 de noviembre, 23:59</b>.</p>
+
+  <div class="reto" style="--c:var(--sky)">
+    <div class="reto-head"><span class="n">1</span><div><small>ENTREGABLE</small><h3>Documento Word</h3></div></div>
+    <div class="reto-body">
+      <p>Deberás subir a Canvas un documento Word con lo siguiente, en este orden:</p>
+      <div class="isteps">
+        <div class="istep" style="--sc:var(--sky)"><span class="n">1</span><div><b>Portada:</b> nombre completo, matrícula, materia, nombre de la actividad, profesora y fecha.</div></div>
+        <div class="istep" style="--sc:var(--sky)"><span class="n">2</span><div><b>Índice.</b></div></div>
+        <div class="istep" style="--sc:var(--sky)"><span class="n">3</span><div><b>Ejercicios del While:</b> un título por ejercicio (por ejemplo "Ejercicio 1: Nombre") y debajo las capturas de pantalla de tu código en VS Code y del resultado en la terminal.</div></div>
+        <div class="istep" style="--sc:var(--grape)"><span class="n">4</span><div><b>Ejercicios del For:</b> con el mismo formato.</div></div>
+        <div class="istep" style="--sc:var(--mint)"><span class="n">5</span><div><b>Ejercicios de las Listas:</b> con el mismo formato.</div></div>
+        <div class="istep" style="--sc:var(--orange)"><span class="n">6</span><div>Cada ejercicio debe llevar su <b>diagrama de flujo</b>. Realiza el diagrama en <b>Canva</b> o <b>draw.io</b>.</div></div>
+        <div class="istep" style="--sc:var(--coral)"><span class="n">7</span><div><b>Enlace del repositorio GitHub:</b> <code>https://github.com/MiUsuario/Actividad3</code></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reto" style="--c:var(--grape)">
+    <div class="reto-head"><span class="n">2</span><div><small>ENTREGABLE</small><h3>Archivos de Python (.py)</h3></div></div>
+    <div class="reto-body">
+      <p>Los archivos de los ejercicios de cada tema:</p>
+      <ul class="checks" style="--c:var(--grape)">
+        <li><b>While:</b> <code class="in">Actividad3_ejercicio1_mimatricula.py</code> al <code class="in">Actividad3_ejercicio6_mimatricula.py</code></li>
+        <li><b>For:</b> <code class="in">Actividad3_ejercicio7_mimatricula.py</code> al <code class="in">Actividad3_ejercicio12_mimatricula.py</code></li>
+        <li><b>Listas:</b> <code class="in">Actividad3_ejercicio13_mimatricula.py</code> al <code class="in">Actividad3_ejercicio18_mimatricula.py</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reto" style="--c:var(--mint)">
+    <div class="reto-head"><span class="n">3</span><div><small>ENTREGABLE</small><h3>Repositorio en GitHub</h3></div></div>
+    <div class="reto-body">
+      <div class="isteps">
+        <div class="istep" style="--sc:var(--mint)"><span class="n">1</span><div>Crea el repositorio <code>Actividad3_Mimatricula</code> (cambia "Mimatricula" por tu matrícula).</div></div>
+        <div class="istep" style="--sc:var(--mint)"><span class="n">2</span><div>Sube ahí los archivos: tu Word y los archivos de Python.</div></div>
+        <div class="istep" style="--sc:var(--mint)"><span class="n">3</span><div>Envía el enlace del repositorio en la Actividad 03.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EJERCICIOS -->
+<section id="ejercicios">
+  <span class="tag" style="background:var(--sky)">Ejercicios</span>
+  <h2 class="title">Ejercicios de la Actividad 3&nbsp;</h2>
+  <p class="sub">Cada programa empieza con el <b>print del ejercicio, tu nombre y tu matrícula</b>. Lee los comentarios del código: explican qué hace cada línea.</p>
+
+  <div class="tabs" role="tablist" style="justify-content:center">
+    <button class="tab active" type="button" role="tab" data-tab="while" style="--c:var(--sky)">🔁 Ejercicios While</button>
+    <button class="tab" type="button" role="tab" data-tab="for" style="--c:var(--grape)">🔂 Ejercicios For</button>
+    <button class="tab" type="button" role="tab" data-tab="listas" style="--c:var(--mint)">📋 Ejercicios con Listas</button>
+  </div>
+
+<div class="tab-panel" data-panel="while" role="tabpanel">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>🗓️ While</h2>
+    <p>Repetir mientras algo sea cierto: inicios de sesión, menús que se repiten, cajas registradoras y validación de datos.</p>
+    <div class="topics"><span>🔁 while</span><span>🛑 break</span><span>♾️ while True</span><span>🔢 Contadores</span><span>✅ Validar datos</span></div>
+  </div>
+
+  <article class="ex" id="ej1">
+    <div class="ex-top" style="background:var(--sky);color:#fff">
+      <span class="emoji">🟥</span>
+      <div>
+        
+        <h3>Ejercicio 1 · Inicia sesión en Roblox</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Vas a programar la pantalla de inicio de sesión de Roblox. El jugador no puede entrar hasta que escriba bien su usuario y su contraseña.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Guardar el usuario correcto y la contraseña correcta.</li>
+        <li>Pedir el usuario y la contraseña <b>mientras</b> no haya iniciado sesión.</li>
+        <li>Si el usuario no existe, avisar "Ese usuario no existe".</li>
+        <li>Si el usuario existe pero la contraseña está mal, avisar "La contraseña es incorrecta".</li>
+        <li>Cuando los dos estén bien, dar la bienvenida y mostrar "Cargando tus juegos...".</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio1_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 1: Inicia sesión en Roblox&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Guardamos el usuario y la contraseña correctos</span>
+usuario_correcto = <span class="str">&quot;gamer17&quot;</span>
+contrasena_correcta = <span class="str">&quot;roblox123&quot;</span>
+
+<span class="com"># Al inicio todavía NO ha iniciado sesión</span>
+sesion_iniciada = False
+
+<span class="com"># Mientras NO haya iniciado sesión, se repite</span>
+while sesion_iniciada == False:
+    <span class="com"># Pedimos el usuario y la contraseña</span>
+    usuario = input(<span class="str">&quot;Usuario: &quot;</span>)
+    contrasena = input(<span class="str">&quot;Contraseña: &quot;</span>)
+
+    <span class="com"># ¿El usuario es IGUAL al correcto?</span>
+    if usuario == usuario_correcto:
+        <span class="com"># Sí existe. Ahora: ¿la contraseña es IGUAL a la correcta?</span>
+        if contrasena == contrasena_correcta:
+            print(<span class="str">&quot;✅ ¡Bienvenido,&quot;</span>, usuario, <span class="str">&quot;!&quot;</span>)
+            <span class="com"># Ya entró: esto hace que el while se detenga</span>
+            sesion_iniciada = True
+        else:
+            print(<span class="str">&quot;❌ La contraseña es incorrecta&quot;</span>)
+    else:
+        print(<span class="str">&quot;❌ Ese usuario no existe&quot;</span>)
+
+<span class="com"># Esto se ejecuta cuando ya salió del while</span>
+print(<span class="str">&quot;🎮 Cargando tus juegos...&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Lleva 3 rombos: el del while y dos de if, uno dentro del otro.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej2">
+    <div class="ex-top" style="background:var(--sky);color:#fff">
+      <span class="emoji">☕</span>
+      <div>
+        <h3>Ejercicio 2 · Menú de la Cafetería Cute</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>La cafetería quiere una pantalla donde los clientes vean el menú. El menú debe aparecer <b>una y otra vez</b> hasta que el cliente elija Salir.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Mostrar un menú con 4 opciones: Ver bebidas, Ver postres, Ver horario y Salir.</li>
+        <li>Mostrar la información de la opción elegida.</li>
+        <li>Si escribe una opción que no existe, avisar "Opción no válida".</li>
+        <li>Salir con <b>break</b> solo cuando elija la opción 4.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio2_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 2: Menú de la Cafetería Cute&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+
+<span class="com"># while True: el menú se repite siempre; la única salida es el break</span>
+while True:
+    <span class="com"># Mostramos el menú</span>
+    print()
+    print(<span class="str">&quot;===== ☕ CAFETERÍA CUTE =====&quot;</span>)
+    print(<span class="str">&quot;1. Ver bebidas&quot;</span>)
+    print(<span class="str">&quot;2. Ver postres&quot;</span>)
+    print(<span class="str">&quot;3. Ver horario&quot;</span>)
+    print(<span class="str">&quot;4. Salir&quot;</span>)
+
+    <span class="com"># Pedimos la opción</span>
+    opcion = input(<span class="str">&quot;Elige una opción: &quot;</span>)
+
+    <span class="com"># Revisamos qué opción eligió</span>
+    if opcion == <span class="str">&quot;1&quot;</span>:
+        print(<span class="str">&quot;🧋 Frappé de cajeta ..... $65&quot;</span>)
+        print(<span class="str">&quot;🍵 Matcha latte ......... $70&quot;</span>)
+        print(<span class="str">&quot;🍓 Smoothie de fresa .... $55&quot;</span>)
+    elif opcion == <span class="str">&quot;2&quot;</span>:
+        print(<span class="str">&quot;🍪 Galleta red velvet .... $35&quot;</span>)
+        print(<span class="str">&quot;🧁 Cupcake de Oreo ....... $40&quot;</span>)
+        print(<span class="str">&quot;🍩 Dona glaseada ......... $30&quot;</span>)
+    elif opcion == <span class="str">&quot;3&quot;</span>:
+        print(<span class="str">&quot;🕗 Lunes a viernes: 7:00 a 20:00&quot;</span>)
+        print(<span class="str">&quot;🕙 Sábados: 9:00 a 14:00&quot;</span>)
+    elif opcion == <span class="str">&quot;4&quot;</span>:
+        print(<span class="str">&quot;👋 ¡Gracias por visitarnos!&quot;</span>)
+        <span class="com"># El cliente eligió Salir: break nos saca del while</span>
+        break
+    else:
+        print(<span class="str">&quot;❌ Opción no válida, elige del 1 al 4&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Un rombo por cada opción (if, elif). Recuerda la flecha que regresa al menú y la salida del break.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej3">
+    <div class="ex-top" style="background:var(--sky);color:#fff">
+      <span class="emoji">📱</span>
+      <div>
+        <h3>Ejercicio 3 · Desbloquea tu celular</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Tu celular tiene un PIN. Si te equivocas 3 veces, se bloquea. Si lo desbloqueas, puedes cambiar tu PIN, pero tienes que escribir el nuevo dos veces y las dos deben ser iguales.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Guardar el PIN correcto y empezar con 0 intentos.</li>
+        <li>Pedir el PIN <b>mientras</b> lleve menos de 3 intentos.</li>
+        <li>Si es correcto, mostrar "Celular desbloqueado" y salir con <b>break</b>.</li>
+        <li>Si es incorrecto, sumar un intento y decir <b>cuántos le quedan</b>.</li>
+        <li>Al salir del while: si se acabaron los intentos, mostrar que se bloqueó y dar una pista.</li>
+        <li>Si sí lo desbloqueó, preguntar si quiere cambiar su PIN.</li>
+        <li>Si dice que sí, pedir el nuevo PIN y su confirmación <b>mientras</b> no coincidan.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio3_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 3: Desbloquea tu celular&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># 1. Guardamos el PIN correcto</span>
+pin_correcto = <span class="str">&quot;2580&quot;</span>
+
+<span class="com"># 2. Empezamos con 0 intentos</span>
+intentos = 0
+
+<span class="com"># 3. Mientras lleve menos de 3 intentos, se repite</span>
+while intentos &lt; 3:
+    pin = input(<span class="str">&quot;🔐 Escribe tu PIN de 4 números: &quot;</span>)
+
+    <span class="com"># ¿El PIN es IGUAL al correcto?</span>
+    if pin == pin_correcto:
+        print(<span class="str">&quot;🔓 Celular desbloqueado&quot;</span>)
+        <span class="com"># Ya entró: break lo saca del while</span>
+        break
+    else:
+        <span class="com"># Se equivocó: sumamos 1 intento</span>
+        intentos = intentos + 1
+        <span class="com"># Calculamos cuántos intentos le quedan</span>
+        restantes = 3 - intentos
+        print(<span class="str">&quot;❌ PIN incorrecto. Te quedan&quot;</span>, restantes, <span class="str">&quot;intentos&quot;</span>)
+
+<span class="com"># 4. Ya fuera del while: ¿se acabaron los intentos?</span>
+if intentos == 3:
+    print(<span class="str">&quot;🔒 Celular bloqueado por 30 segundos&quot;</span>)
+    print(<span class="str">&quot;💡 Pista: son los números de la columna del centro&quot;</span>)
+else:
+    <span class="com"># Sí lo desbloqueó</span>
+    print(<span class="str">&quot;📱 Tienes 3 notificaciones nuevas&quot;</span>)
+
+    <span class="com"># 5. Preguntamos si quiere cambiar el PIN</span>
+    cambiar = input(<span class="str">&quot;¿Quieres cambiar tu PIN? (s/n): &quot;</span>)
+
+    if cambiar == <span class="str">&quot;s&quot;</span>:
+        <span class="com"># Al inicio los dos PIN todavía NO coinciden</span>
+        coinciden = False
+
+        <span class="com"># Mientras NO coincidan, se repite</span>
+        while coinciden == False:
+            nuevo = input(<span class="str">&quot;Escribe tu nuevo PIN: &quot;</span>)
+            confirmacion = input(<span class="str">&quot;Vuelve a escribirlo para confirmar: &quot;</span>)
+
+            <span class="com"># ¿Los dos son IGUALES?</span>
+            if nuevo == confirmacion:
+                print(<span class="str">&quot;✅ Tu PIN se cambió correctamente&quot;</span>)
+                coinciden = True
+            else:
+                print(<span class="str">&quot;❌ No coinciden, intenta otra vez&quot;</span>)
+    else:
+        print(<span class="str">&quot;👍 Tu PIN se queda igual&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Tiene <b>dos while</b>: el de los 3 intentos y el de confirmar el PIN nuevo. Marca la flecha del break.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej4">
+    <div class="ex-top" style="background:var(--sky);color:#fff">
+      <span class="emoji">🧾</span>
+      <div>
+        <h3>Ejercicio 4 · La caja registradora de la cafetería</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Eres el cajero. Vas registrando los productos que pide un cliente hasta que escribes "fin". Luego cobras: si el cliente te da menos dinero del total, le pides más hasta que alcance.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Pedir el nombre del producto <b>mientras</b> no escribas "fin".</li>
+        <li>Por cada producto, pedir el precio y cuántos quiere, y calcular el subtotal.</li>
+        <li>Ir sumando el total y el número de productos.</li>
+        <li>Al terminar, mostrar un ticket con la cantidad de productos y el total.</li>
+        <li>Si el total es de $200 o más, aplicar un descuento de $20.</li>
+        <li>Pedir con cuánto paga <b>mientras</b> el dinero no alcance.</li>
+        <li>Mostrar el cambio.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio4_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 4: La caja registradora de la cafetería&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Empezamos con el total y los productos en 0</span>
+total = 0
+productos = 0
+
+<span class="com"># Al inicio todavía NO terminamos de registrar</span>
+termine = False
+
+<span class="com"># Mientras NO hayamos terminado, se repite</span>
+while termine == False:
+    print(<span class="str">&quot;===== Nuevo producto =====&quot;</span>)
+    nombre = input(<span class="str">&quot;Producto (escribe fin para cobrar): &quot;</span>)
+
+    <span class="com"># ¿Escribió &quot;fin&quot;?</span>
+    if nombre == <span class="str">&quot;fin&quot;</span>:
+        termine = True
+    else:
+        <span class="com"># Pedimos el precio y la cantidad (los convertimos a número)</span>
+        precio = int(input(<span class="str">&quot;Precio de &quot;</span> + nombre + <span class="str">&quot;: $&quot;</span>))
+        cantidad = int(input(<span class="str">&quot;¿Cuántos quiere? &quot;</span>))
+
+        <span class="com"># Calculamos el subtotal de este producto</span>
+        subtotal = precio * cantidad
+
+        <span class="com"># Lo sumamos al total y contamos los productos</span>
+        total = total + subtotal
+        productos = productos + cantidad
+
+        print(<span class="str">&quot;🧾&quot;</span>, cantidad, nombre, <span class="str">&quot;= $&quot;</span>, subtotal)
+        print(<span class="str">&quot;💰 Llevas $&quot;</span>, total)
+
+<span class="com"># Ya fuera del while: mostramos el ticket</span>
+print()
+print(<span class="str">&quot;========== TICKET ==========&quot;</span>)
+print(<span class="str">&quot;Productos:&quot;</span>, productos)
+print(<span class="str">&quot;Total: $&quot;</span>, total)
+
+<span class="com"># ¿El total es de 200 o más?</span>
+if total &gt;= 200:
+    total = total - 20
+    print(<span class="str">&quot;🎉 Descuento de $20 aplicado&quot;</span>)
+    print(<span class="str">&quot;Total con descuento: $&quot;</span>, total)
+
+<span class="com"># Pedimos con cuánto paga</span>
+pago = int(input(<span class="str">&quot;¿Con cuánto pagas? $&quot;</span>))
+
+<span class="com"># Mientras el pago sea MENOR que el total, no alcanza</span>
+while pago &lt; total:
+    print(<span class="str">&quot;❌ No alcanza. Faltan $&quot;</span>, total - pago)
+    pago = int(input(<span class="str">&quot;¿Con cuánto pagas? $&quot;</span>))
+
+<span class="com"># Ya alcanzó: calculamos el cambio</span>
+cambio = pago - total
+print(<span class="str">&quot;✅ Pago recibido. Tu cambio es: $&quot;</span>, cambio)
+print(<span class="str">&quot;☕ ¡Gracias por tu compra!&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Tiene <b>dos while</b>: registrar productos y cobrar. Los cálculos (subtotal, total y cambio) van en rectángulos.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej5">
+    <div class="ex-top" style="background:var(--sky);color:#fff">
+      <span class="emoji">📋</span>
+      <div>
+        <h3>Ejercicio 5 · El menú de tu proyecto CRUD</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Este ejercicio es la <b>base de tu proyecto</b>. Vas a hacer el menú principal que se repite, con las 6 opciones del CRUD. Por ahora cada opción solo muestra un mensaje; más adelante le pondrás el código real.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Preguntar el nombre de tu sistema y mostrarlo como título del menú.</li>
+        <li>Mostrar las opciones: Altas, Bajas, Cambios, Consultas, Imprimir y Salir.</li>
+        <li>Cada opción muestra un mensaje distinto y <b>cuenta una operación</b>.</li>
+        <li>Si la opción no existe, avisar "Opción no válida" sin contarla.</li>
+        <li>En Salir, preguntar "¿Seguro que quieres salir? (s/n)".</li>
+        <li>Si dice que sí, mostrar cuántas operaciones hizo y salir con <b>break</b>. Si dice que no, regresar al menú.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio5_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 5: El menú de tu proyecto CRUD&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Pedimos el nombre del sistema</span>
+nombre_sistema = input(<span class="str">&quot;¿Cómo se llama tu sistema? &quot;</span>)
+
+<span class="com"># Contador de operaciones: empieza en 0</span>
+operaciones = 0
+
+<span class="com"># El menú se repite siempre; la única salida es el break</span>
+while True:
+    print()
+    print(<span class="str">&quot;=====&quot;</span>, nombre_sistema, <span class="str">&quot;=====&quot;</span>)
+    print(<span class="str">&quot;1. Altas&quot;</span>)
+    print(<span class="str">&quot;2. Bajas&quot;</span>)
+    print(<span class="str">&quot;3. Cambios&quot;</span>)
+    print(<span class="str">&quot;4. Consultas&quot;</span>)
+    print(<span class="str">&quot;5. Imprimir&quot;</span>)
+    print(<span class="str">&quot;6. Salir&quot;</span>)
+    opcion = input(<span class="str">&quot;Elige una opción: &quot;</span>)
+
+    if opcion == <span class="str">&quot;1&quot;</span>:
+        print(<span class="str">&quot;➕ Aquí irán las ALTAS de tu proyecto&quot;</span>)
+        operaciones = operaciones + 1
+    elif opcion == <span class="str">&quot;2&quot;</span>:
+        print(<span class="str">&quot;🗑️ Aquí irán las BAJAS de tu proyecto&quot;</span>)
+        operaciones = operaciones + 1
+    elif opcion == <span class="str">&quot;3&quot;</span>:
+        print(<span class="str">&quot;✏️ Aquí irán los CAMBIOS de tu proyecto&quot;</span>)
+        operaciones = operaciones + 1
+    elif opcion == <span class="str">&quot;4&quot;</span>:
+        print(<span class="str">&quot;🔍 Aquí irán las CONSULTAS de tu proyecto&quot;</span>)
+        operaciones = operaciones + 1
+    elif opcion == <span class="str">&quot;5&quot;</span>:
+        print(<span class="str">&quot;🖨️ Aquí irá IMPRIMIR de tu proyecto&quot;</span>)
+        operaciones = operaciones + 1
+    elif opcion == <span class="str">&quot;6&quot;</span>:
+        <span class="com"># Antes de salir, confirmamos</span>
+        seguro = input(<span class="str">&quot;¿Seguro que quieres salir? (s/n): &quot;</span>)
+
+        <span class="com"># ¿La respuesta es IGUAL a &quot;s&quot;?</span>
+        if seguro == <span class="str">&quot;s&quot;</span>:
+            print(<span class="str">&quot;👋 Hiciste&quot;</span>, operaciones, <span class="str">&quot;operaciones. ¡Hasta luego!&quot;</span>)
+            <span class="com"># break nos saca del while</span>
+            break
+        else:
+            print(<span class="str">&quot;👍 Regresando al menú...&quot;</span>)
+    else:
+        <span class="com"># Opción inválida: no se cuenta como operación</span>
+        print(<span class="str">&quot;❌ Opción no válida, elige del 1 al 6&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Es el mismo menú que diagramaron para su proyecto, ahora con el while. No olvides el rombo de "¿Seguro que quieres salir?".</div>
+    </div>
+  </article>
+  <article class="ex" id="ej6">
+    <div class="ex-top" style="background:var(--sky);color:#fff">
+      <span class="emoji">✅</span>
+      <div>
+        <h3>Ejercicio 6 · Validar los datos de una alta</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>En tu proyecto, cuando alguien da de alta un registro, puede equivocarse: dejar el nombre vacío o poner un precio de $0. Vas a usar el while para <b>no dejar avanzar</b> hasta que los datos sean correctos.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Pedir el nombre del producto <b>mientras</b> esté vacío.</li>
+        <li>Pedir el precio <b>mientras</b> sea 0 o menos.</li>
+        <li>Pedir las piezas en bodega <b>mientras</b> sean menos de 0.</li>
+        <li>Pedir la categoría (1 Tenis, 2 Ropa, 3 Accesorios) <b>mientras</b> no sea una opción válida.</li>
+        <li>Mostrar la ficha del producto y preguntar "¿Guardar? (s/n)" <b>mientras</b> la respuesta no sea s ni n.</li>
+        <li>Mostrar "Producto guardado" o "Alta cancelada".</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio6_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 6: Validar los datos de una alta&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># 1. Nombre: mientras esté vacío, lo volvemos a pedir</span>
+nombre = input(<span class="str">&quot;Nombre del producto: &quot;</span>)
+while nombre == <span class="str">&quot;&quot;</span>:
+    print(<span class="str">&quot;❌ El nombre no puede estar vacío&quot;</span>)
+    nombre = input(<span class="str">&quot;Nombre del producto: &quot;</span>)
+
+<span class="com"># 2. Precio: mientras sea 0 o menos, lo volvemos a pedir</span>
+precio = int(input(<span class="str">&quot;Precio: $&quot;</span>))
+while precio &lt;= 0:
+    print(<span class="str">&quot;❌ El precio debe ser mayor que 0&quot;</span>)
+    precio = int(input(<span class="str">&quot;Precio: $&quot;</span>))
+
+<span class="com"># 3. Piezas: mientras sean menos de 0, las volvemos a pedir</span>
+piezas = int(input(<span class="str">&quot;Piezas en bodega: &quot;</span>))
+while piezas &lt; 0:
+    print(<span class="str">&quot;❌ Las piezas no pueden ser negativas&quot;</span>)
+    piezas = int(input(<span class="str">&quot;Piezas en bodega: &quot;</span>))
+
+<span class="com"># 4. Categoría: al inicio todavía NO es válida</span>
+categoria = <span class="str">&quot;&quot;</span>
+categoria_valida = False
+
+while categoria_valida == False:
+    print(<span class="str">&quot;Categorías: 1. Tenis  2. Ropa  3. Accesorios&quot;</span>)
+    opcion = input(<span class="str">&quot;Elige la categoría: &quot;</span>)
+
+    if opcion == <span class="str">&quot;1&quot;</span>:
+        categoria = <span class="str">&quot;Tenis&quot;</span>
+        categoria_valida = True
+    elif opcion == <span class="str">&quot;2&quot;</span>:
+        categoria = <span class="str">&quot;Ropa&quot;</span>
+        categoria_valida = True
+    elif opcion == <span class="str">&quot;3&quot;</span>:
+        categoria = <span class="str">&quot;Accesorios&quot;</span>
+        categoria_valida = True
+    else:
+        print(<span class="str">&quot;❌ Esa categoría no existe&quot;</span>)
+
+<span class="com"># 5. Mostramos la ficha</span>
+print()
+print(<span class="str">&quot;===== FICHA DEL PRODUCTO =====&quot;</span>)
+print(<span class="str">&quot;Nombre:&quot;</span>, nombre)
+print(<span class="str">&quot;Precio: $&quot;</span>, precio)
+print(<span class="str">&quot;Piezas:&quot;</span>, piezas)
+print(<span class="str">&quot;Categoría:&quot;</span>, categoria)
+
+<span class="com"># 6. Confirmación: al inicio la respuesta todavía NO es válida</span>
+respuesta_valida = False
+
+while respuesta_valida == False:
+    guardar = input(<span class="str">&quot;¿Guardar? (s/n): &quot;</span>)
+
+    if guardar == <span class="str">&quot;s&quot;</span>:
+        print(<span class="str">&quot;✅ Producto guardado&quot;</span>)
+        respuesta_valida = True
+    elif guardar == <span class="str">&quot;n&quot;</span>:
+        print(<span class="str">&quot;🚫 Alta cancelada&quot;</span>)
+        respuesta_valida = True
+    else:
+        print(<span class="str">&quot;❌ Escribe solo s o n&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Son <b>5 while seguidos</b>, uno por cada dato. Cada uno tiene su flecha de regreso.</div>
+    </div>
+  </article>
+</div>
+
+<div class="tab-panel" data-panel="for" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--grape);margin-top:26px">
+    <h2>🗓️ For</h2>
+    <p>Repetir X veces o recorrer cosas una por una: boletos, gamertags, torneos, playlists y folios.</p>
+    <div class="topics"><span>🔂 for</span><span>🔢 range()</span><span>🔤 Recorrer textos</span><span>⏭️ continue</span><span>🔍 else del for</span></div>
+  </div>
+
+  <article class="ex" id="ej7">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">🎟️</span>
+      <div>
+        <h3>Ejercicio 7 · Boletos para el concierto</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Vas a imprimir los boletos de un concierto. El usuario dice de quién es el concierto y cuántos boletos quiere, y el programa los genera numerados con el nombre de cada asistente.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Pedir el nombre del artista y cuántos boletos quiere.</li>
+        <li>Con un <b>for y range</b>, por cada boleto pedir el nombre del asistente.</li>
+        <li>Mostrar cada boleto con su número, por ejemplo "Boleto 2 de 4".</li>
+        <li>Al final, decir cuántos boletos se generaron.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio7_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 7: Boletos para el concierto&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Pedimos el artista y cuántos boletos quiere</span>
+artista = input(<span class="str">&quot;¿De quién es el concierto? &quot;</span>)
+cantidad = int(input(<span class="str">&quot;¿Cuántos boletos quieres? &quot;</span>))
+
+<span class="com"># range(1, cantidad + 1): de 1 hasta cantidad</span>
+<span class="com"># (le sumamos 1 porque range se detiene ANTES del último número)</span>
+for boleto in range(1, cantidad + 1):
+    <span class="com"># Pedimos el nombre de quien va a usar este boleto</span>
+    asistente = input(<span class="str">&quot;Nombre del asistente &quot;</span> + str(boleto) + <span class="str">&quot;: &quot;</span>)
+
+    <span class="com"># Mostramos el boleto</span>
+    print(<span class="str">&quot;🎟️ Boleto&quot;</span>, boleto, <span class="str">&quot;de&quot;</span>, cantidad)
+    print(<span class="str">&quot;   🎤&quot;</span>, artista, <span class="str">&quot;· Asistente:&quot;</span>, asistente)
+
+<span class="com"># Esto se ejecuta cuando el for ya dio todas sus vueltas</span>
+print(<span class="str">&quot;✅ Se generaron&quot;</span>, cantidad, <span class="str">&quot;boletos. ¡Disfruten el concierto!&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Dibuja el for en 3 pasos: <code class="in">boleto = 1</code>, <code class="in">¿boleto &lt;= cantidad?</code> y <code class="in">boleto = boleto + 1</code>.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej8">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">🎮</span>
+      <div>
+        <h3>Ejercicio 8 · Revisa tu gamertag</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Antes de crear tu cuenta, el juego revisa tu gamertag letra por letra: cuenta las vocales y los números, y te da un consejo.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Pedir un gamertag.</li>
+        <li>Recorrerlo <b>letra por letra</b> con un for y mostrar cada letra.</li>
+        <li>Contar cuántas vocales y cuántos números tiene.</li>
+        <li>Contar cuántos caracteres tiene en total.</li>
+        <li>Si no tiene números, dar el consejo "Agrégale un número para que sea único".</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio8_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 8: Revisa tu gamertag&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Pedimos el gamertag</span>
+gamertag = input(<span class="str">&quot;Escribe tu gamertag: &quot;</span>)
+
+<span class="com"># Contadores: empiezan en 0</span>
+vocales = 0
+numeros = 0
+caracteres = 0
+
+<span class="com"># &quot;Para cada&quot; letra del gamertag...</span>
+for letra in gamertag:
+    print(<span class="str">&quot;🔤&quot;</span>, letra)
+
+    <span class="com"># Contamos este caracter</span>
+    caracteres = caracteres + 1
+
+    <span class="com"># ¿La letra ESTÁ en el grupo de vocales?</span>
+    if letra in <span class="str">&quot;aeiouAEIOU&quot;</span>:
+        vocales = vocales + 1
+
+    <span class="com"># ¿La letra ESTÁ en el grupo de números?</span>
+    if letra in <span class="str">&quot;0123456789&quot;</span>:
+        numeros = numeros + 1
+
+<span class="com"># Ya revisamos todas las letras: mostramos el resumen</span>
+print(<span class="str">&quot;===== RESUMEN =====&quot;</span>)
+print(<span class="str">&quot;Caracteres:&quot;</span>, caracteres)
+print(<span class="str">&quot;Vocales:&quot;</span>, vocales)
+print(<span class="str">&quot;Números:&quot;</span>, numeros)
+
+<span class="com"># ¿No tiene ningún número?</span>
+if numeros == 0:
+    print(<span class="str">&quot;💡 Consejo: agrégale un número para que sea único&quot;</span>)
+else:
+    print(<span class="str">&quot;✅ ¡Buen gamertag!&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> El rombo del for pregunta "¿Quedan letras?". Adentro hay dos rombos de if, uno después del otro.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej9">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">🏆</span>
+      <div>
+        <h3>Ejercicio 9 · Torneo de videojuegos</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Organizas un torneo en tu escuela. Registras a cada jugador con sus puntos, decides quién pasa a la final y al final anuncias al ganador.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Pedir el nombre del juego del torneo y cuántos jugadores hay.</li>
+        <li>Con un <b>for</b>, por cada jugador pedir su gamertag y sus puntos.</li>
+        <li>Si tiene 100 puntos o más, mostrar "Pasa a la final" y contarlo como finalista; si no, "Sigue practicando".</li>
+        <li>Ir sumando los puntos de todos.</li>
+        <li>Ir guardando quién lleva <b>más puntos</b>.</li>
+        <li>Al final, mostrar: total de puntos, número de finalistas y el ganador con sus puntos.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio9_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 9: Torneo de videojuegos&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Datos del torneo</span>
+juego = input(<span class="str">&quot;¿De qué juego es el torneo? &quot;</span>)
+cantidad = int(input(<span class="str">&quot;¿Cuántos jugadores hay? &quot;</span>))
+
+<span class="com"># Contadores y acumuladores</span>
+total_puntos = 0
+finalistas = 0
+
+<span class="com"># Para guardar al mejor: empezamos con -1 para que cualquier puntaje lo supere</span>
+mejor_nombre = <span class="str">&quot;&quot;</span>
+mejor_puntos = -1
+
+<span class="com"># &quot;Para cada&quot; jugador del 1 al total...</span>
+for jugador in range(1, cantidad + 1):
+    print()
+    print(<span class="str">&quot;🎮 Jugador&quot;</span>, jugador)
+    nombre = input(<span class="str">&quot;Gamertag: &quot;</span>)
+    puntos = int(input(<span class="str">&quot;Puntos: &quot;</span>))
+
+    <span class="com"># Sumamos sus puntos al total</span>
+    total_puntos = total_puntos + puntos
+
+    <span class="com"># ¿Tiene 100 puntos o más?</span>
+    if puntos &gt;= 100:
+        print(<span class="str">&quot;🏅&quot;</span>, nombre, <span class="str">&quot;pasa a la final&quot;</span>)
+        finalistas = finalistas + 1
+    else:
+        print(<span class="str">&quot;💪&quot;</span>, nombre, <span class="str">&quot;sigue practicando&quot;</span>)
+
+    <span class="com"># ¿Sus puntos son MAYORES que los del mejor hasta ahora?</span>
+    if puntos &gt; mejor_puntos:
+        <span class="com"># Ahora él es el mejor</span>
+        mejor_puntos = puntos
+        mejor_nombre = nombre
+
+<span class="com"># Ya registramos a todos: mostramos los resultados</span>
+print()
+print(<span class="str">&quot;===== 🏆 RESULTADOS DEL TORNEO DE&quot;</span>, juego, <span class="str">&quot;=====&quot;</span>)
+print(<span class="str">&quot;Puntos de todos los jugadores:&quot;</span>, total_puntos)
+print(<span class="str">&quot;Finalistas:&quot;</span>, finalistas)
+print(<span class="str">&quot;👑 Ganador:&quot;</span>, mejor_nombre, <span class="str">&quot;con&quot;</span>, mejor_puntos, <span class="str">&quot;puntos&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Adentro del for van <b>dos rombos</b>: "¿puntos &gt;= 100?" y "¿puntos &gt; mejor_puntos?".</div>
+    </div>
+  </article>
+  <article class="ex" id="ej10">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">🎧</span>
+      <div>
+        <div class="lbl" style="color:#fff;opacity:.9">EJERCICIO 10 · EXTENSO</div>
+        <h3>Ejercicio 10 · Tu playlist en el camión</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Vas en el camión escuchando tu playlist. Hay una canción que siempre saltas y, cuando llegas a tu parada, dejas de escuchar.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Tener una playlist de 6 canciones.</li>
+        <li>Mostrar la playlist numerada antes de empezar.</li>
+        <li>Preguntar qué canción quieres <b>saltar</b> y en qué canción <b>llegas a tu parada</b>.</li>
+        <li>Recorrer la playlist con un for: saltar la canción elegida con <b>continue</b> y detenerse en la parada con <b>break</b>.</li>
+        <li>Contar cuántas canciones escuchaste.</li>
+        <li>Si no te bajaste antes, mostrar "Escuchaste toda la playlist" con el <b>else</b> del for.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio10_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 10: Tu playlist en el camión&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Nuestra playlist</span>
+playlist = [<span class="str">&quot;Flowers&quot;</span>, <span class="str">&quot;Calm Down&quot;</span>, <span class="str">&quot;Ella Baila Sola&quot;</span>,
+            <span class="str">&quot;Anti-Hero&quot;</span>, <span class="str">&quot;Tití Me Preguntó&quot;</span>, <span class="str">&quot;Daylight&quot;</span>]
+
+<span class="com"># Mostramos la playlist numerada</span>
+print(<span class="str">&quot;===== 🎧 MI PLAYLIST =====&quot;</span>)
+numero = 1
+for cancion in playlist:
+    print(numero, <span class="str">&quot;.&quot;</span>, cancion)
+    numero = numero + 1
+
+<span class="com"># Preguntamos qué saltar y dónde bajarse (escríbelas igual que en la lista)</span>
+saltar = input(<span class="str">&quot;¿Qué canción quieres saltar? &quot;</span>)
+parada = input(<span class="str">&quot;¿En qué canción llegas a tu parada? &quot;</span>)
+
+<span class="com"># Contador de canciones escuchadas</span>
+escuchadas = 0
+
+<span class="com"># &quot;Para cada&quot; canción de la playlist...</span>
+for cancion in playlist:
+
+    <span class="com"># ¿Es la canción que queremos saltar?</span>
+    if cancion == saltar:
+        print(<span class="str">&quot;⏭️ Saltando&quot;</span>, cancion)
+        <span class="com"># continue: pasa a la siguiente canción sin escuchar esta</span>
+        continue
+
+    <span class="com"># Si no la saltamos, la escuchamos</span>
+    print(<span class="str">&quot;🎵 Escuchando&quot;</span>, cancion)
+    escuchadas = escuchadas + 1
+
+    <span class="com"># ¿Es la canción en la que llegamos a la parada?</span>
+    if cancion == parada:
+        print(<span class="str">&quot;🚏 ¡Llegaste a tu parada!&quot;</span>)
+        <span class="com"># break: dejamos de escuchar</span>
+        break
+else:
+    <span class="com"># Solo entra aquí si el for terminó SIN break</span>
+    print(<span class="str">&quot;🎧 Escuchaste toda la playlist&quot;</span>)
+
+print(<span class="str">&quot;Canciones escuchadas:&quot;</span>, escuchadas)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Marca la flecha del <b>continue</b> (regresa a "¿Quedan canciones?") y la del <b>break</b> (va a la salida).</div>
+    </div>
+  </article>
+  <article class="ex" id="ej11">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">👟</span>
+      <div>
+        <h3>Ejercicio 11 · Buscador de la tienda de sneakers</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Los clientes de la tienda buscan modelos. Si existe, se les dice que está disponible; si no, se les recomiendan los que sí hay. El buscador sigue abierto hasta que el cliente escribe "salir".</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Tener un inventario de 5 modelos.</li>
+        <li>Con un <b>while True</b>, pedir el modelo a buscar hasta que escriba "salir".</li>
+        <li>Con un <b>for</b>, buscar el modelo en el inventario. Si lo encuentra, avisar y salir del for con <b>break</b>.</li>
+        <li>Si no lo encuentra (<b>else</b> del for), avisar y mostrar los modelos que sí hay.</li>
+        <li>Contar cuántas búsquedas hizo y cuántas encontró.</li>
+        <li>Al salir, mostrar ese resumen.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio11_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 11: Buscador de la tienda de sneakers&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># El inventario de la tienda</span>
+inventario = [<span class="str">&quot;Air Max&quot;</span>, <span class="str">&quot;Jordan 1&quot;</span>, <span class="str">&quot;Converse&quot;</span>, <span class="str">&quot;Samba&quot;</span>, <span class="str">&quot;New Balance 550&quot;</span>]
+
+<span class="com"># Contadores</span>
+busquedas = 0
+encontrados = 0
+
+<span class="com"># El buscador se repite hasta que el cliente escriba &quot;salir&quot;</span>
+while True:
+    print()
+    buscado = input(<span class="str">&quot;🔍 ¿Qué modelo buscas? (escribe salir para terminar): &quot;</span>)
+
+    <span class="com"># ¿Escribió &quot;salir&quot;?</span>
+    if buscado == <span class="str">&quot;salir&quot;</span>:
+        break
+
+    <span class="com"># Contamos esta búsqueda</span>
+    busquedas = busquedas + 1
+
+    <span class="com"># &quot;Para cada&quot; modelo del inventario...</span>
+    for modelo in inventario:
+        <span class="com"># ¿Este modelo es IGUAL al que busca?</span>
+        if modelo == buscado:
+            print(<span class="str">&quot;✅ ¡Sí tenemos&quot;</span>, modelo, <span class="str">&quot;!&quot;</span>)
+            encontrados = encontrados + 1
+            <span class="com"># Ya lo encontramos: dejamos de buscar</span>
+            break
+    else:
+        <span class="com"># Solo entra aquí si el for terminó SIN break (no lo encontró)</span>
+        print(<span class="str">&quot;❌ No tenemos&quot;</span>, buscado)
+        print(<span class="str">&quot;👟 Te recomendamos estos modelos:&quot;</span>)
+        for modelo in inventario:
+            print(<span class="str">&quot;   •&quot;</span>, modelo)
+
+<span class="com"># Ya salió del buscador: mostramos el resumen</span>
+print()
+print(<span class="str">&quot;===== RESUMEN =====&quot;</span>)
+print(<span class="str">&quot;Búsquedas:&quot;</span>, busquedas)
+print(<span class="str">&quot;Encontrados:&quot;</span>, encontrados)
+print(<span class="str">&quot;👋 ¡Gracias por visitar la tienda!&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Es un while con un for adentro. Dibuja primero el while y, dentro de su lado Sí, el for.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej12">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">📝</span>
+      <div>
+        <div class="lbl" style="color:#fff;opacity:.9">EJERCICIO 12 · EXTENSO</div>
+        <h3>Ejercicio 12 · Alta de productos con folio</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>En tu proyecto CRUD, cada registro necesita una <b>clave</b>. Vas a dar de alta varios productos y el programa le asigna a cada uno un folio automático (SNK1, SNK2...).</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Preguntar cuántos productos se van a dar de alta.</li>
+        <li>Con un <b>for y range</b>, crear el folio de cada uno juntando "SNK" con el número.</li>
+        <li>Pedir nombre, precio y piezas de cada producto.</li>
+        <li>Validar con un <b>while</b> que el precio sea mayor que 0.</li>
+        <li>Calcular cuánto vale cada producto en bodega (precio por piezas) y sumarlo al valor total.</li>
+        <li>Mostrar la ficha de cada producto y, al final, el valor total del inventario.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio12_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 12: Alta de productos con folio&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># ¿Cuántos productos vamos a dar de alta?</span>
+cuantos = int(input(<span class="str">&quot;¿Cuántos productos vas a dar de alta? &quot;</span>))
+
+<span class="com"># Aquí sumaremos el valor de todo el inventario</span>
+valor_total = 0
+
+<span class="com"># &quot;Para cada&quot; número del 1 al total de productos...</span>
+for numero in range(1, cuantos + 1):
+    <span class="com"># Creamos el folio: str() convierte el número en texto para poder juntarlo</span>
+    folio = <span class="str">&quot;SNK&quot;</span> + str(numero)
+
+    print()
+    print(<span class="str">&quot;📝 Producto con folio&quot;</span>, folio)
+    nombre = input(<span class="str">&quot;Nombre: &quot;</span>)
+
+    <span class="com"># Pedimos el precio y lo validamos: mientras sea 0 o menos, se repite</span>
+    precio = int(input(<span class="str">&quot;Precio: $&quot;</span>))
+    while precio &lt;= 0:
+        print(<span class="str">&quot;❌ El precio debe ser mayor que 0&quot;</span>)
+        precio = int(input(<span class="str">&quot;Precio: $&quot;</span>))
+
+    piezas = int(input(<span class="str">&quot;Piezas en bodega: &quot;</span>))
+
+    <span class="com"># Calculamos cuánto vale este producto en bodega</span>
+    valor = precio * piezas
+    valor_total = valor_total + valor
+
+    <span class="com"># Mostramos la ficha</span>
+    print(<span class="str">&quot;✅ Alta exitosa&quot;</span>)
+    print(<span class="str">&quot;   Folio:&quot;</span>, folio, <span class="str">&quot;· Nombre:&quot;</span>, nombre)
+    print(<span class="str">&quot;   Precio: $&quot;</span>, precio, <span class="str">&quot;· Piezas:&quot;</span>, piezas, <span class="str">&quot;· Valor: $&quot;</span>, valor)
+
+<span class="com"># Ya terminamos todas las altas</span>
+print()
+print(<span class="str">&quot;===== RESUMEN DEL INVENTARIO =====&quot;</span>)
+print(<span class="str">&quot;Productos dados de alta:&quot;</span>, cuantos)
+print(<span class="str">&quot;💰 Valor total del inventario: $&quot;</span>, valor_total)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Es un for con un while adentro (el que valida el precio). El cálculo del valor va en rectángulo.</div>
+    </div>
+  </article>
+</div>
+
+<div class="tab-panel" data-panel="listas" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>🗓️ Listas</h2>
+    <p>Guardar muchos datos en una sola variable y hacer Altas, Bajas, Cambios, Consultas e Imprimir: ¡tu proyecto CRUD!</p>
+    <div class="topics"><span>📋 Listas</span><span>🗄️ Índices</span><span>➕ append</span><span>🗑️ del</span><span>🔍 in</span><span>📏 len()</span></div>
+  </div>
+
+  <article class="ex" id="ej13">
+    <div class="ex-top" style="background:var(--mint);color:#fff">
+      <span class="emoji">🎮</span>
+      <div>
+        <h3>Ejercicio 13 · Mis juegos favoritos</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Tienes una lista con tus 5 juegos favoritos. Vas a practicar cómo sacar elementos por su casillero y cómo mostrar la lista numerada.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Crear una lista con 5 juegos.</li>
+        <li>Mostrar el primero, el último (con índice negativo) y el tercero.</li>
+        <li>Mostrar cuántos juegos hay con <b>len()</b>.</li>
+        <li>Mostrar la lista numerada del 1 al 5 (aunque los casilleros vayan del 0 al 4).</li>
+        <li>Pedir un número del 1 al 5 y mostrar el juego de ese lugar.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio13_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 13: Mis juegos favoritos&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Creamos la lista con 5 juegos</span>
+juegos = [<span class="str">&quot;Minecraft&quot;</span>, <span class="str">&quot;Roblox&quot;</span>, <span class="str">&quot;Fortnite&quot;</span>, <span class="str">&quot;FIFA&quot;</span>, <span class="str">&quot;Among Us&quot;</span>]
+
+<span class="com"># Casillero 0: el primero</span>
+print(<span class="str">&quot;🥇 Mi juego número 1:&quot;</span>, juegos[0])
+
+<span class="com"># Casillero -1: el último</span>
+print(<span class="str">&quot;🔚 El último de mi lista:&quot;</span>, juegos[-1])
+
+<span class="com"># Casillero 2: el tercero (porque empezamos en 0)</span>
+print(<span class="str">&quot;3️⃣ El tercero:&quot;</span>, juegos[2])
+
+<span class="com"># len() cuenta cuántos hay</span>
+print(<span class="str">&quot;📦 Tengo&quot;</span>, len(juegos), <span class="str">&quot;juegos favoritos&quot;</span>)
+
+<span class="com"># Mostramos la lista numerada</span>
+print()
+print(<span class="str">&quot;===== MIS FAVORITOS =====&quot;</span>)
+<span class="com"># range(len(juegos)) nos da los casilleros: 0, 1, 2, 3, 4</span>
+for i in range(len(juegos)):
+    <span class="com"># Mostramos i + 1 para que la persona vea del 1 al 5</span>
+    print(i + 1, <span class="str">&quot;.&quot;</span>, juegos[i])
+
+<span class="com"># Pedimos un número del 1 al 5</span>
+numero = int(input(<span class="str">&quot;Escribe un número del 1 al 5: &quot;</span>))
+
+<span class="com"># La persona cuenta desde 1, pero Python desde 0: por eso le restamos 1</span>
+print(<span class="str">&quot;🎮 Elegiste:&quot;</span>, juegos[numero - 1])</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Lo único que se repite es el for que imprime la lista. Todo lo demás son rectángulos uno tras otro.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej14">
+    <div class="ex-top" style="background:var(--mint);color:#fff">
+      <span class="emoji">➕</span>
+      <div>
+        <h3>Ejercicio 14 · Altas en el inventario</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Empiezas con un inventario vacío y vas agregando productos. El sistema no deja agregar un producto vacío ni uno que ya existe.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Empezar con una lista vacía.</li>
+        <li>Pedir productos <b>mientras</b> no escriba "fin".</li>
+        <li>Si el producto está vacío, avisar.</li>
+        <li>Si ya está en la lista (<b>in</b>), avisar que ya existe.</li>
+        <li>Si todo está bien, agregarlo con <b>append</b> y decir cuántos lleva.</li>
+        <li>Al final, mostrar el inventario numerado, o "No agregaste productos" si quedó vacío.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio14_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 14: Altas en el inventario&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Empezamos con el inventario vacío</span>
+inventario = []
+
+<span class="com"># Al inicio todavía NO terminamos</span>
+termine = False
+
+while termine == False:
+    nuevo = input(<span class="str">&quot;Producto a agregar (escribe fin para terminar): &quot;</span>)
+
+    <span class="com"># ¿Escribió &quot;fin&quot;?</span>
+    if nuevo == <span class="str">&quot;fin&quot;</span>:
+        termine = True
+    <span class="com"># ¿Lo dejó vacío?</span>
+    elif nuevo == <span class="str">&quot;&quot;</span>:
+        print(<span class="str">&quot;❌ El producto no puede estar vacío&quot;</span>)
+    <span class="com"># ¿Ya ESTÁ en el inventario?</span>
+    elif nuevo in inventario:
+        print(<span class="str">&quot;⚠️&quot;</span>, nuevo, <span class="str">&quot;ya está en el inventario&quot;</span>)
+    else:
+        <span class="com"># Todo bien: lo agregamos al final de la lista</span>
+        inventario.append(nuevo)
+        print(<span class="str">&quot;✅ Agregado. Llevas&quot;</span>, len(inventario), <span class="str">&quot;productos&quot;</span>)
+
+<span class="com"># Mostramos el inventario</span>
+print()
+print(<span class="str">&quot;===== INVENTARIO =====&quot;</span>)
+
+<span class="com"># ¿La lista quedó vacía?</span>
+if len(inventario) == 0:
+    print(<span class="str">&quot;📭 No agregaste productos&quot;</span>)
+else:
+    for i in range(len(inventario)):
+        print(i + 1, <span class="str">&quot;.&quot;</span>, inventario[i])</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Es un while con varios rombos adentro (if, elif, elif, else). Al final hay un rombo más: "¿la lista está vacía?".</div>
+    </div>
+  </article>
+  <article class="ex" id="ej15">
+    <div class="ex-top" style="background:var(--mint);color:#fff">
+      <span class="emoji">🗑️</span>
+      <div>
+        <div class="lbl" style="color:#fff;opacity:.9">EJERCICIO 15 · EXTENSO</div>
+        <h3>Ejercicio 15 · Bajas en el inventario</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>La tienda vendió algunos modelos y ya no los va a tener. Vas a borrar productos del inventario, uno por uno, hasta que el usuario escriba 0.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Empezar con un inventario de 5 modelos.</li>
+        <li>Con un <b>while True</b>, mostrar el inventario numerado cada vez.</li>
+        <li>Pedir el número del producto a eliminar (0 para terminar).</li>
+        <li>Si el número es menor que 1 o mayor que la cantidad de productos, avisar "Ese número no existe".</li>
+        <li>Si existe, preguntar "¿Seguro que quieres eliminar...? (s/n)".</li>
+        <li>Si confirma, borrarlo con <b>del</b>; si no, cancelar.</li>
+        <li>Si el inventario queda vacío, avisar y terminar.</li>
+        <li>Al final, mostrar cuántos productos quedaron.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio15_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 15: Bajas en el inventario&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+
+<span class="com"># El inventario inicial</span>
+inventario = [<span class="str">&quot;Air Max&quot;</span>, <span class="str">&quot;Jordan 1&quot;</span>, <span class="str">&quot;Converse&quot;</span>, <span class="str">&quot;Samba&quot;</span>, <span class="str">&quot;New Balance 550&quot;</span>]
+
+while True:
+    <span class="com"># Mostramos el inventario numerado</span>
+    print()
+    print(<span class="str">&quot;===== INVENTARIO =====&quot;</span>)
+    for i in range(len(inventario)):
+        print(i + 1, <span class="str">&quot;.&quot;</span>, inventario[i])
+
+    numero = int(input(<span class="str">&quot;Número del producto a eliminar (0 para terminar): &quot;</span>))
+
+    <span class="com"># ¿Escribió 0?</span>
+    if numero == 0:
+        break
+    <span class="com"># ¿El número es menor que 1?</span>
+    elif numero &lt; 0:
+        print(<span class="str">&quot;❌ Ese número no existe&quot;</span>)
+    <span class="com"># ¿El número es mayor que la cantidad de productos?</span>
+    elif numero &gt; len(inventario):
+        print(<span class="str">&quot;❌ Ese número no existe&quot;</span>)
+    else:
+        <span class="com"># El número sí existe. Recuerda: casillero = número - 1</span>
+        elegido = inventario[numero - 1]
+        confirmar = input(<span class="str">&quot;¿Seguro que quieres eliminar &quot;</span> + elegido + <span class="str">&quot;? (s/n): &quot;</span>)
+
+        if confirmar == <span class="str">&quot;s&quot;</span>:
+            <span class="com"># Borramos lo que hay en ese casillero</span>
+            del inventario[numero - 1]
+            print(<span class="str">&quot;🗑️&quot;</span>, elegido, <span class="str">&quot;fue eliminado&quot;</span>)
+        else:
+            print(<span class="str">&quot;👍 Baja cancelada&quot;</span>)
+
+    <span class="com"># ¿El inventario quedó vacío?</span>
+    if len(inventario) == 0:
+        print(<span class="str">&quot;📭 El inventario quedó vacío&quot;</span>)
+        break
+
+<span class="com"># Ya salimos del while</span>
+print()
+print(<span class="str">&quot;Quedaron&quot;</span>, len(inventario), <span class="str">&quot;productos en el inventario&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Tiene <b>dos salidas con break</b>: cuando escribe 0 y cuando el inventario queda vacío.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej16">
+    <div class="ex-top" style="background:var(--mint);color:#fff">
+      <span class="emoji">✏️</span>
+      <div>
+        <div class="lbl" style="color:#fff;opacity:.9">EJERCICIO 16 · EXTENSO</div>
+        <h3>Ejercicio 16 · Cambios en tu playlist</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Quieres cambiar una canción de tu playlist por otra. También puedes mandarla al primer lugar.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Empezar con una playlist de 5 canciones y mostrarla numerada.</li>
+        <li>Pedir el número de la canción a cambiar.</li>
+        <li>Validar que el número exista. Si no, avisar.</li>
+        <li>Mostrar cuál canción se va a cambiar.</li>
+        <li>Pedir la nueva canción <b>mientras</b> esté vacía.</li>
+        <li>Si la nueva ya está en la playlist, avisar; si no, reemplazarla.</li>
+        <li>Preguntar si la quiere mover al primer lugar e <b>intercambiarla</b> con la primera.</li>
+        <li>Mostrar la playlist final.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio16_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 16: Cambios en tu playlist&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># La playlist inicial</span>
+playlist = [<span class="str">&quot;Flowers&quot;</span>, <span class="str">&quot;Calm Down&quot;</span>, <span class="str">&quot;Ella Baila Sola&quot;</span>, <span class="str">&quot;Anti-Hero&quot;</span>, <span class="str">&quot;Tití Me Preguntó&quot;</span>]
+
+<span class="com"># Mostramos la playlist numerada</span>
+print(<span class="str">&quot;===== 🎧 MI PLAYLIST =====&quot;</span>)
+for i in range(len(playlist)):
+    print(i + 1, <span class="str">&quot;.&quot;</span>, playlist[i])
+
+numero = int(input(<span class="str">&quot;¿Qué número de canción quieres cambiar? &quot;</span>))
+
+<span class="com"># Validamos que el número exista</span>
+if numero &lt; 1:
+    print(<span class="str">&quot;❌ Ese número no existe&quot;</span>)
+elif numero &gt; len(playlist):
+    print(<span class="str">&quot;❌ Ese número no existe&quot;</span>)
+else:
+    <span class="com"># Casillero = número - 1</span>
+    casillero = numero - 1
+    actual = playlist[casillero]
+    print(<span class="str">&quot;✏️ Vas a cambiar:&quot;</span>, actual)
+
+    <span class="com"># Pedimos la nueva canción: mientras esté vacía, se repite</span>
+    nueva = input(<span class="str">&quot;Escribe la nueva canción: &quot;</span>)
+    while nueva == <span class="str">&quot;&quot;</span>:
+        print(<span class="str">&quot;❌ No puede estar vacía&quot;</span>)
+        nueva = input(<span class="str">&quot;Escribe la nueva canción: &quot;</span>)
+
+    <span class="com"># ¿La nueva canción YA ESTÁ en la playlist?</span>
+    if nueva in playlist:
+        print(<span class="str">&quot;⚠️&quot;</span>, nueva, <span class="str">&quot;ya está en tu playlist&quot;</span>)
+    else:
+        <span class="com"># Reemplazamos lo que hay en ese casillero</span>
+        playlist[casillero] = nueva
+        print(<span class="str">&quot;✅&quot;</span>, actual, <span class="str">&quot;cambió por&quot;</span>, nueva)
+
+    <span class="com"># ¿Quiere mover esta canción al primer lugar?</span>
+    mover = input(<span class="str">&quot;¿La quieres mover al primer lugar? (s/n): &quot;</span>)
+    if mover == <span class="str">&quot;s&quot;</span>:
+        <span class="com"># Intercambiamos el casillero 0 con el casillero elegido</span>
+        playlist[0], playlist[casillero] = playlist[casillero], playlist[0]
+        print(<span class="str">&quot;⬆️ Ahora está en el primer lugar&quot;</span>)
+
+<span class="com"># Mostramos la playlist final</span>
+print()
+print(<span class="str">&quot;===== 🎧 PLAYLIST FINAL =====&quot;</span>)
+for i in range(len(playlist)):
+    print(i + 1, <span class="str">&quot;.&quot;</span>, playlist[i])</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Fíjate en la validación del número (dos rombos) y en el while que no deja la canción vacía.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej17">
+    <div class="ex-top" style="background:var(--mint);color:#fff">
+      <span class="emoji">🔍</span>
+      <div>
+        <div class="lbl" style="color:#fff;opacity:.9">EJERCICIO 17 · EXTENSO</div>
+        <h3>Ejercicio 17 · Consultas en el inventario</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>El encargado de la tienda quiere consultar el inventario de varias formas: por nombre, por la primera letra o saber cuántos productos hay.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Tener un inventario de 6 modelos.</li>
+        <li>Con un <b>while True</b>, mostrar un menú de consultas: 1 Buscar por nombre, 2 Buscar por primera letra, 3 Cuántos productos hay, 4 Regresar.</li>
+        <li><b>Opción 1:</b> si el modelo <b>está</b> en la lista (<b>in</b>), recorrerla con un for para decir en qué lugar está; si no, avisar.</li>
+        <li><b>Opción 2:</b> pedir una letra y, con un for, mostrar todos los modelos que empiezan con esa letra y cuántos son.</li>
+        <li><b>Opción 3:</b> mostrar cuántos productos hay con <b>len()</b>.</li>
+        <li><b>Opción 4:</b> salir con <b>break</b>.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio17_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 17: Consultas en el inventario&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+
+<span class="com"># El inventario de la tienda</span>
+inventario = [<span class="str">&quot;Air Max&quot;</span>, <span class="str">&quot;Jordan 1&quot;</span>, <span class="str">&quot;Air Force 1&quot;</span>, <span class="str">&quot;Converse&quot;</span>, <span class="str">&quot;Samba&quot;</span>, <span class="str">&quot;Jordan 4&quot;</span>]
+
+while True:
+    print()
+    print(<span class="str">&quot;===== 🔍 CONSULTAS =====&quot;</span>)
+    print(<span class="str">&quot;1. Buscar por nombre&quot;</span>)
+    print(<span class="str">&quot;2. Buscar por primera letra&quot;</span>)
+    print(<span class="str">&quot;3. ¿Cuántos productos hay?&quot;</span>)
+    print(<span class="str">&quot;4. Regresar&quot;</span>)
+    opcion = input(<span class="str">&quot;Elige una opción: &quot;</span>)
+
+    if opcion == <span class="str">&quot;1&quot;</span>:
+        buscado = input(<span class="str">&quot;Nombre del modelo (con mayúsculas como en la lista): &quot;</span>)
+
+        <span class="com"># ¿El modelo ESTÁ en el inventario?</span>
+        if buscado in inventario:
+            <span class="com"># Recorremos los casilleros para saber dónde está</span>
+            for i in range(len(inventario)):
+                if inventario[i] == buscado:
+                    print(<span class="str">&quot;✅&quot;</span>, buscado, <span class="str">&quot;está en el lugar&quot;</span>, i + 1)
+        else:
+            print(<span class="str">&quot;❌&quot;</span>, buscado, <span class="str">&quot;no está en el inventario&quot;</span>)
+
+    elif opcion == <span class="str">&quot;2&quot;</span>:
+        letra = input(<span class="str">&quot;Escribe la primera letra (en mayúscula): &quot;</span>)
+        encontrados = 0
+
+        <span class="com"># &quot;Para cada&quot; producto del inventario...</span>
+        for producto in inventario:
+            <span class="com"># producto[0] es la PRIMERA letra del texto (casillero 0)</span>
+            if producto[0] == letra:
+                print(<span class="str">&quot;👟&quot;</span>, producto)
+                encontrados = encontrados + 1
+
+        <span class="com"># ¿No encontramos ninguno?</span>
+        if encontrados == 0:
+            print(<span class="str">&quot;❌ Ningún producto empieza con&quot;</span>, letra)
+        else:
+            print(<span class="str">&quot;Encontré&quot;</span>, encontrados, <span class="str">&quot;productos&quot;</span>)
+
+    elif opcion == <span class="str">&quot;3&quot;</span>:
+        print(<span class="str">&quot;📦 Hay&quot;</span>, len(inventario), <span class="str">&quot;productos en el inventario&quot;</span>)
+
+    elif opcion == <span class="str">&quot;4&quot;</span>:
+        print(<span class="str">&quot;👋 Regresando...&quot;</span>)
+        break
+
+    else:
+        print(<span class="str">&quot;❌ Opción no válida&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Es un menú con while. La opción 1 tiene un for adentro de un if, y la opción 2 tiene un if adentro de un for.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej18">
+    <div class="ex-top" style="background:var(--mint);color:#fff">
+      <span class="emoji">🚀</span>
+      <div>
+        <div class="lbl" style="color:#fff;opacity:.9">EJERCICIO 18 · EXTENSO · RETO FINAL</div>
+        <h3>Ejercicio 18 · Mini CRUD completo</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>¡Juntas todo! Vas a hacer un mini sistema CRUD con una lista, con las 6 opciones de tu proyecto <b>funcionando de verdad</b>. Es la versión pequeña de lo que vas a entregar.</p>
+      <h4>🎯 Tu programa debe</h4>
+      <ol style="padding-left:22px">
+        <li>Empezar con una lista de 2 productos.</li>
+        <li>Con un <b>while True</b>, mostrar el menú: Altas, Bajas, Cambios, Consultas, Imprimir y Salir.</li>
+        <li><b>Altas:</b> pedir el producto y agregarlo con <b>append</b> (sin dejarlo vacío ni repetido).</li>
+        <li><b>Bajas:</b> mostrar la lista numerada, pedir el número, validarlo, confirmar y borrar con <b>del</b>.</li>
+        <li><b>Cambios:</b> mostrar la lista, pedir el número, validarlo y reemplazar el producto.</li>
+        <li><b>Consultas:</b> decir si un producto está o no en la lista con <b>in</b>.</li>
+        <li><b>Imprimir:</b> mostrar la lista numerada y cuántos productos hay (o "vacía").</li>
+        <li><b>Salir:</b> terminar con <b>break</b>.</li>
+      </ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad3_ejercicio18_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 18: Mini CRUD completo&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+
+<span class="com"># La lista de productos de la tienda</span>
+tienda = [<span class="str">&quot;Air Max&quot;</span>, <span class="str">&quot;Converse&quot;</span>]
+
+while True:
+    print()
+    print(<span class="str">&quot;===== 👟 MINI CRUD SNEAKERS =====&quot;</span>)
+    print(<span class="str">&quot;1. Altas&quot;</span>)
+    print(<span class="str">&quot;2. Bajas&quot;</span>)
+    print(<span class="str">&quot;3. Cambios&quot;</span>)
+    print(<span class="str">&quot;4. Consultas&quot;</span>)
+    print(<span class="str">&quot;5. Imprimir&quot;</span>)
+    print(<span class="str">&quot;6. Salir&quot;</span>)
+    opcion = input(<span class="str">&quot;Elige una opción: &quot;</span>)
+
+    <span class="com"># ========== 1. ALTAS ==========</span>
+    if opcion == <span class="str">&quot;1&quot;</span>:
+        nuevo = input(<span class="str">&quot;Producto nuevo: &quot;</span>)
+        if nuevo == <span class="str">&quot;&quot;</span>:
+            print(<span class="str">&quot;❌ No puede estar vacío&quot;</span>)
+        elif nuevo in tienda:
+            print(<span class="str">&quot;⚠️&quot;</span>, nuevo, <span class="str">&quot;ya existe&quot;</span>)
+        else:
+            tienda.append(nuevo)
+            print(<span class="str">&quot;✅&quot;</span>, nuevo, <span class="str">&quot;agregado&quot;</span>)
+
+    <span class="com"># ========== 2. BAJAS ==========</span>
+    elif opcion == <span class="str">&quot;2&quot;</span>:
+        if len(tienda) == 0:
+            print(<span class="str">&quot;📭 No hay productos para eliminar&quot;</span>)
+        else:
+            for i in range(len(tienda)):
+                print(i + 1, <span class="str">&quot;.&quot;</span>, tienda[i])
+            numero = int(input(<span class="str">&quot;Número a eliminar: &quot;</span>))
+            if numero &lt; 1:
+                print(<span class="str">&quot;❌ Ese número no existe&quot;</span>)
+            elif numero &gt; len(tienda):
+                print(<span class="str">&quot;❌ Ese número no existe&quot;</span>)
+            else:
+                elegido = tienda[numero - 1]
+                confirmar = input(<span class="str">&quot;¿Eliminar &quot;</span> + elegido + <span class="str">&quot;? (s/n): &quot;</span>)
+                if confirmar == <span class="str">&quot;s&quot;</span>:
+                    del tienda[numero - 1]
+                    print(<span class="str">&quot;🗑️&quot;</span>, elegido, <span class="str">&quot;eliminado&quot;</span>)
+                else:
+                    print(<span class="str">&quot;👍 Baja cancelada&quot;</span>)
+
+    <span class="com"># ========== 3. CAMBIOS ==========</span>
+    elif opcion == <span class="str">&quot;3&quot;</span>:
+        for i in range(len(tienda)):
+            print(i + 1, <span class="str">&quot;.&quot;</span>, tienda[i])
+        numero = int(input(<span class="str">&quot;Número a cambiar: &quot;</span>))
+        if numero &lt; 1:
+            print(<span class="str">&quot;❌ Ese número no existe&quot;</span>)
+        elif numero &gt; len(tienda):
+            print(<span class="str">&quot;❌ Ese número no existe&quot;</span>)
+        else:
+            nuevo = input(<span class="str">&quot;Nuevo nombre: &quot;</span>)
+            print(<span class="str">&quot;✏️&quot;</span>, tienda[numero - 1], <span class="str">&quot;cambió por&quot;</span>, nuevo)
+            tienda[numero - 1] = nuevo
+
+    <span class="com"># ========== 4. CONSULTAS ==========</span>
+    elif opcion == <span class="str">&quot;4&quot;</span>:
+        buscado = input(<span class="str">&quot;¿Qué producto buscas? &quot;</span>)
+        if buscado in tienda:
+            print(<span class="str">&quot;✅ Sí tenemos&quot;</span>, buscado)
+        else:
+            print(<span class="str">&quot;❌ No tenemos&quot;</span>, buscado)
+
+    <span class="com"># ========== 5. IMPRIMIR ==========</span>
+    elif opcion == <span class="str">&quot;5&quot;</span>:
+        if len(tienda) == 0:
+            print(<span class="str">&quot;📭 La tienda está vacía&quot;</span>)
+        else:
+            print(<span class="str">&quot;===== INVENTARIO =====&quot;</span>)
+            for i in range(len(tienda)):
+                print(i + 1, <span class="str">&quot;.&quot;</span>, tienda[i])
+            print(<span class="str">&quot;Total:&quot;</span>, len(tienda), <span class="str">&quot;productos&quot;</span>)
+
+    <span class="com"># ========== 6. SALIR ==========</span>
+    elif opcion == <span class="str">&quot;6&quot;</span>:
+        print(<span class="str">&quot;👋 ¡Hasta luego!&quot;</span>)
+        break
+
+    else:
+        print(<span class="str">&quot;❌ Opción no válida&quot;</span>)</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Como es largo, puedes hacer <b>un diagrama del menú principal</b> y <b>uno pequeño por cada opción</b> (Altas, Bajas, Cambios, Consultas e Imprimir).</div>
+    </div>
+  </article>
+</div>
+
+</section>
+
+<!-- ENTREGA -->
+<section id="entrega">
+  <span class="tag" style="background:var(--coral)">Entrega</span>
+  <h2 class="title">Viernes: entrega</h2>
+  <div class="delivery">
+    <div class="date-badge">⏰ Viernes 06 de noviembre, 23:59</div>
+    <div class="where">
+      <div style="background:var(--sky)"><h4>📄 Canvas</h4><p>Sube tu Word en la Actividad 03 y pega el enlace de tu repositorio.</p></div>
+      <div style="background:var(--grape)"><h4>🐙 GitHub</h4><p>Repositorio <b>Actividad3_Mimatricula</b> con tu Word y tus 18 archivos .py.</p></div>
+    </div>
+    <h4>✅ Antes de entregar, revisa</h4>
+    <ul class="checklist">
+      <li><label><input type="checkbox" data-i="0"><span>Portada con nombre completo, matrícula, materia, actividad, profesora y fecha</span></label></li>
+      <li><label><input type="checkbox" data-i="1"><span>Índice</span></label></li>
+      <li><label><input type="checkbox" data-i="2"><span>Ejercicios del While (1 al 6): código, captura de la terminal y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="3"><span>Ejercicios del For (7 al 12): código, captura de la terminal y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="4"><span>Ejercicios de Listas (13 al 18): código, captura de la terminal y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="5"><span>Cada programa empieza con el print del ejercicio, mi nombre y mi matrícula</span></label></li>
+      <li><label><input type="checkbox" data-i="6"><span>18 archivos .py con el nombre Actividad3_ejercicioN_mimatricula.py</span></label></li>
+      <li><label><input type="checkbox" data-i="7"><span>Repositorio Actividad3_Mimatricula creado en GitHub con el Word y los .py</span></label></li>
+      <li><label><input type="checkbox" data-i="8"><span>Enlace del repositorio escrito en el Word</span></label></li>
+      <li><label><input type="checkbox" data-i="9"><span>Word subido y enlace enviado en la Actividad 03 de Canvas</span></label></li>
+    </ul>
+    <div class="progress" id="progreso">0 de 10 listos</div>
+  </div>
+</section>
+
+</main>
+
+<footer>Fundamentos de Programación · Python Fundamentals · Actividad 03</footer>
+
+<script src="menu.js"></script>
+<script>
+  // ===== FECHAS EN QUE SE ABREN LAS PESTAÑAS (año-mes-díaThora:minutos) =====
+  const DESBLOQUEO = {
+    for: "2026-11-03T07:00",
+    listas: "2026-11-04T07:00"
+  };
+
+  function bloqueada(nombre) {
+    return DESBLOQUEO[nombre] ? new Date() < new Date(DESBLOQUEO[nombre]) : false;
+  }
+
+  const tabs = document.querySelectorAll(".tabs .tab");
+  const panels = document.querySelectorAll(".tab-panel");
+
+  // Las pestañas bloqueadas se ven grises con candado
+  tabs.forEach(t => {
+    if (bloqueada(t.dataset.tab)) {
+      t.style.opacity = ".45";
+      t.style.cursor = "not-allowed";
+      t.textContent = "🔒 " + t.textContent.slice(t.textContent.indexOf(" ") + 1);
+    }
+  });
+  document.querySelectorAll(".menu-pagina a[data-tab]").forEach(a => {
+    if (bloqueada(a.dataset.tab)) { a.style.opacity = ".45"; a.textContent = "🔒 " + a.textContent; }
+  });
+
+  function mostrar(nombre) {
+    if (bloqueada(nombre)) return false;
+    tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === nombre));
+    panels.forEach(p => { p.hidden = p.dataset.panel !== nombre; });
+    return true;
+  }
+
+  tabs.forEach(t => t.addEventListener("click", () => mostrar(t.dataset.tab)));
+
+  // Las notitas grises While / For / List abren su pestaña
+  document.querySelectorAll(".menu-pagina a[data-tab]").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      if (mostrar(a.dataset.tab)) document.getElementById("ejercicios").scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // ===== CHECKLIST DE ENTREGA (se guarda en tu navegador) =====
+  const cajas = document.querySelectorAll(".checklist input");
+  const progreso = document.getElementById("progreso");
+  const CLAVE = "actividad3_checklist";
+  let marcadas = [];
+  try { marcadas = JSON.parse(localStorage.getItem(CLAVE)) || []; } catch (e) {}
+
+  function actualizar() {
+    const listos = [...cajas].filter(c => c.checked).length;
+    progreso.textContent = listos === cajas.length
+      ? "🎉 ¡" + listos + " de " + cajas.length + " listos! Ya puedes entregar"
+      : listos + " de " + cajas.length + " listos";
+    try { localStorage.setItem(CLAVE, JSON.stringify([...cajas].map(c => c.checked))); } catch (e) {}
+  }
+
+  cajas.forEach((c, i) => {
+    c.checked = !!marcadas[i];
+    c.addEventListener("change", actualizar);
+  });
+  actualizar();
+</script>
+</body>
+</html>
