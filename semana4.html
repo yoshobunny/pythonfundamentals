@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 4: Bucles y listas | Fundamentos de Programación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">Semana 4 · Canvas Tema 8 y 9 · Módulo 3 CISCO</span>
+    <h1><span class="c1">Bucles</span>, <span class="c3">while</span>, <span class="c2">for</span> y <span class="c4">listas</span></h1>
+    <p class="lead">¿Alguna vez has visto una película donde el personaje vive el mismo día una y otra vez? Eso es un bucle. Aquí vas a aprender a hacer que Python repita cosas por ti y a guardar muchos datos en una sola variable.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="tabs" role="tablist" style="justify-content:center;margin-top:10px">
+      <button class="tab active" type="button" role="tab" data-tab="while" style="--c:var(--sky)">🔁 While</button>
+      <button class="tab" type="button" role="tab" data-tab="for" style="--c:var(--grape)">🔂 For</button>
+      <button class="tab" type="button" role="tab" data-tab="listas" style="--c:var(--mint)">📋 Listas</button>
+  </div>
+
+<div class="tab-panel" id="tab-while" data-panel="while" role="tabpanel">
+  <div class="day-head" style="background:var(--sky);margin-top:30px">
+    <h2>🔁 While</h2>
+    <p>Bucles y el ciclo <strong>while</strong> · Módulo 3 de CISCO</p>
+  </div>
+  <nav class="menu-pagina"><a href="#while-bucle">¿Qué es un bucle (loop)?</a> <a href="#while-partes">Las 3 partes de todo bucle (loop)</a> <a href="#while-python">¿Qué es un bucle en Python?</a> <a href="#while-while">El ciclo while</a> <a href="#while-ejemplos">Ejemplos con while</a> <a href="#while-infinito">⚠️ El bucle infinito</a> <a href="#while-break">break: salir del bucle en ese momento</a></nav>
+
+<!-- 1 -->
+<section id="while-bucle">
+  <span class="tag" style="background:var(--coral)">Módulo 3</span>
+  <h2 class="title">¿Qué es un bucle (loop)?</h2>
+  <p class="sub">Antes de escribir código, entendamos la idea con cosas que ya conoces.</p>
+
+  <div class="def">
+    Un <strong>bucle</strong> (en inglés <b>loop</b>, también se le dice <b>ciclo</b>) es <strong>algo que se repite una y otra vez hasta que pasa algo que lo detiene</strong>.
+  </div>
+
+  <h3 class="h-sub">🎬 Bucles en las películas</h3>
+  <div class="chars">
+    <div class="char" style="background:var(--grape)">
+      <div class="ico">🌀</div>
+      <h3>Doctor Strange</h3>
+      <p>Strange atrapa al villano Dormammu en el tiempo. Cada vez que Dormammu lo destruye, el tiempo regresa y Strange aparece otra vez: <i>"Dormammu, vine a negociar"</i>.</p>
+      <small>🔚 Termina cuando Dormammu acepta irse.</small>
+    </div>
+    <div class="char" style="background:var(--coral)">
+      <div class="ico">🎂</div>
+      <h3>Feliz día de tu muerte</h3>
+      <p>Tree despierta el día de su cumpleaños y en la noche la mata un asesino con máscara. Al morir, despierta otra vez en el mismo día. Cada día investiga a un sospechoso distinto.</p>
+      <small>🔚 Termina cuando descubre quién es el asesino.</small>
+    </div>
+    <div class="char" style="background:var(--sky)">
+      <div class="ico">🗺️</div>
+      <h3>El mapa de las pequeñas cosas perfectas</h3>
+      <p>Mark vive el mismo día una y otra vez y ya se lo sabe de memoria. Un día conoce a Margaret, que también está atrapada en ese día. Juntos hacen un <b>mapa</b> de las pequeñas cosas perfectas que pasan ese día.</p>
+      <small>🔚 Termina cuando entienden cómo salir del bucle.</small>
+    </div>
+  </div>
+
+  <h3 class="h-sub">🎥 Velos en acción</h3>
+  <div class="chars" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+    <div class="char" style="background:var(--grape)">
+      <div class="ico">🌀</div>
+      <h3>Doctor Strange</h3>
+      <iframe src="https://www.youtube-nocookie.com/embed/DslmRL65Ttg" title="Doctor Strange" style="display:block;width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;margin:10px 0;background:#000" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <a class="btn" href="https://youtu.be/DslmRL65Ttg" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">▶️ Ver en YouTube</a>
+    </div>
+    <div class="char" style="background:var(--coral)">
+      <div class="ico">🎂</div>
+      <h3>Feliz día de tu muerte 2</h3>
+      <iframe src="https://www.youtube-nocookie.com/embed/IeXqWDFJZiw" title="Feliz día de tu muerte 2" style="display:block;width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;margin:10px 0;background:#000" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <a class="btn" href="https://www.youtube.com/watch?v=IeXqWDFJZiw" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">▶️ Ver en YouTube</a>
+    </div>
+    <div class="char" style="background:var(--sky)">
+      <div class="ico">🗺️</div>
+      <h3>El mapa de las pequeñas cosas perfectas</h3>
+      <iframe src="https://www.youtube-nocookie.com/embed/ZOxsfKQWrUg" title="El mapa de las pequeñas cosas perfectas" style="display:block;width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;margin:10px 0;background:#000" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <a class="btn" href="https://www.youtube.com/watch?v=ZOxsfKQWrUg" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">▶️ Ver en YouTube</a>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:12px">👀 Mientras ves los videos, busca las 3 partes: <strong>¿qué se repite?, ¿qué pregunta lo detiene?</strong> y <strong>¿qué cambia en cada vuelta?</strong></p>
+
+  <h3 class="h-sub">🎮 Bucles en los videojuegos</h3>
+  <div class="analogy">
+    <div class="card">
+      <h3>⛏️ Minecraft</h3>
+      <p>Cuando mueres, <b>reapareces</b> en tu cama o en el punto de inicio, y vuelves a intentarlo. Se repite <b>hasta que</b> logras lo que querías: derrotar al dragón, construir tu casa o conseguir diamantes.</p>
+    </div>
+    <div class="card">
+      <h3>🟥 Roblox (Obby)</h3>
+      <p>En un obby, si te caes, regresas al último <b>checkpoint</b> y vuelves a saltar. Repites el mismo tramo <b>hasta que</b> lo pasas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="while-partes">
+  <span class="tag" style="background:var(--grape)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">Las 3 partes de todo bucle (loop)</h2>
+  <p class="sub">Todos los ejemplos anteriores tienen las mismas 3 partes. Y son las mismas que vas a escribir en Python.</p>
+
+  <div class="table-wrap">
+    <table class="kw-table">
+      <thead><tr><th>Parte</th><th>🌀 Doctor Strange</th><th>⛏️ Minecraft</th><th>🐍 En Python</th></tr></thead>
+      <tbody>
+        <tr><td><b>1. Lo que se repite</b></td><td>El mismo momento contra Dormammu</td><td>Intentar derrotar al dragón</td><td>Las instrucciones dentro del bucle</td></tr>
+        <tr><td><b>2. La pregunta (condición)</b></td><td>"¿Dormammu ya aceptó el trato?"</td><td>"¿Ya derrotaste al dragón?"</td><td>Una pregunta que da <b>True</b> o <b>False</b></td></tr>
+        <tr><td><b>3. Lo que cambia</b></td><td>Dormammu se desespera cada vez más</td><td>Cada intento llevas mejor equipo</td><td>Una variable que cambia en cada vuelta</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tip">🔢 <b>Cada vuelta del bucle se llama iteración.</b> Si Strange regresa por quinta vez, va en la iteración 5.</div>
+  <div class="warn">⚠️ <b>Si nada cambia, el bucle nunca termina.</b> Si Strange no tuviera la Gema del Tiempo, Dormammu nunca se cansaría y se quedarían ahí para siempre. En programación eso se llama <b>bucle infinito</b>, y casi siempre es un error.</div>
+
+  <h3 class="h-sub">Bucles "mientras..." en tu vida diaria</h3>
+  <div class="topic" style="--c:var(--grape)">
+    <ul class="checks" style="--c:var(--grape)">
+      <li><b>Mientras</b> no llegue tu Uber, sigues esperando y revisando la app.</li>
+      <li><b>Mientras</b> tu celular tenga batería, sigues viendo videos.</li>
+      <li><b>Mientras</b> no escribas bien la contraseña del WiFi, sigues intentando.</li>
+      <li><b>Mientras</b> la fila de la cafetería no avance, sigues formado.</li>
+    </ul>
+    <p>Fíjate que <b>no sabes cuántas veces se va a repetir</b>. Pueden ser 2 o 50. Solo sabes <b>cuándo parar</b>.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="while-python">
+  <span class="tag" style="background:var(--sky)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">¿Qué es un bucle en Python?</h2>
+  <p class="sub">Imagina que quieres mandar "Buenos días ☀️" a 50 amigos. ¿Escribirías 50 veces el mismo print?</p>
+
+  <div class="topic" style="--c:var(--sky)">
+    <p>Podrías escribir 50 veces <code class="in">print("Buenos días ☀️")</code>, pero es cansado, ocupa mucho espacio y, si te equivocas, tienes que corregir 50 líneas.</p>
+    <p>Un bucle le dice a la computadora: <span class="hl">"repite esto por mí"</span>. Escribes las instrucciones <b>una sola vez</b> y Python las repite.</p>
+    <div class="table-wrap">
+      <table class="kw-table">
+        <thead><tr><th>Bucle</th><th>Se usa cuando...</th><th>Pestaña</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill" style="background:var(--sky)">while</span> "mientras"</td><td><b>No sabes</b> cuántas veces se va a repetir, solo cuándo parar</td><td><b>While</b> (esta)</td></tr>
+          <tr><td><span class="pill" style="background:var(--grape)">for</span> "para cada"</td><td><b>Sí sabes</b> cuántas veces se repite</td><td><b>For</b> (la siguiente)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="while-while">
+  <span class="tag" style="background:var(--teal)">Módulo 3 de CISCO</span>
+  <h2 class="title">El ciclo while</h2>
+  <p class="sub"><b>while</b> significa "mientras". Repite las instrucciones <b>mientras</b> la respuesta a la pregunta sea Verdadera.</p>
+
+  <div class="topic" style="--c:var(--teal)">
+    <h3><span class="num">1</span> Cómo se escribe</h3>
+    <span class="label">Estructura</span>
+<div class="code">while condición:
+    instrucciones que se repiten</div>
+    <h4>3 reglas (las mismas del if)</h4>
+    <ol>
+      <li>Al final de la línea del while van <b>dos puntos</b> <code class="in">:</code></li>
+      <li>Las instrucciones que se repiten van con <b>sangría</b> (4 espacios o Tab).</li>
+      <li>La condición es una pregunta que da <b>True</b> (Verdadero) o <b>False</b> (Falso).</li>
+    </ol>
+  </div>
+
+  <div class="topic" style="--c:var(--teal)">
+    <h3><span class="num">2</span> ¿Cómo funciona paso a paso?</h3>
+    <div class="isteps">
+      <div class="istep" style="--sc:var(--sky)"><span class="n">1</span><div>Python hace la pregunta de la condición.</div></div>
+      <div class="istep" style="--sc:var(--mint)"><span class="n">2</span><div>Si la respuesta es <b>Verdadera (True)</b>, ejecuta las instrucciones de adentro.</div></div>
+      <div class="istep" style="--sc:var(--orange)"><span class="n">3</span><div>Al terminar, <b>regresa a la pregunta</b> y la hace otra vez.</div></div>
+      <div class="istep" style="--sc:var(--coral)"><span class="n">4</span><div>Si la respuesta es <b>Falsa (False)</b>, se sale del bucle y sigue con lo que está después.</div></div>
+    </div>
+  </div>
+
+  <div class="topic" style="--c:var(--teal)">
+    <h3><span class="num">3</span> ¿En qué se parecen el if y el while?</h3>
+    <p>Se escriben casi igual. La diferencia es <b>cuántas veces hacen la pregunta</b>.</p>
+    <div class="lado">
+      <div>
+        <h4>🔹 Con if</h4>
+        <span class="label">Código</span>
+<div class="code"><span class="com"># Guardamos el valor 3 en la variable bateria</span>
+bateria = 3
+
+<span class="com"># Hacemos la pregunta UNA sola vez: ¿la batería es mayor que 0?</span>
+if bateria &gt; 0:
+    <span class="com"># Si la respuesta es Verdadera (True), se muestra este mensaje</span>
+    print(<span class="str">&quot;Viendo un video&quot;</span>)
+
+<span class="com"># ¿Y si la respuesta es Falsa (False)?</span>
+<span class="com"># Python se salta el print y sigue con lo que esté después del if.</span>
+<span class="com"># Aquí no hay nada más, así que el programa termina.</span></div>
+        <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Viendo un video</div>
+        <p>El <b>if</b> pregunta <b>una sola vez</b>.</p>
+      </div>
+      <div>
+        <h4>🔁 Con while</h4>
+        <span class="label">Código</span>
+<div class="code"><span class="com"># Guardamos el valor 3 en la variable bateria</span>
+bateria = 3
+
+<span class="com"># Hacemos la pregunta: ¿la batería es mayor que 0?</span>
+<span class="com"># Mientras la respuesta sea Verdadera (True), se repite lo de adentro</span>
+while bateria &gt; 0:
+    <span class="com"># Se muestra el mensaje</span>
+    print(<span class="str">&quot;Viendo un video&quot;</span>)
+    <span class="com"># Le restamos 1 a la batería (esto es LO QUE CAMBIA)</span>
+    bateria = bateria - 1
+    <span class="com"># Aquí Python REGRESA a la pregunta del while</span>
+
+<span class="com"># Cuando la respuesta es Falsa (False), sale del while y termina</span></div>
+        <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Viendo un video
+Viendo un video
+Viendo un video</div>
+        <p>El <b>while</b> pregunta <b>una y otra vez</b>.</p>
+      </div>
+    </div>
+    <div class="tip">👉 <b>Piénsalo así:</b> el while es un <b>if que se repite</b>.</div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="while-ejemplos">
+  <span class="tag" style="background:var(--mint)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">Ejemplos con while</h2>
+  <p class="sub">Empezamos con la película y luego vamos a ejemplos de tu día a día. Lee los comentarios: explican cada línea.</p>
+  <div class="card alt">
+    <h4>📊 Cómo leer los diagramas de este tema</h4>
+    <p>Cada ejemplo trae su diagrama de flujo justo debajo. Así se dibuja un while.</p>
+  </div>
+  <div class="legend">
+    <div class="lg"><div class="shape"><span class="oval">Inicio</span></div><h4>Óvalo</h4><p>Dónde <b>empieza</b> (Inicio) y dónde <b>termina</b> (Fin) el programa.</p></div>
+    <div class="lg"><div class="shape"><span class="para"><span>Leer dato</span></span></div><h4>Paralelogramo (entrada)</h4><p>Los <b>input()</b>: lo que el usuario escribe.</p></div>
+    <div class="lg"><div class="shape"><span class="rect">bateria = 3</span></div><h4>Rectángulo (proceso)</h4><p>Los <b>print()</b>, guardar un valor en una variable, hacer un cálculo o cambiar un valor.</p></div>
+    <div class="lg"><div class="shape"><span class="diamond"><span>¿pregunta?</span></span></div><h4>Rombo (decisión)</h4><p>La <b>pregunta</b> del <b>if</b> o del <b>while</b>. <b>Sí a la izquierda, No a la derecha.</b></p></div>
+  </div>
+
+  <div class="general" style="margin-top:20px">🔁 <b>La clave del while en el diagrama:</b> después de lo que se repite, hay una <b>flecha que regresa arriba del rombo</b> (la naranja punteada). Esa flecha es lo que convierte un if en un bucle.</div>
+
+
+  <div class="topic" style="--c:var(--grape)">
+    <h3><span class="num">1</span> Doctor Strange contra Dormammu 🌀</h3>
+    <p>Llevemos la película a Python. Strange se repite <b>mientras</b> Dormammu no acepte el trato. No sabemos cuántas veces va a pasar: por eso usamos <b>while</b>.</p>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># 1. Al inicio Dormammu todavía NO acepta el trato</span>
+trato_aceptado = False
+
+<span class="com"># 2. Mientras el trato NO esté aceptado, se repite</span>
+while trato_aceptado == False:
+    <span class="com"># 3. Strange aparece otra vez</span>
+    print(<span class="str">&quot;🌀 Dormammu, vine a negociar&quot;</span>)
+
+    <span class="com"># 4. Le preguntamos a Dormammu</span>
+    respuesta = input(<span class="str">&quot;Dormammu, ¿aceptas el trato? (s/n): &quot;</span>)
+
+    <span class="com"># 5. ¿La respuesta es IGUAL a &quot;s&quot;?</span>
+    if respuesta == <span class="str">&quot;s&quot;</span>:
+        print(<span class="str">&quot;😤 Está bien, me voy&quot;</span>)
+        <span class="com"># Aceptó: esto hace que el while se detenga</span>
+        trato_aceptado = True
+    else:
+        <span class="com"># No aceptó: el tiempo regresa y el while vuelve a empezar</span>
+        print(<span class="str">&quot;💥 Dormammu destruye a Strange... ⏪ el tiempo regresa&quot;</span>)
+
+<span class="com"># 6. Esto se ejecuta cuando ya salió del while</span>
+print(<span class="str">&quot;🌍 ¡La Tierra está a salvo!&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">🌀 Dormammu, vine a negociar
+Dormammu, ¿aceptas el trato? (s/n): n
+💥 Dormammu destruye a Strange... ⏪ el tiempo regresa
+🌀 Dormammu, vine a negociar
+Dormammu, ¿aceptas el trato? (s/n): n
+💥 Dormammu destruye a Strange... ⏪ el tiempo regresa
+🌀 Dormammu, vine a negociar
+Dormammu, ¿aceptas el trato? (s/n): s
+😤 Está bien, me voy
+🌍 ¡La Tierra está a salvo!</div>
+    <h4>Las 3 partes en este ejemplo</h4>
+    <ul class="checks" style="--c:var(--grape)">
+      <li><b>Lo que se repite:</b> Strange aparece y le pregunta a Dormammu.</li>
+      <li><b>La pregunta:</b> <code class="in">trato_aceptado == False</code> (¿todavía no acepta?).</li>
+      <li><b>Lo que cambia:</b> la respuesta de Dormammu. Cuando dice "s", <code class="in">trato_aceptado</code> pasa a True.</li>
+    </ul>
+    <h4 style="margin-top:22px">📊 Diagrama de flujo</h4>
+    <div class="card" style="overflow-x:auto"><svg viewBox="0 0 760 602" width="100%" style="display:block;max-width:760px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo del ejemplo de Doctor Strange"><defs><marker id="while-s1-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="while-s1-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker><marker id="while-s1-FF6B6B" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF6B6B"/></marker></defs>
+  <rect x="335.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="400" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+  <polyline points="400,52 400,73" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s1-2B2D42)"/>
+  <rect x="290.0" y="73" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="400" y="95" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">trato_aceptado = False</text>
+  <polyline points="400,117 400,142" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s1-2B2D42)"/>
+  <polygon points="400,142.0 520.0,185 400,228.0 280.0,185" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="400" y="185" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿trato_aceptado == False?</text>
+  <polyline points="280,185 250,185 250,253" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s1-2B2D42)"/>
+  <text x="265" y="177" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <polygon points="174.0,253 354.0,253 326.0,297 146.0,297" fill="#3DC47E" stroke="#2B2D42" stroke-width="3"/>
+  <text x="250" y="275" fill="#fff" font-size="13.5" font-weight="800" text-anchor="middle" dominant-baseline="middle">Leer respuesta</text>
+  <polyline points="250,297 250,323" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s1-2B2D42)"/>
+  <polygon points="250,323.0 360.0,365 250,407.0 140.0,365" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="250" y="365" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿respuesta == “s”?</text>
+  <polyline points="140,365 115,365 115,433" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s1-2B2D42)"/>
+  <text x="128" y="357" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="25.0" y="433" width="180" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="115" y="455" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “Me voy”</text>
+  <polyline points="115,477 115,493" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s1-2B2D42)"/>
+  <rect x="25.0" y="493" width="180" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="115" y="515" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">trato_aceptado = True</text>
+  <polyline points="360,365 390,365 390,433" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s1-2B2D42)"/>
+  <text x="376" y="357" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="275.0" y="433" width="230" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="390" y="455" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “💥 El tiempo regresa”</text>
+  <polyline points="115,537 115,582" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" />
+  <polyline points="390,477 390,582 12,582 12,130 396,130" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#while-s1-F4A100)"/>
+  <polyline points="520,185 640,185 640,253" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s1-2B2D42)"/>
+  <text x="580" y="177" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="535.0" y="253" width="210" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="640" y="275" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “🌍 Tierra a salvo”</text>
+  <polyline points="640,297 640,323" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s1-2B2D42)"/>
+  <rect x="575.0" y="323" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="640" y="345" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
+</svg></div>
+    <div class="tip">💡 Dos rombos: el de arriba es el <b>while</b> (¿todavía no acepta?) y el de adentro es el <b>if</b> (¿la respuesta es "s"?).</div>
+  </div>
+
+  <div class="topic" style="--c:var(--mint)">
+    <h3><span class="num">2</span> Batería del celular 🔋</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># Guardamos el valor 3 en la variable bateria</span>
+bateria = 3
+
+<span class="com"># Mientras la batería sea mayor que 0, se repite</span>
+while bateria &gt; 0:
+    <span class="com"># Mostramos el mensaje con la batería que queda</span>
+    print(<span class="str">&quot;Viendo un video... batería:&quot;</span>, bateria)
+    <span class="com"># Le restamos 1 a la batería</span>
+    bateria = bateria - 1
+
+<span class="com"># Esto se ejecuta cuando ya salió del while</span>
+print(<span class="str">&quot;Tu celular se apagó 😴&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Viendo un video... batería: 3
+Viendo un video... batería: 2
+Viendo un video... batería: 1
+Tu celular se apagó 😴</div>
+    <h4>Prueba de escritorio</h4>
+    <p>Seguimos el programa a mano, vuelta por vuelta, para ver qué pasa.</p>
+    <div class="table-wrap">
+      <table class="kw-table">
+        <thead><tr><th>Vuelta</th><th>¿Cuánto vale bateria?</th><th>¿bateria &gt; 0?</th><th>¿Qué hace?</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>3</td><td>True ✅</td><td>Imprime y bateria pasa a 2</td></tr>
+          <tr><td>2</td><td>2</td><td>True ✅</td><td>Imprime y bateria pasa a 1</td></tr>
+          <tr><td>3</td><td>1</td><td>True ✅</td><td>Imprime y bateria pasa a 0</td></tr>
+          <tr><td>4</td><td>0</td><td><b>False ❌</b></td><td>Sale del while y dice "Tu celular se apagó"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h4>Las 3 partes en este ejemplo</h4>
+    <ul class="checks" style="--c:var(--mint)">
+      <li><b>Lo que se repite:</b> el print.</li>
+      <li><b>La pregunta:</b> <code class="in">bateria &gt; 0</code></li>
+      <li><b>Lo que cambia:</b> <code class="in">bateria = bateria - 1</code></li>
+    </ul>
+    <h4 style="margin-top:22px">📊 Diagrama de flujo</h4>
+    <div class="card" style="overflow-x:auto"><svg viewBox="0 0 600 404" width="100%" style="display:block;max-width:600px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo del ejemplo de la batería"><defs><marker id="while-s2-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="while-s2-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker><marker id="while-s2-FF6B6B" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF6B6B"/></marker></defs>
+  <rect x="235.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+  <polyline points="300,52 300,74" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s2-2B2D42)"/>
+  <rect x="200.0" y="74" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="96" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">bateria = 3</text>
+  <polyline points="300,118 300,154" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s2-2B2D42)"/>
+  <polygon points="300,154.0 400.0,196 300,238.0 200.0,196" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="196" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿bateria &gt; 0?</text>
+  <polyline points="200.0,196 135,196 135,254" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s2-2B2D42)"/>
+  <text x="167.5" y="188" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="25.0" y="254" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="135" y="276" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “Viendo un video”</text>
+  <polyline points="135,298 135,320" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s2-2B2D42)"/>
+  <rect x="25.0" y="320" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="135" y="342" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">bateria = bateria - 1</text>
+  <polyline points="135,364 135,386 14,386 14,136.0 296,136.0" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#while-s2-F4A100)"/>
+  <polyline points="400.0,196 470,196 470,254" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s2-2B2D42)"/>
+  <text x="435.0" y="188" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="365.0" y="254" width="210" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="470" y="276" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “Se apagó 😴”</text>
+  <polyline points="470,298 470,320" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s2-2B2D42)"/>
+  <rect x="405.0" y="320" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="470" y="342" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
+</svg></div>
+  </div>
+
+  <div class="topic" style="--c:var(--sky)">
+    <h3><span class="num">3</span> Contraseña del WiFi 📶</h3>
+    <p>Lo que harías en la vida real: <b>guardas</b> la contraseña correcta, <b>pides</b> la contraseña y <b>revisas si es igual</b>. Si es igual, te conectas. Si no, vuelves a intentar.</p>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># 1. Guardamos la contraseña correcta del WiFi</span>
+correcta = <span class="str">&quot;cafe123&quot;</span>
+
+<span class="com"># 2. Al inicio todavía NO estamos conectados</span>
+conectado = False
+
+<span class="com"># 3. Mientras NO estemos conectados, se repite</span>
+while conectado == False:
+    <span class="com"># 4. Pedimos la contraseña</span>
+    escrita = input(<span class="str">&quot;Escribe la contraseña del WiFi: &quot;</span>)
+
+    <span class="com"># 5. ¿La que escribió es IGUAL a la correcta?</span>
+    if escrita == correcta:
+        print(<span class="str">&quot;✅ Conectado al WiFi&quot;</span>)
+        <span class="com"># Ya estamos conectados: esto hace que el while se detenga</span>
+        conectado = True
+    else:
+        <span class="com"># Se equivocó: mostramos el aviso y el while vuelve a preguntar</span>
+        print(<span class="str">&quot;❌ Contraseña incorrecta, intenta otra vez&quot;</span>)
+
+<span class="com"># 6. Esto se ejecuta cuando ya salió del while</span>
+print(<span class="str">&quot;📱 Ya puedes navegar&quot;</span>)</div>
+    <div class="lado">
+      <div><span class="label" style="background:var(--mint)">Corrida 1: se equivoca dos veces</span>
+<div class="code">Escribe la contraseña del WiFi: hola
+❌ Contraseña incorrecta, intenta otra vez
+Escribe la contraseña del WiFi: cafe
+❌ Contraseña incorrecta, intenta otra vez
+Escribe la contraseña del WiFi: cafe123
+✅ Conectado al WiFi
+📱 Ya puedes navegar</div></div>
+      <div><span class="label" style="background:var(--mint)">Corrida 2: acierta a la primera</span>
+<div class="code">Escribe la contraseña del WiFi: cafe123
+✅ Conectado al WiFi
+📱 Ya puedes navegar</div></div>
+    </div>
+    <div class="tip">💡 <b>La variable conectado es como un foco:</b> empieza apagado (False). Mientras esté apagado, el while sigue pidiendo la contraseña. Cuando la escribe bien, lo encendemos (True) y el while se detiene.</div>
+  </div>
+
+  <div class="topic" style="--c:var(--orange)">
+    <h3><span class="num">4</span> ¿Ya llegó tu Uber? 🚗</h3>
+    <p>Tiene <b>la misma estructura</b> que el de la contraseña. Fíjate en el parecido.</p>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># 1. Al inicio el Uber todavía NO ha llegado</span>
+llego = False
+
+<span class="com"># 2. Mientras el Uber NO haya llegado, se repite</span>
+while llego == False:
+    <span class="com"># 3. Preguntamos</span>
+    respuesta = input(<span class="str">&quot;¿Ya llegó tu Uber? (s/n): &quot;</span>)
+
+    <span class="com"># 4. ¿La respuesta es IGUAL a &quot;s&quot;?</span>
+    if respuesta == <span class="str">&quot;s&quot;</span>:
+        print(<span class="str">&quot;🚗 ¡Súbete, ya llegó!&quot;</span>)
+        <span class="com"># Ya llegó: esto hace que el while se detenga</span>
+        llego = True
+    else:
+        <span class="com"># Todavía no llega: mostramos el aviso y el while vuelve a preguntar</span>
+        print(<span class="str">&quot;⏳ Seguimos esperando...&quot;</span>)
+
+<span class="com"># 5. Esto se ejecuta cuando ya salió del while</span>
+print(<span class="str">&quot;Buen viaje 👋&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">¿Ya llegó tu Uber? (s/n): n
+⏳ Seguimos esperando...
+¿Ya llegó tu Uber? (s/n): n
+⏳ Seguimos esperando...
+¿Ya llegó tu Uber? (s/n): s
+🚗 ¡Súbete, ya llegó!
+Buen viaje 👋</div>
+    <div class="general">🧩 <b>El patrón del while con input:</b> 1) empiezo en False, 2) mientras siga en False pregunto, 3) si la respuesta es la que espero, cambio a True, 4) si no, aviso y el while vuelve a preguntar.</div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="while-infinito">
+  <span class="tag" style="background:var(--coral)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">⚠️ El bucle infinito</h2>
+  <p class="sub">El error más común con el while.</p>
+  <div class="topic" style="--c:var(--coral)">
+    <span class="label">Código</span>
+<div class="code">bateria = 3
+
+while bateria &gt; 0:
+    print(<span class="str">&quot;Viendo un video&quot;</span>)
+    <span class="com"># ❌ Olvidamos restarle 1 a la batería.</span>
+    <span class="com"># bateria SIEMPRE vale 3, la pregunta SIEMPRE es True</span>
+    <span class="com"># y el programa imprime para siempre.</span></div>
+    <p>Nunca cambiamos la batería: siempre vale 3 y la pregunta siempre da True. Es como si Strange nunca tuviera la Gema del Tiempo.</p>
+    <div class="warn">🛑 <b>¿Cómo lo detengo?</b> Presiona <b>Ctrl + C</b> en la terminal de VS Code.</div>
+    <div class="tip">👉 <b>Pregunta para revisar cualquier while:</b> "¿Qué cambia adentro del bucle que algún día hará que la pregunta dé False?" Si no encuentras nada, tienes un bucle infinito.</div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="while-break">
+  <span class="tag" style="background:var(--pink)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">break: salir del bucle en ese momento</h2>
+  <p class="sub"><b>break</b> significa "ya, me salgo del bucle ahora mismo", aunque la pregunta todavía dé True.</p>
+
+  <div class="card warm">
+    <h4>🔑 En la vida real</h4>
+    <p>Buscas tus llaves cajón por cajón. En cuanto las encuentras, <b>dejas de buscar</b>. No abres los cajones que faltan.</p>
+  </div>
+
+  <div class="topic" style="--c:var(--pink)">
+    <h3><span class="num">5</span> Contraseña con 3 intentos 🔐</h3>
+    <p>Como en tu celular o en la app del banco: si te equivocas 3 veces, se bloquea.</p>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># 1. Guardamos la contraseña correcta</span>
+correcta = <span class="str">&quot;cafe123&quot;</span>
+
+<span class="com"># 2. Empezamos con 0 intentos</span>
+intentos = 0
+
+<span class="com"># 3. Mientras lleve menos de 3 intentos, se repite</span>
+while intentos &lt; 3:
+    <span class="com"># 4. Pedimos la contraseña</span>
+    escrita = input(<span class="str">&quot;Escribe tu contraseña: &quot;</span>)
+
+    <span class="com"># 5. ¿La que escribió es IGUAL a la correcta?</span>
+    if escrita == correcta:
+        print(<span class="str">&quot;✅ Bienvenido&quot;</span>)
+        <span class="com"># 6. Ya entró: break lo saca del while en este momento</span>
+        break
+    else:
+        <span class="com"># 7. Se equivocó: sumamos 1 intento y avisamos</span>
+        intentos = intentos + 1
+        print(<span class="str">&quot;❌ Incorrecta. Llevas&quot;</span>, intentos, <span class="str">&quot;intentos&quot;</span>)
+
+<span class="com"># 8. Ya fuera del while: ¿se acabaron los intentos?</span>
+if intentos == 3:
+    print(<span class="str">&quot;🔒 Cuenta bloqueada&quot;</span>)</div>
+    <div class="lado">
+      <div><span class="label" style="background:var(--mint)">Corrida 1: acierta en el segundo intento</span>
+<div class="code">Escribe tu contraseña: hola
+❌ Incorrecta. Llevas 1 intentos
+Escribe tu contraseña: cafe123
+✅ Bienvenido</div>
+      <p>El <b>break</b> lo saca del while aunque <code class="in">intentos &lt; 3</code> todavía sea True.</p></div>
+      <div><span class="label" style="background:var(--mint)">Corrida 2: falla 3 veces</span>
+<div class="code">Escribe tu contraseña: hola
+❌ Incorrecta. Llevas 1 intentos
+Escribe tu contraseña: 1234
+❌ Incorrecta. Llevas 2 intentos
+Escribe tu contraseña: cafe
+❌ Incorrecta. Llevas 3 intentos
+🔒 Cuenta bloqueada</div>
+      <p>Nunca hubo break. El while terminó porque <code class="in">intentos &lt; 3</code> dio False.</p></div>
+    </div>
+    <div class="tip">👉 <b>Un while con break tiene dos salidas:</b> el break, o que la pregunta dé False.</div>
+    <h4 style="margin-top:22px">📊 Diagrama de flujo</h4>
+    <div class="card" style="overflow-x:auto"><svg viewBox="0 0 780 710" width="100%" style="display:block;max-width:780px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo de la contraseña con 3 intentos y break"><defs><marker id="while-s3-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="while-s3-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker><marker id="while-s3-FF6B6B" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF6B6B"/></marker></defs>
+  <rect x="335.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="400" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+  <polyline points="400,52 400,73" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <rect x="295.0" y="73" width="210" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="400" y="95" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">correcta = &quot;cafe123&quot;</text>
+  <polyline points="400,117 400,138" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <rect x="320.0" y="138" width="160" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="400" y="160" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">intentos = 0</text>
+  <polyline points="400,182 400,208" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <polygon points="400,208.0 505.0,250 400,292.0 295.0,250" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="400" y="250" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿intentos &lt; 3?</text>
+  <polyline points="295,250 255,250 255,318" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <text x="275" y="242" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <polygon points="184.0,318 354.0,318 326.0,362 156.0,362" fill="#3DC47E" stroke="#2B2D42" stroke-width="3"/>
+  <text x="255" y="340" fill="#fff" font-size="13.5" font-weight="800" text-anchor="middle" dominant-baseline="middle">Leer escrita</text>
+  <polyline points="255,362 255,388" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <polygon points="255,388.0 365.0,430 255,472.0 145.0,430" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="255" y="430" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿escrita == correcta?</text>
+  <polyline points="145,430 115,430 115,498" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <text x="130" y="422" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="25.0" y="498" width="180" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="115" y="520" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “✅ Bienvenido”</text>
+  <polyline points="365,430 395,430 395,498" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <text x="380" y="422" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="295.0" y="498" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="395" y="520" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">intentos = intentos + 1</text>
+  <polyline points="395,542 395,558" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <rect x="295.0" y="558" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="395" y="580" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “❌ Incorrecta”</text>
+  <polyline points="395,602 395,640 12,640 12,195 396,195" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#while-s3-F4A100)"/>
+  <polyline points="115,542 115,685 650,685 650,584" fill="none" stroke="#FF6B6B" stroke-width="2.5"  marker-end="url(#while-s3-FF6B6B)"/>
+  <text x="150" y="615" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">break</text>
+  <polyline points="505,250 650,250 650,288" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <text x="578" y="242" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <polygon points="650,290.0 745.0,330 650,370.0 555.0,330" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="650" y="330" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿intentos == 3?</text>
+  <polyline points="555,330 530,330 530,408" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <text x="542" y="322" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="475.0" y="408" width="170" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="560" y="430" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “🔒 Bloqueada”</text>
+  <polyline points="560,452 560,500 650,500 650,536" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <polyline points="745,330 765,330 765,560 707,560" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#while-s3-2B2D42)"/>
+  <text x="760" y="318" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="595.0" y="538" width="110" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="650" y="560" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
+</svg></div>
+    <div class="tip">💡 Desde "Bienvenido", la flecha roja del <b>break</b> va <b>directo al Fin</b>, sin regresar al rombo del while.</div>
+  </div>
+
+  <div class="topic" style="--c:var(--grape)">
+    <h3><span class="num">6</span> El menú que se repite (while True) 📋</h3>
+    <p>Este es el que van a usar en vuestro <b>proyecto de la tienda (con lo de CRUD)</b>.</p>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># while True significa &quot;repite siempre&quot;</span>
+<span class="com"># Es un bucle infinito HECHO A PROPÓSITO: la única salida es el break</span>
+while True:
+    <span class="com"># Mostramos el menú</span>
+    print(<span class="str">&quot;===== CAFETERÍA CUTE =====&quot;</span>)
+    print(<span class="str">&quot;1. Frappé&quot;</span>)
+    print(<span class="str">&quot;2. Galleta&quot;</span>)
+    print(<span class="str">&quot;3. Salir&quot;</span>)
+
+    <span class="com"># Pedimos la opción</span>
+    opcion = input(<span class="str">&quot;Elige una opción: &quot;</span>)
+
+    <span class="com"># Decidimos con if / elif / else (como ya lo conocen)</span>
+    if opcion == <span class="str">&quot;1&quot;</span>:
+        print(<span class="str">&quot;🧋 Aquí está tu frappé&quot;</span>)
+    elif opcion == <span class="str">&quot;2&quot;</span>:
+        print(<span class="str">&quot;🍪 Aquí está tu galleta&quot;</span>)
+    elif opcion == <span class="str">&quot;3&quot;</span>:
+        print(<span class="str">&quot;👋 ¡Gracias, vuelve pronto!&quot;</span>)
+        <span class="com"># El usuario eligió Salir: break nos saca del while</span>
+        break
+    else:
+        print(<span class="str">&quot;❌ Opción no válida&quot;</span>)
+
+    <span class="com"># Si no hubo break, el while vuelve a mostrar el menú</span></div>
+    <ul class="checks" style="--c:var(--grape)">
+      <li><code class="in">while True</code> significa "repite siempre": es un bucle infinito <b>hecho a propósito</b>.</li>
+      <li>La única salida es el <b>break</b> de la opción 3.</li>
+      <li>Adentro está el <b>if / elif / else</b> que ya conocen. El while solo hace que el menú <b>vuelva a aparecer</b>.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="while-siguiente">
+  <div class="closing">
+    <h2>Siguiente: el ciclo for 🔁</h2>
+    <p>Ya sabes repetir cuando <b>no sabes</b> cuántas veces. Ahora aprende a repetir cuando <b>sí sabes</b> cuántas veces.</p>
+    <p style="margin-top:14px"><button class="btn ir-tab" data-tab="for" type="button">Ir a la pestaña For →</button></p>
+  </div>
+</section>
+
+</div>
+<div class="tab-panel" id="tab-for" data-panel="for" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--grape);margin-top:30px">
+    <h2>🔂 For</h2>
+    <p>El ciclo <strong>for</strong> · Módulo 3 de CISCO</p>
+  </div>
+  <nav class="menu-pagina"><a href="#for-repaso">Repaso del while</a> <a href="#for-vida">El for en la vida real</a> <a href="#for-pelis">🎬 El for en las películas</a> <a href="#for-for">El ciclo for</a> <a href="#for-range">range(): repetir X veces</a> <a href="#for-recorrer">Recorrer cosas una por una</a> <a href="#for-comparar">¿while o for?</a> <a href="#for-control">break y continue dentro del for</a></nav>
+
+<!-- 1 -->
+<section id="for-repaso">
+  <span class="tag" style="background:var(--sky)">Repaso</span>
+  <h2 class="title">Repaso del while</h2>
+  <div class="topic" style="--c:var(--sky)">
+    <ul class="checks" style="--c:var(--sky)">
+      <li>Un <b>bucle (loop)</b> es algo que se repite hasta que pasa algo que lo detiene.</li>
+      <li>El <b>while</b> ("mientras") repite <b>mientras</b> la respuesta sea Verdadera (True). Lo usamos cuando <b>no sabemos</b> cuántas veces se va a repetir.</li>
+      <li>Si nada cambia adentro, el bucle es <b>infinito</b>.</li>
+      <li><b>break</b> nos saca del bucle en ese momento.</li>
+    </ul>
+  </div>
+  <div class="general">🤔 <b>Pero... ¿y si sí sé cuántas veces se repite?</b> Por ejemplo: "haz 10 sentadillas". Para eso existe el <b>for</b>.</div>
+</section>
+
+<!-- 2 -->
+<section id="for-vida">
+  <span class="tag" style="background:var(--coral)">Modulo 3 · CISCO</span>
+  <h2 class="title">El for en la vida real</h2>
+  <p class="sub">Hay dos formas de repetir cuando sí sabes cuántas veces.</p>
+
+  <div class="analogy">
+    <div class="card">
+      <h3>🔢 "X veces"</h3>
+      <p>Sabes el <b>número exacto</b> de repeticiones.</p>
+      <ul class="checks" style="--c:var(--coral)">
+        <li>Haz <b>10</b> sentadillas en Educación Física.</li>
+        <li>Da <b>3</b> vueltas a la cancha.</li>
+        <li>⛏️ En Minecraft, coloca <b>10</b> bloques para hacer un muro.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📦 "Para cada..."</h3>
+      <p>Tienes <b>varias cosas</b> y haces lo mismo con <b>cada una</b>.</p>
+      <ul class="checks" style="--c:var(--grape)">
+        <li>🎧 <b>Para cada</b> canción de tu playlist: reprodúcela.</li>
+        <li>🎉 <b>Para cada</b> amigo de tu grupo: mándale la invitación.</li>
+        <li>🟥 En Roblox, <b>para cada</b> jugador que entra al servidor: muestra "Bienvenido".</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tip">💡 En los dos casos <b>sabes desde el inicio cuántas vueltas</b> va a dar el bucle. Esa es la gran diferencia con el while.</div>
+</section>
+
+<!-- PELIS -->
+<section id="for-pelis">
+  <span class="tag" style="background:var(--grape)">🎬 Películas</span>
+  <h2 class="title">🎬 El for en las películas</h2>
+  <p class="sub">¿Recuerdas las películas de la pestaña While? En estas dos, los personajes tienen <b>una colección de cosas que recorrer una por una</b>: eso es un <b>for</b>.</p>
+  <div class="analogy">
+    <div class="card">
+      <h3>🗺️ El mapa de las pequeñas cosas perfectas</h3>
+      <p>Mark y Margaret tienen un <b>mapa</b> con los momentos perfectos del día. Para cada momento del mapa, corren a verlo. Es un for de tipo <b>"para cada"</b>.</p>
+      <p class="mono">for momento in mapa:</p>
+    </div>
+    <div class="card">
+      <h3>🎂 Feliz día de tu muerte</h3>
+      <p>Tree hace una <b>lista de sospechosos</b> y vive un día vigilando a cada uno. Como tiene una colección que recorrer, es un for de tipo <b>"para cada"</b>.</p>
+      <p class="mono">for sospechoso in sospechosos:</p>
+    </div>
+  </div>
+  <div class="tip">🌀 <b>¿Y Doctor Strange?</b> Ese sigue siendo <b>while</b>: Strange no sabe cuántas veces va a regresar, solo sabe que para cuando Dormammu acepte el trato.</div>
+</section>
+
+<!-- 3 -->
+<section id="for-for">
+  <span class="tag" style="background:var(--grape)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">El ciclo for</h2>
+  <p class="sub"><b>for</b> significa "para cada". Toma una colección de cosas y repite las instrucciones <b>una vez por cada cosa</b>.</p>
+
+  <div class="topic" style="--c:var(--grape)">
+    <h3><span class="num">1</span> Cómo se escribe</h3>
+    <span class="label">Estructura</span>
+<div class="code">for variable in colección:
+    instrucciones que se repiten</div>
+    <h4>Las partes</h4>
+    <ul class="checks" style="--c:var(--grape)">
+      <li><b>for</b>: "para cada".</li>
+      <li><b>variable</b>: un nombre que tú eliges (cancion, amigo, vuelta). En cada vuelta guarda <b>una cosa distinta</b> de la colección.</li>
+      <li><b>in</b>: "en" o "de".</li>
+      <li><b>colección</b>: las cosas que se van a recorrer (unos números con range, un texto o una colección de canciones).</li>
+      <li>Igual que el if y el while: <b>dos puntos</b> <code class="in">:</code> al final y <b>sangría</b> en lo que se repite.</li>
+    </ul>
+    <div class="general">🗣️ <b>Léelo en voz alta:</b> <code class="in">for cancion in playlist:</code> se lee "<b>para cada</b> canción <b>de</b> la playlist".</div>
+  </div>
+
+  <div class="topic" style="--c:var(--grape)">
+    <h3><span class="num">2</span> ¿Cómo funciona paso a paso?</h3>
+    <div class="isteps">
+      <div class="istep" style="--sc:var(--sky)"><span class="n">1</span><div>El for toma la <b>primera</b> cosa de la colección y la guarda en la variable.</div></div>
+      <div class="istep" style="--sc:var(--mint)"><span class="n">2</span><div>Ejecuta las instrucciones de adentro.</div></div>
+      <div class="istep" style="--sc:var(--orange)"><span class="n">3</span><div>Toma la <b>siguiente</b> cosa, la guarda en la variable y vuelve a ejecutar las instrucciones.</div></div>
+      <div class="istep" style="--sc:var(--coral)"><span class="n">4</span><div>Cuando <b>ya no quedan cosas</b>, se sale del for y sigue con lo que está después.</div></div>
+    </div>
+    <div class="tip">✨ <b>La gran ventaja:</b> en el while tú tenías que cambiar la variable (<code class="in">bateria = bateria - 1</code>). En el for, <b>la variable cambia sola</b> en cada vuelta. Por eso es más difícil hacer un bucle infinito con for.</div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="for-range">
+  <span class="tag" style="background:var(--teal)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">range(): repetir X veces</h2>
+  <p class="sub"><b>range()</b> genera una fila de números para que el for sepa cuántas vueltas dar.</p>
+
+  <div class="table-wrap">
+    <table class="kw-table">
+      <thead><tr><th>Cómo se escribe</th><th>Qué números da</th><th>¿Para qué?</th></tr></thead>
+      <tbody>
+        <tr><td><span class="mono">range(5)</span></td><td>0, 1, 2, 3, 4</td><td>Repetir 5 veces. <b>¡Empieza en 0!</b></td></tr>
+        <tr><td><span class="mono">range(1, 6)</span></td><td>1, 2, 3, 4, 5</td><td>Empezar en 1. Se detiene <b>antes</b> del 6</td></tr>
+        <tr><td><span class="mono">range(0, 10, 2)</span></td><td>0, 2, 4, 6, 8</td><td>Ir de 2 en 2</td></tr>
+        <tr><td><span class="mono">range(3, 0, -1)</span></td><td>3, 2, 1</td><td>Ir hacia atrás (cuenta regresiva)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warn">⚠️ <b>range nunca incluye el último número.</b> Es como cuando dices "llego antes de las 6": nunca llegas a las 6. <code class="in">range(1, 6)</code> llega hasta el 5.</div>
+  <div class="card alt" style="margin-top:20px">
+    <h4>📊 Los diagramas del for</h4>
+    <p>En el diagrama, un for se dibuja <b>igual que un while</b>. Lo que el for hace solito (crear el contador, preguntar y cambiarlo) se dibuja paso por paso. Cada ejemplo trae su diagrama justo debajo.</p>
+  </div>
+  <div class="legend">
+    <div class="lg"><div class="shape"><span class="oval">Inicio</span></div><h4>Óvalo</h4><p>Dónde <b>empieza</b> (Inicio) y dónde <b>termina</b> (Fin) el programa.</p></div>
+    <div class="lg"><div class="shape"><span class="para"><span>Leer dato</span></span></div><h4>Paralelogramo (entrada)</h4><p>Los <b>input()</b>: lo que el usuario escribe.</p></div>
+    <div class="lg"><div class="shape"><span class="rect">bateria = 3</span></div><h4>Rectángulo (proceso)</h4><p>Los <b>print()</b>, guardar un valor en una variable, hacer un cálculo o cambiar un valor.</p></div>
+    <div class="lg"><div class="shape"><span class="diamond"><span>¿pregunta?</span></span></div><h4>Rombo (decisión)</h4><p>La <b>pregunta</b> del <b>if</b>, del <b>while</b> o del <b>for</b>. <b>Sí a la izquierda, No a la derecha.</b></p></div>
+  </div>
+
+  <div style="height:20px"></div>
+
+
+  <div class="topic" style="--c:var(--teal)">
+    <h3><span class="num">1</span> Sentadillas en Educación Física 🏋️</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># for: &quot;para cada&quot; número que nos da range(1, 6)...</span>
+<span class="com"># range(1, 6) nos da: 1, 2, 3, 4, 5</span>
+for repeticion in range(1, 6):
+    <span class="com"># ...se muestra este mensaje con el número de la vuelta</span>
+    print(<span class="str">&quot;Sentadilla número&quot;</span>, repeticion)
+
+<span class="com"># Esto se ejecuta cuando el for ya terminó todas sus vueltas</span>
+print(<span class="str">&quot;¡Terminaste! 💪&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Sentadilla número 1
+Sentadilla número 2
+Sentadilla número 3
+Sentadilla número 4
+Sentadilla número 5
+¡Terminaste! 💪</div>
+    <h4>Prueba de escritorio</h4>
+    <div class="table-wrap">
+      <table class="kw-table">
+        <thead><tr><th>Vuelta</th><th>¿Cuánto vale repeticion?</th><th>¿Qué muestra?</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>1</td><td>Sentadilla número 1</td></tr>
+          <tr><td>2</td><td>2</td><td>Sentadilla número 2</td></tr>
+          <tr><td>3</td><td>3</td><td>Sentadilla número 3</td></tr>
+          <tr><td>4</td><td>4</td><td>Sentadilla número 4</td></tr>
+          <tr><td>5</td><td>5</td><td>Sentadilla número 5</td></tr>
+          <tr><td>Fin</td><td>Ya no quedan números</td><td>Sale del for: "¡Terminaste! 💪"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h4 style="margin-top:22px">📊 Diagrama de flujo</h4>
+    <div class="card" style="overflow-x:auto"><svg viewBox="0 0 600 404" width="100%" style="display:block;max-width:600px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo de las sentadillas con for"><defs><marker id="for-s1-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="for-s1-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker><marker id="for-s1-FF6B6B" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF6B6B"/></marker></defs>
+  <rect x="235.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+  <polyline points="300,52 300,74" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s1-2B2D42)"/>
+  <rect x="200.0" y="74" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="96" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">repeticion = 1</text>
+  <polyline points="300,118 300,154" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s1-2B2D42)"/>
+  <polygon points="300,154.0 405.0,196 300,238.0 195.0,196" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="196" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿repeticion &lt;= 5?</text>
+  <polyline points="195.0,196 135,196 135,254" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s1-2B2D42)"/>
+  <text x="165.0" y="188" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="25.0" y="254" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="135" y="276" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “Sentadilla”, repeticion</text>
+  <polyline points="135,298 135,320" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s1-2B2D42)"/>
+  <rect x="25.0" y="320" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="135" y="342" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">repeticion = repeticion + 1</text>
+  <polyline points="135,364 135,386 14,386 14,136.0 296,136.0" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#for-s1-F4A100)"/>
+  <polyline points="405.0,196 470,196 470,254" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s1-2B2D42)"/>
+  <text x="437.5" y="188" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="365.0" y="254" width="210" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="470" y="276" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “¡Terminaste! 💪”</text>
+  <polyline points="470,298 470,320" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s1-2B2D42)"/>
+  <rect x="405.0" y="320" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="470" y="342" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
+</svg></div>
+    <div class="tip">💡 El for <code class="in">for repeticion in range(1, 6)</code> se dibuja en 3 pasos: <b>repeticion = 1</b> (empieza), <b>¿repeticion &lt;= 5?</b> (pregunta) y <b>repeticion = repeticion + 1</b> (cambia).</div>
+  </div>
+
+  <div class="topic" style="--c:var(--sky)">
+    <h3><span class="num">2</span> Cuidado: range empieza en 0 👀</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># range(3) nos da: 0, 1, 2  (¡empieza en 0 y son 3 números!)</span>
+for vuelta in range(3):
+    print(<span class="str">&quot;Vuelta&quot;</span>, vuelta)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Vuelta 0
+Vuelta 1
+Vuelta 2</div>
+    <p>Dio <b>3 vueltas</b>, pero empezó a contar en 0. Si quieres que diga "Vuelta 1, 2, 3", usa <code class="in">range(1, 4)</code>.</p>
+  </div>
+
+  <div class="topic" style="--c:var(--pink)">
+    <h3><span class="num">3</span> Cuenta regresiva para el concierto 🎤</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># range(3, 0, -1): empieza en 3, se detiene ANTES del 0</span>
+<span class="com"># y va de 1 en 1 hacia atrás (-1). Nos da: 3, 2, 1</span>
+for segundo in range(3, 0, -1):
+    print(segundo, <span class="str">&quot;...&quot;</span>)
+
+<span class="com"># Al terminar la cuenta regresiva</span>
+print(<span class="str">&quot;🎉 ¡Empieza el concierto!&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">3 ...
+2 ...
+1 ...
+🎉 ¡Empieza el concierto!</div>
+  </div>
+
+  <div class="topic" style="--c:var(--orange)">
+    <h3><span class="num">4</span> El usuario decide cuántas vueltas ⚽</h3>
+    <p>El número de vueltas también puede venir de un <b>input</b>. Antes de empezar el for, ya sabemos cuántas son.</p>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># Pedimos cuántas vueltas quiere dar y lo convertimos a número con int()</span>
+cuantas = int(input(<span class="str">&quot;¿Cuántas vueltas a la cancha vas a dar? &quot;</span>))
+
+<span class="com"># range(1, cuantas + 1): de 1 hasta cuantas</span>
+<span class="com"># (le sumamos 1 porque range se detiene ANTES del último número)</span>
+for vuelta in range(1, cuantas + 1):
+    print(<span class="str">&quot;🏃 Vuelta&quot;</span>, vuelta)
+
+print(<span class="str">&quot;¡Calentamiento terminado! ⚽&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">¿Cuántas vueltas a la cancha vas a dar? 3
+🏃 Vuelta 1
+🏃 Vuelta 2
+🏃 Vuelta 3
+¡Calentamiento terminado! ⚽</div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="for-recorrer">
+  <span class="tag" style="background:var(--mint)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">Recorrer cosas una por una</h2>
+  <p class="sub">El for no solo trabaja con números: también puede recorrer textos y colecciones.</p>
+
+  <div class="topic" style="--c:var(--coral)">
+    <h3><span class="num">🎬</span> Feliz día de tu muerte: la lista de sospechosos 🎂</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># &quot;Para cada&quot; sospechoso de la lista de Tree...</span>
+for sospechoso in [<span class="str">&quot;Tim&quot;</span>, <span class="str">&quot;Gregory&quot;</span>, <span class="str">&quot;Danielle&quot;</span>, <span class="str">&quot;Carter&quot;</span>]:
+    <span class="com"># ...Tree vive un día vigilándolo</span>
+    print(<span class="str">&quot;🎂 Tree despierta otra vez y hoy vigila a&quot;</span>, sospechoso)
+
+<span class="com"># Esto se ejecuta cuando ya revisó a todos los de la lista</span>
+print(<span class="str">&quot;📝 Ya revisó a todos los sospechosos de la lista&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">🎂 Tree despierta otra vez y hoy vigila a Tim
+🎂 Tree despierta otra vez y hoy vigila a Gregory
+🎂 Tree despierta otra vez y hoy vigila a Danielle
+🎂 Tree despierta otra vez y hoy vigila a Carter
+📝 Ya revisó a todos los sospechosos de la lista</div>
+    <p>En cada vuelta, la variable <code class="in">sospechoso</code> toma el siguiente nombre de la lista. <b>Tú no la cambias: el for lo hace solo.</b></p>
+    <h4 style="margin-top:22px">📊 Diagrama de flujo</h4>
+    <div class="card" style="overflow-x:auto"><svg viewBox="0 0 600 338" width="100%" style="display:block;max-width:600px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo de la lista de sospechosos de Tree"><defs><marker id="for-s2-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="for-s2-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker><marker id="for-s2-FF6B6B" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF6B6B"/></marker></defs>
+  <rect x="235.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+  <polyline points="300,52 300,88" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s2-2B2D42)"/>
+  <polygon points="300,88.0 410.0,130 300,172.0 190.0,130" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="130" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿Quedan sospechosos?</text>
+  <polyline points="190.0,130 135,130 135,188" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s2-2B2D42)"/>
+  <text x="162.5" y="122" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="25.0" y="188" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="135" y="210" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">sospechoso = el siguiente</text>
+  <polyline points="135,232 135,254" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s2-2B2D42)"/>
+  <rect x="25.0" y="254" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="135" y="276" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “Vigila a”, sospechoso</text>
+  <polyline points="135,298 135,320 14,320 14,70.0 296,70.0" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#for-s2-F4A100)"/>
+  <polyline points="410.0,130 470,130 470,188" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s2-2B2D42)"/>
+  <text x="440.0" y="122" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="365.0" y="188" width="210" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="470" y="210" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “Ya revisó a todos”</text>
+  <polyline points="470,232 470,254" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s2-2B2D42)"/>
+  <rect x="405.0" y="254" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="470" y="276" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
+</svg></div>
+    <div class="tip">💡 Cuando el for recorre una colección, el rombo pregunta <b>"¿quedan cosas por revisar?"</b>.</div>
+  </div>
+
+  <div class="topic" style="--c:var(--grape)">
+    <h3><span class="num">🎬</span> El mapa de las pequeñas cosas perfectas 🗺️</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># Imagina que este es el mapa de Mark y Margaret:</span>
+<span class="com"># los momentos perfectos que pasan cada día</span>
+mapa = [<span class="str">&quot;un águila atrapa un pez&quot;</span>, <span class="str">&quot;un señor gana la lotería&quot;</span>,
+        <span class="str">&quot;una niña encesta de espaldas&quot;</span>, <span class="str">&quot;empieza a llover&quot;</span>]
+
+<span class="com"># &quot;Para cada&quot; momento del mapa...</span>
+for momento in mapa:
+    <span class="com"># ...Mark y Margaret corren a verlo</span>
+    print(<span class="str">&quot;🗺️ Mark y Margaret corren a ver:&quot;</span>, momento)
+
+<span class="com"># Esto se ejecuta cuando ya vieron todos los momentos del mapa</span>
+print(<span class="str">&quot;💛 Ya vieron todas las cosas perfectas del día&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">🗺️ Mark y Margaret corren a ver: un águila atrapa un pez
+🗺️ Mark y Margaret corren a ver: un señor gana la lotería
+🗺️ Mark y Margaret corren a ver: una niña encesta de espaldas
+🗺️ Mark y Margaret corren a ver: empieza a llover
+💛 Ya vieron todas las cosas perfectas del día</div>
+    <p class="sub" style="margin:8px 0 0">Los momentos del mapa son inventados como ejemplo.</p>
+  </div>
+
+  <div class="topic" style="--c:var(--mint)">
+    <h3><span class="num">5</span> Letra por letra 🔤</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># Un texto también se puede recorrer: el for toma cada letra</span>
+for letra in <span class="str">&quot;ROBLOX&quot;</span>:
+    print(letra)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">R
+O
+B
+L
+O
+X</div>
+  </div>
+
+  <div class="topic" style="--c:var(--grape)">
+    <h3><span class="num">6</span> Tu playlist 🎧</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># &quot;Para cada&quot; canción de esta colección...</span>
+for cancion in [<span class="str">&quot;Flowers&quot;</span>, <span class="str">&quot;Calm Down&quot;</span>, <span class="str">&quot;Ella Baila Sola&quot;</span>]:
+    <span class="com"># ...se muestra cuál se está reproduciendo</span>
+    print(<span class="str">&quot;🎵 Reproduciendo:&quot;</span>, cancion)
+
+print(<span class="str">&quot;Fin de la playlist&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">🎵 Reproduciendo: Flowers
+🎵 Reproduciendo: Calm Down
+🎵 Reproduciendo: Ella Baila Sola
+Fin de la playlist</div>
+    <div class="tip">📋 Lo que está entre corchetes <code class="in">[ ]</code> es una <b>lista</b>. Las vemos a fondo en la pestaña <b>Listas</b>.</div>
+  </div>
+
+  <div class="topic" style="--c:var(--coral)">
+    <h3><span class="num">7</span> Invitaciones a tu fiesta 🎉</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># &quot;Para cada&quot; amigo de la colección, mandamos una invitación</span>
+for amigo in [<span class="str">&quot;Sofi&quot;</span>, <span class="str">&quot;Diego&quot;</span>, <span class="str">&quot;Valeria&quot;</span>, <span class="str">&quot;Mateo&quot;</span>]:
+    print(<span class="str">&quot;Hola&quot;</span>, amigo, <span class="str">&quot;estás invitado a mi fiesta el sábado 🎉&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Hola Sofi estás invitado a mi fiesta el sábado 🎉
+Hola Diego estás invitado a mi fiesta el sábado 🎉
+Hola Valeria estás invitado a mi fiesta el sábado 🎉
+Hola Mateo estás invitado a mi fiesta el sábado 🎉</div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="for-comparar">
+  <span class="tag" style="background:var(--orange)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">¿while o for?</h2>
+  <p class="sub">Las mismas 5 sentadillas, escritas de las dos formas.</p>
+
+  <div class="lado">
+    <div><span class="label">Con while</span>
+<div class="code"><span class="com"># 1. Nosotros creamos el contador</span>
+repeticion = 1
+
+<span class="com"># 2. Nosotros escribimos la pregunta</span>
+while repeticion &lt;= 5:
+    print(<span class="str">&quot;Sentadilla número&quot;</span>, repeticion)
+    <span class="com"># 3. Nosotros cambiamos el contador</span>
+    repeticion = repeticion + 1</div></div>
+    <div><span class="label">Con for</span>
+<div class="code"><span class="com"># El for hace los 3 pasos por nosotros:</span>
+<span class="com"># crea el contador, pregunta y lo cambia</span>
+for repeticion in range(1, 6):
+    print(<span class="str">&quot;Sentadilla número&quot;</span>, repeticion)</div></div>
+  </div>
+  <div class="tip">👉 Los dos muestran lo mismo. El <b>for</b> es más corto porque <b>crea, pregunta y cambia</b> el contador por ti.</div>
+
+  <div class="table-wrap">
+    <table class="kw-table">
+      <thead><tr><th>Situación</th><th>Usa</th><th>¿Por qué?</th></tr></thead>
+      <tbody>
+        <tr><td>Tree vigila a cada sospechoso de su lista</td><td><span class="pill" style="background:var(--grape)">for</span></td><td>Tiene la lista de sospechosos</td></tr>
+        <tr><td>Strange regresa hasta que Dormammu acepte</td><td><span class="pill" style="background:var(--sky)">while</span></td><td>No sabe cuántas veces va a regresar</td></tr>
+        <tr><td>Hacer 10 sentadillas</td><td><span class="pill" style="background:var(--grape)">for</span></td><td>Sabes que son 10</td></tr>
+        <tr><td>Saludar a cada amigo de tu grupo</td><td><span class="pill" style="background:var(--grape)">for</span></td><td>Tienes la colección de amigos</td></tr>
+        <tr><td>Pedir la contraseña hasta que sea correcta</td><td><span class="pill" style="background:var(--sky)">while</span></td><td>No sabes cuántas veces se va a equivocar</td></tr>
+        <tr><td>Esperar a que llegue tu Uber</td><td><span class="pill" style="background:var(--sky)">while</span></td><td>No sabes cuánto va a tardar</td></tr>
+        <tr><td>Mostrar el menú hasta que elija Salir</td><td><span class="pill" style="background:var(--sky)">while</span></td><td>No sabes cuándo va a salir</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="for-control">
+  <span class="tag" style="background:var(--pink)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">break y continue dentro del for</h2>
+  <p class="sub">Ya conoces el <b>break</b>. Ahora conoce a su compañero: el <b>continue</b>.</p>
+
+  <div class="analogy">
+    <div class="card warm"><h4>🛑 break</h4><p>"Ya encontré lo que buscaba, <b>me salgo</b>". Como dejar de buscar en los cajones cuando encuentras tus llaves.</p></div>
+    <div class="card alt"><h4>⏭️ continue</h4><p>"Esta vuelta <b>me la salto</b>, pero sigo con la siguiente". Como saltar la canción que no te gusta.</p></div>
+  </div>
+
+  <div class="topic" style="--c:var(--coral)">
+    <h3><span class="num">8</span> Buscar las llaves 🔑 (break)</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># &quot;Para cada&quot; cajón de la colección...</span>
+for cajon in [<span class="str">&quot;calcetines&quot;</span>, <span class="str">&quot;playeras&quot;</span>, <span class="str">&quot;llaves&quot;</span>, <span class="str">&quot;suéteres&quot;</span>]:
+    print(<span class="str">&quot;Abriendo cajón de&quot;</span>, cajon)
+
+    <span class="com"># ¿Este cajón es el de las llaves?</span>
+    if cajon == <span class="str">&quot;llaves&quot;</span>:
+        print(<span class="str">&quot;🔑 ¡Las encontré!&quot;</span>)
+        <span class="com"># Ya las encontramos: break nos saca del for</span>
+        break</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Abriendo cajón de calcetines
+Abriendo cajón de playeras
+Abriendo cajón de llaves
+🔑 ¡Las encontré!</div>
+    <p>Nunca abre el cajón de "suéteres": el <b>break</b> lo sacó del for antes.</p>
+    <h4 style="margin-top:22px">📊 Diagrama de flujo</h4>
+    <div class="card" style="overflow-x:auto"><svg viewBox="0 0 760 640" width="100%" style="display:block;max-width:760px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo de buscar las llaves con for y break"><defs><marker id="for-s3-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="for-s3-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker><marker id="for-s3-FF6B6B" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF6B6B"/></marker></defs>
+  <rect x="335.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="400" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+  <polyline points="400,52 400,88" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s3-2B2D42)"/>
+  <polygon points="400,88.0 505.0,130 400,172.0 295.0,130" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="400" y="130" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿Quedan cajones?</text>
+  <polyline points="295,130 255,130 255,198" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s3-2B2D42)"/>
+  <text x="275" y="122" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="155.0" y="198" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="255" y="220" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">cajon = el siguiente</text>
+  <polyline points="255,242 255,258" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s3-2B2D42)"/>
+  <rect x="145.0" y="258" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="255" y="280" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “Abriendo”, cajon</text>
+  <polyline points="255,302 255,330" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s3-2B2D42)"/>
+  <polygon points="255,330.0 360.0,370 255,410.0 150.0,370" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="255" y="370" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿cajon == “llaves”?</text>
+  <polyline points="150,370 115,370 115,438" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s3-2B2D42)"/>
+  <text x="132" y="362" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="15.0" y="438" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="115" y="460" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “🔑 ¡Las encontré!”</text>
+  <polyline points="360,370 395,370 395,438" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s3-2B2D42)"/>
+  <text x="378" y="362" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="295.0" y="438" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="395" y="460" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">(sigue con el siguiente)</text>
+  <polyline points="395,482 395,540 12,540 12,72 396,72" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#for-s3-F4A100)"/>
+  <polyline points="115,482 115,610 640,610 640,352" fill="none" stroke="#FF6B6B" stroke-width="2.5"  marker-end="url(#for-s3-FF6B6B)"/>
+  <text x="150" y="580" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">break</text>
+  <polyline points="505,130 640,130 640,238" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s3-2B2D42)"/>
+  <text x="572" y="122" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="540.0" y="238" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="640" y="260" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “No hay llaves”</text>
+  <polyline points="640,282 640,306" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#for-s3-2B2D42)"/>
+  <rect x="575.0" y="308" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="640" y="330" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
+</svg></div>
+    <div class="tip">💡 Desde "¡Las encontré!", la flecha roja del <b>break</b> va <b>directo al Fin</b>.</div>
+  </div>
+
+  <div class="topic" style="--c:var(--sky)">
+    <h3><span class="num">9</span> Saltar una canción ⏭️ (continue)</h3>
+    <span class="label">Código</span>
+<div class="code">for cancion in [<span class="str">&quot;Flowers&quot;</span>, <span class="str">&quot;Baby Shark&quot;</span>, <span class="str">&quot;Calm Down&quot;</span>]:
+
+    <span class="com"># ¿Es la canción que no me gusta?</span>
+    if cancion == <span class="str">&quot;Baby Shark&quot;</span>:
+        print(<span class="str">&quot;⏭️ Saltando...&quot;</span>)
+        <span class="com"># continue: se salta lo que falta de ESTA vuelta</span>
+        <span class="com"># y pasa a la siguiente canción</span>
+        continue
+
+    <span class="com"># Esta línea solo se ejecuta si NO hubo continue</span>
+    print(<span class="str">&quot;🎵 Escuchando&quot;</span>, cancion)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">🎵 Escuchando Flowers
+⏭️ Saltando...
+🎵 Escuchando Calm Down</div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="kw-table">
+      <thead><tr><th></th><th>break</th><th>continue</th></tr></thead>
+      <tbody>
+        <tr><td><b>¿Qué hace?</b></td><td>Termina el bucle completo</td><td>Se salta solo la vuelta actual</td></tr>
+        <tr><td><b>En la vida real</b></td><td>Encontraste las llaves, dejas de buscar</td><td>Saltas la canción y sigues con la playlist</td></tr>
+        <tr><td><b>¿Funciona en while?</b></td><td>Sí</td><td>Sí</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="topic" style="--c:var(--teal)">
+    <h3><span class="num">10</span> Extra: el else del for 👟</h3>
+    <p>Un for puede llevar <b>else</b>. Ese bloque se ejecuta <b>solo si el for terminó sin break</b>.</p>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># Guardamos el modelo que busca el cliente</span>
+buscado = <span class="str">&quot;Vans&quot;</span>
+
+<span class="com"># Revisamos cada modelo del inventario</span>
+for tenis in [<span class="str">&quot;Air Max&quot;</span>, <span class="str">&quot;Jordan 1&quot;</span>, <span class="str">&quot;Converse&quot;</span>]:
+    <span class="com"># ¿Este es el que busca?</span>
+    if tenis == buscado:
+        print(<span class="str">&quot;✅ Sí lo tenemos&quot;</span>)
+        break
+else:
+    <span class="com"># El else del for SOLO se ejecuta si el for terminó sin break</span>
+    <span class="com"># (es decir, si revisamos todo y nunca lo encontramos)</span>
+    print(<span class="str">&quot;❌ No tenemos&quot;</span>, buscado)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">❌ No tenemos Vans</div>
+    <p>Revisó los 3 modelos y nunca encontró los Vans, así que nunca hubo break y entró al <b>else</b>.</p>
+  </div>
+</section>
+
+<section id="for-siguiente">
+  <div class="closing">
+    <h2>Siguiente: las listas 📋</h2>
+    <p>Ya usaste corchetes <b>[ ]</b> para la playlist, los sospechosos y el mapa. Ahora vas a aprender a guardar, agregar, cambiar y borrar cosas en una lista. ¡Es la base de tu proyecto y lo que debés hacer (CRUD)!</p>
+    <p style="margin-top:14px"><button class="btn ir-tab" data-tab="listas" type="button">Ir a la pestaña Listas →</button></p>
+  </div>
+</section>
+
+</div>
+<div class="tab-panel" id="tab-listas" data-panel="listas" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--mint);margin-top:30px">
+    <h2>📋 Listas</h2>
+    <p><strong>Listas</strong> · Módulo 3 de CISCO</p>
+  </div>
+  <nav class="menu-pagina"><a href="#listas-para-que">¿Para qué sirve una lista?</a> <a href="#listas-vida">Listas en la vida real</a> <a href="#listas-crear">Crear una lista</a> <a href="#listas-indices">Los índices: el número de casillero</a> <a href="#listas-len">len(): ¿cuántos elementos hay?</a> <a href="#listas-cambiar">Cambiar un elemento ✏️</a> <a href="#listas-agregar">Agregar elementos ➕</a> <a href="#listas-borrar">Borrar elementos 🗑️</a> <a href="#listas-recorrer">Recorrer una lista con for 🔁</a> <a href="#listas-buscar">Buscar en una lista con in 🔍</a> <a href="#listas-intercambiar">Intercambiar dos elementos 🔄</a> <a href="#listas-completo">Ejemplo completo: el carrito de compras 🛒</a> <a href="#listas-crud">Las listas en tu proyecto CRUD 📋</a></nav>
+
+<!-- 1 -->
+<section id="listas-para-que">
+  <span class="tag" style="background:var(--coral)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">¿Para qué sirve una lista?</h2>
+  <p class="sub">Quieres guardar tus 5 canciones favoritas. Con lo que sabemos hasta ahora, tendrías que hacer esto:</p>
+  <div class="lado">
+    <div><span class="label">Sin listas: una variable por canción</span>
+<div class="code">cancion1 = <span class="str">&quot;Flowers&quot;</span>
+cancion2 = <span class="str">&quot;Calm Down&quot;</span>
+cancion3 = <span class="str">&quot;Ella Baila Sola&quot;</span>
+cancion4 = <span class="str">&quot;Tití Me Preguntó&quot;</span>
+cancion5 = <span class="str">&quot;Anti-Hero&quot;</span></div></div>
+    <div><span class="label">Con una lista: todo en una sola variable</span>
+<div class="code">playlist = [<span class="str">&quot;Flowers&quot;</span>, <span class="str">&quot;Calm Down&quot;</span>, <span class="str">&quot;Ella Baila Sola&quot;</span>, <span class="str">&quot;Tití Me Preguntó&quot;</span>, <span class="str">&quot;Anti-Hero&quot;</span>]</div></div>
+  </div>
+  <div class="tip">🤯 ¿Y si fueran 500 canciones? Necesitarías 500 variables. Con una <b>lista</b> guardas <b>muchas cosas en una sola variable</b>.</div>
+  <div class="general">🎂 <b>¿Te acuerdas de la lista de sospechosos de Tree y del mapa de Mark y Margaret en la pestaña For?</b> ¡Eso ya eran listas!</div>
+</section>
+
+<!-- 2 -->
+<section id="listas-vida">
+  <span class="tag" style="background:var(--grape)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">Listas en la vida real</h2>
+  <p class="sub">Todas son <b>varias cosas guardadas en orden</b>, y cada cosa tiene su <b>lugar</b>.</p>
+  <div class="chars">
+    <div class="char" style="background:var(--grape)"><div class="ico">🎧</div><h3>Playlist</h3><p>Tus canciones de Spotify, una tras otra.</p></div>
+    <div class="char" style="background:var(--coral)"><div class="ico">🛒</div><h3>Carrito</h3><p>Lo que vas a comprar en Shein o Amazon.</p></div>
+    <div class="char" style="background:var(--mint)"><div class="ico">⛏️</div><h3>Minecraft</h3><p>La barra de inventario: 9 casillas, cada una con un objeto.</p></div>
+    <div class="char" style="background:var(--sky)"><div class="ico">🟥</div><h3>Roblox</h3><p>Tu inventario de objetos y skins.</p></div>
+    <div class="char" style="background:var(--orange)"><div class="ico">🧋</div><h3>Fila</h3><p>Los pedidos en la cafetería, en orden de llegada.</p></div>
+    <div class="char" style="background:var(--teal)"><div class="ico">🗄️</div><h3>Casilleros</h3><p>Los de la escuela, cada uno con su número.</p></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="listas-crear">
+  <span class="tag" style="background:var(--sky)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">Crear una lista</h2>
+  <div class="topic" style="--c:var(--sky)">
+    <span class="label">Código</span>
+<div class="code"><span class="com"># Una lista de textos</span>
+amigos = [<span class="str">&quot;Sofi&quot;</span>, <span class="str">&quot;Diego&quot;</span>, <span class="str">&quot;Valeria&quot;</span>]
+
+<span class="com"># Una lista de números</span>
+precios = [45, 60, 55]
+
+<span class="com"># Una lista vacía (la llenaremos después)</span>
+carrito = []</div>
+    <h4>Reglas</h4>
+    <ol>
+      <li>Va entre <b>corchetes</b> <code class="in">[ ]</code></li>
+      <li>Cada elemento se separa con <b>coma</b>.</li>
+      <li>Puede tener textos, números o una mezcla.</li>
+      <li>Puede estar <b>vacía</b> <code class="in">[]</code> y llenarse después.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="listas-indices">
+  <span class="tag" style="background:var(--teal)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">Los índices: el número de casillero</h2>
+  <p class="sub">🗄️ Imagina los casilleros de la escuela. Cada uno tiene un número y adentro hay algo guardado. En una lista, ese número se llama <b>índice</b>.</p>
+  <div class="warn">⚠️ <b>MUY IMPORTANTE: en Python los casilleros empiezan en el 0, no en el 1.</b></div>
+
+  <div class="topic" style="--c:var(--teal)">
+    <h3><span class="num">1</span> La lista de sospechosos de Tree 🎂</h3>
+    <div class="table-wrap"><table class="kw-table"><tbody><tr><td><b>Índice (casillero)</b></td><td><span class="pill" style="background:var(--sky)">0</span></td><td><span class="pill" style="background:var(--sky)">1</span></td><td><span class="pill" style="background:var(--sky)">2</span></td><td><span class="pill" style="background:var(--sky)">3</span></td></tr><tr><td><b>Lo que tiene adentro</b></td><td>Tim</td><td>Gregory</td><td>Danielle</td><td>Carter</td></tr></tbody></table></div>
+    <span class="label">Código</span>
+<div class="code">sospechosos = [<span class="str">&quot;Tim&quot;</span>, <span class="str">&quot;Gregory&quot;</span>, <span class="str">&quot;Danielle&quot;</span>, <span class="str">&quot;Carter&quot;</span>]
+
+<span class="com"># Mostramos lo que hay en el casillero 0 (el primer sospechoso)</span>
+print(sospechosos[0])
+
+<span class="com"># Mostramos lo que hay en el casillero 2 (el tercer sospechoso)</span>
+print(sospechosos[2])</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Tim
+Danielle</div>
+    <div class="tip">⛏️ <b>Como en Minecraft:</b> la barra de inventario tiene 9 casillas. En el juego las ves del 1 al 9, pero si Minecraft estuviera hecho en Python, la primera casilla sería la <b>0</b> y la última la <b>8</b>.</div>
+  </div>
+
+  <div class="topic" style="--c:var(--coral)">
+    <h3><span class="num">2</span> Error común: un casillero que no existe ❌</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># La lista tiene 4 sospechosos: casilleros 0, 1, 2 y 3</span>
+print(sospechosos[4])    <span class="com"># ❌ El casillero 4 NO existe</span></div>
+    <span class="label" style="background:var(--mint)">Error en pantalla</span>
+<div class="code">IndexError: list index out of range</div>
+    <p>La lista tiene 4 sospechosos, pero sus casilleros van del 0 al 3. <b>El casillero 4 no existe</b>, por eso Python marca error.</p>
+  </div>
+
+  <div class="topic" style="--c:var(--pink)">
+    <h3><span class="num">3</span> Índices negativos: contar desde el final 🔙</h3>
+    <div class="table-wrap"><table class="kw-table"><tbody><tr><td><b>Índice (casillero)</b></td><td><span class="pill" style="background:var(--sky)">0</span></td><td><span class="pill" style="background:var(--sky)">1</span></td><td><span class="pill" style="background:var(--sky)">2</span></td><td><span class="pill" style="background:var(--sky)">3</span></td></tr><tr><td><b>Lo que tiene adentro</b></td><td>Tim</td><td>Gregory</td><td>Danielle</td><td>Carter</td></tr><tr><td><b>Índice negativo</b></td><td><span class="pill" style="background:var(--coral)">-4</span></td><td><span class="pill" style="background:var(--coral)">-3</span></td><td><span class="pill" style="background:var(--coral)">-2</span></td><td><span class="pill" style="background:var(--coral)">-1</span></td></tr></tbody></table></div>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># -1 siempre es el ÚLTIMO elemento</span>
+print(sospechosos[-1])
+
+<span class="com"># -2 es el penúltimo</span>
+print(sospechosos[-2])</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Carter
+Danielle</div>
+    <div class="tip">💡 Muy útil para ver <b>el último</b> sin saber cuántos hay, como el último mensaje del chat o la última canción que agregaste.</div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="listas-len">
+  <span class="tag" style="background:var(--mint)">Mocdulo 3 · CISCO</span>
+  <h2 class="title">len(): ¿cuántos elementos hay?</h2>
+  <div class="topic" style="--c:var(--mint)">
+    <span class="label">Código</span>
+<div class="code">amigos = [<span class="str">&quot;Sofi&quot;</span>, <span class="str">&quot;Diego&quot;</span>, <span class="str">&quot;Valeria&quot;</span>, <span class="str">&quot;Mateo&quot;</span>]
+
+<span class="com"># len() cuenta cuántos elementos tiene la lista</span>
+print(len(amigos))
+
+print(<span class="str">&quot;Invitaste a&quot;</span>, len(amigos), <span class="str">&quot;amigos&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">4
+Invitaste a 4 amigos</div>
+    <div class="tip">💡 Así funciona el "Tu carrito tiene 3 productos" de las tiendas en línea.</div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="listas-cambiar">
+  <span class="tag" style="background:var(--orange)">Proyecto · Cambios del CRUD</span>
+  <h2 class="title">Cambiar un elemento ✏️</h2>
+  <p class="sub">Sacas lo que hay en un casillero y metes otra cosa.</p>
+  <div class="topic" style="--c:var(--orange)">
+    <span class="label">Código</span>
+<div class="code">carrito = [<span class="str">&quot;Sudadera&quot;</span>, <span class="str">&quot;Gorra&quot;</span>, <span class="str">&quot;Tenis&quot;</span>]
+
+<span class="com"># En el casillero 1 había &quot;Gorra&quot;; ahora guardamos &quot;Lentes de sol&quot;</span>
+carrito[1] = <span class="str">&quot;Lentes de sol&quot;</span>
+
+print(carrito)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">[&#x27;Sudadera&#x27;, &#x27;Lentes de sol&#x27;, &#x27;Tenis&#x27;]</div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="listas-agregar">
+  <span class="tag" style="background:var(--mint)">Proyecto · Altas del CRUD</span>
+  <h2 class="title">Agregar elementos ➕</h2>
+  <div class="topic" style="--c:var(--mint)">
+    <h3><span class="num">1</span> append(): agregar al final</h3>
+    <span class="label">Código</span>
+<div class="code">playlist = [<span class="str">&quot;Flowers&quot;</span>, <span class="str">&quot;Calm Down&quot;</span>]
+
+<span class="com"># append agrega la canción AL FINAL de la lista</span>
+playlist.append(<span class="str">&quot;Anti-Hero&quot;</span>)
+
+print(playlist)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">[&#x27;Flowers&#x27;, &#x27;Calm Down&#x27;, &#x27;Anti-Hero&#x27;]</div>
+    <div class="tip">🧋 Como alguien que llega a la cafetería y se forma <b>al final</b> de la fila.</div>
+  </div>
+  <div class="topic" style="--c:var(--mint)">
+    <h3><span class="num">2</span> insert(): meter en un lugar específico</h3>
+    <span class="label">Código</span>
+<div class="code">fila = [<span class="str">&quot;Sofi&quot;</span>, <span class="str">&quot;Diego&quot;</span>, <span class="str">&quot;Valeria&quot;</span>]
+
+<span class="com"># insert(lugar, quién): Mateo se mete en el casillero 1</span>
+fila.insert(1, <span class="str">&quot;Mateo&quot;</span>)
+
+print(fila)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">[&#x27;Sofi&#x27;, &#x27;Mateo&#x27;, &#x27;Diego&#x27;, &#x27;Valeria&#x27;]</div>
+    <div class="tip">🧋 Como alguien que se <b>mete</b> en la fila en el lugar 1. Los demás se recorren hacia atrás.</div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section id="listas-borrar">
+  <span class="tag" style="background:var(--coral)">Proyecto · Bajas del CRUD</span>
+  <h2 class="title">Borrar elementos 🗑️</h2>
+  <div class="topic" style="--c:var(--coral)">
+    <span class="label">Código</span>
+<div class="code">carrito = [<span class="str">&quot;Sudadera&quot;</span>, <span class="str">&quot;Gorra&quot;</span>, <span class="str">&quot;Tenis&quot;</span>]
+
+<span class="com"># del borra lo que hay en el casillero 1 (&quot;Gorra&quot;)</span>
+del carrito[1]
+
+print(carrito)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">[&#x27;Sudadera&#x27;, &#x27;Tenis&#x27;]</div>
+    <div class="tip">Cuando borras, los demás <b>se recorren</b> para llenar el hueco, como cuando alguien sale de la fila.</div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="listas-recorrer">
+  <span class="tag" style="background:var(--grape)">Proyecto · Imprimir del CRUD</span>
+  <h2 class="title">Recorrer una lista con for 🔁</h2>
+  <div class="card alt">
+    <h4>📊 Diagramas de las listas</h4>
+    <p>Recorrer una lista y buscar en ella llevan diagrama. Lo encuentras justo debajo de cada ejemplo.</p>
+  </div>
+  <div class="legend">
+    <div class="lg"><div class="shape"><span class="oval">Inicio</span></div><h4>Óvalo</h4><p>Dónde <b>empieza</b> (Inicio) y dónde <b>termina</b> (Fin) el programa.</p></div>
+    <div class="lg"><div class="shape"><span class="para"><span>Leer dato</span></span></div><h4>Paralelogramo (entrada)</h4><p>Los <b>input()</b>: lo que el usuario escribe.</p></div>
+    <div class="lg"><div class="shape"><span class="rect">bateria = 3</span></div><h4>Rectángulo (proceso)</h4><p>Los <b>print()</b>, guardar un valor en una variable, hacer un cálculo o cambiar un valor.</p></div>
+    <div class="lg"><div class="shape"><span class="diamond"><span>¿pregunta?</span></span></div><h4>Rombo (decisión)</h4><p>La <b>pregunta</b> del <b>if</b>, del <b>while</b> o del <b>for</b>. <b>Sí a la izquierda, No a la derecha.</b></p></div>
+  </div>
+
+  <div style="height:20px"></div>
+
+  <div class="topic" style="--c:var(--grape)">
+    <h3><span class="num">1</span> Elemento por elemento (como en la pestaña For)</h3>
+    <span class="label">Código</span>
+<div class="code">carrito = [<span class="str">&quot;Sudadera&quot;</span>, <span class="str">&quot;Gorra&quot;</span>, <span class="str">&quot;Tenis&quot;</span>]
+
+<span class="com"># Para cada producto del carrito, lo mostramos</span>
+for producto in carrito:
+    print(<span class="str">&quot;🛒&quot;</span>, producto)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">🛒 Sudadera
+🛒 Gorra
+🛒 Tenis</div>
+    <h4 style="margin-top:22px">📊 Diagrama de flujo</h4>
+    <div class="card" style="overflow-x:auto"><svg viewBox="0 0 600 404" width="100%" style="display:block;max-width:600px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo para imprimir el carrito"><defs><marker id="listas-s1-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="listas-s1-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker><marker id="listas-s1-FF6B6B" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF6B6B"/></marker></defs>
+  <rect x="235.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+  <polyline points="300,52 300,74" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s1-2B2D42)"/>
+  <rect x="155.0" y="74" width="290" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="96" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">carrito = [Sudadera, Gorra, Tenis]</text>
+  <polyline points="300,118 300,154" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s1-2B2D42)"/>
+  <polygon points="300,154.0 405.0,196 300,238.0 195.0,196" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="196" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿Quedan productos?</text>
+  <polyline points="195.0,196 135,196 135,254" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s1-2B2D42)"/>
+  <text x="165.0" y="188" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="25.0" y="254" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="135" y="276" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">producto = el siguiente</text>
+  <polyline points="135,298 135,320" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s1-2B2D42)"/>
+  <rect x="25.0" y="320" width="220" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="135" y="342" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “🛒”, producto</text>
+  <polyline points="135,364 135,386 14,386 14,136.0 296,136.0" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#listas-s1-F4A100)"/>
+  <polyline points="405.0,196 470,196 470,254" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s1-2B2D42)"/>
+  <text x="437.5" y="188" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="365.0" y="254" width="210" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="470" y="276" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “Fin del carrito”</text>
+  <polyline points="470,298 470,320" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s1-2B2D42)"/>
+  <rect x="405.0" y="320" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="470" y="342" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
+</svg></div>
+    <div class="tip">💡 Recorrer una lista con for se dibuja igual que en la pestaña For: el rombo pregunta <b>"¿quedan productos?"</b>.</div>
+  </div>
+  <div class="topic" style="--c:var(--grape)">
+    <h3><span class="num">2</span> Con el número de casillero</h3>
+    <span class="label">Código</span>
+<div class="code"><span class="com"># range(len(carrito)) nos da 0, 1, 2 (los casilleros que existen)</span>
+for i in range(len(carrito)):
+    <span class="com"># i es el número de casillero y carrito[i] lo que hay adentro</span>
+    print(i, <span class="str">&quot;:&quot;</span>, carrito[i])</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">0 : Sudadera
+1 : Gorra
+2 : Tenis</div>
+  </div>
+  <div class="topic" style="--c:var(--orange)">
+    <h3><span class="num">3</span> Total del carrito 🛍️</h3>
+    <span class="label">Código</span>
+<div class="code">precios = [450, 250, 1800]
+
+<span class="com"># Empezamos el total en 0</span>
+total = 0
+
+<span class="com"># Para cada precio de la lista, lo sumamos al total</span>
+for precio in precios:
+    total = total + precio
+
+print(<span class="str">&quot;Total a pagar: $&quot;</span>, total)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Total a pagar: $ 2500</div>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="listas-buscar">
+  <span class="tag" style="background:var(--sky)">Proyecto · Consultas del CRUD</span>
+  <h2 class="title">Buscar en una lista con in 🔍</h2>
+  <p class="sub">Con la lógica de la vida real: <b>¿está en la lista?</b></p>
+  <div class="topic" style="--c:var(--sky)">
+    <span class="label">Código</span>
+<div class="code">inventario = [<span class="str">&quot;Air Max&quot;</span>, <span class="str">&quot;Jordan 1&quot;</span>, <span class="str">&quot;Converse&quot;</span>]
+
+<span class="com"># Pedimos el modelo que busca el cliente</span>
+buscado = input(<span class="str">&quot;¿Qué modelo buscas? &quot;</span>)
+
+<span class="com"># ¿El modelo ESTÁ en el inventario?</span>
+if buscado in inventario:
+    print(<span class="str">&quot;✅ Sí lo tenemos&quot;</span>)
+else:
+    print(<span class="str">&quot;❌ Está agotado&quot;</span>)</div>
+    <div class="lado">
+      <div><span class="label" style="background:var(--mint)">Corrida 1</span>
+<div class="code">¿Qué modelo buscas? Converse
+✅ Sí lo tenemos</div></div>
+      <div><span class="label" style="background:var(--mint)">Corrida 2</span>
+<div class="code">¿Qué modelo buscas? Vans
+❌ Está agotado</div></div>
+    </div>
+    <h4 style="margin-top:22px">📊 Diagrama de flujo</h4>
+    <div class="card" style="overflow-x:auto"><svg viewBox="0 0 600 487" width="100%" style="display:block;max-width:600px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo para buscar un modelo con in"><defs><marker id="listas-s2-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="listas-s2-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker><marker id="listas-s2-FF6B6B" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#FF6B6B"/></marker></defs>
+  <rect x="235.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+  <polyline points="300,52 300,74" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s2-2B2D42)"/>
+  <rect x="130.0" y="74" width="340" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="96" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">inventario = [Air Max, Jordan 1, Converse]</text>
+  <polyline points="300,118 300,140" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s2-2B2D42)"/>
+  <polygon points="214.0,140 414.0,140 386.0,184 186.0,184" fill="#3DC47E" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="162" fill="#fff" font-size="13.5" font-weight="800" text-anchor="middle" dominant-baseline="middle">Leer buscado</text>
+  <polyline points="300,184 300,220" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s2-2B2D42)"/>
+  <polygon points="300,220.0 415.0,262 300,304.0 185.0,262" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="262" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿buscado está en inventario?</text>
+  <polyline points="185,262 140,262 140,320" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s2-2B2D42)"/>
+  <text x="162" y="254" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+  <rect x="40.0" y="320" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="140" y="342" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “✅ Sí lo tenemos”</text>
+  <polyline points="415,262 460,262 460,320" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s2-2B2D42)"/>
+  <text x="438" y="254" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+  <rect x="360.0" y="320" width="200" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/>
+  <text x="460" y="342" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir “❌ Está agotado”</text>
+  <polyline points="140,364 140,402 460,402 460,364" fill="none" stroke="#2B2D42" stroke-width="2.5"  />
+  <polyline points="300,402 300,432" fill="none" stroke="#2B2D42" stroke-width="2.5"  marker-end="url(#listas-s2-2B2D42)"/>
+  <rect x="235.0" y="432" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/>
+  <text x="300" y="454" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
+</svg></div>
+    <div class="tip">💡 Este no se repite: es un <b>if</b> con una sola pregunta. Por eso no tiene flecha de regreso.</div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="listas-intercambiar">
+  <span class="tag" style="background:var(--pink)">Modulo 3 · CISCO</span>
+  <h2 class="title">Intercambiar dos elementos 🔄</h2>
+  <p class="sub">Quieres cambiar de lugar dos canciones de tu playlist.</p>
+  <div class="topic" style="--c:var(--pink)">
+    <span class="label">Código</span>
+<div class="code">playlist = [<span class="str">&quot;Flowers&quot;</span>, <span class="str">&quot;Calm Down&quot;</span>, <span class="str">&quot;Anti-Hero&quot;</span>]
+
+<span class="com"># La del casillero 0 se va al 2, y la del 2 se va al 0</span>
+playlist[0], playlist[2] = playlist[2], playlist[0]
+
+print(playlist)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">[&#x27;Anti-Hero&#x27;, &#x27;Calm Down&#x27;, &#x27;Flowers&#x27;]</div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section id="listas-completo">
+  <span class="tag" style="background:var(--teal)">Modulo 3 · CISCO</span>
+  <h2 class="title">Ejemplo completo: el carrito de compras 🛒</h2>
+  <p class="sub">Junta todo lo que aprendiste: <b>while + append + for</b>.</p>
+  <div class="topic" style="--c:var(--teal)">
+    <span class="label">Código</span>
+<div class="code"><span class="com"># Empezamos con el carrito vacío</span>
+carrito = []
+
+<span class="com"># Al inicio todavía NO terminamos de comprar</span>
+termine = False
+
+<span class="com"># Mientras NO hayamos terminado, se repite</span>
+while termine == False:
+    producto = input(<span class="str">&quot;¿Qué quieres agregar? (escribe fin para terminar): &quot;</span>)
+
+    <span class="com"># ¿Escribió &quot;fin&quot;?</span>
+    if producto == <span class="str">&quot;fin&quot;</span>:
+        termine = True
+    else:
+        <span class="com"># Agregamos el producto al final del carrito</span>
+        carrito.append(producto)
+        print(<span class="str">&quot;✅ Agregado. Llevas&quot;</span>, len(carrito), <span class="str">&quot;productos&quot;</span>)
+
+<span class="com"># Ya fuera del while: mostramos todo el carrito</span>
+print(<span class="str">&quot;===== TU CARRITO =====&quot;</span>)
+for producto in carrito:
+    print(<span class="str">&quot;🛒&quot;</span>, producto)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">¿Qué quieres agregar? (escribe fin para terminar): Sudadera
+✅ Agregado. Llevas 1 productos
+¿Qué quieres agregar? (escribe fin para terminar): Gorra
+✅ Agregado. Llevas 2 productos
+¿Qué quieres agregar? (escribe fin para terminar): fin
+===== TU CARRITO =====
+🛒 Sudadera
+🛒 Gorra</div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section id="listas-crud">
+  <span class="tag" style="background:var(--grape)">Mocdulo 3 · CISCO · Proyecto</span>
+  <h2 class="title">Las listas en tu proyecto CRUD 📋</h2>
+  <div class="table-wrap">
+    <table class="kw-table">
+      <thead><tr><th>Opción del menú</th><th>Con listas se hace con</th></tr></thead>
+      <tbody>
+        <tr><td>➕ <b>Altas</b></td><td><span class="mono">lista.append(nuevo)</span></td></tr>
+        <tr><td>🗑️ <b>Bajas</b></td><td><span class="mono">del lista[i]</span></td></tr>
+        <tr><td>✏️ <b>Cambios</b></td><td><span class="mono">lista[i] = nuevo_valor</span></td></tr>
+        <tr><td>🔍 <b>Consultas</b></td><td><span class="mono">if dato in lista:</span></td></tr>
+        <tr><td>🖨️ <b>Imprimir</b></td><td><span class="mono">for elemento in lista:</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="listas-siguiente">
+  <div class="closing">
+    <h2>¡Ya tienes todo para tu proyecto y hacer CRUD (Create, Read, Update, Delete)! 🚀</h2>
+    <p>Con el <b>while</b> repites el menú, con el <b>for</b> recorres los registros y con las <b>listas</b> los guardas, agregas, cambias, buscas y borras.</p>
+  </div>
+</section>
+
+</div>
+
+</main>
+
+<footer>Fundamentos de Programación · Python Fundamentals · Semana 4</footer>
+
+<script src="menu.js"></script>
+<script>
+  // Pestañas internas de la página (no tocan el menú del curso)
+  const tabs = document.querySelectorAll(".tabs .tab");
+  const panels = document.querySelectorAll(".tab-panel");
+
+  function mostrar(nombre, mover) {
+    let existe = false;
+    tabs.forEach(t => {
+      const activa = t.dataset.tab === nombre;
+      t.classList.toggle("active", activa);
+      t.setAttribute("aria-selected", activa);
+      if (activa) existe = true;
+    });
+    if (!existe) return;
+    panels.forEach(p => { p.hidden = p.dataset.panel !== nombre; });
+    try { history.replaceState(null, "", "#" + nombre); } catch (e) {}
+    if (mover) document.querySelector(".tabs").scrollIntoView({ behavior: "smooth" });
+  }
+
+  tabs.forEach(t => t.addEventListener("click", () => mostrar(t.dataset.tab, false)));
+  document.querySelectorAll(".ir-tab").forEach(b =>
+    b.addEventListener("click", () => mostrar(b.dataset.tab, true)));
+
+  // Abrir la pestaña que venga en la dirección (ej. semana4.html#for)
+  const inicial = location.hash.replace("#", "");
+  if (["while", "for", "listas"].includes(inicial)) mostrar(inicial, false);
+</script>
+</body>
+</html>
