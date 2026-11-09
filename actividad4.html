@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actividad 04: Operadores lógicos y listas | Fundamentos de Programación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<style>
+  * { font-variant-ligatures: none !important; font-feature-settings: "liga" 0, "calt" 0 !important; }
+  .code .com{color:#7FD99A;font-style:italic}
+  .code .blank{background:var(--sun);color:var(--ink);border-radius:6px;padding:0 3px;font-weight:700}
+  .tabs-temas{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:18px 0 8px}
+  .tab.tema{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:2px;padding:14px 16px;border-radius:18px}
+  .tab.tema .t-num{font-size:.8rem;opacity:.75;letter-spacing:.5px}
+  .tab.tema .t-nom{font-size:1.12rem;line-height:1.25}
+  .tab.tema .t-ej{font-family:'Nunito';font-weight:800;font-size:.82rem;background:rgba(43,45,66,.08);border-radius:999px;padding:3px 10px;margin-top:8px}
+  .tab.tema.active .t-ej{background:rgba(255,255,255,.25)}
+  .tt td,.tt th{text-align:center}
+  .pasos-eval{counter-reset:p;list-style:none;padding-left:0 !important}
+  .pasos-eval li{counter-increment:p;position:relative;padding:8px 12px 8px 44px;margin:6px 0;background:#FFFDF8;border:2px solid #F3EADB;border-radius:12px}
+  .pasos-eval li::before{content:counter(p);position:absolute;left:10px;top:8px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-family:'Fredoka';font-size:.85rem;display:flex;align-items:center;justify-content:center}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">Fundamentos de Programación</span>
+    <h1><span class="c1">Actividad 4.</span> <span class="c2">Operadores lógicos</span>, <span class="c3">bit a bit</span> y <span class="c4">listas</span> en Python</h1>
+    <div class="badges">
+      <span class="badge">📝 Actividad 04</span>
+      <span class="badge">👤 Individual</span>
+      <span class="badge">🧩 5 temas · 25 ejercicios</span>
+      <span class="badge due">⏰ Viernes 13 de noviembre, 23:59</span>
+    </div>
+    <nav class="menu-pagina">
+      <a href="#actividad">Instrucciones</a>
+      <a href="#ejercicios" data-tab="logicos">Operadores lógicos</a> <a href="#ejercicios" data-tab="bitabit">Operadores bit a bit</a> <a href="#ejercicios" data-tab="burbuja">Ordenamiento burbuja</a> <a href="#ejercicios" data-tab="operaciones">Operaciones con listas</a> <a href="#ejercicios" data-tab="avanzadas">Aplicaciones avanzadas de listas</a>
+      <a href="#entrega">Entrega</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- INSTRUCCIONES -->
+<section id="actividad">
+  <span class="tag" style="background:var(--coral)">Instrucciones</span>
+  <h2 class="title">Actividad 4</h2>
+  <p class="sub">Esta actividad se hace de forma <b>individual</b>. Fecha límite: <b>viernes 13 de noviembre, 23:59</b>.</p>
+
+  <div class="reto" style="--c:var(--sky)">
+    <div class="reto-head"><span class="n">1</span><div><small>ENTREGABLE</small><h3>Documento Word</h3></div></div>
+    <div class="reto-body">
+      <p>Deberás subir a Canvas un documento Word con lo siguiente, en este orden:</p>
+      <div class="isteps">
+        <div class="istep" style="--sc:var(--ink)"><span class="n">1</span><div><b>Portada:</b> nombre completo, matrícula, materia, nombre de la actividad, profesora y fecha.</div></div>
+        <div class="istep" style="--sc:var(--ink)"><span class="n">2</span><div><b>Índice.</b></div></div>
+        <div class="istep" style="--sc:var(--grape)"><span class="n">3</span><div><b>Ejercicios de Operadores lógicos (1 al 5):</b> un título por ejercicio (por ejemplo "Ejercicio 1: Nombre") y debajo las capturas de pantalla de tu código en VS Code y del resultado en la terminal.</div></div>
+        <div class="istep" style="--sc:var(--sky)"><span class="n">4</span><div><b>Ejercicios de Operadores bit a bit (6 al 10):</b> con el mismo formato.</div></div>
+        <div class="istep" style="--sc:var(--mint)"><span class="n">5</span><div><b>Ejercicios de Ordenamiento burbuja (11 al 15):</b> con el mismo formato.</div></div>
+        <div class="istep" style="--sc:var(--orange)"><span class="n">6</span><div><b>Ejercicios de Operaciones con listas (16 al 20):</b> con el mismo formato.</div></div>
+        <div class="istep" style="--sc:var(--coral)"><span class="n">7</span><div><b>Ejercicios de Aplicaciones avanzadas de listas (21 al 25):</b> con el mismo formato.</div></div>
+        <div class="istep" style="--sc:var(--pink)"><span class="n">8</span><div>Cada ejercicio debe llevar su <b>diagrama de flujo</b>. Realiza el diagrama en <b>Canva</b> o <b>draw.io</b>.</div></div>
+        <div class="istep" style="--sc:var(--ink)"><span class="n">9</span><div><b>Enlace del repositorio GitHub:</b> <code>https://github.com/MiUsuario/Actividad4_Mimatricula</code></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reto" style="--c:var(--grape)">
+    <div class="reto-head"><span class="n">2</span><div><small>ENTREGABLE</small><h3>Archivos de Python (.py)</h3></div></div>
+    <div class="reto-body">
+      <p>Un archivo por ejercicio. Los números de ejercicio siguen de un tema al otro:</p>
+      <ul class="checks" style="--c:var(--grape)">
+        <li><b>Operadores lógicos:</b> <code class="in">Actividad4_ejercicio1_mimatricula.py</code> al <code class="in">Actividad4_ejercicio5_mimatricula.py</code></li>
+        <li><b>Operadores bit a bit:</b> <code class="in">Actividad4_ejercicio6_mimatricula.py</code> al <code class="in">Actividad4_ejercicio10_mimatricula.py</code></li>
+        <li><b>Ordenamiento burbuja:</b> <code class="in">Actividad4_ejercicio11_mimatricula.py</code> al <code class="in">Actividad4_ejercicio15_mimatricula.py</code></li>
+        <li><b>Operaciones con listas:</b> <code class="in">Actividad4_ejercicio16_mimatricula.py</code> al <code class="in">Actividad4_ejercicio20_mimatricula.py</code></li>
+        <li><b>Aplicaciones avanzadas de listas:</b> <code class="in">Actividad4_ejercicio21_mimatricula.py</code> al <code class="in">Actividad4_ejercicio25_mimatricula.py</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="reto" style="--c:var(--mint)">
+    <div class="reto-head"><span class="n">3</span><div><small>ENTREGABLE</small><h3>Repositorio en GitHub</h3></div></div>
+    <div class="reto-body">
+      <div class="isteps">
+        <div class="istep" style="--sc:var(--mint)"><span class="n">1</span><div>Crea el repositorio <code>Actividad4_Mimatricula</code> (cambia "Mimatricula" por tu matrícula).</div></div>
+        <div class="istep" style="--sc:var(--mint)"><span class="n">2</span><div>Sube ahí los archivos: tu <strong>Word</strong> y los <strong>archivos de Python.</strong></div></div>
+        <div class="istep" style="--sc:var(--mint)"><span class="n">3</span><div>Envía el enlace del repositorio en la <strong>Actividad 4 de Canvas</strong>.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EJERCICIOS -->
+<section id="ejercicios">
+  <span class="tag" style="background:var(--sky)">Ejercicios</span>
+  <h2 class="title">Ejercicios de la Actividad 4</h2>
+  <p class="sub">La actividad tiene <b>5 temas</b> y cada tema tiene <b>varios ejercicios</b>. Elige el tema en las pestañas de abajo. Cada programa empieza con el <b>print del ejercicio, tu nombre y tu matrícula</b>. Lee los comentarios del código: explican qué hace cada línea.</p>
+
+  <div class="tabs tabs-temas" role="tablist">
+    <button class="tab tema active" type="button" role="tab" data-tab="logicos" style="--c:var(--grape)"><span class="t-num">5 EJERCICIOS</span><span class="t-nom">🔀 Operadores lógicos</span><span class="t-ej">Ejercicios 1 al 5</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="bitabit" style="--c:var(--sky)"><span class="t-num">5 EJERCICIOS</span><span class="t-nom">⚙️ Operadores bit a bit</span><span class="t-ej">Ejercicios 6 al 10</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="burbuja" style="--c:var(--mint)"><span class="t-num">5 EJERCICIOS</span><span class="t-nom">🫧 Ordenamiento burbuja</span><span class="t-ej">Ejercicios 11 al 15</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="operaciones" style="--c:var(--orange)"><span class="t-num">5 EJERCICIOS</span><span class="t-nom">🧰 Operaciones con listas</span><span class="t-ej">Ejercicios 16 al 20</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="avanzadas" style="--c:var(--coral)"><span class="t-num">5 EJERCICIOS</span><span class="t-nom">🧩 Aplicaciones avanzadas de listas</span><span class="t-ej">Ejercicios 21 al 25</span></button>
+  </div>
+
+<div class="tab-panel" data-panel="logicos" role="tabpanel">
+  <div class="day-head" style="background:var(--grape);margin-top:26px">
+    <h2>🔀 Tema 1. Operadores lógicos</h2>
+    <p>and, or y not en las decisiones de una empresa de comercio internacional.</p>
+    <p style="margin-top:8px"><b>Ejercicios 1 al 5</b></p>
+    <div class="topics"><span>🤝 and</span><span>🔀 or</span><span>🔄 not</span><span>🧮 Paréntesis</span></div>
+  </div>
+  <div class="card alt">
+    <p>💼 <b>Tu papel:</b> eres practicante en una comercializadora de Monterrey que importa y exporta productos. Cada departamento te pide un programa para aplicar sus <b>reglas de negocio</b>. Los ejercicios 1 al 4 traen el código completo; en el <b>ejercicio 5</b> tú completas las partes que faltan.</p>
+    <p>✍️ Escribe las respuestas de sí o no en <b>minúsculas y sin acento</b>: <code class="in">si</code> o <code class="in">no</code>.</p>
+  </div>
+
+  <article class="ex" id="ej1">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">🛃</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Logística · and + not</span>
+        <h3>Ejercicio 1 · Liberación de embarque en aduana</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Logística te pide un programa para saber si un embarque ya puede salir de la aduana. El agente aduanal revisa cuatro requisitos y no deja pasar ningún embarque al que le falte algo. Si el embarque se detiene, Logística necesita saber <b>exactamente qué falta</b> para resolverlo rápido.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>El embarque debe traer la <b>factura comercial</b>.</li><li>El embarque debe traer el <b>pedimento de importación</b>.</li><li>Los <b>impuestos</b> deben estar pagados.</li><li>La <b>mercancía debe coincidir</b> con lo declarado.</li><li>Si se cumplen <b>los cuatro requisitos</b>, el embarque se libera.</li><li>Si el embarque se libera <b>y</b> vale <b>más de $100,000</b> dólares, hay que avisar al gerente de logística.</li><li>Si falta <b>cualquier</b> requisito, el embarque se detiene y se debe mostrar <b>la lista de lo que falta</b> y <b>cuántos requisitos faltan</b>.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Preguntar los cuatro requisitos (si/no) y el valor de la mercancía.</li><li>Convertir cada respuesta en True o False.</li><li>Usar <b>and</b> para revisar los cuatro requisitos en un solo if.</li><li>Usar <b>and</b> otra vez para el aviso de alto valor.</li><li>Usar <b>not</b> para mostrar, uno por uno, los requisitos que no se cumplieron.</li><li>Contar cuántos requisitos faltan con un contador.</li></ol>
+      <h4>💻 Código</h4>
+      
+      <span class="file">Actividad4_ejercicio1_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 1: Liberación de embarque en aduana&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Preguntamos por los 4 documentos y revisiones de la aduana</span>
+factura = input(<span class="str">&quot;¿Tienes la factura comercial? (si/no): &quot;</span>)
+pedimento = input(<span class="str">&quot;¿Tienes el pedimento de importación? (si/no): &quot;</span>)
+impuestos = input(<span class="str">&quot;¿Ya pagaste los impuestos? (si/no): &quot;</span>)
+coincide = input(<span class="str">&quot;¿La mercancía coincide con lo declarado? (si/no): &quot;</span>)
+valor = float(input(<span class="str">&quot;Valor de la mercancía en dólares: &quot;</span>))
+
+<span class="com"># Convertimos cada respuesta en True o False</span>
+<span class="com"># Si escribió &quot;si&quot; se guarda True; si escribió otra cosa se guarda False</span>
+tiene_factura = factura == <span class="str">&quot;si&quot;</span>
+tiene_pedimento = pedimento == <span class="str">&quot;si&quot;</span>
+impuestos_pagados = impuestos == <span class="str">&quot;si&quot;</span>
+mercancia_ok = coincide == <span class="str">&quot;si&quot;</span>
+
+print()
+print(<span class="str">&quot;===== RESULTADO DE LA ADUANA =====&quot;</span>)
+
+<span class="com"># and: los CUATRO requisitos se deben cumplir al mismo tiempo</span>
+if tiene_factura and tiene_pedimento and impuestos_pagados and mercancia_ok:
+    print(<span class="str">&quot;✅ Embarque liberado. Puede salir de la aduana.&quot;</span>)
+
+    <span class="com"># and: liberado Y de alto valor: hay que avisarle al gerente</span>
+    if valor &gt; 100000:
+        print(<span class="str">&quot;📢 Embarque de alto valor: avisa al gerente de logística.&quot;</span>)
+else:
+    print(<span class="str">&quot;🛑 Embarque detenido. Faltan estos requisitos:&quot;</span>)
+
+    <span class="com"># Contamos cuántos requisitos faltan</span>
+    faltantes = 0
+
+    <span class="com"># not: revisamos uno por uno cuál NO se cumplió</span>
+    if not tiene_factura:
+        print(<span class="str">&quot;   - Factura comercial&quot;</span>)
+        faltantes = faltantes + 1
+    if not tiene_pedimento:
+        print(<span class="str">&quot;   - Pedimento de importación&quot;</span>)
+        faltantes = faltantes + 1
+    if not impuestos_pagados:
+        print(<span class="str">&quot;   - Pago de impuestos&quot;</span>)
+        faltantes = faltantes + 1
+    if not mercancia_ok:
+        print(<span class="str">&quot;   - La mercancía no coincide con lo declarado&quot;</span>)
+        faltantes = faltantes + 1
+
+    print(<span class="str">&quot;Total de requisitos pendientes:&quot;</span>, faltantes)</div>
+      <h4>🧪 Pruébalo con estos datos</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Escribe</th><th>Debe salir</th></tr></thead><tbody><tr><td>si, si, si, si, 150000</td><td>✅ Liberado + 📢 aviso al gerente</td></tr><tr><td>si, si, si, si, 5000</td><td>✅ Liberado (sin aviso)</td></tr><tr><td>no, si, no, si, 5000</td><td>🛑 Detenido · falta factura y pago de impuestos · 2 pendientes</td></tr><tr><td>no, no, no, no, 5000</td><td>🛑 Detenido · faltan los 4 requisitos · 4 pendientes</td></tr></tbody></table></div>
+      
+      <div class="tip">📊 <b>Para tu diagrama:</b> Empieza con un rombo de las cuatro condiciones con <b>and</b>. Del lado del Sí va otro rombo (<code class="in">valor &gt; 100000</code>). Del lado del No van <b>cuatro rombos seguidos</b>, uno por cada <b>not</b>, y cada uno suma 1 al contador.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej2">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">📦</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Ventas Internacionales · or + not</span>
+        <h3>Ejercicio 2 · ¿Quién paga el flete y el seguro?</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Ventas cierra contratos con clientes de otros países usando <b>Incoterms</b>, que son reglas internacionales que dicen quién paga cada cosa. Te piden un programa que, con los datos del contrato, diga quién paga el flete internacional, quién contrata el seguro y cuánto costaría el seguro.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>Solo se aceptan los Incoterms <b>EXW, FOB, CIF, CIP y DAP</b>. Si escriben otro, el programa avisa que no es válido.</li><li>Con <b>EXW o FOB</b>, el flete internacional lo paga el <b>comprador</b>. Con CIF, CIP o DAP lo paga el <b>vendedor</b>.</li><li>Con <b>CIF o CIP</b>, el seguro lo contrata el <b>vendedor</b>. Con los demás, lo decide el comprador.</li><li>Si la mercancía es <b>frágil</b> o viaja por transporte <b>MARITIMO</b>, el seguro cuesta el <b>2%</b> del valor.</li><li>En cualquier otro caso, el seguro cuesta el <b>1%</b> del valor.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Pedir el Incoterm y el transporte en <b>MAYÚSCULAS</b>, el valor de la mercancía y si es frágil.</li><li>Usar <b>not</b> con <b>or</b> para detectar un Incoterm que no es válido.</li><li>Usar <b>or</b> para decidir quién paga el flete.</li><li>Usar <b>or</b> para decidir quién contrata el seguro y qué porcentaje se cobra.</li><li>Mostrar un resumen del contrato.</li></ol>
+      <h4>💻 Código</h4>
+      
+      <span class="file">Actividad4_ejercicio2_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 2: ¿Quién paga el flete y el seguro?&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Pedimos los datos del contrato</span>
+incoterm = input(<span class="str">&quot;Escribe el Incoterm en MAYÚSCULAS (EXW, FOB, CIF, CIP, DAP): &quot;</span>)
+valor = float(input(<span class="str">&quot;Valor de la mercancía en dólares: &quot;</span>))
+transporte = input(<span class="str">&quot;Transporte en MAYÚSCULAS (MARITIMO, AEREO, TERRESTRE): &quot;</span>)
+fragil = input(<span class="str">&quot;¿La mercancía es frágil? (si/no): &quot;</span>)
+
+<span class="com"># Convertimos la respuesta en True o False</span>
+es_fragil = fragil == <span class="str">&quot;si&quot;</span>
+
+print()
+print(<span class="str">&quot;===== RESUMEN DEL CONTRATO =====&quot;</span>)
+
+<span class="com"># not + or: si NO es ninguno de los 5 Incoterms, el dato está mal</span>
+if not (incoterm == <span class="str">&quot;EXW&quot;</span> or incoterm == <span class="str">&quot;FOB&quot;</span> or incoterm == <span class="str">&quot;CIF&quot;</span> or incoterm == <span class="str">&quot;CIP&quot;</span> or incoterm == <span class="str">&quot;DAP&quot;</span>):
+    print(<span class="str">&quot;❌ Incoterm no válido. Revisa que esté en MAYÚSCULAS.&quot;</span>)
+else:
+    <span class="com"># or: con EXW o FOB, el flete internacional lo paga el COMPRADOR</span>
+    if incoterm == <span class="str">&quot;EXW&quot;</span> or incoterm == <span class="str">&quot;FOB&quot;</span>:
+        print(<span class="str">&quot;🚚 Flete internacional: lo paga el COMPRADOR.&quot;</span>)
+    else:
+        print(<span class="str">&quot;🚚 Flete internacional: lo paga el VENDEDOR.&quot;</span>)
+
+    <span class="com"># or: con CIF o CIP, el seguro lo contrata el VENDEDOR</span>
+    if incoterm == <span class="str">&quot;CIF&quot;</span> or incoterm == <span class="str">&quot;CIP&quot;</span>:
+        <span class="com"># or: si es frágil O va por barco, el riesgo es mayor</span>
+        if es_fragil or transporte == <span class="str">&quot;MARITIMO&quot;</span>:
+            porcentaje = 2
+        else:
+            porcentaje = 1
+        seguro = valor * porcentaje / 100
+        print(<span class="str">&quot;✅ Seguro: lo contrata el VENDEDOR.&quot;</span>)
+        print(<span class="str">&quot;Porcentaje del seguro: &quot;</span>, porcentaje, <span class="str">&quot;%&quot;</span>, sep=<span class="str">&quot;&quot;</span>)
+        print(<span class="str">&quot;Costo estimado del seguro: $&quot;</span>, seguro, sep=<span class="str">&quot;&quot;</span>)
+    else:
+        print(<span class="str">&quot;📦 Seguro: NO lo contrata el vendedor. Lo decide el COMPRADOR.&quot;</span>)</div>
+      <h4>🧪 Pruébalo con estos datos</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Escribe</th><th>Debe salir</th></tr></thead><tbody><tr><td>CIF, 20000, MARITIMO, no</td><td>Flete: VENDEDOR · Seguro: VENDEDOR · 2% · $400.0</td></tr><tr><td>CIP, 20000, AEREO, no</td><td>Flete: VENDEDOR · Seguro: VENDEDOR · 1% · $200.0</td></tr><tr><td>CIP, 20000, AEREO, si</td><td>Flete: VENDEDOR · Seguro: VENDEDOR · 2% · $400.0</td></tr><tr><td>FOB, 20000, AEREO, si</td><td>Flete: COMPRADOR · Seguro: lo decide el COMPRADOR</td></tr><tr><td>cif, 20000, AEREO, no</td><td>❌ Incoterm no válido</td></tr></tbody></table></div>
+      
+      <div class="tip">📊 <b>Para tu diagrama:</b> El primer rombo revisa si el Incoterm <b>no</b> es válido. Del lado del No (sí es válido) van dos rombos seguidos: uno para el flete y otro para el seguro. Dentro del seguro hay un tercer rombo para el porcentaje (frágil <b>or</b> marítimo).</div>
+    </div>
+  </article>
+  <article class="ex" id="ej3">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">🧪</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Cumplimiento · not + or + and</span>
+        <h3>Ejercicio 3 · ¿Se puede exportar el producto?</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Algunos productos (como ciertos químicos o medicamentos) están en una <b>lista de restringidos</b> y no se pueden exportar sin un permiso especial vigente. Además, hay países destino con restricciones comerciales. Cumplimiento te pide un programa que decida si un producto se puede enviar y, si no, que explique el motivo.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>Un permiso especial solo es válido si la empresa <b>lo tiene</b> y además está <b>vigente</b>.</li><li>Si el producto <b>NO está restringido</b>, cumple la primera condición.</li><li>Si el producto está restringido, cumple la primera condición <b>solo</b> si tiene un <b>permiso válido</b>.</li><li>Además, el país destino <b>NO</b> debe tener restricciones comerciales.</li><li>Si el producto se puede exportar, es restringido <b>y</b> pesa <b>más de 1000 kg</b>, necesita inspección previa.</li><li>Si no se puede exportar, se muestra el motivo: destino con restricciones, falta de permiso o permiso vencido.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Pedir el producto, las cuatro respuestas de si/no y los kilos.</li><li>Crear la variable <code class="in">permiso_valido</code> con <b>and</b>.</li><li>Escribir la condición principal combinando <b>not</b>, <b>or</b> y <b>and</b> con paréntesis.</li><li>Usar <b>and</b> para el aviso de inspección.</li><li>Usar if, elif para explicar el motivo cuando no se puede exportar.</li></ol>
+      <h4>💻 Código</h4>
+      
+      <span class="file">Actividad4_ejercicio3_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 3: ¿Se puede exportar el producto?&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Pedimos los datos del producto y del destino</span>
+producto = input(<span class="str">&quot;¿Qué producto vas a exportar?: &quot;</span>)
+respuesta1 = input(<span class="str">&quot;¿Está en la lista de restringidos? (si/no): &quot;</span>)
+respuesta2 = input(<span class="str">&quot;¿La empresa tiene permiso especial? (si/no): &quot;</span>)
+respuesta3 = input(<span class="str">&quot;¿El permiso está vigente? (si/no): &quot;</span>)
+respuesta4 = input(<span class="str">&quot;¿El país destino tiene restricciones comerciales? (si/no): &quot;</span>)
+kilos = float(input(<span class="str">&quot;¿Cuántos kilos vas a enviar?: &quot;</span>))
+
+<span class="com"># Convertimos las respuestas en True o False</span>
+restringido = respuesta1 == <span class="str">&quot;si&quot;</span>
+tiene_permiso = respuesta2 == <span class="str">&quot;si&quot;</span>
+permiso_vigente = respuesta3 == <span class="str">&quot;si&quot;</span>
+destino_restringido = respuesta4 == <span class="str">&quot;si&quot;</span>
+
+<span class="com"># Un permiso solo sirve si existe Y está vigente</span>
+permiso_valido = tiene_permiso and permiso_vigente
+
+print()
+print(<span class="str">&quot;===== REVISIÓN DE CUMPLIMIENTO =====&quot;</span>)
+
+<span class="com"># Se exporta si: (NO está restringido O tiene permiso válido) Y el destino NO tiene restricciones</span>
+if (not restringido or permiso_valido) and not destino_restringido:
+    print(<span class="str">&quot;✅&quot;</span>, producto, <span class="str">&quot;se puede exportar.&quot;</span>)
+
+    <span class="com"># and: restringido Y más de 1000 kilos: necesita inspección</span>
+    if restringido and kilos &gt; 1000:
+        print(<span class="str">&quot;🔍 Por ser restringido y pesar más de 1000 kg, necesita inspección previa.&quot;</span>)
+else:
+    print(<span class="str">&quot;🛑&quot;</span>, producto, <span class="str">&quot;NO se puede exportar.&quot;</span>)
+
+    <span class="com"># Explicamos el motivo</span>
+    if destino_restringido:
+        print(<span class="str">&quot;Motivo: el país destino tiene restricciones comerciales.&quot;</span>)
+    elif not tiene_permiso:
+        print(<span class="str">&quot;Motivo: el producto está restringido y no hay permiso especial.&quot;</span>)
+    elif not permiso_vigente:
+        print(<span class="str">&quot;Motivo: el permiso especial está vencido. Hay que renovarlo.&quot;</span>)</div>
+      <h4>🧪 Pruébalo con estos datos</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Escribe</th><th>Debe salir</th></tr></thead><tbody><tr><td>Aguacate, no, no, no, no, 500</td><td>✅ Se puede exportar</td></tr><tr><td>Ácido sulfúrico, si, si, si, no, 2000</td><td>✅ Se puede exportar + 🔍 inspección previa</td></tr><tr><td>Ácido sulfúrico, si, si, no, no, 200</td><td>🛑 Motivo: permiso vencido</td></tr><tr><td>Ácido sulfúrico, si, no, no, no, 200</td><td>🛑 Motivo: no hay permiso especial</td></tr><tr><td>Aguacate, no, no, no, si, 200</td><td>🛑 Motivo: el país destino tiene restricciones</td></tr></tbody></table></div>
+      
+      <div class="tip">📊 <b>Para tu diagrama:</b> Antes del primer rombo va un rectángulo con <code class="in">permiso_valido = tiene_permiso and permiso_vigente</code>. Del lado del Sí va el rombo de la inspección. Del lado del No va una cadena de rombos (if, elif, elif) para el motivo.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej4">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">🚦</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Comercio Exterior · or + and + not</span>
+        <h3>Ejercicio 4 · Semáforo de revisión aduanal</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Al llegar a la aduana, cada embarque recibe un semáforo: <b>verde</b> pasa directo y <b>rojo</b> se revisa a mano. Comercio Exterior quiere predecir qué color le va a tocar a cada embarque, cuántos días se va a quedar y cuánto se va a pagar de almacenaje.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>Si los <b>documentos NO están completos</b>, el semáforo siempre es <b>ROJO</b>, aunque la empresa esté certificada.</li><li>Si el embarque vale <b>más de $50,000</b> dólares <b>o</b> es la <b>primera vez</b> que la empresa importa, es candidato a revisión.</li><li>Un candidato a revisión pasa a <b>ROJO</b> solo si la empresa <b>NO</b> está certificada como confiable.</li><li>En cualquier otro caso, el semáforo es <b>VERDE</b>.</li><li>ROJO tarda <b>3 días</b>. Si además la mercancía es <b>perecedera</b>, se pide revisión prioritaria y tarda <b>1 día</b>. VERDE tarda <b>0 días</b>.</li><li>Cada día en la aduana cuesta <b>$500</b> de almacenaje.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Pedir el valor y las cuatro respuestas de si/no.</li><li>Combinar <b>not</b>, <b>or</b> y <b>and</b> en un solo if, usando <b>paréntesis</b>.</li><li>Revisar si es perecedero dentro del semáforo rojo.</li><li>Calcular y mostrar los días y el costo de almacenaje.</li></ol>
+      <h4>💻 Código</h4>
+      
+      <span class="file">Actividad4_ejercicio4_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 4: Semáforo de revisión aduanal&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Pedimos los datos del embarque y de la empresa</span>
+valor = float(input(<span class="str">&quot;Valor del embarque en dólares: &quot;</span>))
+primera = input(<span class="str">&quot;¿Es la primera vez que la empresa importa? (si/no): &quot;</span>)
+certificada = input(<span class="str">&quot;¿La empresa está certificada como confiable? (si/no): &quot;</span>)
+documentos = input(<span class="str">&quot;¿Los documentos están completos? (si/no): &quot;</span>)
+perecedero = input(<span class="str">&quot;¿La mercancía es perecedera (fruta, flores, carne)? (si/no): &quot;</span>)
+
+<span class="com"># Convertimos a True o False</span>
+es_primera = primera == <span class="str">&quot;si&quot;</span>
+es_certificada = certificada == <span class="str">&quot;si&quot;</span>
+documentos_ok = documentos == <span class="str">&quot;si&quot;</span>
+es_perecedero = perecedero == <span class="str">&quot;si&quot;</span>
+
+print()
+print(<span class="str">&quot;===== SEMÁFORO ADUANAL =====&quot;</span>)
+
+<span class="com"># ROJO si: los documentos NO están completos</span>
+<span class="com">#   O (es caro O es su primera vez) y además NO está certificada</span>
+if not documentos_ok or ((valor &gt; 50000 or es_primera) and not es_certificada):
+    print(<span class="str">&quot;🔴 Semáforo ROJO: el embarque pasa a revisión física.&quot;</span>)
+    dias = 3
+
+    <span class="com"># and: rojo Y perecedero: la mercancía se puede echar a perder</span>
+    if es_perecedero:
+        print(<span class="str">&quot;⚠️ Mercancía perecedera: solicita revisión prioritaria.&quot;</span>)
+        dias = 1
+else:
+    print(<span class="str">&quot;🟢 Semáforo VERDE: el embarque pasa sin revisión.&quot;</span>)
+    dias = 0
+
+<span class="com"># Cada día en la aduana cuesta $500 de almacenaje</span>
+almacenaje = dias * 500
+print(<span class="str">&quot;Días estimados en la aduana:&quot;</span>, dias)
+print(<span class="str">&quot;Costo de almacenaje: $&quot;</span>, almacenaje, sep=<span class="str">&quot;&quot;</span>)</div>
+      <h4>🧪 Pruébalo con estos datos</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Escribe</th><th>Debe salir</th></tr></thead><tbody><tr><td>60000, no, no, si, no</td><td>🔴 ROJO · 3 días · $1500</td></tr><tr><td>60000, no, si, si, no</td><td>🟢 VERDE · 0 días · $0</td></tr><tr><td>1000, no, si, no, si</td><td>🔴 ROJO (documentos incompletos) · perecedero · 1 día · $500</td></tr><tr><td>1000, si, no, si, no</td><td>🔴 ROJO · 3 días · $1500</td></tr><tr><td>1000, no, no, si, no</td><td>🟢 VERDE · 0 días · $0</td></tr></tbody></table></div>
+      <div class="warn">🤔 <b>Piénsalo:</b> Fíjate en la tercera prueba: la empresa está certificada y aun así sale ROJO. ¿Qué parte de la condición lo provoca? Escribe tu respuesta en el Word.</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Un rombo con toda la condición, <b>con los paréntesis</b>, igual que en el código. Del lado del Sí va otro rombo para perecedero. Después de que se juntan los caminos va el rectángulo del almacenaje.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej5">
+    <div class="ex-top" style="background:var(--grape);color:#fff">
+      <span class="emoji">🌎</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Importaciones · Los 3 combinados</span>
+        <h3>Ejercicio 5 · Cálculo de impuestos con el T-MEC</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Gracias al T-MEC (el tratado entre México, Estados Unidos y Canadá), algunos productos pagan <b>0% de arancel</b> al importarse. Importaciones te pide calcular el arancel, el IVA y el total de cada mercancía, y avisar cuando la empresa pudo haber ahorrado dinero. Esta vez <b>tú escribes las partes que faltan</b>.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>Si el país de origen es <b>MEXICO</b>, la mercancía es nacional y no paga impuestos de importación.</li><li>El trato preferencial aplica si la mercancía viene de <b>ESTADOS UNIDOS</b> o de <b>CANADA</b>, <b>y además</b> tiene <b>certificado de origen</b>.</li><li>Si aplica, el arancel es <b>0%</b>. Si no aplica, se cobra el arancel general del <b>15%</b> (cifra para el ejercicio).</li><li>Impuesto del arancel = <b>valor × arancel ÷ 100</b>.</li><li>IVA = <b>(valor + impuesto del arancel) × 16 ÷ 100</b>.</li><li>Total = <b>valor + impuesto del arancel + IVA</b>.</li><li>Si la mercancía viene de ESTADOS UNIDOS o CANADA pero <b>NO</b> tiene certificado, avisar cuánto se habría ahorrado en arancel.</li></ol>
+      </div>
+      
+      <h4>🧩 Completa el código</h4>
+      <p>Escribe en VS Code el código y <b>reemplaza cada línea amarilla</b> <span class="code" style="display:inline;padding:2px 6px;margin:0"><span class="blank">____</span></span> con lo que corresponde. Usa los comentarios como guía.</p>
+      <span class="file">Actividad4_ejercicio5_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 5: Cálculo de impuestos con el T-MEC&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Pedimos los datos de la mercancía</span>
+pais = input(<span class="str">&quot;País de origen en MAYÚSCULAS y sin acento (MEXICO, ESTADOS UNIDOS, CANADA, CHINA...): &quot;</span>)
+certificado = input(<span class="str">&quot;¿Tienes certificado de origen? (si/no): &quot;</span>)
+valor = float(input(<span class="str">&quot;Valor de la mercancía en dólares: &quot;</span>))
+
+<span class="com"># 1. Convierte la respuesta del certificado en True o False</span>
+tiene_certificado = <span class="blank">________________</span>
+
+print()
+print(<span class="str">&quot;===== CÁLCULO DE IMPUESTOS DE IMPORTACIÓN =====&quot;</span>)
+
+<span class="com"># 2. Si el país es MEXICO, la mercancía es nacional y no se importa</span>
+if <span class="blank">________________</span>:
+    print(<span class="str">&quot;🇲🇽 Es mercancía nacional. No paga impuestos de importación.&quot;</span>)
+else:
+    <span class="com"># 3. Escribe la condición del T-MEC: el país es ESTADOS UNIDOS o CANADA,</span>
+    <span class="com">#    y además tiene certificado. ¡No olvides los paréntesis!</span>
+    if <span class="blank">____________________________________________</span>:
+        <span class="com"># 4. ¿Cuánto arancel se cobra si SÍ aplica el T-MEC?</span>
+        arancel = <span class="blank">____</span>
+        print(<span class="str">&quot;✅ Aplica el trato preferencial del T-MEC.&quot;</span>)
+    else:
+        <span class="com"># 5. ¿Cuánto arancel se cobra si NO aplica?</span>
+        arancel = <span class="blank">____</span>
+        print(<span class="str">&quot;🛑 No aplica el trato preferencial. Se cobra el arancel general.&quot;</span>)
+
+    <span class="com"># 6. Calcula el impuesto del arancel</span>
+    impuesto_arancel = <span class="blank">________________</span>
+
+    <span class="com"># 7. El IVA es el 16% de (valor + impuesto del arancel)</span>
+    iva = <span class="blank">________________</span>
+
+    <span class="com"># 8. El total es el valor + impuesto del arancel + IVA</span>
+    total = <span class="blank">________________</span>
+
+    print(<span class="str">&quot;Arancel: &quot;</span>, arancel, <span class="str">&quot;%&quot;</span>, sep=<span class="str">&quot;&quot;</span>)
+    print(<span class="str">&quot;Impuesto del arancel: $&quot;</span>, impuesto_arancel, sep=<span class="str">&quot;&quot;</span>)
+    print(<span class="str">&quot;IVA: $&quot;</span>, iva, sep=<span class="str">&quot;&quot;</span>)
+    print(<span class="str">&quot;Total a pagar: $&quot;</span>, total, sep=<span class="str">&quot;&quot;</span>)
+
+    <span class="com"># 9. Aviso de ahorro: viene de ESTADOS UNIDOS o CANADA, pero NO tiene certificado</span>
+    if <span class="blank">____________________________________________</span>:
+        ahorro = <span class="blank">________________</span>
+        print(<span class="str">&quot;💡 Con certificado de origen te habrías ahorrado en arancel: $&quot;</span>, ahorro, sep=<span class="str">&quot;&quot;</span>)</div>
+      <h4>🧪 Pruébalo con estos datos (país, certificado, valor)</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Datos</th><th>Arancel</th><th>IVA</th><th>Total</th></tr></thead><tbody><tr><td>CANADA, si, 10000</td><td>0%</td><td>$1600.0</td><td>$11600.0</td></tr><tr><td>ESTADOS UNIDOS, no, 10000</td><td>15%</td><td>$1840.0</td><td>$13340.0 + 💡 ahorro en arancel: $1500.0</td></tr><tr><td>CHINA, si, 10000</td><td>15%</td><td>$1840.0</td><td>$13340.0</td></tr><tr><td>MEXICO, si, 10000</td><td>No aplica</td><td>No aplica</td><td>🇲🇽 Mercancía nacional</td></tr></tbody></table></div>
+      
+      <div class="tip">📊 <b>Para tu diagrama:</b> el primer rombo revisa si el país es MEXICO. Del lado del No va el rombo del T-MEC; cuando se juntan sus caminos van los rectángulos del arancel, el IVA y el total, y al final el rombo del aviso de ahorro.</div>
+    </div>
+  </article></div>
+
+<div class="tab-panel" data-panel="bitabit" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>⚙️ Tema 2. Operadores bit a bit</h2>
+    <p>&, |, ^, ~, &lt;&lt; y &gt;&gt;: guardar varios datos de sí o no en un solo número.</p>
+    <p style="margin-top:8px"><b>Ejercicios 6 al 10</b></p>
+    <div class="topics"><span>& | ^ ~</span><span>&lt;&lt; &gt;&gt;</span></div>
+  </div>
+  <div class="card" style="text-align:center">
+    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> Los ejercicios 6 al 10 se publican el día que veamos este tema en clase.</p>
+  </div>
+</div>
+
+<div class="tab-panel" data-panel="burbuja" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>🫧 Tema 3. Ordenamiento burbuja</h2>
+    <p>Ordenar listas paso a paso con el algoritmo burbuja.</p>
+    <p style="margin-top:8px"><b>Ejercicios 11 al 15</b></p>
+    <div class="topics"><span>🔁 Pasadas</span><span>🔄 Intercambio</span><span>📊 sort()</span></div>
+  </div>
+  <div class="card" style="text-align:center">
+    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> Los ejercicios 11 al 15 se publican el día que veamos este tema en clase.</p>
+  </div>
+</div>
+
+<div class="tab-panel" data-panel="operaciones" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--orange);margin-top:26px">
+    <h2>🧰 Tema 4. Operaciones con listas</h2>
+    <p>Rebanadas, in / not in, del y copias de listas.</p>
+    <p style="margin-top:8px"><b>Ejercicios 16 al 20</b></p>
+    <div class="topics"><span>✂️ Rebanadas</span><span>🔍 in</span><span>🗑️ del</span><span>📄 Copias</span></div>
+  </div>
+  <div class="card" style="text-align:center">
+    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> Los ejercicios 16 al 20 se publican el día que veamos este tema en clase.</p>
+  </div>
+</div>
+
+<div class="tab-panel" data-panel="avanzadas" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--coral);margin-top:26px">
+    <h2>🧩 Tema 5. Aplicaciones avanzadas de listas</h2>
+    <p>Listas dentro de listas, arreglos de dos dimensiones y listas multidimensionales.</p>
+    <p style="margin-top:8px"><b>Ejercicios 21 al 25</b></p>
+    <div class="topics"><span>📦 Listas en listas</span><span>🧮 2D</span><span>🧊 Multidimensional</span></div>
+  </div>
+  <div class="card" style="text-align:center">
+    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> Los ejercicios 21 al 25 se publican el día que veamos este tema en clase.</p>
+  </div>
+</div>
+
+</section>
+
+<!-- ENTREGA -->
+<section id="entrega">
+  <span class="tag" style="background:var(--coral)">Entrega</span>
+  <h2 class="title">Entrega</h2>
+  <div class="delivery">
+    <div class="date-badge">⏰ Viernes 13 de noviembre, 23:59</div>
+    <div class="where">
+      <div style="background:var(--sky)"><h4>📄 Canvas</h4><p>Sube tu Word en la Actividad 04 y pega el enlace de tu repositorio.</p></div>
+      <div style="background:var(--grape)"><h4>🐙 GitHub</h4><p>Repositorio <b>Actividad4_Mimatricula</b> con tu Word y tus 25 archivos .py.</p></div>
+    </div>
+    <h4>✅ Antes de entregar, revisa</h4>
+    <ul class="checklist">
+      <li><label><input type="checkbox" data-i="0"><span>Portada con nombre completo, matrícula, materia, actividad, profesora y fecha</span></label></li>
+      <li><label><input type="checkbox" data-i="1"><span>Índice</span></label></li>
+      <li><label><input type="checkbox" data-i="2"><span>Operadores lógicos (ejercicios 1 al 5): código, captura de la terminal y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="3"><span>Operadores bit a bit (ejercicios 6 al 10): código, captura de la terminal y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="4"><span>Ordenamiento burbuja (ejercicios 11 al 15): código, captura de la terminal y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="5"><span>Operaciones con listas (ejercicios 16 al 20): código, captura de la terminal y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="6"><span>Aplicaciones avanzadas de listas (ejercicios 21 al 25): código, captura de la terminal y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="7"><span>Cada programa empieza con el print del ejercicio, mi nombre y mi matrícula</span></label></li>
+      <li><label><input type="checkbox" data-i="8"><span>25 archivos .py con el nombre Actividad4_ejercicioN_mimatricula.py</span></label></li>
+      <li><label><input type="checkbox" data-i="9"><span>Repositorio Actividad4_Mimatricula creado en GitHub con el Word y los .py</span></label></li>
+      <li><label><input type="checkbox" data-i="10"><span>Enlace del repositorio escrito en el Word</span></label></li>
+      <li><label><input type="checkbox" data-i="11"><span>Word subido y enlace enviado en la Actividad 04 de Canvas</span></label></li>
+    </ul>
+    <div class="progress" id="progreso">0 de 12 listos</div>
+  </div>
+</section>
+
+</main>
+
+<footer>Fundamentos de Programación · Python Fundamentals · Actividad 04</footer>
+
+<script src="menu.js"></script>
+<script>
+  // ===== FECHAS EN QUE SE ABREN LAS PESTAÑAS (año-mes-díaThora:minutos) =====
+  // Ejemplo: bitabit: "2026-11-10T07:00"
+  // Si un tema no aparece aquí, su pestaña está abierta desde el inicio.
+  const DESBLOQUEO = {
+  };
+
+  function bloqueada(nombre) {
+    return DESBLOQUEO[nombre] ? new Date() < new Date(DESBLOQUEO[nombre]) : false;
+  }
+
+  const tabs = document.querySelectorAll(".tabs .tab");
+  const panels = document.querySelectorAll(".tab-panel");
+
+  // Las pestañas bloqueadas se ven grises con candado
+  tabs.forEach(t => {
+    if (bloqueada(t.dataset.tab)) {
+      t.style.opacity = ".45";
+      t.style.cursor = "not-allowed";
+      const nom = t.querySelector(".t-nom");
+      nom.textContent = "🔒 " + nom.textContent;
+    }
+  });
+  document.querySelectorAll(".menu-pagina a[data-tab]").forEach(a => {
+    if (bloqueada(a.dataset.tab)) { a.style.opacity = ".45"; a.textContent = "🔒 " + a.textContent; }
+  });
+
+  function mostrar(nombre) {
+    if (bloqueada(nombre)) return false;
+    tabs.forEach(t => {
+      const activa = t.dataset.tab === nombre;
+      t.classList.toggle("active", activa);
+      t.setAttribute("aria-selected", activa);
+    });
+    panels.forEach(p => { p.hidden = p.dataset.panel !== nombre; });
+    return true;
+  }
+
+  tabs.forEach(t => t.addEventListener("click", () => mostrar(t.dataset.tab)));
+
+  // Los enlaces del menú de arriba abren su pestaña
+  document.querySelectorAll(".menu-pagina a[data-tab]").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      if (mostrar(a.dataset.tab)) document.getElementById("ejercicios").scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // ===== CHECKLIST DE ENTREGA (se guarda en tu navegador) =====
+  const cajas = document.querySelectorAll(".checklist input");
+  const progreso = document.getElementById("progreso");
+  const CLAVE = "actividad4_checklist";
+  let marcadas = [];
+  try { marcadas = JSON.parse(localStorage.getItem(CLAVE)) || []; } catch (e) {}
+
+  function actualizar() {
+    const listos = [...cajas].filter(c => c.checked).length;
+    progreso.textContent = listos === cajas.length
+      ? "🎉 ¡" + listos + " de " + cajas.length + " listos! Ya puedes entregar"
+      : listos + " de " + cajas.length + " listos";
+    try { localStorage.setItem(CLAVE, JSON.stringify([...cajas].map(c => c.checked))); } catch (e) {}
+  }
+
+  cajas.forEach((c, i) => {
+    c.checked = !!marcadas[i];
+    c.addEventListener("change", actualizar);
+  });
+  actualizar();
+</script>
+</body>
+</html>
