@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 5: Comercio y operadores lógicos | Fundamentos de Programación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<style>
+  * { font-variant-ligatures: none !important; font-feature-settings: "liga" 0, "calt" 0 !important; }
+  .code .com{color:#7FD99A;font-style:italic}
+  .code .blank{background:var(--sun);color:var(--ink);border-radius:6px;padding:0 3px;font-weight:700}
+  .tabs-temas{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:18px 0 8px}
+  .tab.tema{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:2px;padding:14px 16px;border-radius:18px}
+  .tab.tema .t-num{font-size:.8rem;opacity:.75;letter-spacing:.5px}
+  .tab.tema .t-nom{font-size:1.12rem;line-height:1.25}
+  .tab.tema .t-ej{font-family:'Nunito';font-weight:800;font-size:.82rem;background:rgba(43,45,66,.08);border-radius:999px;padding:3px 10px;margin-top:8px}
+  .tab.tema.active .t-ej{background:rgba(255,255,255,.25)}
+  .tt td,.tt th{text-align:center}
+  .pasos-eval{counter-reset:p;list-style:none;padding-left:0 !important}
+  .pasos-eval li{counter-increment:p;position:relative;padding:8px 12px 8px 44px;margin:6px 0;background:#FFFDF8;border:2px solid #F3EADB;border-radius:12px}
+  .pasos-eval li::before{content:counter(p);position:absolute;left:10px;top:8px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-family:'Fredoka';font-size:.85rem;display:flex;align-items:center;justify-content:center}
+  .q .btn{align-self:flex-start}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag" style="background:var(--grape)">Semana 5 · Módulo 3 CISCO · Sección 3.3</span>
+    <h1>La <span class="c1">programación</span> en el <span class="c3">comercio</span> y los <span class="c2">operadores lógicos</span></h1>
+    <p class="lead">Las empresas de comercio internacional toman cientos de decisiones al día: ¿sale el embarque?, ¿se aprueba el pago?, ¿aplica el tratado? Aquí vas a ver por qué te conviene saber programar y cómo Python une varias condiciones en una sola decisión.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="tabs" role="tablist" style="justify-content:center;margin-top:10px">
+    <button class="tab active" type="button" role="tab" data-tab="porque" style="--c:var(--orange)">💼 ¿Por qué programar en Comercio?</button>
+    <button class="tab" type="button" role="tab" data-tab="logicos" style="--c:var(--grape)">🔀 Operadores lógicos: and, or, not</button>
+  </div>
+
+<div class="tab-panel" data-panel="porque" role="tabpanel">
+  <div class="day-head" style="background:var(--orange);margin-top:30px">
+    <h2>💼 ¿Por qué alguien de Comercio debe aprender a programar?</h2>
+    <p>No vas a ser programador. Vas a ser la persona de negocios que entiende cómo piensan los sistemas de la empresa.</p>
+  </div>
+  <nav class="menu-pagina"><a href="#pq-reto">El reto de los 500 pedidos</a> <a href="#pq-comercio">La tecnología ya está en el comercio</a> <a href="#pq-reglas">Las reglas de negocio son código</a> <a href="#pq-rol">Tu papel en la empresa</a></nav>
+
+<section id="pq-reto">
+  <span class="tag" style="background:var(--coral)">Para empezar</span>
+  <h2 class="title">El reto de los 500 pedidos</h2>
+  <p class="sub">Imagina que acabas de entrar como practicante a una comercializadora que exporta productos mexicanos.</p>
+
+  <div class="def">
+    Tu jefa te pide: <strong>"Tenemos 500 pedidos de exportación. A cada uno calcúlale el impuesto, el costo del flete y conviértelo de pesos a dólares con el tipo de cambio de hoy."</strong>
+  </div>
+
+  <div class="qs" style="margin-top:26px">
+    <div class="q" style="background:var(--sky)">
+      <h4>🙋 Pregunta 1</h4>
+      <p>Si cada pedido te toma 2 minutos en Excel, ¿cuánto tardas en total?</p>
+      <button class="btn ver" type="button">Ver respuesta</button>
+      <div class="ans" hidden>500 × 2 = <b>1,000 minutos</b>, casi <b>17 horas</b>. Son más de dos días de trabajo.</div>
+    </div>
+    <div class="q" style="background:var(--grape)">
+      <h4>🙋 Pregunta 2</h4>
+      <p>¿Y si a mitad del día cambia el tipo de cambio?</p>
+      <button class="btn ver" type="button">Ver respuesta</button>
+      <div class="ans" hidden>Tienes que <b>empezar otra vez</b> con los 500 pedidos.</div>
+    </div>
+    <div class="q" style="background:var(--mint)">
+      <h4>🙋 Pregunta 3</h4>
+      <p>¿Cuánto tarda un programa en Python?</p>
+      <button class="btn ver" type="button">Ver respuesta</button>
+      <div class="ans" hidden><b>Menos de un segundo.</b> Y si cambia el tipo de cambio, lo vuelves a correr y listo.</div>
+    </div>
+  </div>
+  <div class="tip">👉 <b>La idea:</b> la computadora no es más inteligente que tú, pero <b>repite sin cansarse y sin equivocarse</b>. Tú decides las reglas, ella las aplica.</div>
+</section>
+
+<section id="pq-comercio">
+  <span class="tag" style="background:var(--sky)">Tu carrera</span>
+  <h2 class="title">La tecnología ya está en el comercio</h2>
+  <p class="sub">Todo esto funciona con programas que alguien escribió con condiciones, ciclos y listas, lo mismo que estás aprendiendo.</p>
+
+  <div class="chars">
+    <div class="char" style="background:var(--coral)"><div class="ico">🛒</div><h3>Tiendas en línea</h3><p>Amazon, Mercado Libre y Shein deciden solas qué productos mostrarte, cuánto cobrar de envío y si tu pago se aprueba.</p></div>
+    <div class="char" style="background:var(--sky)"><div class="ico">🚢</div><h3>Rastreo de contenedores</h3><p>Las navieras te dicen en tiempo real dónde va tu mercancía: en el puerto, en altamar o en la aduana.</p></div>
+    <div class="char" style="background:var(--grape)"><div class="ico">🛃</div><h3>Aduanas digitales</h3><p>En México los trámites de comercio exterior se hacen en línea, por ejemplo en la Ventanilla Única (VUCEM). El sistema revisa si tus documentos están completos.</p></div>
+    <div class="char" style="background:var(--mint)"><div class="ico">💱</div><h3>Tipo de cambio</h3><p>Los precios en dólares, euros o pesos se recalculan automáticamente cada vez que cambia el tipo de cambio.</p></div>
+    <div class="char" style="background:var(--pink)"><div class="ico">📊</div><h3>Tableros de ventas</h3><p>Los gerentes ven en una pantalla cuánto se vendió por país, por producto y por mes, sin hacer cuentas a mano.</p></div>
+    <div class="char" style="background:var(--teal)"><div class="ico">🤖</div><h3>Inteligencia artificial</h3><p>La IA ayuda a clasificar productos, traducir documentos y predecir la demanda. Pero alguien tiene que saber qué pedirle y revisar lo que responde.</p></div>
+  </div>
+</section>
+
+<section id="pq-reglas">
+  <span class="tag" style="background:var(--teal)">La idea más importante</span>
+  <h2 class="title">Las reglas de negocio son código</h2>
+  <p class="sub">Toda empresa trabaja con reglas del tipo <b>"si pasa esto, entonces hago aquello"</b>. A eso se le llama <b>regla de negocio</b>.</p>
+
+  <div class="topic" style="--c:var(--teal)">
+    <h3><span class="num">1</span> Una regla escrita en español</h3>
+    <p>Así la escribiría el gerente de ventas en un correo:</p>
+    <div class="card warm"><p>📋 <b>Política de descuentos:</b> si el cliente compra más de <b>$10,000</b> y paga <b>de contado</b>, recibe un <b>5% de descuento</b>. Si no, paga el precio normal.</p></div>
+    <h3 style="margin-top:18px"><span class="num">2</span> La misma regla escrita en Python</h3>
+<div class="code"><span class="com"># Datos del pedido</span>
+compra = 12000
+pago_contado = True
+
+<span class="com"># La regla de negocio: más de $10,000 Y pago de contado</span>
+if compra &gt; 10000 and pago_contado:
+    descuento = compra * 5 / 100
+    print(<span class="str">&quot;Descuento aplicado: $&quot;</span>, descuento, sep=<span class="str">&quot;&quot;</span>)
+else:
+    print(<span class="str">&quot;Precio normal, sin descuento&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">Descuento aplicado: $600.0</div>
+    <div class="tip">👀 <b>Fíjate:</b> la regla tiene <b>dos condiciones unidas con "y"</b>. En Python esa "y" se escribe <b>and</b>. Eso es justo lo que vamos a ver en la siguiente pestaña.</div>
+  </div>
+</section>
+
+<section id="pq-rol">
+  <span class="tag" style="background:var(--pink)">Tu futuro</span>
+  <h2 class="title">Tu papel en la empresa</h2>
+  <p class="sub">No te vamos a convertir en programador. Te vamos a convertir en alguien que <b>entiende la tecnología del negocio</b>.</p>
+
+  <div class="isteps">
+    <div class="istep" style="--sc:var(--sky)"><span class="n">1</span><div><b>Sabes qué se puede automatizar.</b> Detectas tareas repetitivas (como los 500 pedidos) y propones resolverlas con un programa.</div></div>
+    <div class="istep" style="--sc:var(--grape)"><span class="n">2</span><div><b>Hablas el mismo idioma que el área de TI.</b> Puedes explicar una regla de negocio de forma que el programador la entienda sin errores.</div></div>
+    <div class="istep" style="--sc:var(--mint)"><span class="n">3</span><div><b>Le pides bien las cosas a la IA.</b> Si sabes cómo se arma una condición, sabes explicar con claridad lo que necesitas.</div></div>
+    <div class="istep" style="--sc:var(--coral)"><span class="n">4</span><div><b>Detectas cuando un sistema se equivoca.</b> Si el sistema cobra un arancel que no aplica, tú sabes revisar la regla y encontrar el error.</div></div>
+  </div>
+
+  <div class="closing">
+    <h2>Las reglas de comercio casi nunca tienen una sola condición 🔀</h2>
+    <p>"Sale si tiene factura <b>y</b> pagó impuestos." "Se acepta carta de crédito <b>o</b> transferencia." "Se exporta si <b>no</b> está restringido." Para unir condiciones, Python usa <b>and</b>, <b>or</b> y <b>not</b>.</p>
+    <p style="margin-top:14px"><button class="btn ir-tab" data-tab="logicos" type="button">Ir a Operadores lógicos →</button></p>
+  </div>
+</section>
+</div>
+
+<div class="tab-panel" data-panel="logicos" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--grape);margin-top:30px">
+    <h2>🔀 Operadores lógicos</h2>
+    <p>Operadores lógicos and, or y not · Sección 3.3 del Módulo 3 de CISCO</p>
+    <div class="topics"><span>✅ True y False</span><span>🤝 and</span><span>🔀 or</span><span>🔄 not</span><span>🧮 Prioridad</span><span>⚠️ El error más común</span><span>⚡ Cortocircuito</span></div>
+  </div>
+  <nav class="menu-pagina"><a href="#lg-repaso">Repaso: True y False</a> <a href="#lg-and">and</a> <a href="#lg-or">or</a> <a href="#lg-not">not</a> <a href="#lg-resumen">Resumen</a> <a href="#lg-combinados">Combinar y prioridad</a> <a href="#lg-error">⚠️ El error más común</a> <a href="#lg-corto">⚡ Cortocircuito</a> <a href="#lg-diagrama">En el diagrama de flujo</a></nav>
+
+<section id="lg-repaso">
+  <span class="tag" style="background:var(--coral)">Antes de empezar</span>
+  <h2 class="title">Repaso: toda comparación da True o False</h2>
+  <p class="sub">Los operadores lógicos unen <b>respuestas de sí o no</b>. Primero hay que tener esas respuestas.</p>
+
+  <div class="topic" style="--c:var(--sky)">
+    <p>Cuando comparas con <code class="in">==</code>, <code class="in">&gt;</code> o <code class="in">&lt;</code>, Python no te da un número ni un texto. Te da <b>True</b> (Verdadero) o <b>False</b> (Falso).</p>
+<div class="code"><span class="com"># Le preguntamos al usuario</span>
+factura = input(<span class="str">&quot;¿Tienes la factura? (si/no): &quot;</span>)
+
+<span class="com"># Comparamos: ¿lo que escribió es igual a &quot;si&quot;?</span>
+<span class="com"># La respuesta (True o False) se guarda en tiene_factura</span>
+tiene_factura = factura == <span class="str">&quot;si&quot;</span>
+
+print(tiene_factura)</div>
+    <span class="label" style="background:var(--mint)">Salida si escribe si</span>
+<div class="code">¿Tienes la factura? (si/no): si
+True</div>
+    <div class="tip">💡 <b>Léelo así:</b> <code class="in">tiene_factura = factura == "si"</code> significa "guarda en tiene_factura la respuesta a la pregunta <b>¿escribió si?</b>". Por eso tiene_factura vale True o False, no "si".</div>
+    <div class="warn">⚠️ Escribe <b>si</b> en minúsculas y sin acento. Para Python, <b>"Si"</b>, <b>"SI"</b> y <b>"sí"</b> son textos distintos a <b>"si"</b>.</div>
+  </div>
+</section>
+
+<section id="lg-and">
+  <span class="tag" style="background:var(--sky)">Operador 1</span>
+  <h2 class="title">and: TODAS se deben cumplir</h2>
+  <p class="sub"><b>and</b> significa "y". El resultado es True <b>solo si las dos condiciones son True</b>.</p>
+
+  <div class="topic" style="--c:var(--sky)">
+    <h3><span class="num">1</span> En la aduana</h3>
+    <p>Un embarque sale de la aduana <b>solo si</b> trae la factura comercial <b>y</b> ya pagó los impuestos. Si falta cualquiera de las dos, el embarque se queda detenido.</p>
+<div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>¿Tiene factura?</th><th>¿Pagó impuestos?</th><th>tiene_factura and pago</th><th>¿Qué pasa?</th></tr></thead><tbody><tr><td><span class="pill" style="background:var(--mint)">True</span></td><td><span class="pill" style="background:var(--mint)">True</span></td><td><span class="pill" style="background:var(--mint)">True</span></td><td>✅ Sale</td></tr><tr><td><span class="pill" style="background:var(--mint)">True</span></td><td><span class="pill" style="background:var(--coral)">False</span></td><td><span class="pill" style="background:var(--coral)">False</span></td><td>🛑 Detenido</td></tr><tr><td><span class="pill" style="background:var(--coral)">False</span></td><td><span class="pill" style="background:var(--mint)">True</span></td><td><span class="pill" style="background:var(--coral)">False</span></td><td>🛑 Detenido</td></tr><tr><td><span class="pill" style="background:var(--coral)">False</span></td><td><span class="pill" style="background:var(--coral)">False</span></td><td><span class="pill" style="background:var(--coral)">False</span></td><td>🛑 Detenido</td></tr></tbody></table></div>
+    <div class="tip">🧠 <b>Frase para recordar:</b> <b>and es exigente</b>, quiere todo. Basta con un False para que el resultado sea False.</div>
+    <h3 style="margin-top:18px"><span class="num">2</span> En Python</h3>
+<div class="code"><span class="com"># Datos del embarque</span>
+tiene_factura = True
+pago = False
+
+<span class="com"># and: las DOS se deben cumplir</span>
+if tiene_factura and pago:
+    print(<span class="str">&quot;✅ Embarque liberado&quot;</span>)
+else:
+    print(<span class="str">&quot;🛑 Embarque detenido&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">🛑 Embarque detenido</div>
+    <p>Trae factura (True), pero no pagó (False). Como <b>and</b> exige las dos, el resultado es False y se ejecuta el else.</p>
+  </div>
+</section>
+
+<section id="lg-or">
+  <span class="tag" style="background:var(--mint)">Operador 2</span>
+  <h2 class="title">or: con UNA basta</h2>
+  <p class="sub"><b>or</b> significa "o". El resultado es True <b>si al menos una condición es True</b>.</p>
+
+  <div class="topic" style="--c:var(--mint)">
+    <h3><span class="num">1</span> En el área de cobranza</h3>
+    <p>La empresa envía el pedido si el cliente paga con <b>carta de crédito</b> <b>o</b> con <b>transferencia anticipada</b>. Con cualquiera de las dos es suficiente.</p>
+<div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>¿Carta de crédito?</th><th>¿Transferencia?</th><th>carta or transferencia</th><th>¿Qué pasa?</th></tr></thead><tbody><tr><td><span class="pill" style="background:var(--mint)">True</span></td><td><span class="pill" style="background:var(--mint)">True</span></td><td><span class="pill" style="background:var(--mint)">True</span></td><td>✅ Se envía</td></tr><tr><td><span class="pill" style="background:var(--mint)">True</span></td><td><span class="pill" style="background:var(--coral)">False</span></td><td><span class="pill" style="background:var(--mint)">True</span></td><td>✅ Se envía</td></tr><tr><td><span class="pill" style="background:var(--coral)">False</span></td><td><span class="pill" style="background:var(--mint)">True</span></td><td><span class="pill" style="background:var(--mint)">True</span></td><td>✅ Se envía</td></tr><tr><td><span class="pill" style="background:var(--coral)">False</span></td><td><span class="pill" style="background:var(--coral)">False</span></td><td><span class="pill" style="background:var(--coral)">False</span></td><td>🛑 No se envía</td></tr></tbody></table></div>
+    <div class="tip">🧠 <b>Frase para recordar:</b> <b>or es flexible</b>, con una se conforma. Solo da False cuando <b>todas</b> son False.</div>
+    <h3 style="margin-top:18px"><span class="num">2</span> En Python</h3>
+<div class="code"><span class="com"># Formas de pago del cliente</span>
+carta = False
+transferencia = True
+
+<span class="com"># or: basta con UNA</span>
+if carta or transferencia:
+    print(<span class="str">&quot;✅ Pago aceptado. Se envía el pedido.&quot;</span>)
+else:
+    print(<span class="str">&quot;🛑 No hay una forma de pago válida.&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">✅ Pago aceptado. Se envía el pedido.</div>
+  </div>
+</section>
+
+<section id="lg-not">
+  <span class="tag" style="background:var(--coral)">Operador 3</span>
+  <h2 class="title">not: le da la vuelta</h2>
+  <p class="sub"><b>not</b> significa "no". Convierte True en False y False en True.</p>
+
+  <div class="topic" style="--c:var(--coral)">
+    <h3><span class="num">1</span> En el área de cumplimiento</h3>
+    <p>Hay productos que no se pueden exportar sin un permiso especial (por ejemplo, algunos químicos). La regla es: <b>se exporta si el producto NO está restringido</b>.</p>
+<div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>restringido</th><th>not restringido</th><th>¿Qué pasa?</th></tr></thead><tbody><tr><td><span class="pill" style="background:var(--mint)">True</span></td><td><span class="pill" style="background:var(--coral)">False</span></td><td>🛑 Necesita permiso</td></tr><tr><td><span class="pill" style="background:var(--coral)">False</span></td><td><span class="pill" style="background:var(--mint)">True</span></td><td>✅ Se exporta</td></tr></tbody></table></div>
+    <h3 style="margin-top:18px"><span class="num">2</span> En Python</h3>
+<div class="code"><span class="com"># El producto NO está en la lista de restringidos</span>
+restringido = False
+
+<span class="com"># not restringido se lee: &quot;si NO está restringido&quot;</span>
+if not restringido:
+    print(<span class="str">&quot;✅ Se puede exportar&quot;</span>)
+else:
+    print(<span class="str">&quot;🛑 Necesita permiso especial&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">✅ Se puede exportar</div>
+    <div class="tip">💡 <b>Léelo en voz alta:</b> "si <b>no</b> está restringido". Así suena natural y no te confundes.</div>
+  </div>
+</section>
+
+<section id="lg-resumen">
+  <span class="tag" style="background:var(--grape)">Resumen</span>
+  <h2 class="title">Los 3 operadores en una tabla</h2>
+  <div class="topic" style="--c:var(--grape)">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Operador</th><th>Significa</th><th>Da True cuando...</th><th>Ejemplo de comercio</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill" style="background:var(--sky)">and</span></td><td>y</td><td><b>Todas</b> son True</td><td>Sale si tiene factura <b>y</b> pagó</td></tr>
+        <tr><td><span class="pill" style="background:var(--mint)">or</span></td><td>o</td><td><b>Al menos una</b> es True</td><td>Se envía si paga con carta <b>o</b> transferencia</td></tr>
+        <tr><td><span class="pill" style="background:var(--coral)">not</span></td><td>no</td><td>La condición es <b>False</b></td><td>Se exporta si <b>no</b> está restringido</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="lg-combinados">
+  <span class="tag" style="background:var(--teal)">Nivel 2</span>
+  <h2 class="title">Combinar operadores y la prioridad</h2>
+  <p class="sub">En la vida real las reglas mezclan and, or y not en una sola decisión.</p>
+
+  <div class="topic" style="--c:var(--teal)">
+    <h3><span class="num">1</span> La regla del semáforo aduanal</h3>
+    <div class="card warm"><p>📋 Un embarque pasa a <b>revisión física</b> (semáforo rojo) si vale <b>más de $50,000</b> <b>o</b> si es la <b>primera vez</b> que la empresa importa. <b>Pero</b> si la empresa está <b>certificada como confiable</b>, nunca pasa a revisión.</p></div>
+<div class="code">valor = 60000
+es_primera = False
+es_certificada = True
+
+if (valor &gt; 50000 or es_primera) and not es_certificada:
+    print(<span class="str">&quot;🔴 ROJO: revisión física&quot;</span>)
+else:
+    print(<span class="str">&quot;🟢 VERDE: pasa sin revisión&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">🟢 VERDE: pasa sin revisión</div>
+    <h3 style="margin-top:18px"><span class="num">2</span> ¿Cómo lo resuelve Python? Paso a paso</h3>
+    <ol class="pasos-eval">
+      <li>Primero lo que está <b>entre paréntesis</b>: <code class="in">valor &gt; 50000</code> es <b>True</b>, y <code class="in">True or False</code> da <b>True</b>.</li>
+      <li>Luego el <b>not</b>: <code class="in">not es_certificada</code> es <code class="in">not True</code>, que da <b>False</b>.</li>
+      <li>Al final el <b>and</b>: <code class="in">True and False</code> da <b>False</b>. Por eso sale <b>VERDE</b>.</li>
+    </ol>
+
+    <h3 style="margin-top:18px"><span class="num">3</span> El orden en que Python los evalúa</h3>
+    <div class="isteps">
+      <div class="istep" style="--sc:var(--ink)"><span class="n">1</span><div>Lo que está entre <b>( paréntesis )</b></div></div>
+      <div class="istep" style="--sc:var(--coral)"><span class="n">2</span><div><b>not</b></div></div>
+      <div class="istep" style="--sc:var(--sky)"><span class="n">3</span><div><b>and</b></div></div>
+      <div class="istep" style="--sc:var(--mint)"><span class="n">4</span><div><b>or</b></div></div>
+    </div>
+
+    <h3 style="margin-top:18px"><span class="num">4</span> ¿Y si quito los paréntesis?</h3>
+<div class="code"><span class="com"># Mismos datos: valor = 60000, es_primera = False, es_certificada = True</span>
+if valor &gt; 50000 or es_primera and not es_certificada:
+    print(<span class="str">&quot;🔴 ROJO: revisión física&quot;</span>)
+else:
+    print(<span class="str">&quot;🟢 VERDE: pasa sin revisión&quot;</span>)</div>
+    <span class="label" style="background:var(--coral)">Salida en pantalla</span>
+<div class="code">🔴 ROJO: revisión física</div>
+    <p>¡Ahora sale ROJO, aunque la empresa está certificada! Como el <b>and va antes que el or</b>, Python lo leyó así:</p>
+    <div class="code">valor &gt; 50000 or (es_primera and not es_certificada)</div>
+    <p>Primero calculó <code class="in">es_primera and not es_certificada</code>, que da False. Luego <code class="in">True or False</code> dio True.</p>
+    <div class="warn">⚠️ <b>Regla de oro:</b> cuando mezcles and con or, <b>usa paréntesis</b> para que Python lea la regla igual que la escribió el gerente.</div>
+  </div>
+</section>
+
+<section id="lg-error">
+  <span class="tag" style="background:var(--coral)">⚠️ Cuidado</span>
+  <h2 class="title">El error más común con or</h2>
+  <p class="sub">Este error lo comete casi todo el mundo la primera vez. Si lo entiendes, te vas a ahorrar muchos dolores de cabeza.</p>
+
+  <div class="topic" style="--c:var(--coral)">
+    <h3><span class="num">1</span> La regla</h3>
+    <div class="card warm"><p>📋 El trato preferencial del T-MEC aplica si el país de origen es <b>Canadá o Estados Unidos</b>.</p></div>
+
+    <h3 style="margin-top:18px"><span class="num">2</span> Cómo lo hablamos y cómo lo necesita Python</h3>
+    <p>En español decimos <b>"¿el país es Canadá o Estados Unidos?"</b> y nombramos el país <b>una sola vez</b>. Todos entendemos que la segunda parte también habla del país.</p>
+    <p>Python <b>no adivina</b>. El <b>or</b> parte la condición en dos pedazos, y <b>cada pedazo tiene que ser una pregunta completa</b> que dé True o False:</p>
+    <div class="card alt"><p>❓ ¿El país es Canadá? <b>or</b> ❓ ¿El país es Estados Unidos?</p></div>
+
+    <h3 style="margin-top:18px"><span class="num">3</span> La forma INCORRECTA</h3>
+<div class="code">pais = <span class="str">&quot;CHINA&quot;</span>
+
+if pais == <span class="str">&quot;CANADA&quot;</span> or <span class="str">&quot;ESTADOS UNIDOS&quot;</span>:
+    print(<span class="str">&quot;✅ Aplica el T-MEC&quot;</span>)
+else:
+    print(<span class="str">&quot;🛑 No aplica el T-MEC&quot;</span>)</div>
+    <span class="label" style="background:var(--coral)">Salida en pantalla</span>
+<div class="code">✅ Aplica el T-MEC</div>
+    <p>¡China no está en el T-MEC y el programa dice que sí aplica! Veamos los dos pedazos que ve Python:</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Pedazo</th><th>¿Qué es?</th><th>Resultado</th></tr></thead>
+      <tbody>
+        <tr><td><code class="in">pais == "CANADA"</code></td><td>Una pregunta completa: ¿"CHINA" es igual a "CANADA"?</td><td><span class="pill" style="background:var(--coral)">False</span></td></tr>
+        <tr><td><code class="in">"ESTADOS UNIDOS"</code></td><td><b>No es una pregunta.</b> Es solo un texto. No compara nada.</td><td><span class="pill" style="background:var(--mint)">True</span> (siempre)</td></tr>
+        <tr><td colspan="2"><b>False or True</b></td><td><span class="pill" style="background:var(--mint)">True</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 style="margin-top:18px"><span class="num">4</span> ¿Por qué un texto solo cuenta como True?</h3>
+    <p>Python tiene una regla: <b>un texto con letras cuenta como True</b> y <b>un texto vacío "" cuenta como False</b>. Puedes comprobarlo así:</p>
+<div class="code">print(bool(<span class="str">&quot;ESTADOS UNIDOS&quot;</span>))
+print(bool(<span class="str">&quot;&quot;</span>))</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">True
+False</div>
+    <div class="tip">📝 <b>Imagínalo como un formulario de aduana</b> con dos casillas: "País = Canadá" y "Estados Unidos". La segunda casilla <b>ya viene palomeada</b> desde la imprenta. Como el or solo necesita una casilla palomeada, <b>cualquier país pasa</b>: China, Japón o el que escribas.</div>
+
+    <h3 style="margin-top:18px"><span class="num">5</span> La forma CORRECTA</h3>
+    <p>Repite la variable y el <code class="in">==</code> en <b>cada lado</b> del or:</p>
+<div class="code">pais = <span class="str">&quot;CHINA&quot;</span>
+
+if pais == <span class="str">&quot;CANADA&quot;</span> or pais == <span class="str">&quot;ESTADOS UNIDOS&quot;</span>:
+    print(<span class="str">&quot;✅ Aplica el T-MEC&quot;</span>)
+else:
+    print(<span class="str">&quot;🛑 No aplica el T-MEC&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">🛑 No aplica el T-MEC</div>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Pedazo</th><th>Pregunta</th><th>Resultado</th></tr></thead>
+      <tbody>
+        <tr><td><code class="in">pais == "CANADA"</code></td><td>¿"CHINA" es igual a "CANADA"?</td><td><span class="pill" style="background:var(--coral)">False</span></td></tr>
+        <tr><td><code class="in">pais == "ESTADOS UNIDOS"</code></td><td>¿"CHINA" es igual a "ESTADOS UNIDOS"?</td><td><span class="pill" style="background:var(--coral)">False</span></td></tr>
+        <tr><td colspan="2"><b>False or False</b></td><td><span class="pill" style="background:var(--coral)">False</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="warn">✋ <b>Regla:</b> si a un lado del <b>or</b> o del <b>and</b> no hay una comparación (<code class="in">==</code>, <code class="in">&gt;</code>, <code class="in">&lt;</code>...) ni una variable True/False, está mal escrito.</div>
+  </div>
+</section>
+
+<section id="lg-corto">
+  <span class="tag" style="background:var(--orange)">⚡ Dato interesante</span>
+  <h2 class="title">Cortocircuito: Python se detiene en cuanto sabe la respuesta</h2>
+  <p class="sub">Python lee las condiciones <b>de izquierda a derecha</b>. Si con la primera ya sabe el resultado, <b>ya no revisa las demás</b>.</p>
+
+  <div class="topic" style="--c:var(--orange)">
+    <h3><span class="num">1</span> Con and</h3>
+    <p>Si la primera condición es <b>False</b>, el resultado ya es False sin importar lo demás (and necesita que todas sean True). Python <b>no revisa el resto</b>.</p>
+    <div class="card warm"><p>🛃 <b>En la aduana:</b> el agente revisa primero la factura. Si no la traes, ya no revisa los impuestos ni la mercancía. El embarque se queda detenido de una vez.</p></div>
+
+    <h3 style="margin-top:18px"><span class="num">2</span> Con or</h3>
+    <p>Si la primera condición es <b>True</b>, el resultado ya es True (or se conforma con una). Python <b>no revisa el resto</b>.</p>
+    <div class="card warm"><p>💳 <b>En cobranza:</b> si el cliente ya pagó con carta de crédito, nadie le pregunta si también quiere pagar con transferencia. Ya está pagado.</p></div>
+
+    <h3 style="margin-top:18px"><span class="num">3</span> ¿Para qué me sirve? Para evitar errores</h3>
+    <p>La empresa quiere saber si un producto vale más de $100 <b>por pieza</b>. Para eso se divide el valor entre las piezas. Pero si el pedido tiene <b>0 piezas</b>, dividir entre 0 es un error y el programa se cae.</p>
+<div class="code">piezas = 0
+valor = 5000
+
+<span class="com"># Primero preguntamos si hay piezas. Si no hay, Python ya no hace la división.</span>
+if piezas &gt; 0 and valor / piezas &gt; 100:
+    print(<span class="str">&quot;Producto de alto valor por pieza&quot;</span>)
+else:
+    print(<span class="str">&quot;No se puede calcular o es de bajo valor&quot;</span>)</div>
+    <span class="label" style="background:var(--mint)">Salida en pantalla</span>
+<div class="code">No se puede calcular o es de bajo valor</div>
+    <ol class="pasos-eval">
+      <li>Python revisa <code class="in">piezas &gt; 0</code>: 0 &gt; 0 es <b>False</b>.</li>
+      <li>Como es un <b>and</b> y ya hay un False, el resultado ya es False. <b>Se detiene aquí</b> y nunca hace <code class="in">valor / piezas</code>.</li>
+      <li>Se ejecuta el else. El programa no se cae.</li>
+    </ol>
+    <p>Si escribes las condiciones <b>al revés</b>, Python intenta dividir primero:</p>
+<div class="code">if valor / piezas &gt; 100 and piezas &gt; 0:</div>
+    <span class="label" style="background:var(--coral)">Salida en pantalla</span>
+<div class="code">ZeroDivisionError: division by zero</div>
+    <div class="tip">👉 <b>Regla práctica:</b> pon primero la condición que <b>protege</b> (la que evita el error), y después la que podría fallar.</div>
+  </div>
+</section>
+
+<section id="lg-diagrama">
+  <span class="tag" style="background:var(--sky)">Diagramas de flujo</span>
+  <h2 class="title">¿Cómo se dibuja en el diagrama de flujo?</h2>
+  <p class="sub">La condición completa, con sus and, or y not, va <b>dentro de un solo rombo</b>. Sí sale a la izquierda y No a la derecha.</p>
+<div class="card" style="overflow-x:auto"><svg viewBox="0 0 680 612" width="100%" style="display:block;max-width:680px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo de la liberación de un embarque con and"><defs><marker id="s5a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker></defs><rect x="270" y="20" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="340" y="42" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#fff">Inicio</text><line x1="340" y1="64" x2="340" y2="92" stroke="#2B2D42" stroke-width="3" marker-end="url(#s5a)"/><polygon points="190,94 520,94 490,150 160,150" fill="#3DC47E" stroke="#2B2D42" stroke-width="3"/><text x="340" y="112" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#fff">input()</text><text x="340" y="132" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="600" fill="#fff">factura, impuestos, coincide</text><line x1="340" y1="150" x2="340" y2="178" stroke="#2B2D42" stroke-width="3" marker-end="url(#s5a)"/><rect x="170" y="180" width="340" height="56" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="340" y="198" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#fff">Convertir a True / False</text><text x="340" y="218" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="600" fill="#fff">tiene_factura, pago, mercancia_ok</text><line x1="340" y1="236" x2="340" y2="264" stroke="#2B2D42" stroke-width="3" marker-end="url(#s5a)"/><polygon points="340,266 540,336 340,406 140,336" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="340" y="326" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#2B2D42">tiene_factura and pago</text><text x="340" y="346" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#2B2D42">and mercancia_ok</text><path d="M140 336 H120 V434" fill="none" stroke="#2B2D42" stroke-width="3" marker-end="url(#s5a)"/><path d="M540 336 H560 V434" fill="none" stroke="#2B2D42" stroke-width="3" marker-end="url(#s5a)"/><text x="142" y="322" text-anchor="middle" dominant-baseline="central" font-size="16" font-weight="800" fill="#3DC47E">Sí</text><text x="538" y="322" text-anchor="middle" dominant-baseline="central" font-size="16" font-weight="800" fill="#FF6B6B">No</text><rect x="15" y="436" width="210" height="56" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="120" y="454" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#fff">print(&quot;Embarque</text><text x="120" y="474" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#fff">liberado&quot;)</text><rect x="455" y="436" width="210" height="56" rx="8" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="560" y="454" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#fff">print(&quot;Embarque</text><text x="560" y="474" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="700" fill="#fff">detenido&quot;)</text><path d="M120 492 V520 H560 V492" fill="none" stroke="#2B2D42" stroke-width="3"/><line x1="340" y1="520" x2="340" y2="546" stroke="#2B2D42" stroke-width="3" marker-end="url(#s5a)"/><rect x="270" y="548" width="140" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="340" y="570" text-anchor="middle" dominant-baseline="central" font-size="15" font-weight="700" fill="#fff">Fin</text></svg></div>
+  <div class="tip">💡 Un solo rombo, porque es <b>una sola decisión</b>: ¿sale o no sale el embarque? El <b>and</b> se escribe dentro del rombo igual que en el código.</div>
+
+  <div class="closing">
+    <h2>¡Ahora te toca a ti! 💼</h2>
+    <p>Eres practicante en una comercializadora y cada departamento te pide un programa. Resuelve los ejercicios de <b>Operadores lógicos</b> de la Actividad 4.</p>
+    <p style="margin-top:14px"><a class="btn" href="actividad4.html#ejercicios" style="text-decoration:none;display:inline-block">Ir a la Actividad 4 →</a></p>
+  </div>
+</section>
+</div>
+
+</main>
+
+<footer>Fundamentos de Programación · Python Fundamentals · Semana 5</footer>
+
+<script src="menu.js"></script>
+<script>
+  // Pestañas internas de la página (no tocan el menú del curso)
+  const tabs = document.querySelectorAll(".tabs .tab");
+  const panels = document.querySelectorAll(".tab-panel");
+
+  function mostrar(nombre, mover) {
+    let existe = false;
+    tabs.forEach(t => {
+      const activa = t.dataset.tab === nombre;
+      t.classList.toggle("active", activa);
+      t.setAttribute("aria-selected", activa);
+      if (activa) existe = true;
+    });
+    if (!existe) return;
+    panels.forEach(p => { p.hidden = p.dataset.panel !== nombre; });
+    try { history.replaceState(null, "", "#" + nombre); } catch (e) {}
+    if (mover) document.querySelector(".tabs").scrollIntoView({ behavior: "smooth" });
+  }
+
+  tabs.forEach(t => t.addEventListener("click", () => mostrar(t.dataset.tab, false)));
+  document.querySelectorAll(".ir-tab").forEach(b =>
+    b.addEventListener("click", () => mostrar(b.dataset.tab, true)));
+
+  // Abrir la pestaña que venga en la dirección (ej. semana5.html#logicos)
+  const inicial = location.hash.replace("#", "");
+  if (["porque", "logicos"].includes(inicial)) mostrar(inicial, false);
+
+  // Botones "Ver respuesta" del reto de los 500 pedidos
+  document.querySelectorAll(".ver").forEach(b => b.addEventListener("click", () => {
+    const ans = b.nextElementSibling;
+    ans.hidden = !ans.hidden;
+    b.textContent = ans.hidden ? "Ver respuesta" : "Ocultar";
+  }));
+</script>
+</body>
+</html>
