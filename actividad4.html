@@ -484,6 +484,243 @@ else:
     </div>
     <div class="ex-body">
 
+      <h4>1️⃣ Repaso: or, con UNA basta</h4>
+      <p><b>or</b> significa <b>"o"</b>. El resultado es <b>True si al menos una condición es True</b>. Solo da <b>False cuando todas son False</b>. Es lo contrario de <b>and</b>, que las pide <b>todas</b>.</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>A</th><th>B</th><th>A <b>and</b> B</th><th>A <b>or</b> B</th></tr></thead><tbody>
+        <tr><td>True</td><td>True</td><td><b>True</b></td><td><b>True</b></td></tr>
+        <tr><td>True</td><td>False</td><td>False</td><td><b>True</b></td></tr>
+        <tr><td>False</td><td>True</td><td>False</td><td><b>True</b></td></tr>
+        <tr><td>False</td><td>False</td><td>False</td><td>False</td></tr>
+      </tbody></table></div>
+      <div class="tip">🧠 <b>Frase para recordar:</b> and es <b>exigente</b> (las pide todas). or es <b>flexible</b> (con una se conforma).</div>
+
+      <h4>2️⃣ or con varias condiciones (ejercicio 6)</h4>
+      <p>Puedes unir todas las condiciones que quieras con or. Si <b>cualquiera</b> es True, se cumple. Fíjate que es el "espejo" del <b>ejercicio 1</b>: allá el embarque salía solo si se cumplían <b>todos</b> los requisitos (and); aquí basta <b>un</b> problema para avisar al cliente (or).</p>
+      <div class="code">if barco_tarde or puerto_saturado or falta_documento or semaforo_rojo:
+    print(<span class="str">&quot;⚠️ Avisa al cliente&quot;</span>)</div>
+
+      <h4>3️⃣ or con comparaciones (ejercicio 7)</h4>
+      <p>Cuando la regla dice "si el país es ESTADOS UNIDOS <b>o</b> CANADA", cada lado del or tiene que ser una <b>comparación completa</b>. Con if y elif puedes tener un grupo de opciones en cada rama.</p>
+      <div class="code">if pais == <span class="str">&quot;ESTADOS UNIDOS&quot;</span> or pais == <span class="str">&quot;CANADA&quot;</span>:
+    zona = <span class="str">&quot;NORTEAMERICA&quot;</span>
+elif pais == <span class="str">&quot;ALEMANIA&quot;</span> or pais == <span class="str">&quot;FRANCIA&quot;</span> or pais == <span class="str">&quot;ITALIA&quot;</span>:
+    zona = <span class="str">&quot;EUROPA&quot;</span></div>
+      <div class="warn">⚠️ <b>El error más común:</b> <code class="in">if pais == &quot;ESTADOS UNIDOS&quot; or &quot;CANADA&quot;:</code> <b>siempre</b> entra al if, aunque el país sea JAPON. <code class="in">&quot;CANADA&quot;</code> solito no es una comparación, y para Python un texto con letras cuenta como verdadero. Cada lado del or es una <b>pregunta completa</b>.</div>
+
+      <h4>4️⃣ ¿Cómo se evalúa? (ejercicio 7)</h4>
+      <p>Python lo resuelve en tres pasos: <b>(1)</b> resuelve cada comparación, <b>(2)</b> queda una expresión de puros True y False, <b>(3)</b> aplica la tabla del or. Ejemplo con <code class="in">es_urgente = False</code> y <code class="in">kilos = 1200</code>:</p>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Cómo se ve</th></tr></thead><tbody>
+        <tr><td>Expresión original</td><td><code class="in">es_urgente or kilos &gt; 1000</code></td></tr>
+        <tr><td>1. Resuelve cada comparación</td><td><code class="in">es_urgente</code> → False · <code class="in">1200 &gt; 1000</code> → True</td></tr>
+        <tr><td>2. Queda</td><td><code class="in">False or True</code></td></tr>
+        <tr><td>3. Aplica la tabla</td><td><b>True</b> → se cobra el cargo especial</td></tr>
+      </tbody></table></div>
+
+      <h4>5️⃣ Si mezclas and con or: paréntesis</h4>
+      <p>Python resuelve <b>primero el and</b> y después el or, igual que en matemáticas la multiplicación va antes que la suma. Los ejercicios 6 y 7 solo usan or, pero si alguna vez juntas los dos y quieres que el or vaya primero, <b>ponle paréntesis</b>:</p>
+      <div class="code">(pais == <span class="str">&quot;ESTADOS UNIDOS&quot;</span> or pais == <span class="str">&quot;CANADA&quot;</span>) and tiene_certificado</div>
+
+      <h4>6️⃣ Pasos para resolver cada ejercicio</h4>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Si la regla dice...</th><th>Usa</th></tr></thead><tbody>
+        <tr><td>"o", "cualquiera de", "al menos uno", "con uno basta"</td><td><code class="in">or</code></td></tr>
+        <tr><td>"y", "además", "todos", "al mismo tiempo"</td><td><code class="in">and</code></td></tr>
+        <tr><td>"no", "ninguno", "falta", "sin"</td><td><code class="in">not</code></td></tr>
+      </tbody></table></div>
+      <ol class="pasos-eval">
+        <li>Lee las reglas de negocio y <b>subraya</b> cada "o": ahí va un or.</li>
+        <li>Convierte cada respuesta de si/no en una variable <b>True o False</b> (por ejemplo, <code class="in">es_urgente = urgente == &quot;si&quot;</code>).</li>
+        <li>Escribe cada condición con or. Si es una comparación, <b>repite la variable</b> en cada lado.</li>
+        <li>Haz tu <b>tabla de requerimientos (tabla de verdad)</b> y calcula a mano qué debe salir en cada prueba.</li>
+        <li>Escribe el código en VS Code y corre <b>cada prueba</b>. Toma su captura y compárala con tu tabla.</li>
+        <li>Haz el <b>diagrama de flujo</b> en Canva o draw.io. Cada if es un <b>rombo</b>.</li>
+      </ol>
+
+      <h4>7️⃣ ¿Cómo hago la tabla de requerimientos (tabla de verdad)?</h4>
+      <p>Pon <b>una columna por cada condición</b>, una para la <b>condición completa con or</b> y otra para lo que debe <b>salir</b>. Después agrega una fila por cada prueba. Así queda la del <b>ejercicio 6</b>:</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Prueba</th><th>barco_tarde</th><th>puerto_saturado</th><th>falta_documento</th><th>semaforo_rojo</th><th>Las 4 con <b>or</b></th><th>Debe salir</th></tr></thead><tbody>
+        <tr><td><b>Prueba 1</b></td><td>False</td><td>False</td><td>False</td><td>False</td><td><b>False</b></td><td>✅ A tiempo · 10 días</td></tr>
+        <tr><td><b>Prueba 2</b></td><td>True</td><td>False</td><td>False</td><td>False</td><td><b>True</b></td><td>⚠️ Avisar · 1 motivo · 12 días</td></tr>
+        <tr><td><b>Prueba 3</b></td><td>False</td><td>True</td><td>True</td><td>False</td><td><b>True</b></td><td>⚠️ Avisar · 2 motivos · 14 días</td></tr>
+        <tr><td><b>Prueba 4</b></td><td>True</td><td>True</td><td>True</td><td>True</td><td><b>True</b></td><td>⚠️ Avisar · 4 motivos · 18 días</td></tr>
+      </tbody></table></div>
+      <div class="tip">📝 En el <b>ejercicio 7</b> haz una columna para la <b>zona</b>, una para <code class="in">es_urgente or kilos &gt; 1000</code> y una para <code class="in">es_frecuente or subtotal &gt; 5000</code>, más el total que debe salir.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej6">
+    <div class="ex-top" style="background:var(--pink);color:#fff">
+      <span class="emoji">⏱️</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Logística · or con varias condiciones</span>
+        <h3>Ejercicio 6 · ¿Avisamos al cliente de un retraso?</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Logística quiere avisar a tiempo a los clientes cuando su embarque se va a retrasar. Hay cuatro problemas que pueden causar un retraso y <b>con que pase uno solo</b> ya hay que avisar. Además, el cliente quiere saber cuáles fueron los motivos y cuántos días más va a tardar.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>Se avisa al cliente si <b>el barco llegó tarde</b>, <b>o</b> el <b>puerto está saturado</b>, <b>o</b> <b>falta un documento</b>, <b>o</b> le tocó <b>semáforo rojo</b> en la aduana.</li><li>Si no pasó ninguno de los cuatro, el embarque va a tiempo.</li><li>Si hay que avisar, se muestra la <b>lista de motivos</b> y <b>cuántos</b> son.</li><li>La entrega normal tarda <b>10 días</b> y cada motivo agrega <b>2 días</b>.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Preguntar los cuatro problemas (si/no).</li><li>Convertir cada respuesta en True o False.</li><li>Usar <b>or</b> para revisar los cuatro problemas en un solo if.</li><li>Mostrar uno por uno los motivos y contarlos con un contador.</li><li>Calcular los días estimados de entrega.</li></ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad4_ejercicio6_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 6: ¿Avisamos al cliente de un retraso?&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Preguntamos por los 4 problemas que pueden retrasar un embarque</span>
+barco = input(<span class="str">&quot;¿El barco llegó tarde? (si/no): &quot;</span>)
+puerto = input(<span class="str">&quot;¿El puerto está saturado? (si/no): &quot;</span>)
+documento = input(<span class="str">&quot;¿Falta algún documento? (si/no): &quot;</span>)
+semaforo = input(<span class="str">&quot;¿Le tocó semáforo rojo en la aduana? (si/no): &quot;</span>)
+
+<span class="com"># Convertimos cada respuesta en True o False</span>
+barco_tarde = barco == <span class="str">&quot;si&quot;</span>
+puerto_saturado = puerto == <span class="str">&quot;si&quot;</span>
+falta_documento = documento == <span class="str">&quot;si&quot;</span>
+semaforo_rojo = semaforo == <span class="str">&quot;si&quot;</span>
+
+<span class="com"># Contador de motivos de retraso</span>
+motivos = 0
+
+print()
+print(<span class="str">&quot;===== SEGUIMIENTO DEL EMBARQUE =====&quot;</span>)
+
+<span class="com"># or: con UN solo problema basta para avisar al cliente</span>
+if barco_tarde or puerto_saturado or falta_documento or semaforo_rojo:
+    print(<span class="str">&quot;⚠️ Avisa al cliente: el embarque viene con retraso.&quot;</span>)
+    print(<span class="str">&quot;Motivos:&quot;</span>)
+
+    <span class="com"># Revisamos uno por uno cuál problema SÍ pasó</span>
+    if barco_tarde:
+        print(<span class="str">&quot;   - El barco llegó tarde&quot;</span>)
+        motivos = motivos + 1
+    if puerto_saturado:
+        print(<span class="str">&quot;   - El puerto está saturado&quot;</span>)
+        motivos = motivos + 1
+    if falta_documento:
+        print(<span class="str">&quot;   - Falta un documento&quot;</span>)
+        motivos = motivos + 1
+    if semaforo_rojo:
+        print(<span class="str">&quot;   - Semáforo rojo en la aduana&quot;</span>)
+        motivos = motivos + 1
+
+    print(<span class="str">&quot;Total de motivos:&quot;</span>, motivos)
+else:
+    print(<span class="str">&quot;✅ El embarque va a tiempo. No hay que avisar al cliente.&quot;</span>)
+
+<span class="com"># La entrega normal tarda 10 días y cada motivo agrega 2 días</span>
+dias = 10 + motivos * 2
+print(<span class="str">&quot;Días estimados de entrega:&quot;</span>, dias)</div>
+      <h4>🧪 Pruébalo con estos datos</h4><p>Toma una <b>captura de pantalla de la terminal para cada prueba</b> y ponle su número en el Word.</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Prueba</th><th>Escribe</th><th>Debe salir</th></tr></thead><tbody><tr><td><b>Prueba 1</b></td><td>no, no, no, no</td><td>✅ A tiempo · 10 días</td></tr><tr><td><b>Prueba 2</b></td><td>si, no, no, no</td><td>⚠️ Avisar · El barco llegó tarde · 1 motivo · 12 días</td></tr><tr><td><b>Prueba 3</b></td><td>no, si, si, no</td><td>⚠️ Avisar · Puerto saturado y falta un documento · 2 motivos · 14 días</td></tr><tr><td><b>Prueba 4</b></td><td>si, si, si, si</td><td>⚠️ Avisar · los 4 motivos · 18 días</td></tr></tbody></table></div>
+      <div class="warn">🤔 <b>Piénsalo:</b> Compara este ejercicio con el ejercicio 1. Los dos revisan cuatro condiciones, pero uno usa <b>and</b> y el otro <b>or</b>. ¿Por qué en el ejercicio 1 se necesita and y aquí or? Escribe tu respuesta en el Word.</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Empieza con un rombo de las cuatro condiciones unidas con <b>or</b>. Del lado del Sí van <b>cuatro rombos seguidos</b> (uno por motivo) y cada uno suma 1 al contador. Cuando se juntan los caminos va el rectángulo de <code class="in">dias = 10 + motivos * 2</code>.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej7">
+    <div class="ex-top" style="background:var(--pink);color:#fff">
+      <span class="emoji">🌎</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Ventas Internacionales · or con comparaciones</span>
+        <h3>Ejercicio 7 · Zona de envío y costo del flete</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Ventas manda pedidos a varios países y cada <b>zona</b> tiene una tarifa distinta por kilo. Te piden un programa que, con el país y el peso, diga la zona, calcule el flete y aplique los cargos y descuentos de la empresa.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>Si el país es <b>ESTADOS UNIDOS o CANADA</b>, la zona es <b>NORTEAMERICA</b> y cuesta <b>$2 por kg</b>.</li><li>Si el país es <b>GUATEMALA, COLOMBIA, CHILE o BRASIL</b>, la zona es <b>LATINOAMERICA</b> y cuesta <b>$3 por kg</b>.</li><li>Si el país es <b>ALEMANIA, FRANCIA o ITALIA</b>, la zona es <b>EUROPA</b> y cuesta <b>$5 por kg</b>.</li><li>Si es cualquier otro país, se avisa que <b>no hay ruta</b> de envío.</li><li>Si el pedido es <b>urgente o</b> pesa <b>más de 1000 kg</b>, se cobra un <b>cargo especial de $500</b>.</li><li>Subtotal = flete + cargo especial.</li><li>Si es <b>cliente frecuente o</b> el subtotal pasa de <b>$5,000</b>, se hace un <b>10% de descuento</b> sobre el subtotal.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Pedir el país en MAYÚSCULAS, el peso y las dos respuestas de si/no.</li><li>Usar <b>or</b> con comparaciones dentro de if y elif para elegir la zona.</li><li>Usar <b>or</b> para el cargo especial.</li><li>Usar <b>or</b> para el descuento.</li><li>Mostrar el flete, el cargo, el descuento y el total.</li></ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad4_ejercicio7_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 7: Zona de envío y costo del flete&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Pedimos los datos del pedido</span>
+pais = input(<span class="str">&quot;País destino en MAYÚSCULAS y sin acento: &quot;</span>)
+kilos = float(input(<span class="str">&quot;Peso del pedido en kg: &quot;</span>))
+frecuente = input(<span class="str">&quot;¿Es cliente frecuente? (si/no): &quot;</span>)
+urgente = input(<span class="str">&quot;¿El pedido es urgente? (si/no): &quot;</span>)
+
+<span class="com"># Convertimos las respuestas en True o False</span>
+es_frecuente = frecuente == <span class="str">&quot;si&quot;</span>
+es_urgente = urgente == <span class="str">&quot;si&quot;</span>
+
+print()
+print(<span class="str">&quot;===== COTIZACIÓN DEL FLETE =====&quot;</span>)
+
+<span class="com"># or con comparaciones: cada lado del or es una comparación COMPLETA</span>
+if pais == <span class="str">&quot;ESTADOS UNIDOS&quot;</span> or pais == <span class="str">&quot;CANADA&quot;</span>:
+    zona = <span class="str">&quot;NORTEAMERICA&quot;</span>
+    tarifa = 2
+elif pais == <span class="str">&quot;GUATEMALA&quot;</span> or pais == <span class="str">&quot;COLOMBIA&quot;</span> or pais == <span class="str">&quot;CHILE&quot;</span> or pais == <span class="str">&quot;BRASIL&quot;</span>:
+    zona = <span class="str">&quot;LATINOAMERICA&quot;</span>
+    tarifa = 3
+elif pais == <span class="str">&quot;ALEMANIA&quot;</span> or pais == <span class="str">&quot;FRANCIA&quot;</span> or pais == <span class="str">&quot;ITALIA&quot;</span>:
+    zona = <span class="str">&quot;EUROPA&quot;</span>
+    tarifa = 5
+else:
+    zona = <span class="str">&quot;SIN RUTA&quot;</span>
+    tarifa = 0
+
+if zona == <span class="str">&quot;SIN RUTA&quot;</span>:
+    print(<span class="str">&quot;❌ No tenemos ruta de envío a&quot;</span>, pais)
+else:
+    flete = kilos * tarifa
+    print(<span class="str">&quot;Zona:&quot;</span>, zona)
+    print(<span class="str">&quot;Flete: $&quot;</span>, flete, sep=<span class="str">&quot;&quot;</span>)
+
+    <span class="com"># or: si es urgente O pesa más de 1000 kg, se cobra un cargo especial</span>
+    if es_urgente or kilos &gt; 1000:
+        cargo = 500
+        print(<span class="str">&quot;➕ Cargo especial (urgente o más de 1000 kg): $500&quot;</span>)
+    else:
+        cargo = 0
+
+    subtotal = flete + cargo
+
+    <span class="com"># or: si es cliente frecuente O el subtotal pasa de $5000, hay descuento</span>
+    if es_frecuente or subtotal &gt; 5000:
+        descuento = subtotal * 10 / 100
+        print(<span class="str">&quot;🎁 Descuento del 10%: $&quot;</span>, descuento, sep=<span class="str">&quot;&quot;</span>)
+    else:
+        descuento = 0
+
+    total = subtotal - descuento
+    print(<span class="str">&quot;Total a pagar: $&quot;</span>, total, sep=<span class="str">&quot;&quot;</span>)</div>
+      <h4>🧪 Pruébalo con estos datos</h4><p>Toma una <b>captura de pantalla de la terminal para cada prueba</b> y ponle su número en el Word.</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Prueba</th><th>Escribe (país, kg, frecuente, urgente)</th><th>Debe salir</th></tr></thead><tbody><tr><td><b>Prueba 1</b></td><td>CANADA, 500, no, no</td><td>NORTEAMERICA · Flete $1000.0 · Total $1000.0</td></tr><tr><td><b>Prueba 2</b></td><td>CHILE, 1200, no, no</td><td>LATINOAMERICA · Flete $3600.0 · Cargo $500 · Total $4100.0</td></tr><tr><td><b>Prueba 3</b></td><td>ALEMANIA, 1200, no, no</td><td>EUROPA · Flete $6000.0 · Cargo $500 · Descuento $650.0 · Total $5850.0</td></tr><tr><td><b>Prueba 4</b></td><td>ESTADOS UNIDOS, 200, si, si</td><td>NORTEAMERICA · Flete $400.0 · Cargo $500 · Descuento $90.0 · Total $810.0</td></tr><tr><td><b>Prueba 5</b></td><td>JAPON, 100, no, no</td><td>❌ No tenemos ruta de envío a JAPON</td></tr></tbody></table></div>
+      <div class="warn">🤔 <b>Piénsalo:</b> Cambia la primera condición por <code class="in">pais == &quot;ESTADOS UNIDOS&quot; or &quot;CANADA&quot;</code> y prueba con JAPON. ¿Qué zona sale? ¿Por qué? Escribe tu respuesta en el Word y después regresa la condición a como estaba.</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Empieza con una cadena de rombos (if, elif, elif) para la zona, cada uno con sus países unidos con <b>or</b>. Después un rombo para "SIN RUTA". Del lado del No van el rectángulo del flete, el rombo del cargo especial (<b>or</b>), el rectángulo del subtotal, el rombo del descuento (<b>or</b>) y el rectángulo del total.</div>
+    </div>
+  </article>
+</div>
+
+<div class="tab-panel" data-panel="bitabit" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>⚙️ Operadores bit a bit</h2>
+    <p>&amp;, |, ^, ~, &lt;&lt; y &gt;&gt;: guardar varios datos de sí o no en un solo número.</p>
+    <p style="margin-top:8px"><b>Ejercicios 8 al 10</b></p>
+    <div class="topics"><span>&amp; | ^ ~</span><span>&lt;&lt; &gt;&gt;</span></div>
+  </div>
+  <div class="card alt">
+    <p>💼 <b>Tu papel:</b> sigues de practicante en la comercializadora de Monterrey. Ahora los departamentos quieren guardar varios datos de <b>sí o no</b> en <b>un solo número</b>. Lee primero la <b>guía</b> de abajo: explica qué son estos operadores y trae las "recetas" que vas a usar en cada ejercicio. Los ejercicios 8 y 9 traen el código completo; en el <b>ejercicio 10</b> tú completas las partes que faltan.</p>
+  </div>
+
+  <article class="ex" id="guia-bits">
+    <div class="ex-top" style="background:var(--ink);color:#fff">
+      <span class="emoji">📘</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Lee esto antes de empezar</span>
+        <h3>Guía · ¿Qué son los operadores bit a bit?</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+
       <h4>1️⃣ ¿Qué es un bit y de dónde sale el 8, 4, 2, 1?</h4>
       <h4 style="font-size:1rem">💡 Primero, lo que ya sabes: los números de siempre</h4>
       <p>Los números que usamos todos los días se llaman <b>decimales</b> porque usan <b>10 dígitos</b> (del 0 al 9). Cuando escribes <b>365</b>, cada posición tiene un valor distinto:</p>
