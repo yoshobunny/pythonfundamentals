@@ -1,0 +1,86 @@
+<h4>💡 Primero, lo que ya sabes: los números de siempre</h4>
+      <p>Los números que usamos todos los días se llaman <b>decimales</b> porque usan <b>10 dígitos</b> (del 0 al 9). Cuando escribes <b>365</b>, cada posición tiene un valor distinto:</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th></th><th>Centenas</th><th>Decenas</th><th>Unidades</th></tr></thead><tbody>
+        <tr><td><b>Cada posición vale</b></td><td>100</td><td>10</td><td>1</td></tr>
+        <tr><td><b>El número 365</b></td><td>3</td><td>6</td><td>5</td></tr>
+        <tr><td><b>Cuenta</b></td><td>3 × 100 = 300</td><td>6 × 10 = 60</td><td>5 × 1 = 5</td></tr>
+      </tbody></table></div>
+      <p>300 + 60 + 5 = <b>365</b>. Fíjate en los valores: <b>1, 10, 100</b>. Empiezan en 1 por la derecha y cada posición vale <b>10 veces</b> la de su derecha, porque tenemos <b>10 dígitos</b>.</p>
+
+      <h4>💡 Ahora el binario: solo 2 dígitos</h4>
+      <p>La computadora funciona con electricidad: hay corriente o no hay corriente. Por eso solo usa <b>2 dígitos: 0 y 1</b>. A cada 0 o 1 se le llama <b>bit</b>, y funciona como un interruptor: <b>1 = sí (encendido)</b> y <b>0 = no (apagado)</b>.</p>
+      <p>Es la misma idea que con los decimales, pero como hay <b>2 dígitos</b>, cada posición vale <b>el doble</b> (× 2) de la de su derecha. Se empieza en 1 por la derecha y se va duplicando:</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th></th><th>4ª posición</th><th>3ª posición</th><th>2ª posición</th><th>1ª posición</th></tr></thead><tbody>
+        <tr><td><b>¿Cómo se obtiene?</b></td><td>4 × 2</td><td>2 × 2</td><td>1 × 2</td><td>Se empieza en 1</td></tr>
+        <tr><td><b>Cada posición vale</b></td><td><b>8</b></td><td><b>4</b></td><td><b>2</b></td><td><b>1</b></td></tr>
+      </tbody></table></div>
+      <div class="tip">🧠 <b>Frase para recordar:</b> en decimal cada posición vale <b>10 veces más</b> (1, 10, 100). En binario cada posición vale <b>el doble</b> (1, 2, 4, 8). Por eso, leídos de izquierda a derecha, quedan <b>8 · 4 · 2 · 1</b>. Si hubiera una 5ª posición valdría 16, luego 32, y así.</div>
+
+      <h4>💡 Cómo leer un número binario</h4>
+      <p>Escribe el número binario debajo de los valores <b>8 · 4 · 2 · 1</b>, un dígito en cada casilla. Multiplica cada dígito por el valor de su casilla (igual que con el 365) y <b>suma todo</b>. Las casillas con <b>0</b> aportan 0.</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Binario</th><th>Casilla 8</th><th>Casilla 4</th><th>Casilla 2</th><th>Casilla 1</th><th>Suma</th></tr></thead><tbody>
+        <tr><td><b>0101</b></td><td>0 × 8 = <b>0</b></td><td>1 × 4 = <b>4</b></td><td>0 × 2 = <b>0</b></td><td>1 × 1 = <b>1</b></td><td>0 + 4 + 0 + 1 = <b>5</b></td></tr>
+        <tr><td><b>1011</b></td><td>1 × 8 = <b>8</b></td><td>0 × 4 = <b>0</b></td><td>1 × 2 = <b>2</b></td><td>1 × 1 = <b>1</b></td><td>8 + 0 + 2 + 1 = <b>11</b></td></tr>
+        <tr><td><b>1111</b></td><td>1 × 8 = <b>8</b></td><td>1 × 4 = <b>4</b></td><td>1 × 2 = <b>2</b></td><td>1 × 1 = <b>1</b></td><td>8 + 4 + 2 + 1 = <b>15</b></td></tr>
+        <tr><td><b>0000</b></td><td>0 × 8 = <b>0</b></td><td>0 × 4 = <b>0</b></td><td>0 × 2 = <b>0</b></td><td>0 × 1 = <b>0</b></td><td>0 + 0 + 0 + 0 = <b>0</b></td></tr>
+      </tbody></table></div>
+
+      <h4>💡 Cómo escribir un número en binario</h4>
+      <p>Al revés: empieza por el valor más grande (8) y pregúntate <b>"¿cabe?"</b>. Si cabe, pones <b>1</b> y se lo restas. Si no cabe, pones <b>0</b>. Sigue con 4, 2 y 1. Ejemplo con el <b>11</b>:</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Valor</th><th>¿Cabe en lo que queda?</th><th>Pongo</th><th>Queda</th></tr></thead><tbody>
+        <tr><td>8</td><td>¿8 cabe en 11? Sí</td><td><b>1</b></td><td>11 − 8 = 3</td></tr>
+        <tr><td>4</td><td>¿4 cabe en 3? No</td><td><b>0</b></td><td>3</td></tr>
+        <tr><td>2</td><td>¿2 cabe en 3? Sí</td><td><b>1</b></td><td>3 − 2 = 1</td></tr>
+        <tr><td>1</td><td>¿1 cabe en 1? Sí</td><td><b>1</b></td><td>1 − 1 = 0</td></tr>
+      </tbody></table></div>
+      <p>Resultado: <b>11 = 1011</b>. En Python lo compruebas con <code class="in">format(11, "04b")</code>, que muestra <code class="in">1011</code>.</p>
+
+      <h4>💡 Los 16 números que caben en 4 bits</h4>
+      <p>Con 4 bits el número más pequeño es <b>0</b> (todas las casillas en 0) y el más grande es <b>15</b> (todas en 1). Fíjate en la columna del 1: va alternando 0, 1, 0, 1.</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Número</th><th>8</th><th>4</th><th>2</th><th>1</th><th>Suma</th></tr></thead><tbody>
+        <tr><td><b>0</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0 + 0 + 0 + 0 = <b>0</b></td></tr>
+        <tr><td><b>1</b></td><td>0</td><td>0</td><td>0</td><td>1</td><td>0 + 0 + 0 + 1 = <b>1</b></td></tr>
+        <tr><td><b>2</b></td><td>0</td><td>0</td><td>1</td><td>0</td><td>0 + 0 + 2 + 0 = <b>2</b></td></tr>
+        <tr><td><b>3</b></td><td>0</td><td>0</td><td>1</td><td>1</td><td>0 + 0 + 2 + 1 = <b>3</b></td></tr>
+        <tr><td><b>4</b></td><td>0</td><td>1</td><td>0</td><td>0</td><td>0 + 4 + 0 + 0 = <b>4</b></td></tr>
+        <tr><td><b>5</b></td><td>0</td><td>1</td><td>0</td><td>1</td><td>0 + 4 + 0 + 1 = <b>5</b></td></tr>
+        <tr><td><b>6</b></td><td>0</td><td>1</td><td>1</td><td>0</td><td>0 + 4 + 2 + 0 = <b>6</b></td></tr>
+        <tr><td><b>7</b></td><td>0</td><td>1</td><td>1</td><td>1</td><td>0 + 4 + 2 + 1 = <b>7</b></td></tr>
+        <tr><td><b>8</b></td><td>1</td><td>0</td><td>0</td><td>0</td><td>8 + 0 + 0 + 0 = <b>8</b></td></tr>
+        <tr><td><b>9</b></td><td>1</td><td>0</td><td>0</td><td>1</td><td>8 + 0 + 0 + 1 = <b>9</b></td></tr>
+        <tr><td><b>10</b></td><td>1</td><td>0</td><td>1</td><td>0</td><td>8 + 0 + 2 + 0 = <b>10</b></td></tr>
+        <tr><td><b>11</b></td><td>1</td><td>0</td><td>1</td><td>1</td><td>8 + 0 + 2 + 1 = <b>11</b></td></tr>
+        <tr><td><b>12</b></td><td>1</td><td>1</td><td>0</td><td>0</td><td>8 + 4 + 0 + 0 = <b>12</b></td></tr>
+        <tr><td><b>13</b></td><td>1</td><td>1</td><td>0</td><td>1</td><td>8 + 4 + 0 + 1 = <b>13</b></td></tr>
+        <tr><td><b>14</b></td><td>1</td><td>1</td><td>1</td><td>0</td><td>8 + 4 + 2 + 0 = <b>14</b></td></tr>
+        <tr><td><b>15</b></td><td>1</td><td>1</td><td>1</td><td>1</td><td>8 + 4 + 2 + 1 = <b>15</b></td></tr>
+      </tbody></table></div>
+
+      <h4>💡 ¿Y qué tiene que ver con True y False?</h4>
+      <p><b>Cada casilla guarda la respuesta a una pregunta de sí o no.</b> True se guarda como <b>1</b> y False como <b>0</b>. Así, en lugar de tener 4 variables, la empresa guarda <b>un solo número</b>.</p>
+      <div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Logística</b></p><p>La aduana revisa 4 requisitos y cada uno tiene <b>su propia casilla</b>: Mercancía coincide (8), Impuestos pagados (4), Pedimento (2) y Factura (1). Un embarque trae todo menos el pedimento.</p></div>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th></th><th>Casilla 8<br>Mercancía</th><th>Casilla 4<br>Impuestos</th><th>Casilla 2<br>Pedimento</th><th>Casilla 1<br>Factura</th><th>Resultado</th></tr></thead><tbody>
+        <tr><td><b>Respuesta</b></td><td>si</td><td>si</td><td>no</td><td>si</td><td></td></tr>
+        <tr><td><b>True / False</b></td><td>True</td><td>True</td><td>False</td><td>True</td><td></td></tr>
+        <tr><td><b>Bit</b></td><td><b>1</b></td><td><b>1</b></td><td><b>0</b></td><td><b>1</b></td><td>Binario: <b>1101</b></td></tr>
+        <tr><td><b>Cuenta</b></td><td>1 × 8 = <b>8</b></td><td>1 × 4 = <b>4</b></td><td>0 × 2 = <b>0</b></td><td>1 × 1 = <b>1</b></td><td>8 + 4 + 0 + 1 = <b>13</b></td></tr>
+      </tbody></table></div>
+      <p>Las 4 respuestas quedan guardadas en el número <b>13</b>. Y funciona <b>al revés</b>: si el sistema dice "el embarque tiene código 13", lo conviertes a binario (<b>1101</b>) y lees cada casilla.</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th></th><th>Casilla 8<br>Mercancía</th><th>Casilla 4<br>Impuestos</th><th>Casilla 2<br>Pedimento</th><th>Casilla 1<br>Factura</th></tr></thead><tbody>
+        <tr><td><b>Código 13 en binario</b></td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td><b>Significa</b></td><td>✅ Sí coincide</td><td>✅ Sí están pagados</td><td>🛑 <b>Falta</b></td><td>✅ Sí está</td></tr>
+      </tbody></table></div>
+      <div class="tip">🐍 <b>Dato curioso:</b> en Python, True y False de verdad valen 1 y 0. Si escribes <code class="in">print(True + True + False)</code>, sale <b>2</b>.</div>
+
+      <h4>💡 ¿Por qué usar 1, 2, 4, 8 y no 1, 2, 3, 4?</h4>
+      <p>Imagina que a los servicios de una naviera les damos los valores <b>1, 2, 3 y 4</b>: Flete = 1, Seguro = 2, Despacho = 3, Almacenaje = 4. Si una naviera tiene el código <b>3</b>, ¿qué ofrece? Puede ser <b>solo Despacho</b> (3), o <b>Flete + Seguro</b> (1 + 2 = 3). ¡No se sabe!</p>
+      <p>Con <b>1, 2, 4 y 8</b> eso nunca pasa: <b>cada combinación da un número diferente</b>. Así, con solo ver el número sabes exactamente qué servicios hay:</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Servicios que ofrece</th><th>Suma</th><th>Código</th><th>Binario</th></tr></thead><tbody>
+        <tr><td>Solo Flete</td><td>1</td><td><b>1</b></td><td>0001</td></tr>
+        <tr><td>Flete + Seguro</td><td>1 + 2</td><td><b>3</b></td><td>0011</td></tr>
+        <tr><td>Solo Despacho</td><td>4</td><td><b>4</b></td><td>0100</td></tr>
+        <tr><td>Flete + Despacho</td><td>1 + 4</td><td><b>5</b></td><td>0101</td></tr>
+        <tr><td>Seguro + Almacenaje</td><td>2 + 8</td><td><b>10</b></td><td>1010</td></tr>
+        <tr><td>Los 4 servicios</td><td>1 + 2 + 4 + 8</td><td><b>15</b></td><td>1111</td></tr>
+      </tbody></table></div>
+      <div class="warn">💡 <b>Idea clave:</b> cada servicio es <b>una casilla</b> del número. El <b>1</b> dice "sí lo ofrece" y el <b>0</b> dice "no lo ofrece". Por eso un solo número de 4 bits guarda <b>4 respuestas de sí o no</b>. En los ejemplos usamos 4 bits porque hay 4 datos; si hubiera 5, se usaría una 5ª casilla que vale 16.</div>
