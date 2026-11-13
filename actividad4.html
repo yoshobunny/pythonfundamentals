@@ -23,6 +23,14 @@
   .pasos-eval li{counter-increment:p;position:relative;padding:8px 12px 8px 44px;margin:6px 0;background:#FFFDF8;border:2px solid #F3EADB;border-radius:12px}
   .pasos-eval li::before{content:counter(p);position:absolute;left:10px;top:8px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-family:'Fredoka';font-size:.85rem;display:flex;align-items:center;justify-content:center}
 
+  .indice-sec{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0 4px;padding:10px 14px;background:#FFFDF8;border:2px solid #F3EADB;border-radius:14px;font-family:'Nunito'}
+  .indice-sec a{background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:4px 12px;font-weight:700;font-size:.9rem}
+  .indice-sec a:hover{opacity:.85}
+  .nav-secciones{display:flex;justify-content:space-between;gap:12px;margin:28px 0 8px}
+  .nav-sec{font-family:'Fredoka';font-size:1rem;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:10px 18px;cursor:pointer}
+  .nav-sec.sig{background:var(--ink);color:#fff}
+  .tab.tema.bloq{opacity:.45}
+  .tabs-temas{grid-template-columns:repeat(auto-fit,minmax(128px,1fr)) !important}
 </style>
 </head>
 <body>
@@ -34,24 +42,33 @@
     <div class="badges">
       <span class="badge">📝 Actividad 04</span>
       <span class="badge">👤 Individual</span>
-      <span class="badge">🧩 6 secciones · 25 ejercicios</span>
+      <span class="badge">🧩 5 secciones · 14 ejercicios</span>
       <span class="badge due">⏰ Martes 17 de noviembre, 23:59</span>
     </div>
-    <nav class="menu-pagina">
-      <a href="#actividad">Instrucciones</a>
-      <a href="#ejercicios" data-tab="logicos">Operadores lógicos</a> <a href="#ejercicios" data-tab="or">Operador or</a> <a href="#ejercicios" data-tab="bitabit">Operadores bit a bit</a> <a href="#ejercicios" data-tab="burbuja">Ordenamiento burbuja</a> <a href="#ejercicios" data-tab="operaciones">Operaciones con listas</a> <a href="#ejercicios" data-tab="avanzadas">Aplicaciones avanzadas de listas</a>
-      <a href="#entrega">Entrega</a>
-    </nav>
   </div>
 </header>
 
 <main class="wrap">
 
-<!-- INSTRUCCIONES -->
-<section id="actividad">
+<section id="secciones" style="padding-bottom:0">
+  <span class="tag" style="background:var(--sky)">Actividad 4</span>
+  <h2 class="title">Sigue las pestañas en orden</h2>
+  <p class="sub">Empieza por <b>Instrucciones</b>, resuelve cada sección de ejercicios y termina en <b>Entrega</b>. Cada pestaña dice qué ejercicios tiene.</p>
+  <div class="tabs tabs-temas" role="tablist">
+    <button class="tab tema active" type="button" role="tab" data-tab="instrucciones" style="--c:var(--coral)"><span class="t-num">EMPIEZA AQUÍ</span><span class="t-nom">Instrucciones</span><span class="t-ej">Qué entregar</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="logicos" style="--c:var(--grape)"><span class="t-num">EJERCICIOS 1 AL 5</span><span class="t-nom">Operadores lógicos</span><span class="t-ej">5 ejercicios</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="or" style="--c:var(--pink)"><span class="t-num">EJERCICIOS 6 Y 7</span><span class="t-nom"> Operador or</span><span class="t-ej">2 ejercicios</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="bitabit" style="--c:var(--sky)"><span class="t-num">EJERCICIOS 8 AL 10</span><span class="t-nom">Operadores bit a bit</span><span class="t-ej">3 ejercicios</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="listas" style="--c:var(--orange)"><span class="t-num">EJERCICIOS 11 Y 12</span><span class="t-nom">Operaciones con listas</span><span class="t-ej">2 ejercicios</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="burbuja" style="--c:var(--mint)"><span class="t-num">EJERCICIOS 13 Y 14</span><span class="t-nom">Ordena-<br>miento burbuja</span><span class="t-ej">2 ejercicios</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="entrega" style="--c:var(--ink)"><span class="t-num">AL FINAL</span><span class="t-nom"> Entrega</span><span class="t-ej">Checklist</span></button>
+  </div>
+</section>
+
+<div class="tab-panel" data-panel="instrucciones" role="tabpanel">
   <span class="tag" style="background:var(--coral)">Instrucciones</span>
   <h2 class="title">Actividad 4</h2>
-  <p class="sub">Esta actividad se hace de forma <b>individual</b>. Fecha límite: <b>viernes 13 de noviembre, 23:59</b>.</p>
+  <p class="sub">Esta actividad se hace de forma <b>individual</b>. Fecha límite: <b>martes 17 de noviembre, 23:59</b>.</p>
 
   <div class="reto" style="--c:var(--sky)">
     <div class="reto-head"><span class="n">1</span><div><small>ENTREGABLE</small><h3>Documento Word</h3></div></div>
@@ -60,9 +77,20 @@
       <div class="isteps">
         <div class="istep" style="--sc:var(--ink)"><span class="n">1</span><div><b>Portada:</b> nombre completo, matrícula, materia, nombre de la actividad, profesora y fecha.</div></div>
         <div class="istep" style="--sc:var(--ink)"><span class="n">2</span><div><b>Índice.</b></div></div>
-        <div class="istep" style="--sc:var(--grape)"><span class="n">3</span><div><b>Ejercicios 1 al 25:</b> un título por ejercicio (por ejemplo "Ejercicio X. Nombre del ejercicio"), <b>tabla de requerimientos (tabla de verdad)</b>, <b>capturas de pantalla de cada prueba o escenario solicitado</b> y <b>diagrama de flujo</b>.</div></div>
+        <div class="istep" style="--sc:var(--grape)"><span class="n">3</span><div><b>Ejercicios 1 al 14:</b> un título por ejercicio (por ejemplo "Ejercicio X. Nombre del ejercicio"), <b>tabla de requerimientos (tabla de verdad)</b> (revisa abajo cuál lleva cada ejercicio), <b>capturas de pantalla de cada prueba o escenario solicitado</b> y <b>diagrama de flujo</b>.</div></div>
         <div class="istep" style="--sc:var(--pink)"><span class="n">4</span><div>Realiza los <b>diagramas de flujo</b> en <b>Canva</b> o <b>draw.io</b>.</div></div>
         <div class="istep" style="--sc:var(--ink)"><span class="n">5</span><div><b>Enlace del repositorio GitHub:</b> <code>https://github.com/MiUsuario/Actividad4_Mimatricula</code></div></div>
+      </div>
+      <div class="card warm" style="margin-top:14px">
+        <h4 style="margin-top:0;color:var(--ink)">🧮 ¿Qué tabla lleva cada ejercicio?</h4>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Ejercicios</th><th>Sección</th><th>Tabla que debes poner</th></tr></thead><tbody>
+          <tr><td><b>1 al 5</b></td><td>Operadores lógicos</td><td><b>Tabla de verdad</b>: una columna True/False por cada condición, la condición completa y lo que debe salir.</td></tr>
+          <tr><td><b>6 y 7</b></td><td>Operador or</td><td><b>Tabla de verdad</b>: una columna True/False por cada condición unida con or y lo que debe salir.</td></tr>
+          <tr><td><b>8 al 10</b></td><td>Operadores bit a bit</td><td><b>Tabla de verdad en binario</b>: los números en binario, el resultado de cada operación (&amp;, |, ^, ~) y lo que debe salir.</td></tr>
+          <tr><td><b>11 y 12</b></td><td>Operaciones con listas</td><td><b>Tabla de requerimientos</b>: la lista de entrada, la operación y lo que debe salir. Agrega una columna True/False <b>solo</b> donde uses una condición (in, not in, if).</td></tr>
+          <tr><td><b>13 y 14</b></td><td>Ordenamiento burbuja</td><td><b>Tabla de requerimientos</b>: cómo queda la lista después de cada pasada.</td></tr>
+        </tbody></table></div>
+        <p style="margin-bottom:0">💡 Cada sección trae en su guía un <b>ejemplo de la tabla ya hecha</b>.</p>
       </div>
     </div>
   </div>
@@ -70,14 +98,13 @@
   <div class="reto" style="--c:var(--grape)">
     <div class="reto-head"><span class="n">2</span><div><small>ENTREGABLE</small><h3>Archivos de Python (.py) en Canvas y en GitHub</h3></div></div>
     <div class="reto-body">
-      <p>Un archivo por ejercicio. Los números de ejercicio siguen de una sección a la otra:</p>
+      <p>Un archivo por ejercicio, <strong>los 14 archivos .py&nbsp; debes subirlo en Canvas</strong>. Los números de ejercicio siguen de una sección a la otra:</p>
       <ul class="checks" style="--c:var(--grape)">
         <li><b>Operadores lógicos:</b> <code class="in">Actividad4_ejercicio1_mimatricula.py</code> al <code class="in">Actividad4_ejercicio5_mimatricula.py</code></li>
         <li><b>Operador or:</b> <code class="in">Actividad4_ejercicio6_mimatricula.py</code> y <code class="in">Actividad4_ejercicio7_mimatricula.py</code></li>
         <li><b>Operadores bit a bit:</b> <code class="in">Actividad4_ejercicio8_mimatricula.py</code> al <code class="in">Actividad4_ejercicio10_mimatricula.py</code></li>
-        <li><b>Ordenamiento burbuja:</b> <code class="in">Actividad4_ejercicio11_mimatricula.py</code> al <code class="in">Actividad4_ejercicio15_mimatricula.py</code></li>
-        <li><b>Operaciones con listas:</b> <code class="in">Actividad4_ejercicio16_mimatricula.py</code> al <code class="in">Actividad4_ejercicio20_mimatricula.py</code></li>
-        <li><b>Aplicaciones avanzadas de listas:</b> <code class="in">Actividad4_ejercicio21_mimatricula.py</code> al <code class="in">Actividad4_ejercicio25_mimatricula.py</code></li>
+        <li><b>Operaciones con listas:</b> <code class="in">Actividad4_ejercicio11_mimatricula.py</code> y <code class="in">Actividad4_ejercicio12_mimatricula.py</code></li>
+        <li><b>Ordenamiento burbuja:</b> <code class="in">Actividad4_ejercicio13_mimatricula.py</code> y <code class="in">Actividad4_ejercicio14_mimatricula.py</code></li>
       </ul>
     </div>
   </div>
@@ -92,30 +119,22 @@
       </div>
     </div>
   </div>
-</section>
 
-<!-- EJERCICIOS -->
-<section id="ejercicios">
-  <span class="tag" style="background:var(--sky)">Ejercicios</span>
-  <h2 class="title">Ejercicios de la Actividad 4</h2>
-  <p class="sub">La actividad tiene <b>6 secciones</b> y cada una tiene <b>varios ejercicios</b>. Elige la sección en las pestañas de abajo. Cada programa empieza con el <b>print del ejercicio, tu nombre y tu matrícula</b>. Lee los comentarios del código: explican qué hace cada línea.</p>
-
-  <div class="tabs tabs-temas" role="tablist">
-    <button class="tab tema active" type="button" role="tab" data-tab="logicos" style="--c:var(--grape)"><span class="t-num">5 EJERCICIOS</span><span class="t-nom">🔀 Operadores lógicos</span><span class="t-ej">Ejercicios 1 al 5</span></button>
-    <button class="tab tema" type="button" role="tab" data-tab="or" style="--c:var(--pink)"><span class="t-num">2 EJERCICIOS</span><span class="t-nom">🔀 Operador or</span><span class="t-ej">Ejercicios 6 y 7</span></button>
-    <button class="tab tema" type="button" role="tab" data-tab="bitabit" style="--c:var(--sky)"><span class="t-num">3 EJERCICIOS</span><span class="t-nom">⚙️ Operadores bit a bit</span><span class="t-ej">Ejercicios 8 al 10</span></button>
-    <button class="tab tema" type="button" role="tab" data-tab="burbuja" style="--c:var(--mint)"><span class="t-num">5 EJERCICIOS</span><span class="t-nom">🫧 Ordenamiento burbuja</span><span class="t-ej">Ejercicios 11 al 15</span></button>
-    <button class="tab tema" type="button" role="tab" data-tab="operaciones" style="--c:var(--orange)"><span class="t-num">5 EJERCICIOS</span><span class="t-nom">🧰 Operaciones con listas</span><span class="t-ej">Ejercicios 16 al 20</span></button>
-    <button class="tab tema" type="button" role="tab" data-tab="avanzadas" style="--c:var(--coral)"><span class="t-num">5 EJERCICIOS</span><span class="t-nom">🧩 Aplicaciones avanzadas de listas</span><span class="t-ej">Ejercicios 21 al 25</span></button>
+  <div class="card" style="margin-top:18px">
+    <p>📌 <b>Cómo usar esta página:</b> sigue las pestañas <b>en orden, de izquierda a derecha</b>. Cada sección trae primero una <b>guía</b> y después sus ejercicios. Cada programa empieza con el <b>print del ejercicio, tu nombre y tu matrícula</b>. Lee los comentarios del código: explican qué hace cada línea. Al terminar, ve a la pestaña <b>Entrega</b> y revisa el checklist.</p>
   </div>
+  <div class="nav-secciones"><span></span><button type="button" class="nav-sec sig" data-ir="logicos">🔀 Operadores lógicos →</button></div>
+</div>
 
-<div class="tab-panel" data-panel="logicos" role="tabpanel">
+<div class="tab-panel" data-panel="logicos" role="tabpanel" hidden>
+
   <div class="day-head" style="background:var(--grape);margin-top:26px">
     <h2>🔀 Operadores lógicos</h2>
     <p>and, or y not en las decisiones de una empresa de comercio internacional.</p>
     <p style="margin-top:8px"><b>Ejercicios 1 al 5</b></p>
     <div class="topics"><span>🤝 and</span><span>🔀 or</span><span>🔄 not</span><span>🧮 Paréntesis</span></div>
   </div>
+  <nav class="indice-sec"><b>En esta sección:</b> <a href="#ej1">Ejercicio 1</a> <a href="#ej2">Ejercicio 2</a> <a href="#ej3">Ejercicio 3</a> <a href="#ej4">Ejercicio 4</a> <a href="#ej5">Ejercicio 5</a></nav>
   <div class="card alt">
     <p>💼 <b>Tu papel:</b> eres practicante en una comercializadora de Monterrey que importa y exporta productos. Cada departamento te pide un programa para aplicar sus <b>reglas de negocio</b>. Los ejercicios 1 al 4 traen el código completo; en el <b>ejercicio 5</b> tú completas las partes que faltan.</p>
     <p>✍️ Escribe las respuestas de sí o no en <b>minúsculas y sin acento</b>: <code class="in">si</code> o <code class="in">no</code>.</p>
@@ -460,15 +479,19 @@ else:
       
       <div class="tip">📊 <b>Para tu diagrama:</b> el primer rombo revisa si el país es MEXICO. Del lado del No va el rombo del T-MEC; cuando se juntan sus caminos van los rectángulos del arancel, el IVA y el total, y al final el rombo del aviso de ahorro.</div>
     </div>
-  </article></div>
+  </article>
+  <div class="nav-secciones"><button type="button" class="nav-sec" data-ir="instrucciones">← 📋 Instrucciones</button><button type="button" class="nav-sec sig" data-ir="or">🔀 Operador or →</button></div>
+</div>
 
 <div class="tab-panel" data-panel="or" role="tabpanel" hidden>
+
   <div class="day-head" style="background:var(--pink);margin-top:26px">
     <h2>🔀 Operador or</h2>
     <p>Con UNA condición basta: or en las reglas de negocio de una empresa de comercio internacional.</p>
     <p style="margin-top:8px"><b>Ejercicios 6 y 7</b></p>
     <div class="topics"><span>🔀 or</span><span>📋 Varias condiciones</span><span>🔍 Comparaciones</span><span>🧮 Tabla de verdad</span></div>
   </div>
+  <nav class="indice-sec"><b>En esta sección:</b> <a href="#guia-or">📘 Guía</a> <a href="#ej6">Ejercicio 6</a> <a href="#ej7">Ejercicio 7</a></nav>
   <div class="card alt">
     <p>💼 <b>Tu papel:</b> sigues de practicante en la comercializadora de Monterrey. Ahora Logística y Ventas te piden reglas donde <b>con una sola condición basta</b>. Lee primero la <b>guía</b>: repasa lo de la semana 5 y te lleva paso a paso a resolver los dos ejercicios.</p>
     <p>✍️ Escribe las respuestas de sí o no en <b>minúsculas y sin acento</b> (<code class="in">si</code> o <code class="in">no</code>) y los países en <b>MAYÚSCULAS y sin acento</b>.</p>
@@ -698,15 +721,18 @@ else:
       <div class="tip">📊 <b>Para tu diagrama:</b> Empieza con una cadena de rombos (if, elif, elif) para la zona, cada uno con sus países unidos con <b>or</b>. Después un rombo para "SIN RUTA". Del lado del No van el rectángulo del flete, el rombo del cargo especial (<b>or</b>), el rectángulo del subtotal, el rombo del descuento (<b>or</b>) y el rectángulo del total.</div>
     </div>
   </article>
+  <div class="nav-secciones"><button type="button" class="nav-sec" data-ir="logicos">← 🔀 Operadores lógicos</button><button type="button" class="nav-sec sig" data-ir="bitabit">⚙️ Operadores bit a bit →</button></div>
 </div>
 
 <div class="tab-panel" data-panel="bitabit" role="tabpanel" hidden>
+
   <div class="day-head" style="background:var(--sky);margin-top:26px">
     <h2>⚙️ Operadores bit a bit</h2>
     <p>&amp;, |, ^, ~, &lt;&lt; y &gt;&gt;: guardar varios datos de sí o no en un solo número.</p>
     <p style="margin-top:8px"><b>Ejercicios 8 al 10</b></p>
     <div class="topics"><span>&amp; | ^ ~</span><span>&lt;&lt; &gt;&gt;</span></div>
   </div>
+  <nav class="indice-sec"><b>En esta sección:</b> <a href="#guia-bits">📘 Guía</a> <a href="#ej8">Ejercicio 8</a> <a href="#ej9">Ejercicio 9</a> <a href="#ej10">Ejercicio 10</a></nav>
   <div class="card alt">
     <p>💼 <b>Tu papel:</b> sigues de practicante en la comercializadora de Monterrey. Ahora los departamentos quieren guardar varios datos de <b>sí o no</b> en <b>un solo número</b>. Lee primero la <b>guía</b> de abajo: explica qué son estos operadores y trae las "recetas" que vas a usar en cada ejercicio. Los ejercicios 8 y 9 traen el código completo; en el <b>ejercicio 10</b> tú completas las partes que faltan.</p>
   </div>
@@ -1119,75 +1145,280 @@ else:
       <div class="tip">📊 <b>Para tu diagrama:</b> El primer rombo (if, elif, elif) asigna los permisos del puesto. Después van dos rombos seguidos: uno para la capacitación (<b>|</b>) y otro para las vacaciones (<b>&amp; ~</b>). Luego el rombo de EXPORTAR y, al final, el rombo de <code class="in">requeridos</code> con el cálculo de lo que falta del lado del No.</div>
     </div>
   </article>
+  <div class="nav-secciones"><button type="button" class="nav-sec" data-ir="or">← 🔀 Operador or</button><button type="button" class="nav-sec sig" data-ir="listas">🧰 Operaciones con listas →</button></div>
+</div>
+
+<div class="tab-panel" data-panel="listas" role="tabpanel" hidden>
+
+  <div class="day-head" style="background:var(--orange);margin-top:26px">
+    <h2>🧰 Operaciones con listas</h2>
+    <p>Rebanadas, in / not in, del y copias de listas en una empresa de comercio internacional.</p>
+    <p style="margin-top:8px"><b>Ejercicios 11 y 12</b></p>
+    <div class="topics"><span>✂️ Rebanadas</span><span>🔍 in / not in</span><span>🗑️ del</span><span>📄 Copias</span></div>
+  </div>
+  <nav class="indice-sec"><b>En esta sección:</b> <a href="#guia-listas">📘 Guía</a> <a href="#ej11">Ejercicio 11</a> <a href="#ej12">Ejercicio 12</a></nav>
+  <div class="card alt">
+    <p>💼 <b>Tu papel:</b> sigues de practicante en la comercializadora de Monterrey. Ahora Ventas te pide programas que trabajen con las <b>listas</b> de la empresa: catálogo, países, ventas y precios. El <b>ejercicio 11</b> trae el código completo; en el <b>ejercicio 12</b> tú completas las partes que faltan.</p>
+    <p>✍️ Escribe los productos y países como indica cada ejercicio (en el 11, en <b>MAYÚSCULAS y sin acento</b>).</p>
+  </div>
+  <article class="ex" id="guia-listas">
+    <div class="ex-top" style="background:var(--ink);color:#fff">
+      <span class="emoji">📘</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Lee esto antes de empezar · repaso de la semana 5</span>
+        <h3>Guía · Operaciones con listas para resolver los ejercicios 11 y 12</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <p>La explicación completa, con ejemplos, está en la página de la <b>Semana 5</b>, en la pestaña <b>Operaciones con listas</b>. Aquí tienes el resumen de lo que vas a usar.</p>
+
+      <h4>1️⃣ Las herramientas</h4>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Quiero...</th><th>Escribo</th><th>Ejemplo con ventas = [120, 95, 140, 160, 110, 175]</th><th>Ejercicio</th></tr></thead><tbody>
+        <tr><td>Los primeros <b>n</b> elementos</td><td><code class="in">lista[:n]</code></td><td><code class="in">ventas[:2]</code> → [120, 95]</td><td>11 y 12</td></tr>
+        <tr><td>Los últimos <b>n</b> elementos</td><td><code class="in">lista[-n:]</code></td><td><code class="in">ventas[-2:]</code> → [110, 175]</td><td>11</td></tr>
+        <tr><td>Un pedazo del medio</td><td><code class="in">lista[inicio:fin]</code></td><td><code class="in">ventas[3:6]</code> → [160, 110, 175]</td><td>11</td></tr>
+        <tr><td>Borrar desde una posición hasta el final</td><td><code class="in">del lista[n:]</code></td><td><code class="in">del ventas[3:]</code> → queda [120, 95, 140]</td><td>12</td></tr>
+        <tr><td>Saber si algo <b>está</b></td><td><code class="in">x in lista</code></td><td><code class="in">160 in ventas</code> → True</td><td>11 y 12</td></tr>
+        <tr><td>Saber si algo <b>no está</b></td><td><code class="in">x not in lista</code></td><td><code class="in">500 not in ventas</code> → True</td><td>11 y 12</td></tr>
+        <tr><td>Hacer una <b>copia real</b></td><td><code class="in">copia = lista[:]</code></td><td>Si cambias la copia, ventas no cambia</td><td>12</td></tr>
+        <tr><td>Buscar el <b>mayor</b></td><td><code class="in">for</code> + <code class="in">if x &gt; mayor</code></td><td>El mayor de ventas es 175</td><td>12</td></tr>
+      </tbody></table></div>
+
+      <h4>2️⃣ Recuerda cómo se lee una rebanada</h4>
+      <p><code class="in">ventas[0:3]</code> se lee: <i>"dame desde la posición 0 y detente al llegar a la 3"</i>. Python toma las posiciones 0, 1 y 2. Para saber cuántos elementos vas a obtener, resta <b>fin menos inicio</b>: 3 - 0 = 3. Si no pones inicio, empieza desde el principio; si no pones fin, llega hasta el final.</p>
+
+      <h4>3️⃣ La trampa de las copias (ejercicio 12)</h4>
+      <div class="warn">⚠️ <code class="in">promocion = precios</code> <b>no</b> crea una copia: es otro nombre para la <b>misma</b> lista (como compartir el link de un Google Doc). Si le cambias algo a promocion, también cambia precios. Para una copia real usa <code class="in">promocion = precios[:]</code> (como descargar una copia).</div>
+
+      <h4>4️⃣ Pasos para resolver cada ejercicio</h4>
+      <ol class="pasos-eval">
+        <li>Lee las reglas de negocio y anota <b>qué lista</b> se usa en cada una.</li>
+        <li>Para cada regla decide la herramienta: ¿necesitas un <b>pedazo</b> (rebanada), <b>borrar</b> (del), <b>preguntar si está</b> (in / not in), una <b>copia</b> ([:]) o <b>buscar</b> (for + if)?</li>
+        <li>Haz tu <b>tabla de requerimientos</b> y calcula a mano qué debe salir en cada prueba.</li>
+        <li>Escribe el código en VS Code y corre <b>cada prueba</b>. Toma su captura y compárala con tu tabla.</li>
+        <li>Haz el <b>diagrama de flujo</b> en Canva o draw.io. Cada if es un <b>rombo</b>.</li>
+      </ol>
+
+      <h4>5️⃣ ¿Cómo hago la tabla de requerimientos?</h4>
+      <p>Pon la <b>lista de entrada</b>, la <b>operación</b> y lo que debe <b>salir</b>. Agrega una columna True/False <b>solo</b> donde haya una condición (in, not in, if). Por ejemplo:</p>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Prueba</th><th>Lista de entrada</th><th>Operación</th><th>¿Está? (in)</th><th>Debe salir</th></tr></thead><tbody>
+        <tr><td><b>Prueba 1</b></td><td>[120, 95, 140, 160, 110, 175]</td><td><code class="in">ventas[0:3]</code></td><td></td><td>[120, 95, 140]</td></tr>
+        <tr><td><b>Prueba 2</b></td><td>["MEXICO", "ESTADOS UNIDOS", "CANADA"]</td><td><code class="in">"CANADA" in paises</code></td><td><b>True</b></td><td>✅ Aplica T-MEC</td></tr>
+        <tr><td><b>Prueba 3</b></td><td>["MEXICO", "ESTADOS UNIDOS", "CANADA"]</td><td><code class="in">"CHINA" in paises</code></td><td><b>False</b></td><td>🛑 No aplica T-MEC</td></tr>
+      </tbody></table></div>
+    </div>
+  </article>
+  <article class="ex" id="ej11">
+    <div class="ex-top" style="background:var(--orange);color:#fff">
+      <span class="emoji">📋</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Ventas Internacionales · in, not in y rebanadas</span>
+        <h3>Ejercicio 11 · Revisión de pedido y reporte de ventas</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Antes de aceptar un pedido de exportación, Ventas revisa que el producto esté en el catálogo, si necesita permiso especial y si el país destino tiene tratado comercial. Además, el cliente pidió un reporte de sus compras de los últimos meses. Te piden un programa que haga las dos cosas usando las listas de la empresa.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>El catálogo de la empresa es: CAFE, TEQUILA, MIEL, AGUACATE y ACIDO SULFURICO.</li><li>Si el producto <b>no está</b> en el catálogo, se avisa que la empresa no lo vende y ya no se revisa nada más del pedido.</li><li>Si el producto <b>está</b> en la lista de <b>restringidos</b> (ACIDO SULFURICO, MERCURIO, PIROTECNIA), necesita permiso especial. Si no, se puede exportar sin permiso.</li><li>Si el país destino <b>está</b> en el <b>T-MEC</b> (MEXICO, ESTADOS UNIDOS, CANADA), el arancel es 0%. Si no, se cobra el arancel general.</li><li>Las ventas del cliente de enero a junio son: 120, 95, 140, 160, 110 y 175 (miles de dólares).</li><li>El reporte pide un número de meses <b>entre 1 y 6</b>. Si está fuera de ese rango, se avisa que el dato está mal.</li><li>Si el número es válido, el reporte muestra los <b>primeros</b> y los <b>últimos</b> meses pedidos, y los dos <b>trimestres</b> del semestre.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Crear las cuatro listas de la empresa.</li><li>Pedir el producto, el país y los meses.</li><li>Usar <b>not in</b> para revisar el catálogo.</li><li>Usar <b>in</b> para revisar restringidos y T-MEC.</li><li>Usar <b>or</b> para validar los meses (como en la sesión del or).</li><li>Usar <b>rebanadas</b> para el reporte de ventas.</li></ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad4_ejercicio11_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 11: Revisión de pedido y reporte de ventas&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Listas de la empresa</span>
+catalogo = [<span class="str">&quot;CAFE&quot;</span>, <span class="str">&quot;TEQUILA&quot;</span>, <span class="str">&quot;MIEL&quot;</span>, <span class="str">&quot;AGUACATE&quot;</span>, <span class="str">&quot;ACIDO SULFURICO&quot;</span>]
+restringidos = [<span class="str">&quot;ACIDO SULFURICO&quot;</span>, <span class="str">&quot;MERCURIO&quot;</span>, <span class="str">&quot;PIROTECNIA&quot;</span>]
+paises_tmec = [<span class="str">&quot;MEXICO&quot;</span>, <span class="str">&quot;ESTADOS UNIDOS&quot;</span>, <span class="str">&quot;CANADA&quot;</span>]
+
+<span class="com"># Ventas del cliente de enero a junio, en miles de dólares</span>
+ventas = [120, 95, 140, 160, 110, 175]
+
+<span class="com"># Pedimos los datos del pedido</span>
+producto = input(<span class="str">&quot;Producto en MAYÚSCULAS y sin acento: &quot;</span>)
+pais = input(<span class="str">&quot;País destino en MAYÚSCULAS y sin acento: &quot;</span>)
+meses = int(input(<span class="str">&quot;¿Cuántos meses quieres en el reporte? (1 a 6): &quot;</span>))
+
+print()
+print(<span class="str">&quot;===== REVISIÓN DEL PEDIDO =====&quot;</span>)
+
+<span class="com"># not in: si el producto NO está en el catálogo, la empresa no lo vende</span>
+if producto not in catalogo:
+    print(<span class="str">&quot;❌&quot;</span>, producto, <span class="str">&quot;no está en nuestro catálogo.&quot;</span>)
+else:
+    <span class="com"># in: ¿el producto está en la lista de restringidos?</span>
+    if producto in restringidos:
+        print(<span class="str">&quot;🛑&quot;</span>, producto, <span class="str">&quot;necesita permiso especial para exportarse.&quot;</span>)
+    else:
+        print(<span class="str">&quot;✅&quot;</span>, producto, <span class="str">&quot;se puede exportar sin permiso especial.&quot;</span>)
+
+    <span class="com"># in: ¿el país destino está en el T-MEC?</span>
+    if pais in paises_tmec:
+        print(<span class="str">&quot;🌎&quot;</span>, pais, <span class="str">&quot;está en el T-MEC: arancel 0%.&quot;</span>)
+    else:
+        print(<span class="str">&quot;📄&quot;</span>, pais, <span class="str">&quot;no está en el T-MEC: se cobra el arancel general.&quot;</span>)
+
+print()
+print(<span class="str">&quot;===== REPORTE DE VENTAS DEL CLIENTE =====&quot;</span>)
+
+<span class="com"># or: los meses deben estar entre 1 y 6</span>
+if meses &lt; 1 or meses &gt; 6:
+    print(<span class="str">&quot;❌ Escribe un número de meses entre 1 y 6.&quot;</span>)
+else:
+    <span class="com"># Rebanada sin inicio: los primeros &#x27;meses&#x27; meses</span>
+    print(<span class="str">&quot;Primeros&quot;</span>, meses, <span class="str">&quot;meses:&quot;</span>, ventas[:meses])
+
+    <span class="com"># Rebanada con número negativo: los últimos &#x27;meses&#x27; meses</span>
+    print(<span class="str">&quot;Últimos&quot;</span>, meses, <span class="str">&quot;meses:&quot;</span>, ventas[-meses:])
+
+    <span class="com"># Rebanadas fijas: los dos trimestres del semestre</span>
+    print(<span class="str">&quot;Primer trimestre:&quot;</span>, ventas[0:3])
+    print(<span class="str">&quot;Segundo trimestre:&quot;</span>, ventas[3:6])</div>
+      <h4>🧪 Pruébalo con estos datos</h4><p>Toma una <b>captura de pantalla de la terminal para cada prueba</b> y ponle su número en el Word.</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Prueba</th><th>Escribe (producto, país, meses)</th><th>Debe salir</th></tr></thead><tbody><tr><td><b>Prueba 1</b></td><td>CAFE, CANADA, 3</td><td>✅ Se exporta sin permiso · 🌎 T-MEC · Primeros 3: [120, 95, 140] · Últimos 3: [160, 110, 175] · Trimestres</td></tr><tr><td><b>Prueba 2</b></td><td>ACIDO SULFURICO, CHINA, 2</td><td>🛑 Necesita permiso · 📄 No T-MEC · Primeros 2: [120, 95] · Últimos 2: [110, 175] · Trimestres</td></tr><tr><td><b>Prueba 3</b></td><td>VAINILLA, ESTADOS UNIDOS, 6</td><td>❌ No está en el catálogo · Primeros 6 y últimos 6: la lista completa · Trimestres</td></tr><tr><td><b>Prueba 4</b></td><td>MIEL, ALEMANIA, 8</td><td>✅ Se exporta sin permiso · 📄 No T-MEC · ❌ Escribe un número de meses entre 1 y 6</td></tr></tbody></table></div>
+      <div class="warn">🤔 <b>Piénsalo:</b> En la tercera prueba pediste 6 meses y salió la lista completa tanto en "primeros" como en "últimos". ¿Por qué <code class="in">ventas[:6]</code> y <code class="in">ventas[-6:]</code> dan lo mismo? Escribe tu respuesta en el Word.</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> El primer rombo revisa <code class="in">producto not in catalogo</code>. Del lado del No van dos rombos seguidos: restringidos (<b>in</b>) y T-MEC (<b>in</b>). Después, cuando se juntan los caminos, va el rombo de los meses (<b>or</b>) y del lado válido un rectángulo con las rebanadas.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej12">
+    <div class="ex-top" style="background:var(--orange);color:#fff">
+      <span class="emoji">🏷️</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Ventas · copias, rebanadas, del, in y búsqueda del mayor</span>
+        <h3>Ejercicio 12 · Precios del Buen Fin</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>📖 Historia</h4>
+      <p>Se acerca el Buen Fin y Ventas quiere una lista de precios con descuento, pero <b>sin perder los precios originales</b>, porque después de la promoción se vuelven a usar. Solo algunos productos entran a la promoción. Además, los clientes van a preguntar por productos y hay que decirles su precio normal y, si aplica, su precio de Buen Fin. Esta vez <b>tú escribes las partes que faltan</b>.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>Los productos son Café, Tequila, Miel, Mezcal y Cacao, con precios de 450, 1200, 300, 980 y 150. Cada precio está en la <b>misma posición</b> que su producto.</li><li>Los precios de promoción se calculan sobre una <b>copia real</b> de la lista de precios. Los precios originales <b>no deben cambiar</b>.</li><li>El descuento se aplica a cada precio: precio - precio × descuento ÷ 100.</li><li>Solo los <b>3 primeros</b> productos entran a la promoción. Los demás precios se <b>borran</b> de la lista de promoción.</li><li>Se muestra el producto en promoción <b>más caro</b>.</li><li>Si el producto que consulta el cliente <b>no está</b> en el catálogo, se avisa.</li><li>Si sí está, se muestra su precio normal y, si está en la promoción, su precio de Buen Fin. Si no está en la promoción, se avisa que se cobra el precio normal.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Hacer una copia real con <b>[:]</b>.</li><li>Tomar los productos de la promoción con una <b>rebanada</b>.</li><li>Borrar precios con <b>del</b> y una rebanada.</li><li>Buscar el mayor con <b>for</b> e <b>if</b>.</li><li>Usar <b>not in</b> e <b>in</b> para la consulta del cliente.</li></ol>
+      <h4>🧩 Completa el código</h4>
+      <p>Escribe en VS Code el código y <b>reemplaza cada línea amarilla</b> <span class="code" style="display:inline;padding:2px 6px;margin:0"><span class="blank">____</span></span> con lo que corresponde. Usa los comentarios como guía.</p>
+      <span class="file">Actividad4_ejercicio12_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 12: Precios del Buen Fin&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Catálogo: cada producto tiene su precio en la MISMA posición</span>
+productos = [<span class="str">&quot;Café&quot;</span>, <span class="str">&quot;Tequila&quot;</span>, <span class="str">&quot;Miel&quot;</span>, <span class="str">&quot;Mezcal&quot;</span>, <span class="str">&quot;Cacao&quot;</span>]
+precios = [450, 1200, 300, 980, 150]
+
+<span class="com"># Pedimos los datos</span>
+descuento = float(input(<span class="str">&quot;Porcentaje de descuento del Buen Fin: &quot;</span>))
+consulta = input(<span class="str">&quot;¿Qué producto quiere consultar el cliente?: &quot;</span>)
+
+<span class="com"># 1. Haz una COPIA REAL de precios para no cambiar los precios originales</span>
+promocion = <span class="blank">____________</span>
+
+<span class="com"># Aplicamos el descuento a cada precio de la copia</span>
+for i in range(len(promocion)):
+    promocion[i] = promocion[i] - promocion[i] * descuento / 100
+
+<span class="com"># 2. Solo los 3 PRIMEROS productos entran a la promoción. Toma ese pedazo con una rebanada</span>
+productos_promo = <span class="blank">________________</span>
+
+<span class="com"># 3. Borra de promocion los precios desde la posición 3 hasta el final (usa del)</span>
+<span class="blank">____________________</span>
+
+print()
+print(<span class="str">&quot;===== PRECIOS DEL BUEN FIN =====&quot;</span>)
+print(<span class="str">&quot;Productos en promoción:&quot;</span>, productos_promo)
+print(<span class="str">&quot;Precios originales:&quot;</span>, precios)
+print(<span class="str">&quot;Precios con descuento:&quot;</span>, promocion)
+
+<span class="com"># 4. Busca el producto más caro de la promoción</span>
+mayor = promocion[0]
+pos_mayor = 0
+for i in range(len(promocion)):
+    if <span class="blank">______________________</span>:
+        mayor = promocion[i]
+        pos_mayor = i
+print(<span class="str">&quot;⭐ El producto en promoción más caro es &quot;</span>, productos_promo[pos_mayor], <span class="str">&quot; a $&quot;</span>, mayor, sep=<span class="str">&quot;&quot;</span>)
+
+print()
+print(<span class="str">&quot;===== CONSULTA DEL CLIENTE =====&quot;</span>)
+
+<span class="com"># 5. Si el producto NO está en el catálogo, avisa al cliente</span>
+if <span class="blank">____________________________</span>:
+    print(<span class="str">&quot;❌&quot;</span>, consulta, <span class="str">&quot;no está en nuestro catálogo.&quot;</span>)
+else:
+    <span class="com"># Buscamos la posición del producto en el catálogo</span>
+    pos = -1
+    for i in range(len(productos)):
+        if productos[i] == consulta:
+            pos = i
+    print(<span class="str">&quot;Precio normal de &quot;</span>, consulta, <span class="str">&quot;: $&quot;</span>, precios[pos], sep=<span class="str">&quot;&quot;</span>)
+
+    <span class="com"># 6. Revisa si el producto está en la lista de productos en promoción</span>
+    if <span class="blank">____________________________</span>:
+        print(<span class="str">&quot;🎉 Precio Buen Fin: $&quot;</span>, promocion[pos], sep=<span class="str">&quot;&quot;</span>)
+    else:
+        print(<span class="str">&quot;🏷️&quot;</span>, consulta, <span class="str">&quot;no entra a la promoción. Se cobra el precio normal.&quot;</span>)</div>
+      <h4>🧪 Pruébalo con estos datos</h4><p>Toma una <b>captura de pantalla de la terminal para cada prueba</b> y ponle su número en el Word.</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Prueba</th><th>Escribe (descuento, producto)</th><th>Debe salir</th></tr></thead><tbody><tr><td><b>Prueba 1</b></td><td>20, Miel</td><td>Originales [450, 1200, 300, 980, 150] · Descuento [360.0, 960.0, 240.0] · ⭐ Tequila $960.0 · Normal $300 · 🎉 Buen Fin $240.0</td></tr><tr><td><b>Prueba 2</b></td><td>20, Mezcal</td><td>Originales sin cambio · ⭐ Tequila $960.0 · Normal $980 · 🏷️ No entra a la promoción</td></tr><tr><td><b>Prueba 3</b></td><td>50, Tequila</td><td>Descuento [225.0, 600.0, 150.0] · ⭐ Tequila $600.0 · Normal $1200 · 🎉 Buen Fin $600.0</td></tr><tr><td><b>Prueba 4</b></td><td>10, Vainilla</td><td>Descuento [405.0, 1080.0, 270.0] · ⭐ Tequila $1080.0 · ❌ No está en el catálogo</td></tr></tbody></table></div>
+      <div class="warn">🤔 <b>Piénsalo:</b> En todas las pruebas, la línea "Precios originales" sale igual. ¿Qué pasaría con esa línea si en el espacio 1 escribieras <code class="in">promocion = precios</code> en lugar de <code class="in">precios[:]</code>? Pruébalo y escribe tu respuesta en el Word.</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Empieza con rectángulos para la copia, el ciclo del descuento, la rebanada y el del. Luego el ciclo de la búsqueda del mayor con su rombo (<code class="in">promocion[i] &gt; mayor</code>). Al final el rombo de <b>not in</b> y, del lado del No, el ciclo que busca la posición y el rombo de <b>in</b>.</div>
+    </div>
+  </article>
+  <div class="nav-secciones"><button type="button" class="nav-sec" data-ir="bitabit">← ⚙️ Operadores bit a bit</button><button type="button" class="nav-sec sig" data-ir="burbuja">🫧 Ordenamiento burbuja →</button></div>
 </div>
 
 <div class="tab-panel" data-panel="burbuja" role="tabpanel" hidden>
+
+  <div class="lock-msg card" style="text-align:center;margin-top:26px">
+    <p style="font-size:1.25rem">🔒 <b>Esta sección se abre el martes 17 de noviembre a las 7:00 a. m.</b></p>
+    <p>Los ejercicios 13 y 14 se publican el día que veamos el tema en clase.</p>
+  </div>
+  <div class="panel-content">
   <div class="day-head" style="background:var(--mint);margin-top:26px">
     <h2>🫧 Ordenamiento burbuja</h2>
     <p>Ordenar listas paso a paso con el algoritmo burbuja.</p>
-    <p style="margin-top:8px"><b>Ejercicios 11 al 15</b></p>
+    <p style="margin-top:8px"><b>Ejercicios 13 y 14</b></p>
     <div class="topics"><span>🔁 Pasadas</span><span>🔄 Intercambio</span><span>📊 sort()</span></div>
   </div>
   <div class="card" style="text-align:center">
-    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> Los ejercicios 11 al 15 se publican el día que veamos este tema en clase.</p>
+    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> Los ejercicios 13 y 14 se publican el día que veamos este tema en clase.</p>
   </div>
+  </div>
+  <div class="nav-secciones"><button type="button" class="nav-sec" data-ir="listas">← 🧰 Operaciones con listas</button><button type="button" class="nav-sec sig" data-ir="entrega">✅ Entrega →</button></div>
 </div>
 
-<div class="tab-panel" data-panel="operaciones" role="tabpanel" hidden>
-  <div class="day-head" style="background:var(--orange);margin-top:26px">
-    <h2>🧰 Operaciones con listas</h2>
-    <p>Rebanadas, in / not in, del y copias de listas.</p>
-    <p style="margin-top:8px"><b>Ejercicios 16 al 20</b></p>
-    <div class="topics"><span>✂️ Rebanadas</span><span>🔍 in</span><span>🗑️ del</span><span>📄 Copias</span></div>
-  </div>
-  <div class="card" style="text-align:center">
-    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> Los ejercicios 16 al 20 se publican el día que veamos este tema en clase.</p>
-  </div>
-</div>
-
-<div class="tab-panel" data-panel="avanzadas" role="tabpanel" hidden>
-  <div class="day-head" style="background:var(--coral);margin-top:26px">
-    <h2>🧩 Aplicaciones avanzadas de listas</h2>
-    <p>Listas dentro de listas, arreglos de dos dimensiones y listas multidimensionales.</p>
-    <p style="margin-top:8px"><b>Ejercicios 21 al 25</b></p>
-    <div class="topics"><span>📦 Listas en listas</span><span>🧮 2D</span><span>🧊 Multidimensional</span></div>
-  </div>
-  <div class="card" style="text-align:center">
-    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> Los ejercicios 21 al 25 se publican el día que veamos este tema en clase.</p>
-  </div>
-</div>
-
-</section>
-
-<!-- ENTREGA -->
-<section id="entrega">
+<div class="tab-panel" data-panel="entrega" role="tabpanel" hidden>
   <span class="tag" style="background:var(--coral)">Entrega</span>
   <h2 class="title">Entrega</h2>
   <div class="delivery">
-    <div class="date-badge">⏰ Viernes 13 de noviembre, 23:59</div>
+    <div class="date-badge">⏰ Martes 17 de noviembre, 23:59</div>
     <div class="where">
-      <div style="background:var(--sky)"><h4>📄 Canvas</h4><p>Sube tu Word y tus archivos .py en la Actividad 04 y pega el enlace de tu repositorio.</p></div>
-      <div style="background:var(--grape)"><h4>🐙 GitHub</h4><p>Repositorio <b>Actividad4_Mimatricula</b> con tu Word y tus 25 archivos .py.</p></div>
+      <div style="background:var(--sky)"><h4>Canvas</h4><p>Sube tu Word y <strong>tus 14 archivos .py</strong> en la Actividad 04 y pega el enlace de tu repositorio.</p></div>
+      <div style="background:var(--grape)"><h4>GitHub</h4><p>Repositorio <b>Actividad4_Mimatricula</b> con tu Word y tus 14 archivos .py.</p></div>
     </div>
-    <h4>✅ Antes de entregar, revisa</h4>
+    <h4>Antes de entregar en Canvas tu Word y tus 14 archivos .py, revisa</h4>
     <ul class="checklist">
       <li><label><input type="checkbox" data-i="0"><span>Portada con nombre completo, matrícula, materia, actividad, profesora y fecha</span></label></li>
       <li><label><input type="checkbox" data-i="1"><span>Índice</span></label></li>
-      <li><label><input type="checkbox" data-i="2"><span>Ejercicios del 1 al 5 (Operadores lógicos): título del ejercicio, tabla de requerimientos (tabla de verdad), captura de la terminal de cada escenario solicitado y diagrama de flujo</span></label></li>
-      <li><label><input type="checkbox" data-i="3"><span>Ejercicios 6 y 7 (Operador or): título del ejercicio, tabla de requerimientos (tabla de verdad), captura de la terminal de cada escenario solicitado y diagrama de flujo</span></label></li>
-      <li><label><input type="checkbox" data-i="4"><span>Ejercicios del 8 al 10 (Operadores bit a bit): título del ejercicio, tabla de requerimientos (tabla de verdad), captura de la terminal de cada escenario solicitado y diagrama de flujo</span></label></li>
-      <li><label><input type="checkbox" data-i="5"><span>Ejercicios del 11 al 15 (Ordenamiento burbuja): título del ejercicio, tabla de requerimientos (tabla de verdad), captura de la terminal de cada escenario solicitado y diagrama de flujo</span></label></li>
-      <li><label><input type="checkbox" data-i="6"><span>Ejercicios del 16 al 20 (Operaciones con listas): título del ejercicio, tabla de requerimientos (tabla de verdad), captura de la terminal de cada escenario solicitado y diagrama de flujo</span></label></li>
-      <li><label><input type="checkbox" data-i="7"><span>Ejercicios del 21 al 25 (Aplicaciones avanzadas de listas): título del ejercicio, tabla de requerimientos (tabla de verdad), captura de la terminal de cada escenario solicitado y diagrama de flujo</span></label></li>
-      <li><label><input type="checkbox" data-i="8"><span>Cada programa empieza con el print del ejercicio, mi nombre y mi matrícula</span></label></li>
-      <li><label><input type="checkbox" data-i="9"><span>25 archivos .py con el nombre Actividad4_ejercicioN_mimatricula.py</span></label></li>
-      <li><label><input type="checkbox" data-i="10"><span>Repositorio Actividad4_Mimatricula creado en GitHub con el Word y los .py</span></label></li>
-      <li><label><input type="checkbox" data-i="11"><span>Enlace del repositorio escrito en el Word</span></label></li>
-      <li><label><input type="checkbox" data-i="12"><span>Word y archivos .py subidos y enlace enviado en la Actividad 04 de Canvas</span></label></li>
+      <li><label><input type="checkbox" data-i="2"><span>Ejercicios 1 al 5 (Operadores lógicos): título del ejercicio, tabla de verdad, captura de la terminal de cada prueba y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="3"><span>Ejercicios 6 y 7 (Operador or): título del ejercicio, tabla de verdad, captura de la terminal de cada prueba y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="4"><span>Ejercicios 8 al 10 (Operadores bit a bit): título del ejercicio, tabla de verdad en binario, captura de la terminal de cada prueba y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="5"><span>Ejercicios 11 y 12 (Operaciones con listas): título del ejercicio, tabla de requerimientos, captura de la terminal de cada prueba y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="6"><span>Ejercicios 13 y 14 (Ordenamiento burbuja): título del ejercicio, tabla de requerimientos, captura de la terminal de cada prueba y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="7"><span>Cada programa empieza con el print del ejercicio, mi nombre y mi matrícula</span></label></li>
+      <li><label><input type="checkbox" data-i="8"><span>14 archivos .py con el nombre Actividad4_ejercicioN_mimatricula.py</span></label></li>
+      <li><label><input type="checkbox" data-i="9"><span>Repositorio Actividad4_Mimatricula creado en GitHub con el Word y los .py</span></label></li>
+      <li><label><input type="checkbox" data-i="10"><span>Enlace del repositorio escrito en el Word</span></label></li>
+      <li><label><input type="checkbox" data-i="11"><span>Word y archivos .py subidos y enlace enviado en la Actividad 04 de Canvas</span></label></li>
     </ul>
-    <div class="progress" id="progreso">0 de 13 listos</div>
+    <div class="progress" id="progreso">0 de 12 listos</div>
   </div>
-</section>
+  <div class="nav-secciones"><button type="button" class="nav-sec" data-ir="burbuja">← 🫧 Ordenamiento burbuja</button><span></span></div>
+</div>
 
 </main>
 
@@ -1196,59 +1427,74 @@ else:
 <script src="menu.js"></script>
 <script>
   // ===== FECHAS EN QUE SE ABREN LAS PESTAÑAS (año-mes-díaThora:minutos) =====
-  // Ejemplo: bitabit: "2026-11-10T07:00"
-  // Si un tema no aparece aquí, su pestaña está abierta desde el inicio.
+  // Si una pestaña no aparece aquí, está abierta desde el inicio.
   const DESBLOQUEO = {
+    burbuja: "2026-11-17T07:00"
   };
-
   function bloqueada(nombre) {
     return DESBLOQUEO[nombre] ? new Date() < new Date(DESBLOQUEO[nombre]) : false;
   }
 
   const tabs = document.querySelectorAll(".tabs .tab");
   const panels = document.querySelectorAll(".tab-panel");
+  const CLAVE_TAB = "actividad4_pestana";
 
-  // Las pestañas bloqueadas se ven grises con candado
+  // Pestañas bloqueadas: se ven grises con candado y su contenido queda oculto
   tabs.forEach(t => {
     if (bloqueada(t.dataset.tab)) {
-      t.style.opacity = ".45";
-      t.style.cursor = "not-allowed";
+      t.classList.add("bloq");
       const nom = t.querySelector(".t-nom");
       nom.textContent = "🔒 " + nom.textContent;
     }
   });
-  document.querySelectorAll(".menu-pagina a[data-tab]").forEach(a => {
-    if (bloqueada(a.dataset.tab)) { a.style.opacity = ".45"; a.textContent = "🔒 " + a.textContent; }
+  panels.forEach(p => {
+    const msg = p.querySelector(".lock-msg");
+    const cont = p.querySelector(".panel-content");
+    if (msg && cont) {
+      const b = bloqueada(p.dataset.panel);
+      msg.hidden = !b;
+      cont.hidden = b;
+    }
   });
 
-  function mostrar(nombre) {
-    if (bloqueada(nombre)) return false;
+  function mostrar(nombre, subir) {
     tabs.forEach(t => {
       const activa = t.dataset.tab === nombre;
       t.classList.toggle("active", activa);
       t.setAttribute("aria-selected", activa);
     });
     panels.forEach(p => { p.hidden = p.dataset.panel !== nombre; });
-    return true;
+    try { localStorage.setItem(CLAVE_TAB, nombre); } catch (e) {}
+    if (subir) document.getElementById("secciones").scrollIntoView({ behavior: "smooth" });
   }
 
-  tabs.forEach(t => t.addEventListener("click", () => mostrar(t.dataset.tab)));
+  tabs.forEach(t => t.addEventListener("click", () => mostrar(t.dataset.tab, false)));
+  document.querySelectorAll(".nav-sec").forEach(b => b.addEventListener("click", () => mostrar(b.dataset.ir, true)));
 
-  // Los enlaces del menú de arriba abren su pestaña
-  document.querySelectorAll(".menu-pagina a[data-tab]").forEach(a => {
-    a.addEventListener("click", e => {
-      e.preventDefault();
-      if (mostrar(a.dataset.tab)) document.getElementById("ejercicios").scrollIntoView({ behavior: "smooth" });
-    });
-  });
+  // Enlaces directos: actividad4.html#ej9 abre la pestaña del ejercicio 9
+  function abrirDesdeHash() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return false;
+    const el = document.getElementById(id);
+    const panel = el ? el.closest(".tab-panel") : null;
+    if (!panel) return false;
+    mostrar(panel.dataset.panel, false);
+    setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 50);
+    return true;
+  }
+  window.addEventListener("hashchange", abrirDesdeHash);
+  if (!abrirDesdeHash()) {
+    let ultima = null;
+    try { ultima = localStorage.getItem(CLAVE_TAB); } catch (e) {}
+    if (ultima && document.querySelector('.tab-panel[data-panel="' + ultima + '"]')) mostrar(ultima, false);
+  }
 
   // ===== CHECKLIST DE ENTREGA (se guarda en tu navegador) =====
   const cajas = document.querySelectorAll(".checklist input");
   const progreso = document.getElementById("progreso");
-  const CLAVE = "actividad4_checklist_v2";
+  const CLAVE = "actividad4_checklist_v3";
   let marcadas = [];
   try { marcadas = JSON.parse(localStorage.getItem(CLAVE)) || []; } catch (e) {}
-
   function actualizar() {
     const listos = [...cajas].filter(c => c.checked).length;
     progreso.textContent = listos === cajas.length
@@ -1256,7 +1502,6 @@ else:
       : listos + " de " + cajas.length + " listos";
     try { localStorage.setItem(CLAVE, JSON.stringify([...cajas].map(c => c.checked))); } catch (e) {}
   }
-
   cajas.forEach((c, i) => {
     c.checked = !!marcadas[i];
     c.addEventListener("change", actualizar);
