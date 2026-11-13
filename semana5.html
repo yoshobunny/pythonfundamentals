@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Semana 5: Operadores lógicos y bit a bit | Fundamentos de Programación</title>
+<title>Semana 5: Operadores lógicos, bit a bit y listas | Fundamentos de Programación</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -16,6 +16,12 @@
   .pasos-eval{counter-reset:p;list-style:none;padding-left:0 !important}
   .pasos-eval li{counter-increment:p;position:relative;padding:8px 12px 8px 44px;margin:6px 0;background:#FFFDF8;border:2px solid #F3EADB;border-radius:12px}
   .pasos-eval li::before{content:counter(p);position:absolute;left:10px;top:8px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-family:'Fredoka';font-size:.85rem;display:flex;align-items:center;justify-content:center}
+  .tabs-temas{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:18px 0 8px}
+  .tab.tema{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:2px;padding:14px 16px;border-radius:18px}
+  .tab.tema .t-num{font-size:.8rem;opacity:.75;letter-spacing:.5px}
+  .tab.tema .t-nom{font-size:1.12rem;line-height:1.25}
+  .tab.tema .t-ej{font-family:'Nunito';font-weight:800;font-size:.82rem;background:rgba(43,45,66,.08);border-radius:999px;padding:3px 10px;margin-top:8px}
+  .tab.tema.active .t-ej{background:rgba(255,255,255,.25)}
 </style>
 </head>
 <body>
@@ -23,52 +29,64 @@
 <header class="hero">
   <div class="wrap">
     <span class="tag" style="background:var(--grape)">Fundamentos de Programación</span>
-    <h1><span class="c1">Semana 5.</span> <span class="c2">Operadores lógicos</span> y <span class="c3">bit a bit</span></h1>
+    <h1><span class="c1">Semana 5.</span> <span class="c2">Operadores lógicos</span>, <span class="c3">bit a bit</span> y <span class="c4">listas</span></h1>
     <div class="badges">
       <span class="badge">📚 Semana 5</span>
       <span class="badge">🤝 and · 🔀 or</span>
-      <span class="badge">🔢 Prioridad</span>
       <span class="badge">⚙️ Bits</span>
+      <span class="badge">🧰 Listas</span>
+      <span class="badge">🫧 Burbuja</span>
     </div>
     <nav class="menu-pagina">
-      <a href="#and">and</a>
-      <a href="#or">or</a>
-      <a href="#evalua">Cómo se evalúa</a>
-      <a href="#prioridad">Prioridad</a>
-      <a href="#bits">Bit a bit</a>
+      <a href="#temas" data-tab="logicos">Operadores lógicos</a>
+      <a href="#temas" data-tab="bits">Bit a bit</a>
+      <a href="#temas" data-tab="listas">Operaciones con listas</a>
+      <a href="#temas" data-tab="burbuja">Ordenamiento burbuja</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
 
+<section id="temas">
+  <span class="tag" style="background:var(--sky)">Temas</span>
+  <h2 class="title">Temas de la semana 5</h2>
+  <p class="sub">Elige el tema en las pestañas de abajo para repasar la explicación.</p>
+  <div class="tabs tabs-temas" role="tablist">
+    <button class="tab tema active" type="button" role="tab" data-tab="logicos" style="--c:var(--grape)"><span class="t-num">TEMA</span><span class="t-nom">🔀 Operadores lógicos</span><span class="t-ej">and · or · prioridad</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="bits" style="--c:var(--coral)"><span class="t-num">TEMA</span><span class="t-nom">⚙️ Operadores bit a bit</span><span class="t-ej">8 · 4 · 2 · 1</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="listas" style="--c:var(--orange)"><span class="t-num">TEMA</span><span class="t-nom">🧰 Operaciones con listas</span><span class="t-ej">Rebanadas · in · del · copias</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="burbuja" style="--c:var(--mint)"><span class="t-num">TEMA</span><span class="t-nom">🫧 Ordenamiento burbuja</span><span class="t-ej">Próximamente</span></button>
+  </div>
+</section>
+
+<div class="tab-panel" data-panel="logicos" role="tabpanel">
 <section id="and">
   <div class="day-head" style="background:var(--mint);margin-top:26px">
     <h2>🤝 1. and: se necesitan TODAS</h2>
     <p>and significa "y".</p>
   </div>
   <div class="card">
-<p><b>and</b> significa <b>"y"</b>. El resultado es <b>True solo si todas las condiciones son True</b>. Con una sola que sea False, todo el resultado es False.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Logística</b></p><p>Un embarque sale de la aduana si trae la <b>factura y</b> el <b>pedimento</b>. Si falta cualquiera de los dos, se queda.</p></div><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>¿Factura?</th><th>¿Pedimento?</th><th>factura <b>and</b> pedimento</th><th>¿Qué pasa?</th></tr></thead><tbody><tr><td>True</td><td>True</td><td><b>True</b></td><td>✅ Sale</td></tr><tr><td>True</td><td>False</td><td><b>False</b></td><td>🛑 Se queda</td></tr><tr><td>False</td><td>True</td><td><b>False</b></td><td>🛑 Se queda</td></tr><tr><td>False</td><td>False</td><td><b>False</b></td><td>🛑 Se queda</td></tr></tbody></table></div><div class="tip">🧠 <b>Frase para recordar:</b> and es <b>exigente</b>: las pide <b>todas</b>. Solo da True cuando <b>todas</b> son True.</div><h4>🐍 En Python</h4>
+<p><b>and</b> significa <b>"y"</b>. El resultado es <b>True solo si todas las condiciones son True</b>. Con una sola que sea False, todo el resultado es False.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Logística</b></p><p>Un embarque sale de la aduana si trae la <b>factura y</b> el <b>pedimento</b>. Si falta cualquiera de los dos, se queda.</p></div><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>¿Factura?</th><th>¿Pedimento?</th><th>factura <b>and</b> pedimento</th><th>¿Qué pasa?</th></tr></thead><tbody><tr><td>True</td><td>True</td><td><b>True</b></td><td>✅ Sale</td></tr><tr><td>True</td><td>False</td><td><b>False</b></td><td>🛑 Se queda</td></tr><tr><td>False</td><td>True</td><td><b>False</b></td><td>🛑 Se queda</td></tr><tr><td>False</td><td>False</td><td><b>False</b></td><td>🛑 Se queda</td></tr></tbody></table></div><div class="tip">🧠 <b>Frase para recordar:</b> and es <b>exigente</b>: las pide <b>todas</b>. Solo da True cuando <b>todas</b> son True.</div><h4>🐍 En Python quedaría de la siguiente forma</h4>
 <div class="code">factura = True
 pedimento = False
 print(<span class="str">&quot;¿Sale el embarque?&quot;</span>, factura and pedimento)</div>
-<h4>🖥️ Salida en pantalla</h4>
+<h4>🖥️ La salida en pantalla del código sería</h4>
 <div class="code salida">¿Sale el embarque? False</div>
   </div>
 </section>
-
 <section id="or">
   <div class="day-head" style="background:var(--grape);margin-top:26px">
     <h2>🔀 2. or: con UNA basta</h2>
     <p>or significa "o".</p>
   </div>
   <div class="card">
-<p><b>or</b> significa <b>"o"</b>. Une dos o más condiciones, y el resultado es <b>True si al menos una de ellas es True</b>. Solo da <b>False cuando todas son False</b>.</p><p>Piensa en or como una puerta con varias llaves: <b>cualquier llave la abre</b>. Solo se queda cerrada si no tienes <b>ninguna</b>.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Cobranza</b></p><p>La empresa envía el pedido si el cliente paga con <b>carta de crédito o</b> con <b>transferencia anticipada</b>. Con cualquiera de las dos es suficiente.</p></div><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>¿Carta de crédito?</th><th>¿Transferencia?</th><th>carta <b>or</b> transferencia</th><th>¿Qué pasa?</th></tr></thead><tbody><tr><td>True</td><td>True</td><td><b>True</b></td><td>✅ Se envía</td></tr><tr><td>True</td><td>False</td><td><b>True</b></td><td>✅ Se envía</td></tr><tr><td>False</td><td>True</td><td><b>True</b></td><td>✅ Se envía</td></tr><tr><td>False</td><td>False</td><td><b>False</b></td><td>🛑 No se envía</td></tr></tbody></table></div><div class="tip">🧠 <b>Frase para recordar:</b> or es <b>flexible</b>: con una se conforma. Solo da False cuando <b>todas</b> son False.</div><h4>🐍 En Python</h4>
+<p><b>or</b> significa <b>"o"</b>. Une dos o más condiciones, y el resultado es <b>True si al menos una de ellas es True</b>. Solo da <b>False cuando todas son False</b>.</p><p>Piensa en or como una puerta con varias llaves: <b>cualquier llave la abre</b>. Solo se queda cerrada si no tienes <b>ninguna</b>.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Cobranza</b></p><p>La empresa envía el pedido si el cliente paga con <b>carta de crédito o</b> con <b>transferencia anticipada</b>. Con cualquiera de las dos es suficiente.</p></div><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>¿Carta de crédito?</th><th>¿Transferencia?</th><th>carta <b>or</b> transferencia</th><th>¿Qué pasa?</th></tr></thead><tbody><tr><td>True</td><td>True</td><td><b>True</b></td><td>✅ Se envía</td></tr><tr><td>True</td><td>False</td><td><b>True</b></td><td>✅ Se envía</td></tr><tr><td>False</td><td>True</td><td><b>True</b></td><td>✅ Se envía</td></tr><tr><td>False</td><td>False</td><td><b>False</b></td><td>🛑 No se envía</td></tr></tbody></table></div><div class="tip">🧠 <b>Frase para recordar:</b> or es <b>flexible</b>: con una se conforma. Solo da False cuando <b>todas</b> son False.</div><h4>🐍 En Python quedaría de la siguiente forma</h4>
 <div class="code">carta_credito = False
 transferencia = True
 print(<span class="str">&quot;¿Se envía el pedido?&quot;</span>, carta_credito or transferencia)</div>
-<h4>🖥️ Salida en pantalla</h4>
-<div class="code salida">¿Se envía el pedido? True</div><h4>⚖️ and contra or</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th></th><th>and</th><th>or</th></tr></thead><tbody><tr><td><b>Significa</b></td><td>"y"</td><td>"o"</td></tr><tr><td><b>Pide</b></td><td><b>Todas</b> las condiciones</td><td><b>Al menos una</b></td></tr><tr><td><b>Da True en</b></td><td>1 de 4 combinaciones</td><td>3 de 4 combinaciones</td></tr><tr><td><b>Es</b></td><td>Exigente</td><td>Flexible</td></tr></tbody></table></div><h4>➕ or con más de dos condiciones</h4><p>Puedes unir todas las condiciones que quieras. Con que <b>una</b> sea True, todo es True.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Logística</b></p><p>Se avisa al cliente de un retraso si el <b>barco llegó tarde o</b> el <b>puerto está saturado o</b> falta <b>un documento o</b> le tocó <b>semáforo rojo</b>.</p></div><h4>🐍 En Python</h4>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">¿Se envía el pedido? True</div><h4>⚖️ and contra or</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th></th><th>and</th><th>or</th></tr></thead><tbody><tr><td><b>Significa</b></td><td>"y"</td><td>"o"</td></tr><tr><td><b>Pide</b></td><td><b>Todas</b> las condiciones</td><td><b>Al menos una</b></td></tr><tr><td><b>Da True en</b></td><td>1 de 4 combinaciones</td><td>3 de 4 combinaciones</td></tr><tr><td><b>Es</b></td><td>Exigente</td><td>Flexible</td></tr></tbody></table></div><h4>➕ or con más de dos condiciones</h4><p>Puedes unir todas las condiciones que quieras. Con que <b>una</b> sea True, todo es True.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Logística</b></p><p>Se avisa al cliente de un retraso si el <b>barco llegó tarde o</b> el <b>puerto está saturado o</b> falta <b>un documento o</b> le tocó <b>semáforo rojo</b>.</p></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
 <div class="code">barco_tarde = False
 puerto_saturado = True
 falta_documento = False
@@ -78,53 +96,53 @@ if barco_tarde or puerto_saturado or falta_documento or semaforo_rojo:
     print(<span class="str">&quot;⚠️ Avisa al cliente: el embarque viene con retraso.&quot;</span>)
 else:
     print(<span class="str">&quot;✅ El embarque va a tiempo.&quot;</span>)</div>
-<h4>🖥️ Salida en pantalla</h4>
-<div class="code salida">⚠️ Avisa al cliente: el embarque viene con retraso.</div><h4>🔍 or con comparaciones</h4><p>Muchas veces or une <b>comparaciones</b> (<code class="in">==</code>, <code class="in">&gt;</code>, <code class="in">&lt;</code>). Cada lado del or tiene que ser una <b>comparación completa</b>.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Ventas Internacionales</b></p><p>Si el país es <b>ESTADOS UNIDOS o CANADA</b>, la zona de envío es Norteamérica.</p></div><h4>🐍 En Python</h4>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">⚠️ Avisa al cliente: el embarque viene con retraso.</div><h4>🔍 or con comparaciones</h4><p>Muchas veces or une <b>comparaciones</b> (<code class="in">==</code>, <code class="in">&gt;</code>, <code class="in">&lt;</code>). Cada lado del or tiene que ser una <b>comparación completa</b>.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Ventas Internacionales</b></p><p>Si el país es <b>ESTADOS UNIDOS o CANADA</b>, la zona de envío es Norteamérica.</p></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
 <div class="code">pais = <span class="str">&quot;CANADA&quot;</span>
 if pais == <span class="str">&quot;ESTADOS UNIDOS&quot;</span> or pais == <span class="str">&quot;CANADA&quot;</span>:
     print(<span class="str">&quot;Zona: Norteamérica&quot;</span>)</div>
-<h4>🖥️ Salida en pantalla</h4>
+<h4>🖥️ La salida en pantalla del código sería</h4>
 <div class="code salida">Zona: Norteamérica</div><div class="warn">⚠️ <b>Cuidado:</b> si son <b>opciones</b> (un país u otro), se usa <b>or</b>. <code class="in">pais == &quot;ESTADOS UNIDOS&quot; and pais == &quot;CANADA&quot;</code> <b>nunca</b> es True, porque un país no puede ser los dos a la vez.</div>
   </div>
 </section>
-
 <section id="evalua">
   <div class="day-head" style="background:var(--sky);margin-top:26px">
     <h2>🧮 3. ¿Cómo evalúa Python el or?</h2>
     <p>Tres pasos para llegar al resultado.</p>
   </div>
   <div class="card">
-<p>Python resuelve un or en <b>tres pasos</b>:</p><ol class="pasos-eval"><li><b>Resuelve cada comparación</b> y la cambia por True o False.</li><li><b>Queda una expresión</b> de puros True y False unidos con or.</li><li><b>Aplica la tabla del or:</b> si hay al menos un True, el resultado es True.</li></ol><h4>Ejemplo con <code class="in">pais = &quot;CANADA&quot;</code></h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Cómo se ve</th></tr></thead><tbody><tr><td>Expresión original</td><td><code class="in">pais == &quot;ESTADOS UNIDOS&quot; or pais == &quot;CANADA&quot;</code></td></tr><tr><td>1. Resuelve cada comparación</td><td><code class="in">&quot;CANADA&quot; == &quot;ESTADOS UNIDOS&quot;</code> → False · <code class="in">&quot;CANADA&quot; == &quot;CANADA&quot;</code> → True</td></tr><tr><td>2. Queda</td><td><code class="in">False or True</code></td></tr><tr><td>3. Aplica la tabla</td><td><b>True</b></td></tr></tbody></table></div><h4>Ejemplo con números (<code class="in">urgente = False</code>, <code class="in">peso = 1200</code>)</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Cómo se ve</th></tr></thead><tbody><tr><td>Expresión original</td><td><code class="in">urgente or peso &gt; 1000</code></td></tr><tr><td>1. Resuelve cada comparación</td><td><code class="in">urgente</code> → False · <code class="in">1200 &gt; 1000</code> → True</td></tr><tr><td>2. Queda</td><td><code class="in">False or True</code></td></tr><tr><td>3. Aplica la tabla</td><td><b>True</b> → se cobra el cargo especial</td></tr></tbody></table></div><h4>🐍 En Python</h4>
+<p>Python resuelve un or en <b>tres pasos</b>:</p><ol class="pasos-eval"><li><b>Resuelve cada comparación</b> y la cambia por True o False.</li><li><b>Queda una expresión</b> de puros True y False unidos con or.</li><li><b>Aplica la tabla del or:</b> si hay al menos un True, el resultado es True.</li></ol><h4>Ejemplo con <code class="in">pais = &quot;CANADA&quot;</code></h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Cómo se ve</th></tr></thead><tbody><tr><td>Expresión original</td><td><code class="in">pais == &quot;ESTADOS UNIDOS&quot; or pais == &quot;CANADA&quot;</code></td></tr><tr><td>1. Resuelve cada comparación</td><td><code class="in">&quot;CANADA&quot; == &quot;ESTADOS UNIDOS&quot;</code> → False · <code class="in">&quot;CANADA&quot; == &quot;CANADA&quot;</code> → True</td></tr><tr><td>2. Queda</td><td><code class="in">False or True</code></td></tr><tr><td>3. Aplica la tabla</td><td><b>True</b></td></tr></tbody></table></div><h4>Ejemplo con números (<code class="in">urgente = False</code>, <code class="in">peso = 1200</code>)</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Cómo se ve</th></tr></thead><tbody><tr><td>Expresión original</td><td><code class="in">urgente or peso &gt; 1000</code></td></tr><tr><td>1. Resuelve cada comparación</td><td><code class="in">urgente</code> → False · <code class="in">1200 &gt; 1000</code> → True</td></tr><tr><td>2. Queda</td><td><code class="in">False or True</code></td></tr><tr><td>3. Aplica la tabla</td><td><b>True</b> → se cobra el cargo especial</td></tr></tbody></table></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
 <div class="code">pais = <span class="str">&quot;CANADA&quot;</span>
 print(pais == <span class="str">&quot;ESTADOS UNIDOS&quot;</span>, pais == <span class="str">&quot;CANADA&quot;</span>, pais == <span class="str">&quot;ESTADOS UNIDOS&quot;</span> or pais == <span class="str">&quot;CANADA&quot;</span>)</div>
-<h4>🖥️ Salida en pantalla</h4>
-<div class="code salida">False True True</div><h4>❌ El error más común: no repetir la variable</h4><p>En español decimos "si el país es ESTADOS UNIDOS o CANADA", pero en Python <b>no se puede escribir así</b>:</p><h4>🐍 En Python</h4>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">False True True</div><h4>❌ El error más común: no repetir la variable</h4><p>En español decimos "si el país es ESTADOS UNIDOS o CANADA", pero en Python <b>no se puede escribir así</b>:</p><h4>🐍 En Python quedaría de la siguiente forma</h4>
 <div class="code">pais = <span class="str">&quot;JAPON&quot;</span>
 if pais == <span class="str">&quot;ESTADOS UNIDOS&quot;</span> or <span class="str">&quot;CANADA&quot;</span>:
     print(<span class="str">&quot;Zona: Norteamérica&quot;</span>)</div>
-<h4>🖥️ Salida en pantalla</h4>
+<h4>🖥️ La salida en pantalla del código sería</h4>
 <div class="code salida">Zona: Norteamérica</div><p>¡Japón salió en Norteamérica! Veamos por qué, con los mismos tres pasos:</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Cómo se ve</th></tr></thead><tbody><tr><td>1. Resuelve cada lado</td><td><code class="in">&quot;JAPON&quot; == &quot;ESTADOS UNIDOS&quot;</code> → False · <code class="in">&quot;CANADA&quot;</code> solito <b>no es una comparación</b>, es un texto</td></tr><tr><td>2. Queda</td><td><code class="in">False or &quot;CANADA&quot;</code></td></tr><tr><td>3. Resultado</td><td>Para Python, un texto con letras cuenta como <b>verdadero</b>, así que siempre entra al if</td></tr></tbody></table></div><div class="tip">✅ <b>Lo correcto:</b> <code class="in">pais == &quot;ESTADOS UNIDOS&quot; or pais == &quot;CANADA&quot;</code></div><div class="tip">🧠 <b>Frase para recordar:</b> cada lado del or es una <b>pregunta completa</b>.</div>
   </div>
 </section>
-
 <section id="prioridad">
   <div class="day-head" style="background:var(--orange);margin-top:26px">
     <h2>🔢 4. Prioridad: ¿qué se resuelve primero?</h2>
     <p>and va antes que or, como la multiplicación va antes que la suma.</p>
   </div>
   <div class="card">
-<p>En matemáticas, <code class="in">2 + 3 * 4</code> da 14 y no 20, porque la <b>multiplicación va antes que la suma</b>. En Python pasa lo mismo con los operadores lógicos: <b>and va antes que or</b>.</p><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Orden</th><th>Qué se resuelve</th><th>Ejemplo</th></tr></thead><tbody><tr><td>1</td><td><b>Paréntesis</b></td><td><code class="in">( )</code></td></tr><tr><td>2</td><td><b>Operaciones aritméticas</b></td><td><code class="in">* / + -</code></td></tr><tr><td>3</td><td><b>Comparaciones</b></td><td><code class="in">&gt; &lt; == != &gt;= &lt;=</code></td></tr><tr><td>4</td><td><b>not</b></td><td><code class="in">not certificada</code></td></tr><tr><td>5</td><td><b>and</b></td><td><code class="in">a and b</code></td></tr><tr><td>6</td><td><b>or</b></td><td><code class="in">a or b</code></td></tr></tbody></table></div><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Comercio Exterior</b></p><p>Regla: un embarque va a revisión si <b>(vale más de $50,000 o es la primera importación) y</b> la empresa <b>no</b> está certificada.<br>Datos: <code class="in">valor = 60000</code>, <code class="in">es_primera = False</code>, <code class="in">certificada = True</code>. La empresa <b>sí</b> está certificada, así que <b>no</b> debería ir a revisión.</p></div><h4>❌ Sin paréntesis: <code class="in">valor &gt; 50000 or es_primera and not certificada</code></h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Qué se resuelve</th><th>Cómo queda</th></tr></thead><tbody><tr><td>1</td><td>Comparaciones</td><td><code class="in">True or False and not True</code></td></tr><tr><td>2</td><td>not</td><td><code class="in">True or False and False</code></td></tr><tr><td>3</td><td><b>and primero</b></td><td><code class="in">True or False</code></td></tr><tr><td>4</td><td>or</td><td><b>True</b> ❌ (se fue a revisión por error)</td></tr></tbody></table></div><h4>✅ Con paréntesis: <code class="in">(valor &gt; 50000 or es_primera) and not certificada</code></h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Qué se resuelve</th><th>Cómo queda</th></tr></thead><tbody><tr><td>1</td><td>Comparaciones</td><td><code class="in">(True or False) and not True</code></td></tr><tr><td>2</td><td><b>Paréntesis primero</b></td><td><code class="in">True and not True</code></td></tr><tr><td>3</td><td>not</td><td><code class="in">True and False</code></td></tr><tr><td>4</td><td>and</td><td><b>False</b> ✅ (no va a revisión)</td></tr></tbody></table></div><h4>🐍 En Python</h4>
+<p>En matemáticas, <code class="in">2 + 3 * 4</code> da 14 y no 20, porque la <b>multiplicación va antes que la suma</b>. En Python pasa lo mismo con los operadores lógicos: <b>and va antes que or</b>.</p><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Orden</th><th>Qué se resuelve</th><th>Ejemplo</th></tr></thead><tbody><tr><td>1</td><td><b>Paréntesis</b></td><td><code class="in">( )</code></td></tr><tr><td>2</td><td><b>Operaciones aritméticas</b></td><td><code class="in">* / + -</code></td></tr><tr><td>3</td><td><b>Comparaciones</b></td><td><code class="in">&gt; &lt; == != &gt;= &lt;=</code></td></tr><tr><td>4</td><td><b>not</b></td><td><code class="in">not certificada</code></td></tr><tr><td>5</td><td><b>and</b></td><td><code class="in">a and b</code></td></tr><tr><td>6</td><td><b>or</b></td><td><code class="in">a or b</code></td></tr></tbody></table></div><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Comercio Exterior</b></p><p>Regla: un embarque va a revisión si <b>(vale más de $50,000 o es la primera importación) y</b> la empresa <b>no</b> está certificada.<br>Datos: <code class="in">valor = 60000</code>, <code class="in">es_primera = False</code>, <code class="in">certificada = True</code>. La empresa <b>sí</b> está certificada, así que <b>no</b> debería ir a revisión.</p></div><h4>❌ Sin paréntesis: <code class="in">valor &gt; 50000 or es_primera and not certificada</code></h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Qué se resuelve</th><th>Cómo queda</th></tr></thead><tbody><tr><td>1</td><td>Comparaciones</td><td><code class="in">True or False and not True</code></td></tr><tr><td>2</td><td>not</td><td><code class="in">True or False and False</code></td></tr><tr><td>3</td><td><b>and primero</b></td><td><code class="in">True or False</code></td></tr><tr><td>4</td><td>or</td><td><b>True</b> ❌ (se fue a revisión por error)</td></tr></tbody></table></div><h4>✅ Con paréntesis: <code class="in">(valor &gt; 50000 or es_primera) and not certificada</code></h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Qué se resuelve</th><th>Cómo queda</th></tr></thead><tbody><tr><td>1</td><td>Comparaciones</td><td><code class="in">(True or False) and not True</code></td></tr><tr><td>2</td><td><b>Paréntesis primero</b></td><td><code class="in">True and not True</code></td></tr><tr><td>3</td><td>not</td><td><code class="in">True and False</code></td></tr><tr><td>4</td><td>and</td><td><b>False</b> ✅ (no va a revisión)</td></tr></tbody></table></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
 <div class="code">valor = 60000
 es_primera = False
 certificada = True
 print(<span class="str">&quot;Sin paréntesis:&quot;</span>, valor &gt; 50000 or es_primera and not certificada)
 print(<span class="str">&quot;Con paréntesis:&quot;</span>, (valor &gt; 50000 or es_primera) and not certificada)</div>
-<h4>🖥️ Salida en pantalla</h4>
+<h4>🖥️ La salida en pantalla del código sería</h4>
 <div class="code salida">Sin paréntesis: True
 Con paréntesis: False</div><div class="tip">🧠 <b>Frase para recordar:</b> igual que la multiplicación va antes que la suma, el <b>and va antes que el or</b>. Si quieres que el or vaya primero, <b>ponle paréntesis</b>.</div>
   </div>
 </section>
+</div>
 
+<div class="tab-panel" data-panel="bits" role="tabpanel" hidden>
 <section id="bits">
   <div class="day-head" style="background:var(--coral);margin-top:26px">
     <h2>⚙️ 5. Operadores bit a bit (introducción)</h2>
@@ -217,23 +235,223 @@ Con paréntesis: False</div><div class="tip">🧠 <b>Frase para recordar:</b> ig
         <tr><td>Los 4 servicios</td><td>1 + 2 + 4 + 8</td><td><b>15</b></td><td>1111</td></tr>
       </tbody></table></div>
       <div class="warn">💡 <b>Idea clave:</b> cada servicio es <b>una casilla</b> del número. El <b>1</b> dice "sí lo ofrece" y el <b>0</b> dice "no lo ofrece". Por eso un solo número de 4 bits guarda <b>4 respuestas de sí o no</b>. En los ejemplos usamos 4 bits porque hay 4 datos; si hubiera 5, se usaría una 5ª casilla que vale 16.</div>
-      <h4>🔄 ¿En qué se diferencian de and y or?</h4><ul><li><b>and / or</b> trabajan con <b>un</b> True o False completo y responden <b>True o False</b>.</li><li><b>Los bit a bit</b> trabajan con <b>cada bit</b> de un número y responden <b>otro número</b>.</li></ul><p>Un número de 4 bits es como guardar <b>4 respuestas de sí o no en una sola variable</b>.</p><h4>🧰 Los operadores</h4><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Operador</th><th>Cómo recordarlo</th><th>Ejemplo</th></tr></thead><tbody><tr><td><code class="in">&amp;</code></td><td>1 si <b>los dos</b> son 1 (como and)</td><td>0101 &amp; 0011 = 0001</td></tr><tr><td><code class="in">|</code></td><td>1 si <b>al menos uno</b> es 1 (como or)</td><td>0101 | 0011 = 0111</td></tr><tr><td><code class="in">^</code></td><td>1 si <b>solo uno</b> es 1</td><td>0101 ^ 0011 = 0110</td></tr><tr><td><code class="in">~</code></td><td><b>Al revés</b>: los 1 pasan a 0 y los 0 a 1</td><td>~0101 = 1010 (con 4 bits)</td></tr><tr><td><code class="in">&lt;&lt;</code></td><td>Corre los bits a la izquierda: <b>multiplica por 2</b></td><td>0011 &lt;&lt; 1 = 0110</td></tr><tr><td><code class="in">&gt;&gt;</code></td><td>Corre los bits a la derecha: <b>divide entre 2</b></td><td>0110 &gt;&gt; 1 = 0011</td></tr></tbody></table></div><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Compras</b></p><p>Cada naviera tiene un código de servicios: <b>1 = Flete</b>, <b>2 = Seguro</b>, <b>4 = Despacho aduanal</b>, <b>8 = Almacenaje</b>.<br>La Naviera A ofrece Flete y Despacho (1 + 4 = <b>5</b>). La Naviera B ofrece Flete y Seguro (1 + 2 = <b>3</b>).</p></div><h4>🐍 En Python</h4>
+      <h4>🔄 ¿En qué se diferencian de and y or?</h4><ul><li><b>and / or</b> trabajan con <b>un</b> True o False completo y responden <b>True o False</b>.</li><li><b>Los bit a bit</b> trabajan con <b>cada bit</b> de un número y responden <b>otro número</b>.</li></ul><p>Un número de 4 bits es como guardar <b>4 respuestas de sí o no en una sola variable</b>.</p><h4>🧰 Los operadores</h4><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Operador</th><th>Cómo recordarlo</th><th>Ejemplo</th></tr></thead><tbody><tr><td><code class="in">&amp;</code></td><td>1 si <b>los dos</b> son 1 (como and)</td><td>0101 &amp; 0011 = 0001</td></tr><tr><td><code class="in">|</code></td><td>1 si <b>al menos uno</b> es 1 (como or)</td><td>0101 | 0011 = 0111</td></tr><tr><td><code class="in">^</code></td><td>1 si <b>solo uno</b> es 1</td><td>0101 ^ 0011 = 0110</td></tr><tr><td><code class="in">~</code></td><td><b>Al revés</b>: los 1 pasan a 0 y los 0 a 1</td><td>~0101 = 1010 (con 4 bits)</td></tr><tr><td><code class="in">&lt;&lt;</code></td><td>Corre los bits a la izquierda: <b>multiplica por 2</b></td><td>0011 &lt;&lt; 1 = 0110</td></tr><tr><td><code class="in">&gt;&gt;</code></td><td>Corre los bits a la derecha: <b>divide entre 2</b></td><td>0110 &gt;&gt; 1 = 0011</td></tr></tbody></table></div><div class="card warm" style="margin-top:12px"><p>🏢 <b>En el área de Compras</b></p><p>Cada naviera tiene un código de servicios: <b>1 = Flete</b>, <b>2 = Seguro</b>, <b>4 = Despacho aduanal</b>, <b>8 = Almacenaje</b>.<br>La Naviera A ofrece Flete y Despacho (1 + 4 = <b>5</b>). La Naviera B ofrece Flete y Seguro (1 + 2 = <b>3</b>).</p></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
 <div class="code">naviera_a = 5
 naviera_b = 3
 print(<span class="str">&quot;A &amp; B =&quot;</span>, naviera_a &amp; naviera_b)
 print(<span class="str">&quot;A | B =&quot;</span>, naviera_a | naviera_b)
 print(<span class="str">&quot;En binario:&quot;</span>, format(naviera_a &amp; naviera_b, <span class="str">&quot;04b&quot;</span>), format(naviera_a | naviera_b, <span class="str">&quot;04b&quot;</span>))</div>
-<h4>🖥️ Salida en pantalla</h4>
+<h4>🖥️ La salida en pantalla del código sería</h4>
 <div class="code salida">A &amp; B = 1
 A | B = 7
 En binario: 0001 0111</div><ul><li><code class="in">A &amp; B = 1</code> (0001): el único servicio que ofrecen <b>las dos</b> es el Flete.</li><li><code class="in">A | B = 7</code> (0111): entre las dos ofrecen Flete, Seguro y Despacho.</li></ul><div class="tip">🧠 <b>Frase para recordar:</b> <code class="in">&amp;</code> es el and de los bits y <code class="in">|</code> es el or de los bits. Comparan <b>columna por columna</b>.</div>
   </div>
 </section>
+</div>
+
+<div class="tab-panel" data-panel="listas" role="tabpanel" hidden>
+<div class="card alt" style="margin-top:22px">
+  <p>📋 En la sesión de listas aprendimos a crear una lista, agregar elementos y recorrerla con <code class="in">for</code>. A continuación, vamos a <b>trabajar con pedazos de una lista</b>, a <b>preguntar si algo está en ella</b> y a descubrir una trampa: <b>copiar una lista no es tan fácil como parece</b>.</p>
+</div>
+
+<section id="l-posiciones">
+  <div class="day-head" style="background:var(--orange);margin-top:26px">
+    <h2>1. ¿Cómo sabe Python dónde está cada elemento? (posiciones)</h2>
+    <p>Posiciones desde el inicio y desde el final.</p>
+  </div>
+  <div class="card">
+<p>Antes de tomar pedazos de una lista, hay que saber <b>cómo se cuentan las posiciones</b>, porque todo lo demás depende de eso.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que trabajas para una empresa y tienes la lista de productos que exporta. Tu jefa te pide decirle <b>cuál es el primer producto</b>, <b>cuál es el tercero</b> y <b>cuál es el último</b>. Con 5 productos puedes contarlos a mano, pero con 500 no. Por eso Python le da a cada elemento un número de posición:</p></div><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Producto</th><th>Café</th><th>Aguacate</th><th>Tequila</th><th>Miel</th><th>Cacao</th></tr></thead><tbody><tr><td><b>Posición desde el inicio</b></td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><td><b>Posición desde el final</b></td><td>-5</td><td>-4</td><td>-3</td><td>-2</td><td>-1</td></tr></tbody></table></div><ul style="padding-left:22px"><li>Python empieza a contar desde <b>0</b>, no desde 1. Por eso el <b>tercero</b> está en la posición <b>2</b>.</li><li>También se puede contar <b>desde el final</b> con números negativos, y el último siempre es <b>-1</b>. Esto es muy útil cuando no sabes cuántos elementos tiene la lista: <code class="in">productos[-1]</code> te da el último, tenga 5 o 500 productos.</li></ul><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">productos = [<span class="str">&quot;Café&quot;</span>, <span class="str">&quot;Aguacate&quot;</span>, <span class="str">&quot;Tequila&quot;</span>, <span class="str">&quot;Miel&quot;</span>, <span class="str">&quot;Cacao&quot;</span>]
+print(productos[0])
+print(productos[2])
+print(productos[-1])</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Café
+Tequila
+Cacao</div>
+  </div>
+</section>
+
+<section id="l-rebanadas">
+  <div class="day-head" style="background:var(--orange);margin-top:26px">
+    <h2>2. ¿Y si solo ocupo un pedazo de la lista? (rebanada)</h2>
+    <p>Tomar los primeros, los últimos o desde cierta posición.</p>
+  </div>
+  <div class="card">
+<p>Muchas veces no necesitas <b>toda</b> la lista ni <b>un solo</b> elemento, sino <b>un pedazo</b>: los primeros 3, los últimos 3, o desde cierta posición en adelante. A ese pedazo se le llama <b>rebanada</b> (en inglés <i>slice</i>).</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que trabajas en el área de Ventas y tienes las ventas del semestre en una lista, en miles de dólares:</p><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Mes</th><th>Ene</th><th>Feb</th><th>Mar</th><th>Abr</th><th>May</th><th>Jun</th></tr></thead><tbody><tr><td><b>Venta</b></td><td>120</td><td>95</td><td>140</td><td>160</td><td>110</td><td>175</td></tr><tr><td><b>Posición</b></td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><td><b>Desde el final</b></td><td>-6</td><td>-5</td><td>-4</td><td>-3</td><td>-2</td><td>-1</td></tr></tbody></table></div><p>Para la junta de cierre de semestre te piden cuatro cosas:</p><ol style="padding-left:22px"><li>Las ventas del <b>primer trimestre</b> (enero, febrero y marzo).</li><li>Las ventas del <b>segundo trimestre</b> (abril, mayo y junio).</li><li>Los <b>últimos 3 meses</b>, para ver cómo va la tendencia.</li><li>Las ventas <b>desde marzo</b>, que fue cuando empezó una campaña de publicidad.</li></ol><p>Sin rebanadas tendrías que sacar los meses <b>uno por uno</b>. Con una rebanada, cada pedazo se pide <b>en una sola línea</b>.</p></div><h4>✂️ ¿Cómo se escribe una rebanada?</h4><p>Se escribe <code class="in">lista[inicio:fin]</code>:</p><ul style="padding-left:22px"><li><b>inicio:</b> la posición donde empieza el pedazo. Esa posición <b>sí se toma</b>.</li><li><b>fin:</b> la posición donde Python <b>se detiene</b>. Esa posición <b>ya no se toma</b>.</li></ul><p>Por ejemplo, <code class="in">ventas[0:3]</code> se lee: <i>"dame desde la posición 0 y detente al llegar a la 3"</i>. Python toma las posiciones 0, 1 y 2, que son <b>3 meses</b>. Así, para saber cuántos elementos vas a obtener, restas <b>fin menos inicio</b>: 3 - 0 = 3.</p><p>Así se resuelve cada cosa que te pidieron:</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Te piden</th><th>Rebanada</th><th>¿Qué toma?</th><th>Resultado</th></tr></thead><tbody><tr><td>Primer trimestre</td><td><code class="in">ventas[0:3]</code></td><td>Posiciones 0, 1 y 2 (Ene, Feb, Mar)</td><td>[120, 95, 140]</td></tr><tr><td>Segundo trimestre</td><td><code class="in">ventas[3:6]</code></td><td>Posiciones 3, 4 y 5 (Abr, May, Jun)</td><td>[160, 110, 175]</td></tr><tr><td>Los primeros 2 meses</td><td><code class="in">ventas[:2]</code></td><td>Sin inicio: <b>desde el principio</b> hasta antes de la 2</td><td>[120, 95]</td></tr><tr><td>Desde marzo</td><td><code class="in">ventas[2:]</code></td><td>Sin fin: desde la posición 2 <b>hasta el final</b></td><td>[140, 160, 110, 175]</td></tr><tr><td>Los últimos 3 meses</td><td><code class="in">ventas[-3:]</code></td><td>Desde el tercero contando del final, hasta el final</td><td>[160, 110, 175]</td></tr><tr><td>Toda la lista</td><td><code class="in">ventas[:]</code></td><td>Sin inicio ni fin: todo</td><td>[120, 95, 140, 160, 110, 175]</td></tr></tbody></table></div><div class="tip">💡 Si <b>no pones inicio</b>, Python empieza desde el principio. Si <b>no pones fin</b>, llega hasta el final.</div><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">ventas = [120, 95, 140, 160, 110, 175]
+print(<span class="str">&quot;Primer trimestre:&quot;</span>, ventas[0:3])
+print(<span class="str">&quot;Segundo trimestre:&quot;</span>, ventas[3:6])
+print(<span class="str">&quot;Primeros 2 meses:&quot;</span>, ventas[:2])
+print(<span class="str">&quot;Desde marzo:&quot;</span>, ventas[2:])
+print(<span class="str">&quot;Últimos 3 meses:&quot;</span>, ventas[-3:])</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Primer trimestre: [120, 95, 140]
+Segundo trimestre: [160, 110, 175]
+Primeros 2 meses: [120, 95]
+Desde marzo: [140, 160, 110, 175]
+Últimos 3 meses: [160, 110, 175]</div>
+  </div>
+</section>
+
+<section id="l-del">
+  <div class="day-head" style="background:var(--orange);margin-top:26px">
+    <h2>3. ¿Y si ocupo borrar varios elementos a la vez? (del con rebanadas)</h2>
+    <p>Borrar un pedazo, vaciar la lista o eliminarla por completo.</p>
+  </div>
+  <div class="card">
+<p>Ya saben borrar <b>un</b> elemento con <code class="in">del lista[posición]</code>. Pero a veces hay que borrar <b>varios de golpe</b>, o <b>toda</b> la lista.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que trabajas en el área de Logística y llevas la lista de <b>pedidos pendientes de enviar</b>. Durante el día te pasan tres situaciones:</p><ol style="padding-left:22px"><li>En la mañana salen los <b>2 primeros pedidos</b>, así que hay que quitarlos de la lista de pendientes.</li><li>En la tarde ya se envió <b>todo</b>, y quieres dejar la lista <b>vacía</b> para llenarla mañana con pedidos nuevos.</li><li>Al cerrar el sistema, ya <b>no necesitas la lista</b> para nada.</li></ol></div><p>Para cada situación hay una forma de usar <code class="in">del</code>:</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Situación</th><th>Instrucción</th><th>¿Qué hace?</th><th>La lista queda</th></tr></thead><tbody><tr><td>Quitar los 2 primeros</td><td><code class="in">del pedidos[0:2]</code></td><td>Borra el pedazo de la posición 0 hasta antes de la 2</td><td>Con los demás pedidos</td></tr><tr><td>Dejarla vacía para mañana</td><td><code class="in">del pedidos[:]</code></td><td>Borra <b>todos los elementos</b>, pero la lista <b>sigue existiendo</b></td><td>Vacía: <code class="in">[]</code></td></tr><tr><td>Ya no la necesito</td><td><code class="in">del pedidos</code></td><td>Borra <b>la variable completa</b></td><td>Ya no existe: si la usas, marca <b>error</b></td></tr></tbody></table></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">pedidos = [<span class="str">&quot;P101&quot;</span>, <span class="str">&quot;P102&quot;</span>, <span class="str">&quot;P103&quot;</span>, <span class="str">&quot;P104&quot;</span>, <span class="str">&quot;P105&quot;</span>]
+del pedidos[0:2]
+print(<span class="str">&quot;Después de borrar los enviados:&quot;</span>, pedidos)
+del pedidos[:]
+print(<span class="str">&quot;Después de vaciarla:&quot;</span>, pedidos)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Después de borrar los enviados: [&#x27;P103&#x27;, &#x27;P104&#x27;, &#x27;P105&#x27;]
+Después de vaciarla: []</div><h4>⚠️ ¿Qué pasa con <code class="in">del pedidos</code> (sin corchetes)?</h4><p>La lista desaparece por completo y Python ya no la reconoce:</p><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">pedidos = [<span class="str">&quot;P101&quot;</span>, <span class="str">&quot;P102&quot;</span>, <span class="str">&quot;P103&quot;</span>]
+del pedidos
+print(pedidos)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">NameError: name &#x27;pedidos&#x27; is not defined</div><p>El error dice que <code class="in">pedidos</code> <b>ya no existe</b>. Piénsalo como una caja: <code class="in">del pedidos[:]</code> <b>vacía la caja</b> y la puedes volver a llenar, pero <code class="in">del pedidos</code> <b>tira la caja</b>.</p>
+  </div>
+</section>
+
+<section id="l-in">
+  <div class="day-head" style="background:var(--orange);margin-top:26px">
+    <h2>4. ¿Cómo sé si algo está en la lista? (in y not in)</h2>
+    <p>Preguntar si un elemento está o no está, sin recorrer la lista a mano.</p>
+  </div>
+  <div class="card">
+<p>En una empresa, todo el tiempo hay que revisar si algo <b>está o no está</b> en una lista: si un país tiene tratado comercial, si un producto está prohibido o si un cliente ya está registrado. Recorrer la lista con un <code class="in">for</code> funciona, pero Python tiene una forma más corta:</p><ul style="padding-left:22px"><li><code class="in">in</code> pregunta: <b>¿este elemento está en la lista?</b></li><li><code class="in">not in</code> pregunta lo contrario: <b>¿este elemento NO está en la lista?</b></li></ul><p>Las dos contestan <b>True o False</b>, igual que una comparación, así que se pueden poner directo en un <code class="in">if</code>.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que trabajas en el área de Comercio Exterior. Antes de calcular impuestos, necesitas saber si el país de origen está en el <b>T-MEC</b>: <code class="in">[&quot;MEXICO&quot;, &quot;ESTADOS UNIDOS&quot;, &quot;CANADA&quot;]</code>.</p></div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Pregunta</th><th>Resultado</th><th>¿Por qué?</th></tr></thead><tbody><tr><td><code class="in">&quot;CANADA&quot; in paises_tmec</code></td><td><b>True</b></td><td>CANADA sí está en la lista</td></tr><tr><td><code class="in">&quot;CHINA&quot; in paises_tmec</code></td><td><b>False</b></td><td>CHINA no está</td></tr><tr><td><code class="in">&quot;CHINA&quot; not in paises_tmec</code></td><td><b>True</b></td><td>Es cierto que CHINA <b>no</b> está</td></tr><tr><td><code class="in">&quot;canada&quot; in paises_tmec</code></td><td><b>False</b></td><td>Tiene que estar escrito <b>exactamente igual</b>, con mayúsculas</td></tr></tbody></table></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">paises_tmec = [<span class="str">&quot;MEXICO&quot;</span>, <span class="str">&quot;ESTADOS UNIDOS&quot;</span>, <span class="str">&quot;CANADA&quot;</span>]
+print(<span class="str">&quot;CANADA&quot;</span> in paises_tmec)
+print(<span class="str">&quot;CHINA&quot;</span> in paises_tmec)
+print(<span class="str">&quot;CHINA&quot;</span> not in paises_tmec)
+print(<span class="str">&quot;canada&quot;</span> in paises_tmec)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">True
+False
+True
+False</div><h4>🔀 ¿Recuerdan el or larguísimo del ejercicio 7?</h4><p>Para saber si un país era de Europa escribimos tres comparaciones con or. Con <code class="in">in</code> se escribe mucho más corto y significa lo mismo:</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Con or</th><th>Con in</th></tr></thead><tbody><tr><td><code class="in">pais == &quot;ALEMANIA&quot; or pais == &quot;FRANCIA&quot; or pais == &quot;ITALIA&quot;</code></td><td><code class="in">pais in [&quot;ALEMANIA&quot;, &quot;FRANCIA&quot;, &quot;ITALIA&quot;]</code></td></tr></tbody></table></div><h4>🚫 Ejemplo de not in dentro de un if</h4><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que ahora trabajas en el área de Cumplimiento. Hay una lista de <b>productos restringidos</b> que necesitan un permiso especial para exportarse. Si el producto <b>no está</b> en esa lista, se puede exportar sin permiso.</p></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">restringidos = [<span class="str">&quot;ACIDO SULFURICO&quot;</span>, <span class="str">&quot;MERCURIO&quot;</span>, <span class="str">&quot;PIROTECNIA&quot;</span>]
+producto = <span class="str">&quot;MIEL&quot;</span>
+if producto not in restringidos:
+    print(<span class="str">&quot;✅&quot;</span>, producto, <span class="str">&quot;se puede exportar sin permiso especial.&quot;</span>)
+else:
+    print(<span class="str">&quot;🛑&quot;</span>, producto, <span class="str">&quot;necesita permiso especial.&quot;</span>)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">✅ MIEL se puede exportar sin permiso especial.</div>
+  </div>
+</section>
+
+<section id="l-copias">
+  <div class="day-head" style="background:var(--orange);margin-top:26px">
+    <h2>5. ¿Cómo hago una copia de una lista? (la trampa)</h2>
+    <p>Copiar con = no crea una lista nueva.</p>
+  </div>
+  <div class="card">
+<p>Esta es la parte que más sorprende. Parece lógico que <code class="in">promocion = precios</code> haga una copia, pero <b>no es así</b>. Con el <code class="in">=</code> <b>no se crea una lista nueva</b>: las dos variables quedan como <b>dos nombres para la misma lista</b>, y si cambias una, cambia la otra.</p><div class="tip">📱 <b>Piénsalo como un Google Doc:</b><br><code class="in">promocion = precios</code> es como <b>compartir el link</b> del documento. Si alguien lo edita, el cambio se ve en los dos lados, porque es <b>el mismo documento</b>.<br><code class="in">promocion = precios[:]</code> es como <b>descargar una copia</b>. Lo que le cambies a tu copia no afecta al original.</div><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que trabajas en el área de Ventas y se acerca el <b>Buen Fin</b>. Te piden preparar una lista de <b>precios de promoción</b>, pero los <b>precios originales</b> se tienen que quedar igual, porque después del Buen Fin se vuelven a usar.</p></div><h4>❌ Si copias con <code class="in">=</code></h4><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">precios = [100, 250, 80]
+promocion = precios
+promocion[0] = 50
+print(<span class="str">&quot;Promoción:&quot;</span>, promocion)
+print(<span class="str">&quot;Precios originales:&quot;</span>, precios)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Promoción: [50, 250, 80]
+Precios originales: [50, 250, 80]</div><p>¡También cambió el precio original! Después del Buen Fin, la empresa seguiría vendiendo el primer producto a 50 sin darse cuenta.</p><h4>✅ Si copias con <code class="in">[:]</code></h4><p>Usamos la rebanada de <b>toda la lista</b> (<code class="in">[:]</code>), que crea una lista <b>nueva</b> con los mismos datos:</p><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">precios = [100, 250, 80]
+promocion = precios[:]
+promocion[0] = 50
+print(<span class="str">&quot;Promoción:&quot;</span>, promocion)
+print(<span class="str">&quot;Precios originales:&quot;</span>, precios)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Promoción: [50, 250, 80]
+Precios originales: [100, 250, 80]</div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Instrucción</th><th>¿Qué crea?</th><th>Si cambio la nueva lista...</th></tr></thead><tbody><tr><td><code class="in">promocion = precios</code></td><td><b>Otro nombre</b> para la misma lista (link compartido)</td><td><b>También cambia</b> la original ❌</td></tr><tr><td><code class="in">promocion = precios[:]</code></td><td>Una <b>lista nueva</b> (copia descargada)</td><td>La original <b>no cambia</b> ✅</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section id="l-busquedas">
+  <div class="day-head" style="background:var(--orange);margin-top:26px">
+    <h2>6. ¿Cómo resuelvo búsquedas comunes con listas?</h2>
+    <p>El valor más alto, la posición de un elemento y la comparación de dos listas.</p>
+  </div>
+  <div class="card">
+<p>Con lo que ya saben (<code class="in">for</code>, <code class="in">if</code> e <code class="in">in</code>) se pueden resolver tres búsquedas que se hacen todo el tiempo en una empresa.</p><h4>📈 a) Buscar el valor más alto</h4><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que en la junta te preguntan <b>cuál fue la mejor venta del semestre</b>. Con 6 meses lo ves a simple vista, pero con las ventas de todo un año por día (365 datos) necesitas que Python lo haga.</p></div><p><b>¿Cómo se hace?</b> Suponemos que la primera venta es la mayor. Después revisamos una por una: si encontramos una más grande, esa se vuelve la nueva mayor.</p><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Vuelta</th><th>venta</th><th>¿venta > mayor?</th><th>mayor queda</th></tr></thead><tbody><tr><td>Inicio</td><td></td><td></td><td>120</td></tr><tr><td>1</td><td>120</td><td>120 &gt; 120 → No</td><td>120</td></tr><tr><td>2</td><td>95</td><td>95 &gt; 120 → No</td><td>120</td></tr><tr><td>3</td><td>140</td><td>140 &gt; 120 → <b>Sí</b></td><td><b>140</b></td></tr><tr><td>4</td><td>160</td><td>160 &gt; 140 → <b>Sí</b></td><td><b>160</b></td></tr><tr><td>5</td><td>110</td><td>110 &gt; 160 → No</td><td>160</td></tr><tr><td>6</td><td>175</td><td>175 &gt; 160 → <b>Sí</b></td><td><b>175</b></td></tr></tbody></table></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">ventas = [120, 95, 140, 160, 110, 175]
+mayor = ventas[0]
+for venta in ventas:
+    if venta &gt; mayor:
+        mayor = venta
+print(<span class="str">&quot;La venta más alta fue:&quot;</span>, mayor)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">La venta más alta fue: 175</div><h4>🔍 b) Buscar en qué posición está un elemento</h4><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que el sistema guarda los productos en un orden fijo y te piden la <b>posición de la Miel</b> para actualizar su precio. <code class="in">in</code> te dice <b>si</b> está, pero no <b>dónde</b>.</p></div><p><b>¿Cómo se hace?</b> Recorremos la lista por posiciones con <code class="in">range(len(productos))</code>. Empezamos con <code class="in">posicion = -1</code>, que significa "todavía no lo encuentro". Si al final sigue en -1, el producto no está.</p><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">productos = [<span class="str">&quot;Café&quot;</span>, <span class="str">&quot;Aguacate&quot;</span>, <span class="str">&quot;Tequila&quot;</span>, <span class="str">&quot;Miel&quot;</span>, <span class="str">&quot;Cacao&quot;</span>]
+buscado = <span class="str">&quot;Miel&quot;</span>
+posicion = -1
+for i in range(len(productos)):
+    if productos[i] == buscado:
+        posicion = i
+if posicion == -1:
+    print(buscado, <span class="str">&quot;no está en la lista.&quot;</span>)
+else:
+    print(buscado, <span class="str">&quot;está en la posición&quot;</span>, posicion)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Miel está en la posición 3</div><h4>📦 c) Comparar dos listas</h4><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que trabajas en el Almacén y un cliente manda un pedido de 5 productos. Antes de confirmarlo, necesitas saber <b>cuántos tienes en inventario</b> y <b>cuáles no</b>, para avisarle al cliente.</p></div><p><b>¿Cómo se hace?</b> Recorremos el pedido con <code class="in">for</code> y, con <code class="in">in</code>, preguntamos si cada producto está en el inventario.</p><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">pedido = [<span class="str">&quot;Café&quot;</span>, <span class="str">&quot;Miel&quot;</span>, <span class="str">&quot;Vainilla&quot;</span>, <span class="str">&quot;Cacao&quot;</span>, <span class="str">&quot;Mezcal&quot;</span>]
+inventario = [<span class="str">&quot;Café&quot;</span>, <span class="str">&quot;Aguacate&quot;</span>, <span class="str">&quot;Tequila&quot;</span>, <span class="str">&quot;Miel&quot;</span>, <span class="str">&quot;Cacao&quot;</span>]
+hay = 0
+for producto in pedido:
+    if producto in inventario:
+        hay = hay + 1
+    else:
+        print(<span class="str">&quot;Sin existencia:&quot;</span>, producto)
+print(<span class="str">&quot;Productos del pedido que sí tenemos:&quot;</span>, hay, <span class="str">&quot;de&quot;</span>, len(pedido))</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Sin existencia: Vainilla
+Sin existencia: Mezcal
+Productos del pedido que sí tenemos: 3 de 5</div>
+  </div>
+</section>
+</div>
+
+<div class="tab-panel" data-panel="burbuja" role="tabpanel" hidden>
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>🫧 Ordenamiento burbuja</h2>
+    <p>Ordenar listas paso a paso con el algoritmo burbuja.</p>
+    <div class="topics"><span>🔁 Pasadas</span><span>🔄 Intercambio</span><span>📊 sort()</span></div>
+  </div>
+  <div class="card" style="text-align:center">
+    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> La explicación se publica el día que veamos este tema en clase.</p>
+  </div>
+</div>
 
 </main>
 
 <footer>Fundamentos de Programación · Python Fundamentals · Semana 5</footer>
 
 <script src="menu.js"></script>
+<script>
+  // ===== PESTAÑAS DE TEMAS =====
+  const tabs = document.querySelectorAll(".tabs .tab");
+  const panels = document.querySelectorAll(".tab-panel");
+  function mostrar(nombre) {
+    tabs.forEach(t => {
+      const activa = t.dataset.tab === nombre;
+      t.classList.toggle("active", activa);
+      t.setAttribute("aria-selected", activa);
+    });
+    panels.forEach(p => { p.hidden = p.dataset.panel !== nombre; });
+  }
+  tabs.forEach(t => t.addEventListener("click", () => mostrar(t.dataset.tab)));
+  // Los enlaces del menú de arriba abren su pestaña
+  document.querySelectorAll(".menu-pagina a[data-tab]").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      mostrar(a.dataset.tab);
+      document.getElementById("temas").scrollIntoView({ behavior: "smooth" });
+    });
+  });
+</script>
 </body>
 </html>
