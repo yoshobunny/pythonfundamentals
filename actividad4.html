@@ -88,7 +88,7 @@
           <tr><td><b>6 y 7</b></td><td>Operador or</td><td><b>Tabla de verdad</b>: una columna True/False por cada condición unida con or y lo que debe salir.</td></tr>
           <tr><td><b>8 al 10</b></td><td>Operadores bit a bit</td><td><b>Tabla de verdad en binario</b>: los números en binario, el resultado de cada operación (&amp;, |, ^, ~) y lo que debe salir.</td></tr>
           <tr><td><b>11 y 12</b></td><td>Operaciones con listas</td><td><b>Tabla de requerimientos</b>: la lista de entrada, la operación y lo que debe salir. Agrega una columna True/False <b>solo</b> donde uses una condición (in, not in, if).</td></tr>
-          <tr><td><b>13 y 14</b></td><td>Ordenamiento burbuja</td><td><b>Tabla de requerimientos</b>: cómo queda la lista después de cada pasada.</td></tr>
+          <tr><td><b>13 y 14</b></td><td>Ordenamiento burbuja</td><td><b>Parte a:</b> video o capturas de pantalla de tu práctica en la página de 101computing.<br><b>Parte b:</b> <b>tabla de requerimientos</b> con cómo queda la lista después de cada vuelta.</td></tr>
         </tbody></table></div>
         <p style="margin-bottom:0">💡 Cada sección trae en su guía un <b>ejemplo de la tabla ya hecha</b>.</p>
       </div>
@@ -1380,13 +1380,219 @@ else:
   <div class="panel-content">
   <div class="day-head" style="background:var(--mint);margin-top:26px">
     <h2>🫧 Ordenamiento burbuja</h2>
-    <p>Ordenar listas paso a paso con el algoritmo burbuja.</p>
+    <p>Ordenar listas paso a paso: comparar con el vecino, cambiar de lugar y dar otra vuelta.</p>
     <p style="margin-top:8px"><b>Ejercicios 13 y 14</b></p>
-    <div class="topics"><span>🔁 Pasadas</span><span>🔄 Intercambio</span><span>📊 sort()</span></div>
+    <div class="topics"><span>🔁 Vueltas</span><span>🔄 Cambio de lugar</span><span>🎮 Práctica</span></div>
   </div>
-  <div class="card" style="text-align:center">
-    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> Los ejercicios 13 y 14 se publican el día que veamos este tema en clase.</p>
+  <nav class="indice-sec"><b>En esta sección:</b> <a href="#guia-burbuja">📘 Guía</a> <a href="#ej13">Ejercicio 13</a> <a href="#ej14">Ejercicio 14</a></nav>
+  <div class="card alt">
+    <p>💼 <b>Tu papel:</b> sigues de practicante en la comercializadora de Monterrey. Ahora Compras y Ventas te piden <b>ordenar listas</b>: cotizaciones y ventas del mes. Cada ejercicio tiene dos partes: en la <b>parte a</b> practicas el ordenamiento en una página interactiva y en la <b>parte b</b> haces el programa. El <b>ejercicio 13</b> trae el código completo; en el <b>ejercicio 14</b> tú completas las partes que faltan.</p>
   </div>
+  <article class="ex" id="guia-burbuja">
+    <div class="ex-top" style="background:var(--ink);color:#fff">
+      <span class="emoji">📘</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Lee esto antes de empezar · repaso de la semana 5</span>
+        <h3>Guía · Ordenamiento burbuja para resolver los ejercicios 13 y 14</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <p>La explicación completa, con ejemplos, está en la página de la <b>Semana 5</b>, en la pestaña <b>Ordenamiento burbuja</b>. Aquí tienes el resumen de lo que vas a usar.</p>
+
+      <h4>1️⃣ La idea</h4>
+      <ol class="pasos-eval">
+        <li><b>Compara cada dato con su vecino</b> de la derecha.</li>
+        <li>Si están en el orden equivocado, <b>se cambian de lugar</b>.</li>
+        <li><b>Al terminar la lista, se pregunta: ¿hace falta dar otra vuelta?</b> Si hubo cambios, sí.</li>
+      </ol>
+
+      <h4>2️⃣ Las herramientas</h4>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Quiero...</th><th>Escribo</th><th>Ejercicio</th></tr></thead><tbody>
+        <tr><td>Contar las <b>vueltas</b> (for de afuera)</td><td><code class="in">for vuelta in range(total - 1):</code></td><td>13 y 14</td></tr>
+        <tr><td>Comparar cada dato con su <b>vecino</b> (for de adentro)</td><td><code class="in">for lugar in range(total - 1 - vuelta):</code></td><td>13 y 14</td></tr>
+        <tr><td>Sacar <b>copia</b> de los dos datos que comparo</td><td><code class="in">precio_izquierda = lista[lugar]</code><br><code class="in">precio_derecha = lista[lugar + 1]</code></td><td>13 y 14</td></tr>
+        <tr><td>Ordenar de <b>menor a mayor</b></td><td><code class="in">if precio_izquierda &gt; precio_derecha:</code></td><td>13</td></tr>
+        <tr><td>Ordenar de <b>mayor a menor</b></td><td><code class="in">if precio_izquierda &lt; precio_derecha:</code></td><td>14</td></tr>
+        <tr><td><b>Cambiar de lugar</b> los dos datos</td><td><code class="in">lista[lugar] = precio_derecha</code><br><code class="in">lista[lugar + 1] = precio_izquierda</code></td><td>13 y 14</td></tr>
+      </tbody></table></div>
+
+      <h4>3️⃣ La parte a: práctica en la página</h4>
+      <p>Entra a <a href="https://www.101computing.net/i/bubble-sort.html" target="_blank" rel="noopener">https://www.101computing.net/i/bubble-sort.html</a> y ordena la lista con el método burbuja: compara cada número con su vecino y cámbialos si están al revés. Puedes <b>grabar un video</b> de tu pantalla mientras lo haces o <b>tomar capturas de pantalla</b>. Si grabas video, súbelo a tu repositorio de GitHub y pon el enlace en el Word.</p>
+
+      <h4>4️⃣ ¿Cómo hago la tabla de requerimientos?</h4>
+      <p>Escribe cómo queda la lista <b>después de cada vuelta</b> y lo que debe salir al final. Por ejemplo, con <code class="in">[45, 12, 30, 8, 25]</code>:</p>
+      <div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Vuelta</th><th>La lista queda</th></tr></thead><tbody>
+        <tr><td>Inicio</td><td>[45, 12, 30, 8, 25]</td></tr>
+        <tr><td>1</td><td>[12, 30, 8, 25, 45]</td></tr>
+        <tr><td>2</td><td>[12, 8, 25, 30, 45]</td></tr>
+        <tr><td>3</td><td>[8, 12, 25, 30, 45]</td></tr>
+        <tr><td>4</td><td>[8, 12, 25, 30, 45]</td></tr>
+      </tbody></table></div>
+
+      <h4>5️⃣ Pasos para resolver cada ejercicio</h4>
+      <ol class="pasos-eval">
+        <li>Haz la <b>parte a</b> en la página y guarda tu video o tus capturas.</li>
+        <li>Lee las reglas de negocio y decide si se ordena de <b>menor a mayor</b> o de <b>mayor a menor</b>.</li>
+        <li>Haz tu <b>tabla de requerimientos</b> a mano: cómo queda la lista después de cada vuelta.</li>
+        <li>Escribe el código en VS Code y corre <b>cada prueba</b>. Toma su captura y compárala con tu tabla.</li>
+        <li>Haz el <b>diagrama de flujo</b> en Canva o draw.io. Cada for y cada if es un <b>rombo</b>.</li>
+      </ol>
+    </div>
+  </article>
+  <article class="ex" id="ej13">
+    <div class="ex-top" style="background:var(--mint);color:#fff">
+      <span class="emoji">💰</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Compras · ordenamiento burbuja de menor a mayor</span>
+        <h3>Ejercicio 13 · Cotizaciones de proveedores</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>🅰️ Parte a: practica en la página</h4>
+      <div class="tip">🎮 Entra a <a href="https://www.101computing.net/i/bubble-sort.html" target="_blank" rel="noopener">https://www.101computing.net/i/bubble-sort.html</a> y ordena la lista con el método burbuja. <b>Toma una captura de pantalla después de cada vuelta</b> (o graba un video de todo el ordenamiento) y pégalas en el Word con el título <b>Ejercicio 13, parte a</b>.</div>
+      <h4>🅱️ Parte b: el programa</h4>
+      <h4>📖 Historia</h4>
+      <p>Compras necesita adquirir laptops para la oficina y pidió precio a 5 proveedores. Las cotizaciones llegaron en desorden, así que la jefa de Compras quiere verlas <b>de la más barata a la más cara</b> para decidir rápido.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>Se capturan <b>5 cotizaciones</b> (en pesos, números enteros).</li><li>Las cotizaciones se ordenan <b>de la más barata a la más cara</b> con el ordenamiento burbuja.</li><li>Se muestra cómo quedan las cotizaciones <b>después de cada vuelta</b>.</li><li>Al final se muestra la cotización <b>más barata</b> y la <b>más cara</b>.</li><li>El presupuesto que autorizó Finanzas es de <b>5000</b>. Si la más barata es menor o igual al presupuesto, se aprueba la compra. Si no, se pide buscar nuevas cotizaciones.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Llenar una lista vacía con <b>append()</b>.</li><li>Usar <b>dos for</b>: el de afuera cuenta las vueltas y el de adentro compara cada cotización con su vecina.</li><li>Sacar <b>copia</b> de los dos precios antes de cambiarlos de lugar.</li><li>Usar un <b>if</b> para revisar el presupuesto.</li></ol>
+      <h4>💻 Código</h4>
+      <span class="file">Actividad4_ejercicio13_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 13: Cotizaciones de proveedores&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Presupuesto máximo que autorizó Finanzas</span>
+presupuesto = 5000
+
+<span class="com"># Lista vacía donde guardamos las 5 cotizaciones</span>
+cotizaciones = []
+for numero_de_cotizacion in range(5):
+    precio_cotizado = int(input(<span class="str">&quot;Precio de la cotización: &quot;</span>))
+    cotizaciones.append(precio_cotizado)
+
+total_cotizaciones = len(cotizaciones)
+print()
+print(<span class="str">&quot;Cotizaciones como llegaron:&quot;</span>, cotizaciones)
+
+<span class="com"># for de afuera: cuenta las vueltas</span>
+for vuelta in range(total_cotizaciones - 1):
+    <span class="com"># for de adentro: compara cada cotización con su vecina</span>
+    for lugar in range(total_cotizaciones - 1 - vuelta):
+        precio_izquierda = cotizaciones[lugar]
+        precio_derecha = cotizaciones[lugar + 1]
+        <span class="com"># Si la de la izquierda es más cara, se cambian de lugar</span>
+        if precio_izquierda &gt; precio_derecha:
+            cotizaciones[lugar] = precio_derecha
+            cotizaciones[lugar + 1] = precio_izquierda
+    print(<span class="str">&quot;Después de la vuelta&quot;</span>, vuelta + 1, <span class="str">&quot;las cotizaciones quedan:&quot;</span>, cotizaciones)
+
+print()
+print(<span class="str">&quot;Cotizaciones de la más barata a la más cara:&quot;</span>, cotizaciones)
+print(<span class="str">&quot;💰 La cotización más barata es:&quot;</span>, cotizaciones[0])
+print(<span class="str">&quot;💸 La cotización más cara es:&quot;</span>, cotizaciones[-1])
+
+<span class="com"># Revisamos si la más barata cabe en el presupuesto</span>
+if cotizaciones[0] &lt;= presupuesto:
+    print(<span class="str">&quot;✅ Se aprueba la compra con la cotización de&quot;</span>, cotizaciones[0])
+else:
+    print(<span class="str">&quot;🛑 Ninguna cotización cabe en el presupuesto. Pide nuevas cotizaciones.&quot;</span>)</div>
+      <h4>🧪 Pruébalo con estos datos</h4><p>Toma una <b>captura de pantalla de la terminal para cada prueba</b> y ponle su número en el Word.</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Prueba</th><th>Escribe</th><th>Vuelta 1</th><th>Vuelta 2</th><th>Vuelta 3</th><th>Vuelta 4</th><th>Debe salir</th></tr></thead><tbody>
+        <tr><td><b>Prueba 1</b></td><td>4500, 3800, 5200, 4100, 3950</td><td>[3800, 4500, 4100, 3950, 5200]</td><td>[3800, 4100, 3950, 4500, 5200]</td><td>[3800, 3950, 4100, 4500, 5200]</td><td>[3800, 3950, 4100, 4500, 5200]</td><td>💰 3800 · 💸 5200 · ✅ Se aprueba</td></tr>
+        <tr><td><b>Prueba 2</b></td><td>3000, 3500, 4000, 4500, 5000</td><td>[3000, 3500, 4000, 4500, 5000]</td><td>[3000, 3500, 4000, 4500, 5000]</td><td>[3000, 3500, 4000, 4500, 5000]</td><td>[3000, 3500, 4000, 4500, 5000]</td><td>💰 3000 · 💸 5000 · ✅ Se aprueba</td></tr>
+        <tr><td><b>Prueba 3</b></td><td>6000, 5500, 7000, 5800, 6200</td><td>[5500, 6000, 5800, 6200, 7000]</td><td>[5500, 5800, 6000, 6200, 7000]</td><td>[5500, 5800, 6000, 6200, 7000]</td><td>[5500, 5800, 6000, 6200, 7000]</td><td>💰 5500 · 💸 7000 · 🛑 Pedir nuevas cotizaciones</td></tr>
+      </tbody></table></div>
+      <div class="warn">🤔 <b>Piénsalo:</b> En la prueba 2 la lista nunca cambió. ¿Por qué? ¿Valió la pena dar las 4 vueltas? Escribe tu respuesta en el Word.</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Empieza con un ciclo que pide las 5 cotizaciones (paralelogramo para el input). Después el rombo del for de afuera (vueltas) y, dentro, el rombo del for de adentro (lugares). Dentro de ese va el rombo <code class="in">precio_izquierda &gt; precio_derecha</code> y, del lado del Sí, el rectángulo del cambio de lugar. Al final, el rombo del presupuesto.</div>
+    </div>
+  </article>
+  <article class="ex" id="ej14">
+    <div class="ex-top" style="background:var(--mint);color:#fff">
+      <span class="emoji">🏆</span>
+      <div>
+        <span class="ex-lbl" style="font-family:'Fredoka';font-weight:600;font-size:.85rem;opacity:.9">Departamento de Ventas · ordenamiento burbuja de mayor a menor con dos listas</span>
+        <h3>Ejercicio 14 · Ranking de vendedores del mes</h3>
+      </div>
+    </div>
+    <div class="ex-body">
+      <h4>🅰️ Parte a: practica en la página</h4>
+      <div class="tip">🎮 Entra otra vez a <a href="https://www.101computing.net/i/bubble-sort.html" target="_blank" rel="noopener">https://www.101computing.net/i/bubble-sort.html</a> y ordena una lista nueva. Esta vez <b>graba un video de todo el ordenamiento</b> (o toma capturas al inicio, a la mitad y al final). Pégalas en el Word con el título <b>Ejercicio 14, parte a</b> y escribe <b>cuántas vueltas</b> necesitaste.</div>
+      <h4>🅱️ Parte b: el programa</h4>
+      <h4>📖 Historia</h4>
+      <p>Cada mes, Ventas premia con un bono a los <b>3 vendedores que más vendieron</b>. El reporte llega en desorden, así que hay que ordenarlo de la venta más alta a la más baja, <b>sin que cada vendedor pierda su venta</b>. Esta vez <b>tú escribes las partes que faltan</b>.</p>
+      <div class="card warm" style="margin-top:12px">
+        <h4 style="margin-top:0;color:var(--ink)">📋 Reglas de negocio que se deben cumplir</h4>
+        <ol style="padding-left:22px"><li>Los vendedores son Sofía, Mateo, Valeria, Diego y Camila, con ventas de 85, 120, 95, 140 y 70 (miles de pesos). Cada venta está en la <b>misma posición</b> que su vendedor.</li><li>Las ventas se ordenan <b>de mayor a menor</b>.</li><li>Cuando una venta cambia de lugar, <b>su vendedor también cambia de lugar</b>.</li><li>Se muestra cómo quedan las ventas <b>después de cada vuelta</b>.</li><li>Los <b>3 primeros lugares</b> del ranking ganan bono.</li></ol>
+      </div>
+      <h4>🎯 Tu programa debe</h4><ol style="padding-left:22px"><li>Completar los rangos de los <b>dos for</b>.</li><li>Cambiar la comparación para ordenar de <b>mayor a menor</b>.</li><li>Mover también al <b>vendedor</b> cuando se mueve su venta.</li><li>Usar un <b>if</b> para dar el bono a los 3 primeros.</li></ol>
+      <h4>🧩 Completa el código</h4>
+      <p>Escribe en VS Code el código y <b>reemplaza cada línea amarilla</b> <span class="code" style="display:inline;padding:2px 6px;margin:0"><span class="blank">____</span></span> con lo que corresponde. Usa los comentarios como guía.</p>
+      <span class="file">Actividad4_ejercicio14_mimatricula.py</span>
+      <div class="code">print(<span class="str">&quot;Ejercicio 14: Ranking de vendedores del mes&quot;</span>)
+print(<span class="str">&quot;Nombre: Escribe aquí tu nombre completo&quot;</span>)
+print(<span class="str">&quot;Matrícula: Escribe aquí tu matrícula&quot;</span>)
+print()
+
+<span class="com"># Cada vendedor tiene su venta en la MISMA posición (miles de pesos)</span>
+vendedores = [<span class="str">&quot;Sofía&quot;</span>, <span class="str">&quot;Mateo&quot;</span>, <span class="str">&quot;Valeria&quot;</span>, <span class="str">&quot;Diego&quot;</span>, <span class="str">&quot;Camila&quot;</span>]
+ventas = [85, 120, 95, 140, 70]
+total_vendedores = len(ventas)
+
+print(<span class="str">&quot;Ventas como vienen en el reporte:&quot;</span>, ventas)
+
+<span class="com"># 1. for de afuera: ¿cuántas vueltas se dan como máximo?</span>
+for vuelta in range(<span class="blank">____________________</span>):
+
+    <span class="com"># 2. for de adentro: cada vuelta compara una vez menos</span>
+    for lugar in range(<span class="blank">____________________</span>):
+
+        venta_izquierda = ventas[lugar]
+        venta_derecha = ventas[lugar + 1]
+
+        <span class="com"># 3. Queremos de MAYOR a MENOR: ¿cuándo están al revés?</span>
+        if <span class="blank">____________________</span>:
+
+            <span class="com"># Cambiamos de lugar las ventas</span>
+            ventas[lugar] = venta_derecha
+            ventas[lugar + 1] = venta_izquierda
+
+            <span class="com"># 4. Cambiamos también a los vendedores, para que cada uno siga con su venta</span>
+            vendedor_izquierda = vendedores[lugar]
+            vendedor_derecha = vendedores[lugar + 1]
+            vendedores[lugar] = <span class="blank">____________________</span>
+            vendedores[lugar + 1] = <span class="blank">____________________</span>
+
+    print(<span class="str">&quot;Después de la vuelta&quot;</span>, vuelta + 1, <span class="str">&quot;las ventas quedan:&quot;</span>, ventas)
+
+print()
+print(<span class="str">&quot;===== RANKING DEL MES =====&quot;</span>)
+for lugar in range(total_vendedores):
+    <span class="com"># 5. Solo los 3 primeros lugares ganan bono (recuerda que Python cuenta desde 0)</span>
+    if <span class="blank">____________________</span>:
+        print(lugar + 1, vendedores[lugar], ventas[lugar], <span class="str">&quot;mil 🏆 Gana bono&quot;</span>)
+    else:
+        print(lugar + 1, vendedores[lugar], ventas[lugar], <span class="str">&quot;mil&quot;</span>)</div>
+      <h4>🧪 Pruébalo</h4><p>Toma una <b>captura de pantalla de la terminal</b> y compárala con tu tabla de requerimientos.</p><div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Vuelta</th><th>Las ventas quedan</th></tr></thead><tbody>
+        <tr><td>Inicio</td><td>[85, 120, 95, 140, 70]</td></tr>
+        <tr><td>1</td><td>[120, 95, 140, 85, 70]</td></tr>
+        <tr><td>2</td><td>[120, 140, 95, 85, 70]</td></tr>
+        <tr><td>3</td><td>[140, 120, 95, 85, 70]</td></tr>
+        <tr><td>4</td><td>[140, 120, 95, 85, 70]</td></tr>
+      </tbody></table></div>
+      <h4>🖥️ Al final debe salir</h4>
+      <div class="code salida">===== RANKING DEL MES =====
+1 Diego 140 mil 🏆 Gana bono
+2 Mateo 120 mil 🏆 Gana bono
+3 Valeria 95 mil 🏆 Gana bono
+4 Sofía 85 mil
+5 Camila 70 mil</div>
+      <div class="warn">🤔 <b>Piénsalo:</b> ¿Qué pasaría en el ranking si se te olvida el espacio 4 (mover a los vendedores)? Pruébalo borrando esas líneas y explica en el Word qué salió mal.</div>
+      <div class="tip">📊 <b>Para tu diagrama:</b> Empieza con un rectángulo para las dos listas. Después el rombo del for de afuera (vueltas) y, dentro, el rombo del for de adentro (lugares). Dentro va el rombo <code class="in">venta_izquierda &lt; venta_derecha</code> y, del lado del Sí, el rectángulo que cambia de lugar las ventas <b>y</b> los vendedores. Al final, el ciclo del ranking con el rombo <code class="in">lugar &lt; 3</code>.</div>
+    </div>
+  </article>
   </div>
   <div class="nav-secciones"><button type="button" class="nav-sec" data-ir="listas">← 🧰 Operaciones con listas</button><button type="button" class="nav-sec sig" data-ir="entrega">✅ Entrega →</button></div>
 </div>
@@ -1408,7 +1614,7 @@ else:
       <li><label><input type="checkbox" data-i="3"><span>Ejercicios 6 y 7 (Operador or): título del ejercicio, tabla de verdad, captura de la terminal de cada prueba y diagrama de flujo</span></label></li>
       <li><label><input type="checkbox" data-i="4"><span>Ejercicios 8 al 10 (Operadores bit a bit): título del ejercicio, tabla de verdad en binario, captura de la terminal de cada prueba y diagrama de flujo</span></label></li>
       <li><label><input type="checkbox" data-i="5"><span>Ejercicios 11 y 12 (Operaciones con listas): título del ejercicio, tabla de requerimientos, captura de la terminal de cada prueba y diagrama de flujo</span></label></li>
-      <li><label><input type="checkbox" data-i="6"><span>Ejercicios 13 y 14 (Ordenamiento burbuja): título del ejercicio, tabla de requerimientos, captura de la terminal de cada prueba y diagrama de flujo</span></label></li>
+      <li><label><input type="checkbox" data-i="6"><span>Ejercicios 13 y 14 (Ordenamiento burbuja): parte a (video o capturas de la práctica en la página de 101computing) y parte b (título del ejercicio, tabla de requerimientos, captura de la terminal de cada prueba y diagrama de flujo)</span></label></li>
       <li><label><input type="checkbox" data-i="7"><span>Cada programa empieza con el print del ejercicio, mi nombre y mi matrícula</span></label></li>
       <li><label><input type="checkbox" data-i="8"><span>14 archivos .py con el nombre Actividad4_ejercicioN_mimatricula.py</span></label></li>
       <li><label><input type="checkbox" data-i="9"><span>Repositorio Actividad4_Mimatricula creado en GitHub con el Word y los .py</span></label></li>

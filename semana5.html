@@ -56,7 +56,7 @@
     <button class="tab tema active" type="button" role="tab" data-tab="logicos" style="--c:var(--grape)"><span class="t-num">TEMA</span><span class="t-nom">🔀 Operadores lógicos</span><span class="t-ej">and · or · prioridad</span></button>
     <button class="tab tema" type="button" role="tab" data-tab="bits" style="--c:var(--coral)"><span class="t-num">TEMA</span><span class="t-nom">⚙️ Operadores bit a bit</span><span class="t-ej">8 · 4 · 2 · 1</span></button>
     <button class="tab tema" type="button" role="tab" data-tab="listas" style="--c:var(--orange)"><span class="t-num">TEMA</span><span class="t-nom">🧰 Operaciones con listas</span><span class="t-ej">Rebanadas · in · del · copias</span></button>
-    <button class="tab tema" type="button" role="tab" data-tab="burbuja" style="--c:var(--mint)"><span class="t-num">TEMA</span><span class="t-nom">🫧 Ordenamiento burbuja</span><span class="t-ej">Próximamente</span></button>
+    <button class="tab tema" type="button" role="tab" data-tab="burbuja" style="--c:var(--mint)"><span class="t-num">TEMA</span><span class="t-nom">🫧 Ordenamiento burbuja</span><span class="t-ej">Vueltas · vecinos · dos for</span></button>
   </div>
 </section>
 
@@ -416,14 +416,287 @@ Productos del pedido que sí tenemos: 3 de 5</div>
 </div>
 
 <div class="tab-panel" data-panel="burbuja" role="tabpanel" hidden>
+<div class="card alt" style="margin-top:22px">
+  <p>📋 Ya sabemos recorrer una lista con <code class="in">for</code> y tomar decisiones con <code class="in">if</code>. A continuación, vamos a juntar las dos cosas para <b>ordenar una lista paso a paso</b>, como lo hace la computadora por dentro.</p>
+</div>
+
+<section id="b-para-que">
   <div class="day-head" style="background:var(--mint);margin-top:26px">
-    <h2>🫧 Ordenamiento burbuja</h2>
-    <p>Ordenar listas paso a paso con el algoritmo burbuja.</p>
-    <div class="topics"><span>🔁 Pasadas</span><span>🔄 Intercambio</span><span>📊 sort()</span></div>
+    <h2>1. ¿Para qué sirve ordenar?</h2>
+    <p>Ordenar es algo que hacemos todos los días, aunque no nos demos cuenta.</p>
   </div>
-  <div class="card" style="text-align:center">
-    <p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> La explicación se publica el día que veamos este tema en clase.</p>
+  <div class="card">
+<p>En una empresa siempre hay que ordenar: productos <b>del más barato al más caro</b> para una cotización, clientes <b>del que más compró al que menos</b>, pedidos <b>del más viejo al más nuevo</b>. En tu celular también pasa: Spotify ordena canciones por reproducciones y un videojuego ordena a los jugadores por puntaje.</p>
+<p>Nosotros ordenamos "a ojo". Pero <b>la computadora no puede ver toda la lista de golpe</b>: solo puede <b>comparar dos datos a la vez</b>. Por eso necesita un método paso a paso, y uno de los más sencillos se llama <b>ordenamiento burbuja</b>.</p>
   </div>
+</section>
+
+<section id="b-idea">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>2. La idea en tres frases</h2>
+    <p>Todo el algoritmo se resume en comparar, cambiar y repetir.</p>
+  </div>
+  <div class="card">
+<ol class="pasos-eval">
+<li><b>Compara cada dato con su vecino</b> de la derecha.</li>
+<li>Si están en el orden equivocado, <b>se cambian de lugar</b>.</li>
+<li><b>Al terminar la lista, se pregunta: ¿hace falta dar otra vuelta?</b> Si en esa vuelta hubo algún cambio, sí. Si no hubo ningún cambio, la lista ya está ordenada.</li>
+</ol>
+<div class="tip">🫧 <b>¿Por qué se llama burbuja?</b> Porque en cada vuelta el número más grande va <b>subiendo</b> hasta el final de la lista, como una burbuja que sube en un refresco.</div>
+  </div>
+</section>
+
+<section id="b-foto">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>3. Un ejemplo sin computadora: la foto de grupo</h2>
+    <p>Así ordenaría una persona si solo pudiera comparar de dos en dos.</p>
+  </div>
+  <div class="card">
+<div class="card warm"><p>📸 <b>Imagina esto</b></p><p>Cinco amigos se forman para una foto y el fotógrafo quiere que queden <b>del más bajito al más alto</b>. Pero tiene una regla: <b>solo puede comparar a dos personas que están juntas</b>.</p></div>
+<ul style="padding-left:22px">
+<li>Empieza con los dos primeros: si el de la izquierda es más alto, <b>se cambian de lugar</b>.</li>
+<li>Luego compara al segundo con el tercero, al tercero con el cuarto, y así <b>hasta el final de la fila</b>.</li>
+<li>Cuando llega al final, el más alto ya quedó hasta la derecha. Pero los demás todavía pueden estar desordenados.</li>
+<li>Entonces <b>regresa al inicio y da otra vuelta</b>, y así hasta que en una vuelta nadie se tenga que cambiar.</li>
+</ul>
+<p>Eso es exactamente lo que hace el ordenamiento burbuja.</p>
+  </div>
+</section>
+
+<section id="b-lugar">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>4. Antes de empezar: lugar y valor no son lo mismo</h2>
+    <p>El lugar es el casillero; el valor es lo que hay dentro.</p>
+  </div>
+  <div class="card">
+<div class="code">precios = [45, 12, 30, 8, 25]</div>
+<div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Lugar en la lista</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td><b>Precio que hay en ese lugar</b></td><td>45</td><td>12</td><td>30</td><td>8</td><td>25</td></tr></tbody></table></div>
+<ul style="padding-left:22px">
+<li>El <b>lugar</b> es como el <b>número de casillero</b> en la entrada del súper.</li>
+<li>El <b>valor</b> es <b>lo que hay dentro</b> del casillero.</li>
+<li><code class="in">precios[0]</code> significa "el precio que está en el casillero 0", o sea <b>45</b>.</li>
+<li><code class="in">precios[0 + 1]</code> es el precio del <b>casillero de al lado</b>, o sea <b>12</b>.</li>
+</ul>
+  </div>
+</section>
+
+<section id="b-vuelta">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>5. Una vuelta paso a paso</h2>
+    <p>Recorremos la lista comparando cada precio con su vecino.</p>
+  </div>
+  <div class="card">
+<p>Lista inicial: <code class="in">[45, 12, 30, 8, 25]</code></p>
+<div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Lugares</th><th>Precio izquierda</th><th>Precio derecha</th><th>¿El de la izquierda es mayor?</th><th>La lista queda</th></tr></thead><tbody>
+<tr><td>0 y 1</td><td>45</td><td>12</td><td>Sí, se cambian</td><td>[12, 45, 30, 8, 25]</td></tr>
+<tr><td>1 y 2</td><td>45</td><td>30</td><td>Sí, se cambian</td><td>[12, 30, 45, 8, 25]</td></tr>
+<tr><td>2 y 3</td><td>45</td><td>8</td><td>Sí, se cambian</td><td>[12, 30, 8, 45, 25]</td></tr>
+<tr><td>3 y 4</td><td>45</td><td>25</td><td>Sí, se cambian</td><td>[12, 30, 8, 25, <b>45</b>]</td></tr>
+</tbody></table></div>
+<p>Llegamos al final de la lista. El 45 (el más caro) ya está en su lugar. <b>¿Hace falta otra vuelta?</b> Sí, porque hubo cambios y el resto sigue desordenado.</p>
+<div class="tip">🎮 <b>Ahora haz una breve práctica</b> y toma captura de pantalla de que lo realizaste:<br><a href="https://www.101computing.net/i/bubble-sort.html" target="_blank" rel="noopener">https://www.101computing.net/i/bubble-sort.html</a></div>
+  </div>
+</section>
+
+<section id="b-vueltas">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>6. Todas las vueltas</h2>
+    <p>Damos vueltas hasta que la lista queda ordenada.</p>
+  </div>
+  <div class="card">
+<div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Vuelta</th><th>¿Cuántas comparaciones?</th><th>La lista queda</th><th>¿Hubo cambios?</th></tr></thead><tbody>
+<tr><td>1</td><td>4</td><td>[12, 30, 8, 25, <b>45</b>]</td><td>Sí, otra vuelta</td></tr>
+<tr><td>2</td><td>3</td><td>[12, 8, 25, <b>30</b>, <b>45</b>]</td><td>Sí, otra vuelta</td></tr>
+<tr><td>3</td><td>2</td><td>[8, 12, <b>25</b>, <b>30</b>, <b>45</b>]</td><td>Sí, otra vuelta</td></tr>
+<tr><td>4</td><td>1</td><td>[<b>8</b>, <b>12</b>, <b>25</b>, <b>30</b>, <b>45</b>]</td><td>No, ya está ordenada</td></tr>
+</tbody></table></div>
+<p>Dos cosas que se notan en la tabla:</p>
+<ul style="padding-left:22px">
+<li><b>Cada vuelta compara una vez menos</b>, porque los de la derecha (en negritas) ya quedaron acomodados y no hace falta revisarlos.</li>
+<li>Con <b>5 productos</b> se necesitan como máximo <b>4 vueltas</b>. Siempre es <b>uno menos que el total</b>, porque cuando ya acomodaste 4, el último forzosamente quedó en su lugar.</li>
+</ul>
+  </div>
+</section>
+
+<section id="b-dos-for">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>7. ¿Por qué el código usa dos for? ¿Qué hace cada uno?</h2>
+    <p>Hay dos cosas que se repiten: las vueltas y las comparaciones.</p>
+  </div>
+  <div class="card">
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th></th><th>for de afuera</th><th>for de adentro</th></tr></thead><tbody>
+<tr><td><b>¿Qué repite?</b></td><td>Las <b>vueltas</b></td><td>Las <b>comparaciones con el vecino</b></td></tr>
+<tr><td><b>Variable</b></td><td><code class="in">vuelta</code></td><td><code class="in">lugar</code></td></tr>
+<tr><td><b>En la foto de grupo</b></td><td>El fotógrafo regresa al inicio de la fila</td><td>El fotógrafo camina por la fila comparando de dos en dos</td></tr>
+<tr><td><b>¿Cuántas veces?</b></td><td>Uno menos que el total de productos</td><td>Cada vuelta, una vez menos que la anterior</td></tr>
+<tr><td><b>En Python</b></td><td><code class="in">range(total_productos - 1)</code></td><td><code class="in">range(total_productos - 1 - vuelta)</code></td></tr>
+</tbody></table></div>
+<div class="tip">⏰ <b>Piénsalo como un reloj:</b> el for de adentro es el <b>minutero</b> y da toda la vuelta a la lista; el for de afuera es la <b>hora</b> y solo avanza cuando el de adentro terminó su recorrido.</div>
+<h4>❓ ¿Por qué <code class="in">total_productos - 1 - vuelta</code>?</h4>
+<ul style="padding-left:22px">
+<li>El <b>- 1</b> es porque el último producto no tiene vecino a la derecha. Si lo intentamos comparar, Python marca error porque se sale de la lista.</li>
+<li>El <b>- vuelta</b> es para no revisar los que ya quedaron acomodados al final. En la vuelta 0 no se descuenta nada, en la vuelta 1 se descuenta uno, y así.</li>
+</ul>
+  </div>
+</section>
+
+<section id="b-nombres">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>8. Nombres de las variables</h2>
+    <p>Cada variable tiene un nombre que dice qué guarda.</p>
+  </div>
+  <div class="card">
+<p>En libros y en internet van a encontrar este algoritmo con <code class="in">i</code>, <code class="in">j</code> y <code class="in">aux</code>. Nosotros usamos nombres que dicen <b>qué guarda</b> cada variable:</p>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Variable</th><th>¿Qué guarda?</th></tr></thead><tbody>
+<tr><td><code class="in">precios</code></td><td>La lista que queremos ordenar</td></tr>
+<tr><td><code class="in">total_productos</code></td><td>Cuántos precios tiene la lista</td></tr>
+<tr><td><code class="in">vuelta</code></td><td>En qué vuelta vamos (la cuenta el for de afuera)</td></tr>
+<tr><td><code class="in">lugar</code></td><td>En qué casillero estamos parados (lo cuenta el for de adentro)</td></tr>
+<tr><td><code class="in">precio_izquierda</code></td><td>Una copia del precio que está en <code class="in">lugar</code></td></tr>
+<tr><td><code class="in">precio_derecha</code></td><td>Una copia del precio que está en el casillero de al lado (<code class="in">lugar + 1</code>)</td></tr>
+</tbody></table></div>
+  </div>
+</section>
+
+<section id="b-codigo">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>9. El código completo</h2>
+    <p>Todo junto: dos for, un if y el cambio de lugar.</p>
+  </div>
+  <div class="card">
+<h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">precios = [45, 12, 30, 8, 25]
+total_productos = len(precios)
+
+print(<span class="str">&quot;Lista original:&quot;</span>, precios)
+
+<span class="com"># for de afuera: cuenta las vueltas</span>
+for vuelta in range(total_productos - 1):
+
+    <span class="com"># for de adentro: recorre la lista comparando cada precio con su vecino</span>
+    for lugar in range(total_productos - 1 - vuelta):
+
+        <span class="com"># Saco una copia de los dos precios que voy a comparar</span>
+        precio_izquierda = precios[lugar]
+        precio_derecha = precios[lugar + 1]
+
+        <span class="com"># Si el de la izquierda es más caro, están al revés: los cambio de lugar</span>
+        if precio_izquierda &gt; precio_derecha:
+            precios[lugar] = precio_derecha
+            precios[lugar + 1] = precio_izquierda
+
+    print(<span class="str">&quot;Después de la vuelta&quot;</span>, vuelta + 1, <span class="str">&quot;la lista queda:&quot;</span>, precios)
+
+print(<span class="str">&quot;Lista ordenada:&quot;</span>, precios)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Lista original: [45, 12, 30, 8, 25]
+Después de la vuelta 1 la lista queda: [12, 30, 8, 25, 45]
+Después de la vuelta 2 la lista queda: [12, 8, 25, 30, 45]
+Después de la vuelta 3 la lista queda: [8, 12, 25, 30, 45]
+Después de la vuelta 4 la lista queda: [8, 12, 25, 30, 45]
+Lista ordenada: [8, 12, 25, 30, 45]</div>
+  </div>
+</section>
+
+<section id="b-copias">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>10. ¿Por qué sacamos una copia de los dos precios?</h2>
+    <p>Un casillero solo guarda un dato: si escribes encima, lo anterior se borra.</p>
+  </div>
+  <div class="card">
+<p>Mira qué pasa si intentamos cambiar los precios directamente, <b>sin copias</b>:</p>
+<h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">precios = [45, 12]
+precios[0] = precios[1]
+precios[1] = precios[0]
+print(precios)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">[12, 12]</div>
+<div class="tbl-wrap"><table class="tbl tt"><thead><tr><th>Paso</th><th>Qué pasa</th><th>Lista</th></tr></thead><tbody>
+<tr><td>Inicio</td><td></td><td>[45, 12]</td></tr>
+<tr><td><code class="in">precios[0] = precios[1]</code></td><td>El 12 entra al casillero 0 y <b>el 45 se borra</b></td><td>[12, 12]</td></tr>
+<tr><td><code class="in">precios[1] = precios[0]</code></td><td>Copia lo que hay en el casillero 0, que ya es 12</td><td>[12, 12]</td></tr>
+</tbody></table></div>
+<p><b>¡El 45 desapareció!</b> Por eso primero guardamos una copia de los dos en <code class="in">precio_izquierda</code> y <code class="in">precio_derecha</code>. Así, aunque se borre el casillero, el precio sigue guardado en la copia.</p>
+<div class="tip">📱 <b>Piénsalo así:</b> tienes el celular en la mano izquierda y una botella en la derecha, y quieres cambiarlos de mano. No puedes pasar el celular a la derecha porque está ocupada. Primero tienes que <b>dejar uno sobre la mesa</b>. Las copias son la mesa.</div>
+  </div>
+</section>
+
+<section id="b-variantes">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>11. Variantes</h2>
+    <p>De mayor a menor, textos y productos con su precio.</p>
+  </div>
+  <div class="card">
+<h4>⬇️ a) De mayor a menor</h4><p>Solo cambia el signo del if:</p>
+<div class="code">if precio_izquierda &lt; precio_derecha:</div>
+<h4>🔤 b) Ordenar textos</h4><p>Funciona igual, por orden alfabético. Cuidado: Python pone las <b>mayúsculas antes que las minúsculas</b>, así que conviene escribir todo igual (por ejemplo, todo en mayúsculas).</p>
+<h4>🏷️ c) Ordenar productos con su precio</h4>
+<div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que trabajas en Ventas y tienes dos listas: los <b>productos</b> y sus <b>precios</b>, cada precio en la misma posición que su producto. Si ordenas solo los precios, cada producto se queda con un precio que no es suyo. Por eso, cuando cambias de lugar un precio, <b>también cambias su producto</b>.</p></div>
+<h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">productos = [<span class="str">&quot;Tequila&quot;</span>, <span class="str">&quot;Café&quot;</span>, <span class="str">&quot;Miel&quot;</span>, <span class="str">&quot;Cacao&quot;</span>]
+precios = [450, 180, 95, 120]
+total_productos = len(precios)
+
+for vuelta in range(total_productos - 1):
+    for lugar in range(total_productos - 1 - vuelta):
+        precio_izquierda = precios[lugar]
+        precio_derecha = precios[lugar + 1]
+        if precio_izquierda &gt; precio_derecha:
+            <span class="com"># Cambio los precios</span>
+            precios[lugar] = precio_derecha
+            precios[lugar + 1] = precio_izquierda
+            <span class="com"># Cambio también los productos, para que cada uno siga con su precio</span>
+            producto_izquierda = productos[lugar]
+            producto_derecha = productos[lugar + 1]
+            productos[lugar] = producto_derecha
+            productos[lugar + 1] = producto_izquierda
+
+for lugar in range(total_productos):
+    print(productos[lugar], <span class="str">&quot;$&quot;</span>, precios[lugar])</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Miel $ 95
+Cacao $ 120
+Café $ 180
+Tequila $ 450</div>
+  </div>
+</section>
+
+<section id="b-diagrama">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>12. Diagrama de flujo</h2>
+    <p>Dos ciclos, uno dentro del otro, y un if dentro del ciclo de adentro.</p>
+  </div>
+  <div class="card">
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Figura</th><th>Qué va dentro</th></tr></thead><tbody>
+<tr><td><b>Óvalo</b></td><td>Inicio</td></tr>
+<tr><td><b>Rectángulo</b></td><td><code class="in">precios = [45, 12, 30, 8, 25]</code> y <code class="in">total_productos = len(precios)</code></td></tr>
+<tr><td><b>Rombo</b> (for de afuera)</td><td>¿Quedan vueltas por dar? <b>Sí</b> a la izquierda, <b>No</b> a la derecha (va a imprimir y Fin)</td></tr>
+<tr><td><b>Rombo</b> (for de adentro)</td><td>¿Quedan vecinos por comparar en esta vuelta? <b>No</b> regresa al rombo de las vueltas</td></tr>
+<tr><td><b>Rectángulo</b></td><td><code class="in">precio_izquierda = precios[lugar]</code> y <code class="in">precio_derecha = precios[lugar + 1]</code></td></tr>
+<tr><td><b>Rombo</b> (if)</td><td>¿<code class="in">precio_izquierda &gt; precio_derecha</code>?</td></tr>
+<tr><td><b>Rectángulo</b> (lado Sí)</td><td><code class="in">precios[lugar] = precio_derecha</code> y <code class="in">precios[lugar + 1] = precio_izquierda</code></td></tr>
+<tr><td><b>Lado No</b></td><td>No se hace nada, regresa al rombo del for de adentro</td></tr>
+<tr><td><b>Rectángulo</b></td><td><code class="in">print("Lista ordenada:", precios)</code></td></tr>
+<tr><td><b>Óvalo</b></td><td>Fin</td></tr>
+</tbody></table></div>
+  </div>
+</section>
+
+<section id="b-errores">
+  <div class="day-head" style="background:var(--mint);margin-top:26px">
+    <h2>13. Errores comunes</h2>
+    <p>Lo que más suele fallar y cómo reconocerlo.</p>
+  </div>
+  <div class="card">
+<ol style="padding-left:22px">
+<li><b><code class="in">IndexError: list index out of range</code></b>: se olvidó el <b>- 1</b> en el for de adentro, y el último precio intenta compararse con un vecino que no existe.</li>
+<li><b>Se pierde un precio</b> (<code class="in">[12, 12]</code>): se cambiaron los valores sin sacar copia.</li>
+<li><b>Se ordena mal</b>: el <code class="in">print</code> o el <code class="in">if</code> quedaron con la sangría equivocada, dentro o fuera del for que no era.</li>
+<li><b>Los números se ordenan raro</b> (<code class="in">"100"</code> queda antes que <code class="in">"25"</code>): los precios vienen de un <code class="in">input()</code> y siguen siendo texto. Hay que convertirlos con <code class="in">int()</code> o <code class="in">float()</code>.</li>
+</ol>
+  </div>
+</section>
 </div>
 
 </main>
