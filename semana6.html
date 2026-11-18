@@ -138,25 +138,30 @@
     <div class="card">
       <h3>🔀 Decisiones: if, elif y else</h3>
       <p>El programa hace una <b>pregunta</b> (rombo) y, según la respuesta, toma un camino. Python revisa de arriba hacia abajo y entra <b>solo a la primera</b> condición que sea True.</p>
-      <div class="leyenda"><span>⬭ Inicio y fin</span><span>▱ Paralelogramo: input</span><span>▭ Rectángulo: print y procesos</span><span>◇ Rombo: condición</span><span><b style="color:#1E8E3E">Sí</b> a la izquierda · <b style="color:#C62828">No</b> a la derecha</span></div>
+      <div class="legend">
+        <div class="lg"><div class="shape"><span class="oval">Inicio</span></div><h4>Óvalo</h4><p>Dónde <b>empieza</b> (Inicio) y dónde <b>termina</b> (Fin) el programa.</p></div>
+        <div class="lg"><div class="shape"><span class="para"><span>Leer dato</span></span></div><h4>Paralelogramo (entrada)</h4><p>Los <b>input()</b>: lo que el usuario escribe.</p></div>
+        <div class="lg"><div class="shape"><span class="rect">total = 0</span></div><h4>Rectángulo (proceso)</h4><p>Los <b>print()</b>, guardar un valor, hacer un cálculo o cambiar un valor.</p></div>
+        <div class="lg"><div class="shape"><span class="diamond"><span>¿pregunta?</span></span></div><h4>Rombo (decisión)</h4><p>La <b>pregunta</b> del <b>if</b>, del <b>while</b> o del <b>for</b>. <b>Sí a la izquierda, No a la derecha.</b></p></div>
+      </div>
       <p style="text-align:center"><b>Ejemplo:</b> una tienda da envío gratis desde $2000 y 50% de descuento en el envío desde $1000.</p>
-      <svg class="diagrama" viewBox="0 0 760 545" role="img" aria-label="Diagrama de flujo de if, elif y else"><defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fd-punta"/></marker></defs>
-<ellipse class="fd-ini" cx="380" cy="30" rx="60" ry="22"/><text x="380" y="35" text-anchor="middle" font-weight="700">Inicio</text>
-<polyline class="fd-linea" points="380,52 380,72" marker-end="url(#fl)"/>
-<polygon class="fd-in" points="279.0,73.0 509.0,73.0 481.0,117.0 251.0,117.0"/><text x="380" y="100" text-anchor="middle">Leer total_compra</text>
-<polyline class="fd-linea" points="380,117 380,146" marker-end="url(#fl)"/>
-<polygon class="fd-rombo" points="380,146.0 505.0,190 380,234.0 255.0,190"/><text x="380" y="195" text-anchor="middle">total_compra &gt;= 2000</text>
-<polyline class="fd-linea" points="255,190 225,190" marker-end="url(#fl)"/><text class="fd-si" x="240" y="180" text-anchor="middle">Sí</text>
-<rect class="fd-proc" x="35.0" y="166.0" width="190" height="48" rx="6"/><text x="130" y="195" text-anchor="middle">print(&quot;Envío gratis&quot;)</text>
-<polyline class="fd-linea" points="505,190 600,190 600,258" marker-end="url(#fl)"/><text class="fd-no" x="530" y="180" text-anchor="middle">No</text>
-<polygon class="fd-rombo" points="600,258.0 720.0,302 600,346.0 480.0,302"/><text x="600" y="307" text-anchor="middle">total_compra &gt;= 1000</text>
-<polyline class="fd-linea" points="480,302 465,302" marker-end="url(#fl)"/><text class="fd-si" x="474" y="292" text-anchor="middle">Sí</text>
-<rect class="fd-proc" x="275.0" y="278.0" width="190" height="48" rx="6"/><text x="370" y="307" text-anchor="middle">print(&quot;Envío 50%&quot;)</text>
-<polyline class="fd-linea" points="720,302 745,302 745,400 735,400" marker-end="url(#fl)"/><text class="fd-no" x="735" y="292" text-anchor="middle">No</text>
-<rect class="fd-proc" x="545.0" y="376.0" width="190" height="48" rx="6"/><text x="640" y="405" text-anchor="middle">print(&quot;Envío normal&quot;)</text>
-<polyline class="fd-linea" points="130,214 130,475 380,475" /><polyline class="fd-linea" points="370,326 370,475" /><polyline class="fd-linea" points="640,424 640,475 380,475" />
-<polyline class="fd-linea" points="380,475 380,498" marker-end="url(#fl)"/>
-<ellipse class="fd-ini" cx="380" cy="520" rx="60" ry="22"/><text x="380" y="525" text-anchor="middle" font-weight="700">Fin</text>
+      <svg class="diagrama" viewBox="0 0 760 545" width="100%" style="display:block;max-width:760px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo de if, elif y else"><defs><marker id="s6if-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="s6if-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker></defs>
+<rect x="315" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="380" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+<polyline points="380,52 380,72" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6if-2B2D42)"/>
+<polygon points="279.0,73.0 509.0,73.0 481.0,117.0 251.0,117.0" fill="#3DC47E" stroke="#2B2D42" stroke-width="3"/><text x="380" y="95" fill="#fff" font-size="13.5" font-weight="800" text-anchor="middle" dominant-baseline="middle">Leer total_compra</text>
+<polyline points="380,117 380,146" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6if-2B2D42)"/>
+<polygon points="380,146.0 505.0,190 380,234.0 255.0,190" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="380" y="190" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">total_compra &gt;= 2000</text>
+<polyline points="255,190 225,190" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6if-2B2D42)"/><text x="240" y="180" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+<rect x="35.0" y="166.0" width="190" height="48" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="130" y="190" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">print(&quot;Envío gratis&quot;)</text>
+<polyline points="505,190 600,190 600,258" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6if-2B2D42)"/><text x="530" y="180" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+<polygon points="600,258.0 720.0,302 600,346.0 480.0,302" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="600" y="302" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">total_compra &gt;= 1000</text>
+<polyline points="480,302 465,302" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6if-2B2D42)"/><text x="474" y="292" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+<rect x="275.0" y="278.0" width="190" height="48" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="370" y="302" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">print(&quot;Envío 50%&quot;)</text>
+<polyline points="720,302 745,302 745,400 735,400" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6if-2B2D42)"/><text x="735" y="292" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+<rect x="545.0" y="376.0" width="190" height="48" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="640" y="400" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">print(&quot;Envío normal&quot;)</text>
+<polyline points="130,214 130,475 380,475" fill="none" stroke="#2B2D42" stroke-width="2.5"/><polyline points="370,326 370,475" fill="none" stroke="#2B2D42" stroke-width="2.5"/><polyline points="640,424 640,475 380,475" fill="none" stroke="#2B2D42" stroke-width="2.5"/>
+<polyline points="380,475 380,498" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6if-2B2D42)"/>
+<rect x="315" y="498" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="380" y="520" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
 </svg>
       <div class="dos-col">
         <div class="mini"><h4>🤝 and · 🔀 or · 🔄 not</h4><p><b>and:</b> pide <b>todas</b> (factura <b>y</b> pedimento).<br><b>or:</b> con <b>una</b> basta (tarjeta <b>o</b> transferencia).<br><b>not:</b> invierte (si <b>no</b> hay pedimento...).<br><b>Prioridad:</b> not → and → or. Los paréntesis van primero.</p></div>
@@ -170,22 +175,22 @@
       <h3>🔁 Ciclos: while y for</h3>
       <div class="dos-col">
         <div>
-          <p><b>while</b> repite <b>mientras</b> la condición sea True. Fíjate en la flecha <b style="color:#6B4FBB">Repite</b>: después de restar una caja, el programa <b>vuelve a preguntar</b>.</p>
-          <svg class="diagrama" viewBox="0 0 620 420" role="img" aria-label="Diagrama de flujo de while"><defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fd-punta"/></marker></defs>
-<ellipse class="fd-ini" cx="330" cy="30" rx="60" ry="22"/><text x="330" y="35" text-anchor="middle" font-weight="700">Inicio</text>
-<polyline class="fd-linea" points="330,52 330,72" marker-end="url(#fl)"/>
-<rect class="fd-proc" x="245.0" y="73.0" width="170" height="44" rx="6"/><text x="330" y="100" text-anchor="middle">cajas = 3</text>
-<polyline class="fd-linea" points="330,117 330,151" marker-end="url(#fl)"/>
-<polygon class="fd-rombo" points="330,151.0 430.0,195 330,239.0 230.0,195"/><text x="330" y="200" text-anchor="middle">cajas &gt; 0</text>
-<polyline class="fd-linea" points="230,195 150,195 150,246" marker-end="url(#fl)"/><text class="fd-si" x="205" y="185" text-anchor="middle">Sí</text>
-<rect class="fd-proc" x="45.0" y="246.0" width="210" height="48" rx="6"/><text x="150" y="275" text-anchor="middle">print(&quot;Cargando caja&quot;)</text>
-<polyline class="fd-linea" points="150,294 150,326" marker-end="url(#fl)"/>
-<rect class="fd-proc" x="45.0" y="326.0" width="210" height="48" rx="6"/><text x="150" y="355" text-anchor="middle">cajas = cajas - 1</text>
-<polyline class="fd-linea" points="45,350 20,350 20,135 330,135" /><text class="fd-rep" x="60" y="128" text-anchor="middle">Repite</text>
-<polyline class="fd-linea" points="430,195 510,195 510,266" marker-end="url(#fl)"/><text class="fd-no" x="455" y="185" text-anchor="middle">No</text>
-<rect class="fd-proc" x="410.0" y="266.0" width="200" height="48" rx="6"/><text x="510" y="295" text-anchor="middle">print(&quot;¡Camión listo!&quot;)</text>
-<polyline class="fd-linea" points="510,314 510,346" marker-end="url(#fl)"/>
-<ellipse class="fd-ini" cx="510" cy="368" rx="60" ry="22"/><text x="510" y="373" text-anchor="middle" font-weight="700">Fin</text>
+          <p><b>while</b> repite <b>mientras</b> la condición sea True. Fíjate en la flecha <b style="color:#F4A100">naranja punteada</b>: después de restar una caja, el programa <b>regresa a la pregunta</b>. Esa flecha es lo que convierte un if en un bucle.</p>
+          <svg class="diagrama" viewBox="0 0 620 410" width="100%" style="display:block;max-width:620px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo de while"><defs><marker id="s6wh-2B2D42" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker><marker id="s6wh-F4A100" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker></defs>
+<rect x="265" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="330" y="30" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text>
+<polyline points="330,52 330,72" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6wh-2B2D42)"/>
+<rect x="245.0" y="73.0" width="170" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="330" y="95" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">cajas = 3</text>
+<polyline points="330,117 330,151" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6wh-2B2D42)"/>
+<polygon points="330,151.0 430.0,195 330,239.0 230.0,195" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="330" y="195" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">cajas &gt; 0</text>
+<polyline points="230,195 150,195 150,246" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6wh-2B2D42)"/><text x="205" y="185" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text>
+<rect x="45.0" y="246.0" width="210" height="48" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="150" y="270" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">print(&quot;Cargando caja&quot;)</text>
+<polyline points="150,294 150,326" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6wh-2B2D42)"/>
+<rect x="45.0" y="326.0" width="210" height="48" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="150" y="350" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">cajas = cajas - 1</text>
+<polyline points="150,374 150,394 14,394 14,135 326,135" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#s6wh-F4A100)"/><text x="70" y="128" fill="#F4A100" font-size="14" font-weight="800" text-anchor="middle">Repite</text>
+<polyline points="430,195 510,195 510,266" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6wh-2B2D42)"/><text x="455" y="185" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text>
+<rect x="410.0" y="266.0" width="200" height="48" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="510" y="290" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">print(&quot;¡Camión listo!&quot;)</text>
+<polyline points="510,314 510,346" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#s6wh-2B2D42)"/>
+<rect x="445" y="346" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="510" y="368" fill="#fff" font-size="16" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text>
 </svg>
         </div>
         <div>
@@ -221,11 +226,29 @@
 
   <section id="r-videos">
     <div class="card">
-      <h3>🎬 Videos</h3>
-      <div class="dos-col">
-        <div class="video-hueco"><p>🎬 <b>Video: Dr. Strange</b> (while)</p><p style="font-size:.9rem">Espacio para el video.</p></div>
-        <div class="video-hueco"><p>🎬 <b>Video de películas</b> (ciclos)</p><p style="font-size:.9rem">Espacio para el video.</p></div>
+      <h3>🎬 Los bucles en las películas</h3>
+      <p>¿Te acuerdas? <b>Doctor Strange</b> es un <b>while</b> (no sabe cuántas veces va a regresar). <b>Feliz día de tu muerte</b> y <b>El mapa de las pequeñas cosas perfectas</b> son un <b>for</b> (recorren una lista de sospechosos o de momentos).</p>
+      <div class="chars" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <div class="char" style="background:var(--grape)">
+          <div class="ico">🌀</div>
+          <h3>Doctor Strange</h3>
+          <iframe src="https://www.youtube-nocookie.com/embed/DslmRL65Ttg" title="Doctor Strange" style="display:block;width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;margin:10px 0;background:#000" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <a class="btn" href="https://youtu.be/DslmRL65Ttg" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">▶️ Ver en YouTube</a>
+        </div>
+        <div class="char" style="background:var(--coral)">
+          <div class="ico">🎂</div>
+          <h3>Feliz día de tu muerte 2</h3>
+          <iframe src="https://www.youtube-nocookie.com/embed/IeXqWDFJZiw" title="Feliz día de tu muerte 2" style="display:block;width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;margin:10px 0;background:#000" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <a class="btn" href="https://www.youtube.com/watch?v=IeXqWDFJZiw" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">▶️ Ver en YouTube</a>
+        </div>
+        <div class="char" style="background:var(--sky)">
+          <div class="ico">🗺️</div>
+          <h3>El mapa de las pequeñas cosas perfectas</h3>
+          <iframe src="https://www.youtube-nocookie.com/embed/ZOxsfKQWrUg" title="El mapa de las pequeñas cosas perfectas" style="display:block;width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;margin:10px 0;background:#000" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <a class="btn" href="https://www.youtube.com/watch?v=ZOxsfKQWrUg" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">▶️ Ver en YouTube</a>
+        </div>
       </div>
+      <p class="sub" style="margin-top:12px">👀 Mientras ves los videos, busca las 3 partes: <strong>¿qué se repite?, ¿qué pregunta lo detiene?</strong> y <strong>¿qué cambia en cada vuelta?</strong></p>
     </div>
   </section>
 
