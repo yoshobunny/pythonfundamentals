@@ -289,8 +289,294 @@
     <p style="font-size:1.25rem">🔒 <b>Esta sesión se abre el jueves 19 de noviembre a las 7:00 a. m.</b></p>
   </div>
   <div class="panel-content">
-  <div class="day-head" style="background:var(--sky);margin-top:26px"><h2>🧩 Funciones</h2><p>Qué es una función, cómo se crea con def, parámetros y argumentos.</p></div>
-  <div class="card" style="text-align:center"><p style="font-size:1.15rem">🛠️ <b>Próximamente.</b> La explicación se publica el día de la clase.</p></div>
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>🧩 Funciones</h2>
+    <p>Qué es una función, cómo se crea con def, parámetros y argumentos · Módulo 4 de CISCO</p>
+    <div class="topics"><span>🧩 def</span><span>📞 Llamar</span><span>📥 Parámetros</span><span>🏷️ Por nombre</span><span>⚙️ Por defecto</span></div>
+  </div>
+<div class="card alt" style="margin-top:22px">
+  <p>📋 Hasta ahora, nuestros programas se leen <b>de arriba hacia abajo</b>, una línea tras otra. Pero cuando un programa crece, empezamos a <b>repetir el mismo código</b> muchas veces. Hoy vamos a aprender a <b>guardar un pedazo de código con un nombre</b> para usarlo cuando lo necesitemos: eso es una <b>función</b>. <b>Módulo 4 de CISCO (4.1 y 4.2).</b></p>
+</div>
+<nav class="indice-sec"><b>En esta sesión:</b> <a href="#f-que">1. ¿Qué es?</a> <a href="#f-videos">🎬 Videos</a> <a href="#f-para">2. ¿Para qué?</a> <a href="#f-def">3. def</a> <a href="#f-llamar">4. Definir y llamar</a> <a href="#f-param">5. Parámetros</a> <a href="#f-varios">6. Varios parámetros</a> <a href="#f-nombre">7. Por nombre</a> <a href="#f-defecto">8. Por defecto</a> <a href="#f-diagrama">9. Diagrama</a> <a href="#f-crud">10. Proyecto CRUD</a> <a href="#f-resumen">11. Resumen</a></nav>
+
+<section id="f-que">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>1. ¿Qué es una función?</h2>
+    <p>Un mini programa con nombre.</p>
+  </div>
+  <div class="card">
+<p>Una <b>función</b> es un <b>mini programa con nombre</b>: un grupo de instrucciones que guardas una vez y después <b>mandas llamar</b> cuando lo necesitas, cuantas veces quieras.</p><p><b>Sin darte cuenta, ya usaste funciones.</b> Python trae muchas listas para usarse, y todas se reconocen porque llevan <b>paréntesis</b>:</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Función que ya conoces</th><th>¿Qué hace?</th></tr></thead><tbody><tr><td><code class="in">print()</code></td><td>Muestra algo en pantalla</td></tr><tr><td><code class="in">input()</code></td><td>Le pide un dato al usuario</td></tr><tr><td><code class="in">len()</code></td><td>Cuenta los elementos de una lista</td></tr><tr><td><code class="in">int()</code></td><td>Convierte un texto a número entero</td></tr><tr><td><code class="in">range()</code></td><td>Genera una fila de números</td></tr></tbody></table></div><p>Alguien en Python ya escribió el código de <code class="in">print()</code>, y tú solo la mandas llamar. Hoy vamos a crear <b>nuestras propias funciones</b>.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>🍌 Ejemplo de la vida real: los Minions</b></p><p>En <i>Mi villano favorito</i>, Gru no hace todo él solo: <b>le da una orden a un Minion</b> y el Minion la cumple. Gru no necesita explicarle cada paso cada vez; solo dice "¡Kevin, a empacar!" y Kevin ya sabe qué hacer.</p><ul style="padding-left:22px"><li>El <b>Minion</b> es la función: ya sabe hacer una tarea.</li><li><b>Gru dando la orden</b> es llamar a la función.</li><li>Gru puede llamar a Kevin <b>las veces que quiera</b>.</li></ul></div>
+  </div>
+</section>
+
+<section id="f-videos">
+  <div class="day-head" style="background:var(--grape);margin-top:26px">
+    <h2>🎬 Las funciones en películas y videojuegos</h2>
+    <p>Mientras ves los videos, busca: ¿qué se define una vez?, ¿cuándo se llama? y ¿qué datos se le mandan?</p>
+  </div>
+  <div class="card">
+      <div class="chars" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <div class="char" style="background:var(--grape)">
+          <div class="ico">🍌</div>
+          <h3>Minions: El origen de Gru</h3>
+          <iframe src="https://www.youtube-nocookie.com/embed/mzDDzYOZgpc" title="Minions: El origen de Gru" style="display:block;width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;margin:10px 0;background:#000" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p>Los Minions aprenden movimientos de kung-fu y los repiten cuando se los piden: aprender es <b>definir</b> y hacerlo es <b>llamar</b>.</p>
+          <a class="btn" href="https://www.youtube.com/watch?v=mzDDzYOZgpc" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">▶️ Ver en YouTube</a>
+        </div>
+        <div class="char" style="background:var(--mint)">
+          <div class="ico">⛏️</div>
+          <h3>El comando /give de Minecraft</h3>
+          <iframe src="https://www.youtube-nocookie.com/embed/ML-W19JKGY4" title="El comando /give de Minecraft" style="display:block;width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;margin:10px 0;background:#000" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p><code class="in">/give Steve minecraft:diamond 10</code> es una función con <b>3 argumentos</b>: a quién, qué objeto y cuántos.</p>
+          <a class="btn" href="https://www.youtube.com/watch?v=ML-W19JKGY4" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">▶️ Ver en YouTube</a>
+        </div>
+        <div class="char" style="background:var(--sky)">
+          <div class="ico">🐍</div>
+          <h3>Parámetros y argumentos en Python</h3>
+          <iframe src="https://www.youtube-nocookie.com/embed/h4Lt4fZoU_g" title="Parámetros y argumentos en Python" style="display:block;width:100%;aspect-ratio:16/9;border:3px solid var(--ink);border-radius:14px;margin:10px 0;background:#000" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <p>Otra explicación de parámetros y argumentos, ideal para repasar en casa.</p>
+          <a class="btn" href="https://www.youtube.com/watch?v=h4Lt4fZoU_g" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">▶️ Ver en YouTube</a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id="f-para">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>2. ¿Para qué sirve una función?</h2>
+    <p>No repetir, corregir en un solo lugar y ordenar el programa.</p>
+  </div>
+  <div class="card">
+<div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que trabajas en la comercializadora y cada ticket de venta empieza con el mismo encabezado de la empresa. Sin funciones, tendrías que <b>copiar y pegar</b> esas 3 líneas en cada ticket. Y si un día la empresa cambia su lema, tendrías que <b>buscar y corregir cada copia</b>.</p></div><p>Una función resuelve tres problemas:</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Sin funciones</th><th>Con funciones</th></tr></thead><tbody><tr><td>Copias y pegas el mismo código muchas veces</td><td>Lo escribes <b>una vez</b> y lo llamas cuando quieras</td></tr><tr><td>Si hay un cambio, corriges en muchos lugares</td><td>Corriges <b>en un solo lugar</b></td></tr><tr><td>El programa es un bloque enorme y difícil de leer</td><td>El programa queda <b>ordenado por partes</b>, cada una con su nombre</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section id="f-def">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>3. ¿Cómo se crea una función? (def)</h2>
+    <p>La palabra def viene de define: definir.</p>
+  </div>
+  <div class="card">
+<h4>🧱 Estructura</h4><div class="code">def nombre_de_la_funcion():
+    instrucciones de la función</div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Parte</th><th>¿Qué es?</th></tr></thead><tbody><tr><td><code class="in">def</code></td><td>Le avisa a Python: "aquí empieza una función"</td></tr><tr><td><code class="in">nombre_de_la_funcion</code></td><td>El nombre que tú eliges. Debe decir <b>qué hace</b>, en minúsculas y con guion bajo: <code class="in">imprimir_encabezado</code>, <code class="in">calcular_envio</code></td></tr><tr><td><code class="in">()</code></td><td>Los paréntesis, donde después pondremos los datos que recibe</td></tr><tr><td><code class="in">:</code></td><td>Los dos puntos, igual que en el if, el while y el for</td></tr><tr><td>Sangría</td><td>Todo lo que está <b>adentro</b> de la función lleva 4 espacios</td></tr></tbody></table></div><h4>🧾 Ejemplo: el encabezado de los tickets</h4><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">def imprimir_encabezado():
+    print(<span class="str">&quot;===== COMERCIALIZADORA MTY =====&quot;</span>)
+    print(<span class="str">&quot;Exportamos lo mejor de México&quot;</span>)
+    print(<span class="str">&quot;================================&quot;</span>)
+
+imprimir_encabezado()
+print(<span class="str">&quot;Ticket 001: Café 450&quot;</span>)
+imprimir_encabezado()
+print(<span class="str">&quot;Ticket 002: Miel 300&quot;</span>)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">===== COMERCIALIZADORA MTY =====
+Exportamos lo mejor de México
+================================
+Ticket 001: Café 450
+===== COMERCIALIZADORA MTY =====
+Exportamos lo mejor de México
+================================
+Ticket 002: Miel 300</div><p>Escribimos el encabezado <b>una sola vez</b> y salió <b>dos veces</b>, porque llamamos la función dos veces.</p>
+  </div>
+</section>
+
+<section id="f-llamar">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>4. Definir no es lo mismo que llamar</h2>
+    <p>Guardar la receta y cocinarla son dos pasos distintos.</p>
+  </div>
+  <div class="card">
+<p>Esta es la parte que más confunde al principio:</p><ul style="padding-left:22px"><li><b>Definir</b> (<code class="in">def</code>) es <b>guardar la receta</b> en el recetario. Todavía no se cocina nada.</li><li><b>Llamar</b> (<code class="in">imprimir_encabezado()</code>) es <b>cocinar la receta</b>. Ahí sí se ejecuta.</li></ul><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Paso</th><th>Código</th><th>¿Qué pasa?</th></tr></thead><tbody><tr><td>Definir</td><td><code class="in">def imprimir_encabezado():</code></td><td>Python <b>aprende</b> la función, pero no imprime nada</td></tr><tr><td>Llamar</td><td><code class="in">imprimir_encabezado()</code></td><td>Python <b>ejecuta</b> las instrucciones de adentro</td></tr></tbody></table></div><h4>⚠️ Error 1: llamar antes de definir</h4><p>Python lee de arriba hacia abajo. Si llamas a la función <b>antes</b> de definirla, todavía no la conoce:</p><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">imprimir_encabezado()
+
+def imprimir_encabezado():
+    print(<span class="str">&quot;===== COMERCIALIZADORA MTY =====&quot;</span>)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">NameError: name &#x27;imprimir_encabezado&#x27; is not defined</div><div class="tip">👉 <b>Regla:</b> primero se definen las funciones (arriba) y después se llaman (abajo).</div><h4>⚠️ Error 2: olvidar los paréntesis al llamar</h4><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">def imprimir_encabezado():
+    print(<span class="str">&quot;===== COMERCIALIZADORA MTY =====&quot;</span>)
+
+imprimir_encabezado
+print(<span class="str">&quot;¿Se imprimió el encabezado?&quot;</span>)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">¿Se imprimió el encabezado?</div><p>¡El encabezado no salió! Sin paréntesis, Python solo "nombra" a la función, pero <b>no la ejecuta</b>. Es como decir "Kevin" sin darle la orden.</p>
+  </div>
+</section>
+
+<section id="f-param">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>5. Parámetros: darle datos a la función</h2>
+    <p>Los datos se escriben dentro de los paréntesis.</p>
+  </div>
+  <div class="card">
+<p>Una función se vuelve mucho más útil cuando <b>recibe datos</b>. Esos datos se escriben <b>dentro de los paréntesis</b>.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que, al terminar cada venta, quieres saludar al cliente <b>por su nombre</b>. La función es la misma, pero el nombre <b>cambia</b> con cada cliente.</p></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">def saludar_cliente(nombre):
+    print(<span class="str">&quot;Hola&quot;</span>, nombre, <span class="str">&quot;gracias por tu compra&quot;</span>)
+
+saludar_cliente(<span class="str">&quot;Ana&quot;</span>)
+saludar_cliente(<span class="str">&quot;Luis&quot;</span>)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Hola Ana gracias por tu compra
+Hola Luis gracias por tu compra</div><h4>📥 Parámetro y argumento: dos nombres para dos lados</h4><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Nombre</th><th>¿Dónde está?</th><th>En el ejemplo</th></tr></thead><tbody><tr><td><b>Parámetro</b></td><td>En la <b>definición</b>: es la "cajita" que espera un dato</td><td><code class="in">nombre</code> en <code class="in">def saludar_cliente(nombre):</code></td></tr><tr><td><b>Argumento</b></td><td>En la <b>llamada</b>: es el dato que <b>mandas</b></td><td><code class="in">&quot;Ana&quot;</code> en <code class="in">saludar_cliente(&quot;Ana&quot;)</code></td></tr></tbody></table></div><p>Cuando llamas <code class="in">saludar_cliente(&quot;Ana&quot;)</code>, Python guarda <code class="in">&quot;Ana&quot;</code> en la cajita <code class="in">nombre</code> y ejecuta la función.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>⛏️ Ejemplo de videojuegos: Minecraft</b></p><p>En Minecraft, el comando <code class="in">/give</code> es una función con <b>argumentos</b>: <code class="in">/give Steve diamond 64</code> le da a <b>Steve</b> <b>64 diamantes</b>. El comando es el mismo, pero cada vez le mandas datos distintos: a quién, qué objeto y cuántos.</p></div><h4>⚠️ Error 3: no mandar el dato que la función espera</h4><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">def saludar_cliente(nombre):
+    print(<span class="str">&quot;Hola&quot;</span>, nombre)
+
+saludar_cliente()</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">TypeError: saludar_cliente() missing 1 required positional argument: &#x27;nombre&#x27;</div><p>Python avisa que <b>falta</b> el argumento <code class="in">nombre</code>: la función lo espera y no se lo mandaste.</p>
+  </div>
+</section>
+
+<section id="f-varios">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>6. Varios parámetros: el orden importa</h2>
+    <p>Argumentos posicionales.</p>
+  </div>
+  <div class="card">
+<p>Una función puede recibir <b>varios datos</b>, separados por comas. Python los acomoda <b>en el mismo orden</b> en que los mandas: el primero va al primer parámetro, el segundo al segundo, y así. A estos se les llama <b>argumentos posicionales</b>.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que en el catálogo quieres mostrar cada producto con su <b>nombre, precio y stock</b>.</p></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">def mostrar_producto(nombre, precio, stock):
+    print(<span class="str">&quot;Producto:&quot;</span>, nombre, <span class="str">&quot;| Precio: $&quot;</span>, precio, <span class="str">&quot;| Stock:&quot;</span>, stock)
+
+mostrar_producto(<span class="str">&quot;Café&quot;</span>, 450, 20)
+mostrar_producto(<span class="str">&quot;Miel&quot;</span>, 300, 15)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Producto: Café | Precio: $ 450 | Stock: 20
+Producto: Miel | Precio: $ 300 | Stock: 15</div><h4>⚠️ ¿Qué pasa si cambias el orden?</h4><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">mostrar_producto(450, <span class="str">&quot;Café&quot;</span>, 20)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Producto: 450 | Precio: $ Café | Stock: 20</div><p>Python <b>no marca error</b>, pero el resultado no tiene sentido: el producto se llama 450 y cuesta "Café". Python no sabe qué es un precio; solo acomoda los datos <b>por posición</b>.</p>
+  </div>
+</section>
+
+<section id="f-nombre">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>7. Argumentos por nombre</h2>
+    <p>Cuando no quieres depender del orden.</p>
+  </div>
+  <div class="card">
+<p>Para no equivocarte con el orden, puedes mandar cada dato <b>con el nombre de su parámetro</b>: <code class="in">precio=450</code>. Así el orden ya no importa. A estos se les llama <b>argumentos por nombre</b> (en inglés, <i>keyword arguments</i>).</p><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">mostrar_producto(precio=450, stock=20, nombre=<span class="str">&quot;Café&quot;</span>)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Producto: Café | Precio: $ 450 | Stock: 20</div><p>Aunque los mandamos en otro orden, cada dato llegó a su lugar.</p><h4>⚠️ Error 4: mezclar en el orden equivocado</h4><p>Sí se pueden mezclar, pero <b>primero los posicionales y después los de nombre</b>:</p><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">mostrar_producto(nombre=<span class="str">&quot;Café&quot;</span>, 450, 20)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">SyntaxError: positional argument follows keyword argument</div><div class="tip">✅ Lo correcto sería <code class="in">mostrar_producto(&quot;Café&quot;, 450, stock=20)</code>.</div>
+  </div>
+</section>
+
+<section id="f-defecto">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>8. Valores por defecto</h2>
+    <p>Un dato que ya viene puesto.</p>
+  </div>
+  <div class="card">
+<p>Un parámetro puede tener un <b>valor por defecto</b>: si no mandas ese dato, la función usa el que ya trae.</p><div class="card warm" style="margin-top:12px"><p>🏢 <b>Ejemplo de dónde se usaría</b></p><p>Imagina que <b>casi todos</b> los envíos de la empresa van a Norteamérica, con tarifa de <b>$2 por kg</b>. En vez de escribir la tarifa cada vez, la dejas puesta por defecto, y solo la cambias cuando el envío va a otra zona.</p></div><h4>🐍 En Python quedaría de la siguiente forma</h4>
+<div class="code">def calcular_envio(kilos, tarifa=2):
+    print(<span class="str">&quot;Envío de&quot;</span>, kilos, <span class="str">&quot;kg: $&quot;</span>, kilos * tarifa)
+
+calcular_envio(500)
+calcular_envio(500, 5)</div>
+<h4>🖥️ La salida en pantalla del código sería</h4>
+<div class="code salida">Envío de 500 kg: $ 1000
+Envío de 500 kg: $ 2500</div><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Llamada</th><th>¿Qué tarifa usa?</th><th>¿Por qué?</th></tr></thead><tbody><tr><td><code class="in">calcular_envio(500)</code></td><td>2</td><td>No mandamos tarifa: usa la que trae por defecto</td></tr><tr><td><code class="in">calcular_envio(500, 5)</code></td><td>5</td><td>Mandamos 5: reemplaza el valor por defecto</td></tr></tbody></table></div><div class="tip">👉 <b>Regla:</b> los parámetros con valor por defecto van <b>al final</b>: <code class="in">def calcular_envio(kilos, tarifa=2)</code>.</div>
+  </div>
+</section>
+
+<section id="f-diagrama">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>9. ¿Cómo se dibuja una función en el diagrama de flujo?</h2>
+    <p>Una figura nueva: el proceso predefinido.</p>
+  </div>
+  <div class="card">
+<p>Hay una figura nueva: el <b>rectángulo con doble línea a los lados</b>, que se llama <b>proceso predefinido</b>. Significa "aquí se llama a una función que está definida en otro lado". Cada función tiene su <b>propio diagrama</b>, que empieza con "Inicio" y el nombre de la función.</p><div class="legend">
+        <div class="lg"><div class="shape"><span class="oval">Inicio</span></div><h4>Óvalo</h4><p>Dónde <b>empieza</b> y dónde <b>termina</b> el programa o la función.</p></div>
+        <div class="lg"><div class="shape"><span class="para"><span>Leer dato</span></span></div><h4>Paralelogramo (entrada)</h4><p>Los <b>input()</b>.</p></div>
+        <div class="lg"><div class="shape"><span class="rect">total = 0</span></div><h4>Rectángulo (proceso)</h4><p>Los <b>print()</b> y los cálculos.</p></div>
+        <div class="lg"><div class="shape"><span class="diamond"><span>¿pregunta?</span></span></div><h4>Rombo (decisión)</h4><p>La pregunta. <b>Sí a la izquierda, No a la derecha.</b></p></div>
+        <div class="lg"><div class="shape"><svg viewBox="0 0 150 50" width="130" height="44"><rect x="3" y="3" width="144" height="44" rx="4" fill="#00B8A9" stroke="#2B2D42" stroke-width="3"/><line x1="15" y1="3" x2="15" y2="47" stroke="#2B2D42" stroke-width="3"/><line x1="135" y1="3" x2="135" y2="47" stroke="#2B2D42" stroke-width="3"/><text x="75" y="26" fill="#fff" font-size="14" font-weight="800" text-anchor="middle" dominant-baseline="middle">altas()</text></svg></div><h4>Proceso predefinido (nueva)</h4><p>La <b>llamada a una función</b>. La función tiene su propio diagrama aparte.</p></div>
+      </div><h4>📊 El ticket con la función del encabezado</h4><p>A la izquierda está el programa principal: cada vez que aparece la figura de doble línea, se ejecuta el diagrama de la derecha.</p><div class="card" style="overflow-x:auto"><svg viewBox="0 0 740 410" width="100%" style="display:block;max-width:740px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo del ticket que llama a una función"><defs><marker id="fnA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker></defs>
+<rect x="135.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="200" y="30" fill="#fff" font-size="14" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text><rect x="75.0" y="78" width="250" height="44" rx="4" fill="#00B8A9" stroke="#2B2D42" stroke-width="3"/><line x1="87.0" y1="78" x2="87.0" y2="122" stroke="#2B2D42" stroke-width="3"/><line x1="313.0" y1="78" x2="313.0" y2="122" stroke="#2B2D42" stroke-width="3"/><text x="200" y="100" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">imprimir_encabezado()</text><rect x="75.0" y="148" width="250" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="200" y="170" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir &quot;Ticket 001&quot;</text><rect x="75.0" y="218" width="250" height="44" rx="4" fill="#00B8A9" stroke="#2B2D42" stroke-width="3"/><line x1="87.0" y1="218" x2="87.0" y2="262" stroke="#2B2D42" stroke-width="3"/><line x1="313.0" y1="218" x2="313.0" y2="262" stroke="#2B2D42" stroke-width="3"/><text x="200" y="240" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">imprimir_encabezado()</text><rect x="75.0" y="288" width="250" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="200" y="310" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir &quot;Ticket 002&quot;</text><rect x="135.0" y="358" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="200" y="380" fill="#fff" font-size="14" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text><polyline points="200,52 200,78" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnA)"/><polyline points="200,122 200,148" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnA)"/><polyline points="200,192 200,218" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnA)"/><polyline points="200,262 200,288" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnA)"/><polyline points="200,332 200,358" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnA)"/><rect x="430.0" y="8" width="260" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="560" y="30" fill="#fff" font-size="14" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio imprimir_encabezado</text><rect x="415.0" y="78" width="290" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="560" y="100" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir el nombre de la empresa</text><rect x="415.0" y="148" width="290" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="560" y="170" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir el lema</text><rect x="415.0" y="218" width="290" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="560" y="240" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir la línea final</text><rect x="430.0" y="288" width="260" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="560" y="310" fill="#fff" font-size="14" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin imprimir_encabezado</text><polyline points="560,52 560,78" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnA)"/><polyline points="560,122 560,148" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnA)"/><polyline points="560,192 560,218" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnA)"/><polyline points="560,262 560,288" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnA)"/>
+<line x1="380" y1="10" x2="380" y2="400" stroke="#C9BFAE" stroke-width="2" stroke-dasharray="6 6"/>
+</svg></div>
+  </div>
+</section>
+
+<section id="f-crud">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>10. Las funciones en tu proyecto CRUD</h2>
+    <p>Cada opción del menú es una función.</p>
+  </div>
+  <div class="card">
+<p>Esta es la parte más útil para el proyecto final. En lugar de tener todo el código del menú amontonado en un solo bloque, <b>cada opción del menú es una función</b>. El menú solo se encarga de <b>llamar</b> a la función correcta.</p><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Opción del menú</th><th>Función</th></tr></thead><tbody><tr><td>➕ Altas</td><td><code class="in">def altas():</code></td></tr><tr><td>🗑️ Bajas</td><td><code class="in">def bajas():</code></td></tr><tr><td>✏️ Cambios</td><td><code class="in">def cambios():</code></td></tr><tr><td>🔍 Consultas</td><td><code class="in">def consultas():</code></td></tr><tr><td>🖨️ Imprimir</td><td><code class="in">def imprimir():</code></td></tr></tbody></table></div><h4>🐍 En Python quedaría de la siguiente forma (con tres de las opciones)</h4>
+<div class="code">productos = []
+
+def altas():
+    nombre = input(<span class="str">&quot;Nombre del producto: &quot;</span>)
+    productos.append(nombre)
+    print(<span class="str">&quot;Producto agregado:&quot;</span>, nombre)
+
+def consultas():
+    buscado = input(<span class="str">&quot;¿Qué producto buscas?: &quot;</span>)
+    if buscado in productos:
+        print(<span class="str">&quot;Sí lo tenemos&quot;</span>)
+    else:
+        print(<span class="str">&quot;No está en el catálogo&quot;</span>)
+
+def imprimir():
+    print(<span class="str">&quot;===== CATÁLOGO =====&quot;</span>)
+    for producto in productos:
+        print(<span class="str">&quot;Producto:&quot;</span>, producto)
+
+while True:
+    print(<span class="str">&quot;1. Altas  2. Consultas  3. Imprimir  4. Salir&quot;</span>)
+    opcion = input(<span class="str">&quot;Elige una opción: &quot;</span>)
+    if opcion == <span class="str">&quot;1&quot;</span>:
+        altas()
+    elif opcion == <span class="str">&quot;2&quot;</span>:
+        consultas()
+    elif opcion == <span class="str">&quot;3&quot;</span>:
+        imprimir()
+    elif opcion == <span class="str">&quot;4&quot;</span>:
+        print(<span class="str">&quot;Hasta luego&quot;</span>)
+        break
+    else:
+        print(<span class="str">&quot;Opción no válida&quot;</span>)</div>
+<h4>🖥️ La salida en pantalla del código sería (agregando Café y Miel, buscando Vainilla e imprimiendo)</h4>
+<div class="code salida">1. Altas  2. Consultas  3. Imprimir  4. Salir
+Elige una opción: 1
+Nombre del producto: Café
+Producto agregado: Café
+1. Altas  2. Consultas  3. Imprimir  4. Salir
+Elige una opción: 1
+Nombre del producto: Miel
+Producto agregado: Miel
+1. Altas  2. Consultas  3. Imprimir  4. Salir
+Elige una opción: 2
+¿Qué producto buscas?: Vainilla
+No está en el catálogo
+1. Altas  2. Consultas  3. Imprimir  4. Salir
+Elige una opción: 3
+===== CATÁLOGO =====
+Producto: Café
+Producto: Miel
+1. Altas  2. Consultas  3. Imprimir  4. Salir
+Elige una opción: 4
+Hasta luego</div><h4>📊 Diagrama de flujo del menú</h4><div class="card" style="overflow-x:auto"><svg viewBox="0 0 760 837" width="100%" style="display:block;max-width:760px;margin:0 auto;font-family:Nunito,sans-serif" role="img" aria-label="Diagrama de flujo del menú del CRUD con funciones"><defs><marker id="fnB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2B2D42"/></marker></defs><defs><marker id="fnC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#F4A100"/></marker></defs>
+<rect x="315.0" y="8" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="380" y="30" fill="#fff" font-size="14" font-weight="800" text-anchor="middle" dominant-baseline="middle">Inicio</text><polyline points="380,52 380,78" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><rect x="230.0" y="78" width="300" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="380" y="100" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir el menú</text><polyline points="380,122 380,148" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><polygon points="284.0,148 504.0,148 476.0,192 256.0,192" fill="#3DC47E" stroke="#2B2D42" stroke-width="3"/><text x="380" y="170" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Leer opcion</text><polyline points="380,192 380,222" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><polygon points="380,222.0 495.0,262 380,302.0 265.0,262" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="380" y="262" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿opcion == &quot;1&quot;?</text><polyline points="265,262 160,262" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><text x="240" y="252" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text><rect x="10.0" y="240" width="150" height="44" rx="4" fill="#00B8A9" stroke="#2B2D42" stroke-width="3"/><line x1="22.0" y1="240" x2="22.0" y2="284" stroke="#2B2D42" stroke-width="3"/><line x1="148.0" y1="240" x2="148.0" y2="284" stroke="#2B2D42" stroke-width="3"/><text x="85" y="262" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">altas()</text><polyline points="85,284 85,310 20,310" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5"/><polyline points="380,302 380,342" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><text x="395" y="322" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text><polygon points="380,342.0 495.0,382 380,422.0 265.0,382" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="380" y="382" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿opcion == &quot;2&quot;?</text><polyline points="265,382 160,382" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><text x="240" y="372" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text><rect x="10.0" y="360" width="150" height="44" rx="4" fill="#00B8A9" stroke="#2B2D42" stroke-width="3"/><line x1="22.0" y1="360" x2="22.0" y2="404" stroke="#2B2D42" stroke-width="3"/><line x1="148.0" y1="360" x2="148.0" y2="404" stroke="#2B2D42" stroke-width="3"/><text x="85" y="382" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">consultas()</text><polyline points="85,404 85,430 20,430" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5"/><polyline points="380,422 380,462" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><text x="395" y="442" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text><polygon points="380,462.0 495.0,502 380,542.0 265.0,502" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="380" y="502" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿opcion == &quot;3&quot;?</text><polyline points="265,502 160,502" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><text x="240" y="492" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text><rect x="10.0" y="480" width="150" height="44" rx="4" fill="#00B8A9" stroke="#2B2D42" stroke-width="3"/><line x1="22.0" y1="480" x2="22.0" y2="524" stroke="#2B2D42" stroke-width="3"/><line x1="148.0" y1="480" x2="148.0" y2="524" stroke="#2B2D42" stroke-width="3"/><text x="85" y="502" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">imprimir()</text><polyline points="85,524 85,550 20,550" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5"/><polyline points="380,542 380,582" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><text x="395" y="562" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text><polygon points="380,582.0 495.0,622 380,662.0 265.0,622" fill="#FFC93C" stroke="#2B2D42" stroke-width="3"/><text x="380" y="622" fill="#2B2D42" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">¿opcion == &quot;4&quot;?</text><polyline points="265,622 200,622 200,682" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><text x="240" y="612" fill="#2E9E63" font-size="14" font-weight="800" text-anchor="middle">Sí</text><rect x="105.0" y="682" width="190" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="200" y="704" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir &quot;Hasta luego&quot;</text><polyline points="200,726 200,752" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><rect x="135.0" y="752" width="130" height="44" rx="22" fill="#9B5DE5" stroke="#2B2D42" stroke-width="3"/><text x="200" y="774" fill="#fff" font-size="14" font-weight="800" text-anchor="middle" dominant-baseline="middle">Fin</text><polyline points="495,622 600,622 600,682" fill="none" stroke="#2B2D42" stroke-width="2.5" marker-end="url(#fnB)"/><text x="540" y="612" fill="#FF6B6B" font-size="14" font-weight="800" text-anchor="middle">No</text><rect x="495.0" y="682" width="210" height="44" rx="6" fill="#4D96FF" stroke="#2B2D42" stroke-width="3"/><text x="600" y="704" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" dominant-baseline="middle">Imprimir &quot;Opción no válida&quot;</text><polyline points="600,726 600,822 20,822" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5"/><polyline points="20,822 20,78 376,78" fill="none" stroke="#F4A100" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#fnC)"/><text x="70" y="70" fill="#F4A100" font-size="14" font-weight="800" text-anchor="middle">Repite el menú</text>
+</svg></div><div class="tip">💡 Cada figura de doble línea (altas, consultas, imprimir) tiene su propio diagrama aparte. Así el diagrama del menú queda corto y fácil de leer.</div><h4>✅ ¿Por qué así es mejor?</h4><ul style="padding-left:22px"><li>El menú (el <code class="in">while True</code>) quedó <b>corto y fácil de leer</b>.</li><li>Si algo falla en Altas, sabes que el problema está <b>dentro de la función <code class="in">altas()</code></b>.</li><li>En <b>Tkinter</b>, cada botón del menú se conecta con <b>una función</b>: el botón "Altas" llama a <code class="in">altas()</code>. Lo que aprenden hoy es justo lo que van a necesitar para los botones del proyecto.</li></ul>
+  </div>
+</section>
+
+<section id="f-resumen">
+  <div class="day-head" style="background:var(--sky);margin-top:26px">
+    <h2>11. Resumen</h2>
+    <p>Lo que hay que recordar.</p>
+  </div>
+  <div class="card">
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Concepto</th><th>En palabras sencillas</th><th>Ejemplo</th></tr></thead><tbody><tr><td><b>Función</b></td><td>Un mini programa con nombre</td><td><code class="in">imprimir_encabezado</code></td></tr><tr><td><b>def</b></td><td>Crea (define) la función</td><td><code class="in">def imprimir_encabezado():</code></td></tr><tr><td><b>Llamar</b></td><td>Ejecutar la función, con paréntesis</td><td><code class="in">imprimir_encabezado()</code></td></tr><tr><td><b>Parámetro</b></td><td>La cajita que espera un dato, en la definición</td><td><code class="in">def saludar_cliente(nombre):</code></td></tr><tr><td><b>Argumento</b></td><td>El dato que mandas, en la llamada</td><td><code class="in">saludar_cliente(&quot;Ana&quot;)</code></td></tr><tr><td><b>Posicional</b></td><td>Los datos llegan por su orden</td><td><code class="in">mostrar_producto(&quot;Café&quot;, 450, 20)</code></td></tr><tr><td><b>Por nombre</b></td><td>Cada dato llega por su nombre</td><td><code class="in">mostrar_producto(precio=450, ...)</code></td></tr><tr><td><b>Por defecto</b></td><td>Un dato que ya viene puesto</td><td><code class="in">def calcular_envio(kilos, tarifa=2):</code></td></tr></tbody></table></div><div class="tip">➡️ <b>En la siguiente sesión:</b> hasta ahora nuestras funciones solo <b>imprimen</b>. Vamos a ver cómo una función te <b>regresa un resultado</b> para guardarlo en una variable (<code class="in">return</code>), por ejemplo <code class="in">iva = calcular_iva(1000)</code>.</div>
+  </div>
+</section>
+
   </div>
 </div>
 
@@ -311,7 +597,7 @@
 <script src="menu.js"></script>
 <script>
   // ===== FECHAS EN QUE SE ABREN LAS PESTAÑAS (año-mes-díaThora:minutos) =====
-  const DESBLOQUEO = { funciones: "2026-11-19T07:00", return: "2026-11-20T07:00" };
+  const DESBLOQUEO = { return: "2026-11-20T07:00" };
   const bloqueada = n => DESBLOQUEO[n] ? new Date() < new Date(DESBLOQUEO[n]) : false;
   const tabs = document.querySelectorAll(".tabs .tab");
   const panels = document.querySelectorAll(".tab-panel");
