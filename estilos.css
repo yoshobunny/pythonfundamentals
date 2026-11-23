@@ -50,6 +50,7 @@ h1,h2,h3,h4{font-family:'Fredoka',sans-serif;line-height:1.2}
 .mc-pill.s5{background:var(--mint)}
 .mc-pill.s6{background:var(--pink)}
 .mc-pill.s7{background:var(--orange)}
+.mc-pill.s8{background:var(--sky)}
 .mc-semana.activa .mc-pill{border-color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
 .mc-sub{list-style:none;display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:160px;background:var(--white);border:3px solid var(--ink);border-radius:14px;padding:6px;box-shadow:4px 4px 0 var(--ink)}
 .mc-semana:nth-last-child(-n+2) .mc-sub{left:auto;right:0}
