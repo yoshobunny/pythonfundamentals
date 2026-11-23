@@ -15,25 +15,20 @@
   <div class="wrap">
     <span class="tag" style="background:var(--grape)">Semana 7 · Fundamentos de Programación</span>
     <h1><span class="c1">Proyecto Final:</span> Sistema <span class="c3">CRUD</span> con <span class="c4">Tkinter</span></h1>
-    <div class="badges">
-      <span class="badge">👥 En parejas</span>
-      <span class="badge">🐍 Python + Tkinter</span>
-      <span class="badge due">⏰ Sábado 28 de noviembre, 23:59</span>
-    </div>
+    <p class="lead" style="margin-bottom:0">⏰ <b>Fecha de entrega: Sábado 28 de noviembre, 23:59</b></p>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="tabs" role="tablist" style="justify-content:center;margin-top:6px">
-      <button class="tab active" type="button" role="tab" data-tab="instrucciones" style="--c:var(--coral)">📌 Instrucciones</button>
-      <button class="tab" type="button" role="tab" data-tab="instalar" style="--c:var(--sky)">🛠️ Instalar y correr</button>
-      <button class="tab" type="button" role="tab" data-tab="dia1" style="--c:var(--sky)">1️⃣ Día 1</button>
-      <button class="tab" type="button" role="tab" data-tab="dia2" style="--c:var(--mint)">2️⃣ Día 2</button>
-      <button class="tab" type="button" role="tab" data-tab="dia3" style="--c:var(--orange)">3️⃣ Día 3</button>
-      <button class="tab" type="button" role="tab" data-tab="requerimientos" style="--c:var(--grape)">📋 Requerimientos</button>
-      <button class="tab" type="button" role="tab" data-tab="word" style="--c:var(--teal)">📄 Documento Word</button>
-      <button class="tab" type="button" role="tab" data-tab="rubrica" style="--c:var(--pink)">📊 Rúbrica</button>
-      <button class="tab" type="button" role="tab" data-tab="entrega" style="--c:var(--coral)">✅ Entrega</button>
+  <p style="text-align:center;font-family:'Fredoka';font-weight:600;font-size:1.15rem;margin-top:10px">👇 Da clic en una sección</p>
+  <div class="tabs" role="tablist" style="justify-content:center;gap:14px;margin-top:10px">
+      <button class="tab active" type="button" role="tab" data-tab="instrucciones" style="--c:var(--coral);background:var(--coral);color:#fff;font-size:1.1rem;padding:14px 22px;box-shadow:5px 5px 0 var(--ink)">📌 Instrucciones</button>
+      <button class="tab" type="button" role="tab" data-tab="dia1" style="--c:var(--sky);background:var(--sky);color:#fff;font-size:1.1rem;padding:14px 22px;box-shadow:5px 5px 0 var(--ink)">1️⃣ Día 1</button>
+      <button class="tab" type="button" role="tab" data-tab="dia2" style="--c:var(--mint);background:var(--mint);color:#fff;font-size:1.1rem;padding:14px 22px;box-shadow:5px 5px 0 var(--ink)">2️⃣ Día 2</button>
+      <button class="tab" type="button" role="tab" data-tab="dia3" style="--c:var(--orange);background:var(--orange);color:#fff;font-size:1.1rem;padding:14px 22px;box-shadow:5px 5px 0 var(--ink)">3️⃣ Día 3</button>
+      <button class="tab" type="button" role="tab" data-tab="requerimientos" style="--c:var(--grape);background:var(--grape);color:#fff;font-size:1.1rem;padding:14px 22px;box-shadow:5px 5px 0 var(--ink)">📋 Requerimientos</button>
+      <button class="tab" type="button" role="tab" data-tab="rubrica" style="--c:var(--pink);background:var(--pink);color:#fff;font-size:1.1rem;padding:14px 22px;box-shadow:5px 5px 0 var(--ink)">📊 Rúbrica</button>
+      <button class="tab" type="button" role="tab" data-tab="entrega" style="--c:var(--teal);background:var(--teal);color:#fff;font-size:1.1rem;padding:14px 22px;box-shadow:5px 5px 0 var(--ink)">✅ Entrega</button>
   </div>
 
 <div class="tab-panel" data-panel="instrucciones" role="tabpanel">
@@ -42,7 +37,6 @@
   <span class="tag" style="background:var(--coral)">Proyecto Final</span>
   <h2 class="title">¿Qué vas a hacer?</h2>
   <p class="sub">En parejas, van a convertir el <b>menú CRUD que diseñaron</b> para su proyecto (Tienda de Sneakers, Cafetería Cute, Refugio de Mascotas, etc.) en un <b>programa con ventanas y botones</b> usando <b>Tkinter</b>.</p>
-
   <div class="chars">
     <div class="char" style="background:var(--mint)"><div class="ico">➕</div><h3>Altas</h3><p>Agregar un registro nuevo.</p></div>
     <div class="char" style="background:var(--coral)"><div class="ico">🗑️</div><h3>Bajas</h3><p>Eliminar un registro.</p></div>
@@ -54,61 +48,84 @@
 </section>
 
 <section>
-  <span class="tag" style="background:var(--sky)">Template</span>
-  <h2 class="title">Tu punto de partida: el template</h2>
-  <p class="sub">No empiezas de cero. Te damos un <b>template (plantilla base)</b> que ya abre la ventana con el menú. Tú lo adaptas a tu proyecto y programas las operaciones CRUD día por día.</p>
-
-  <div class="general">📥 <b>Descarga el template:</b> <a href="ProyectoFinal_Template.py" download style="color:var(--sky);font-weight:800">ProyectoFinal_Template.py</a>. Guárdalo en una carpeta junto con tu <b>logo.png</b>.</div>
-
-  <div class="analogy">
-    <div class="card alt">
-      <h3>✅ Lo que ya viene hecho</h3>
-      <ul class="checks" style="--c:var(--sky)"><li>La ventana principal con encabezado, logo, menú de 6 botones de color, área de resultados con barra de desplazamiento y pie de página.</li><li>Los botones cambian de color al pasar el mouse (también en Mac).</li><li>Los formularios de cada opción con sus cajas y botones.</li><li>Funciones de apoyo: <code class="in">mostrar</code>, <code class="in">generar_clave</code>, <code class="in">buscar_posicion</code>, <code class="in">etiqueta</code>, <code class="in">caja_texto</code>, <code class="in">boton</code> y <code class="in">nueva_ventanita</code>.</li><li>Una pantalla de bienvenida sencilla.</li></ul>
-    </div>
-    <div class="card warm">
-      <h3>🛠️ Lo que programas tú</h3>
-      <div class="table-wrap"><table class="kw-table"><thead><tr><th>Día</th><th>Qué haces</th></tr></thead><tbody><tr><td><b>Día 1</b></td><td>Nombre, colores, letras, prefijo de la clave y campos de tu proyecto. Mínimo 8 registros. <b>Imprimir</b> (RS07) y <b>alertas</b> (RS08).</td></tr><tr><td><b>Día 2</b></td><td>Tus campos en <b>Altas</b> y sus reglas RS01, RS02 y RS03. <b>Consultas</b> (RS06).</td></tr><tr><td><b>Día 3</b></td><td><b>Bajas</b> (RS04), <b>Cambios</b> (RS05), <b>Salir</b> (RS09) y tu <b>regla propia</b> (RS10).</td></tr></tbody></table></div>
-    </div>
-  </div>
-  <div class="tip">🔎 En el template, cada lugar donde te toca programar dice <b>Día 1</b>, <b>Día 2</b> o <b>Día 3</b> y la regla que debes cumplir (por ejemplo <code class="in"># Día 2: RS01, RS02 y RS03</code>). Busca esas marcas.</div>
-  <div class="tip">💬 El template casi no trae comentarios: <b>tú los vas agregando</b> conforme programas. Al final, cada función, cada regla y cada bloque importante debe llevar su comentario.</div>
-</section>
-
-<section>
-  <span class="tag" style="background:var(--grape)">Datos</span>
-  <h2 class="title">¿Cómo se guardan los datos?</h2>
-  <p class="sub">En <b>listas</b>. Cada registro es una lista con sus campos, y todos los registros van dentro de una lista principal llamada <code class="in">registros</code>.</p>
-  <span class="label">Ejemplo: Tienda de Sneakers</span>
-<div class="code">registros = [
-    [<span class="str">&quot;SNK001&quot;</span>, <span class="str">&quot;Air Max&quot;</span>, <span class="str">&quot;Nike&quot;</span>, 2499, 5],
-    [<span class="str">&quot;SNK002&quot;</span>, <span class="str">&quot;Samba&quot;</span>, <span class="str">&quot;Adidas&quot;</span>, 2199, 2]
-]</div>
-  <p>En el template, la posición de cada campo tiene nombre para no confundirte: <code class="in">CLAVE = 0</code>, <code class="in">NOMBRE = 1</code>, <code class="in">CATEGORIA = 2</code>, <code class="in">PRECIO = 3</code>, <code class="in">CANTIDAD = 4</code>. Cámbialos por los campos de tu proyecto.</p>
-</section>
-
-<section>
   <span class="tag" style="background:var(--orange)">Calendario</span>
   <h2 class="title">Calendario de la Semana 7</h2>
   <div class="table-wrap"><table class="kw-table"><thead><tr><th>Día</th><th>Fecha</th><th>¿Qué se hace?</th></tr></thead><tbody><tr><td><b>Día 1</b></td><td>Lunes 23 de noviembre</td><td>Instalar Tkinter, adaptar el template, datos iniciales e <b>Imprimir</b></td></tr><tr><td></td><td>Martes 24</td><td>Conferencia (no hay sesión de proyecto)</td></tr><tr><td><b>Día 2</b></td><td>Miércoles 25</td><td><b>Altas</b> y <b>Consultas</b></td></tr><tr><td><b>Día 3</b></td><td>Jueves 26</td><td><b>Bajas</b>, <b>Cambios</b> y <b>Salir</b>; pruebas finales</td></tr><tr><td></td><td>Viernes 27</td><td>Examen de certificación</td></tr><tr><td><b>Entrega</b></td><td><b>Sábado 28 de noviembre, 23:59</b></td><td>Documento Word, archivos .py y repositorio GitHub</td></tr></tbody></table></div>
 </section>
 
 <section>
+  <span class="tag" style="background:var(--sky)">Entregable 1</span>
+  <h2 class="title">📄 Documento Word</h2>
+  <p class="sub">En este orden:</p>
+  <div class="isteps">
+    <div class="istep" style="--sc:var(--coral)"><span class="n">1</span><div><b>Portada.</b> Nombre del proyecto, nombres y matrículas de la pareja, materia, profesora y fecha.</div></div><div class="istep" style="--sc:var(--grape)"><span class="n">2</span><div><b>Índice.</b> </div></div><div class="istep" style="--sc:var(--sky)"><span class="n">3</span><div><b>Descripción del sistema.</b> Qué negocio es, para qué sirve y qué campos tiene cada registro.</div></div><div class="istep" style="--sc:var(--teal)"><span class="n">4</span><div><b>Requerimientos funcionales.</b> RF01 a RF07, escritos para tu proyecto (pestaña Requerimientos).</div></div><div class="istep" style="--sc:var(--mint)"><span class="n">5</span><div><b>Reglas del sistema.</b> RS01 a RS10, escritas para tu proyecto con sus condiciones, cuándo se cumplen y sus mensajes (pestaña Requerimientos).</div></div><div class="istep" style="--sc:var(--pink)"><span class="n">6</span><div><b>Datos de entrada y salida.</b> De cada opción del menú: qué pide y qué muestra.</div></div><div class="istep" style="--sc:var(--orange)"><span class="n">7</span><div><b>Tablas de verdad.</b> Una por cada regla (RS01 a RS10), con sus 2 capturas de prueba.</div></div><div class="istep" style="--sc:var(--coral)"><span class="n">8</span><div><b>Diagramas de flujo.</b> Los 7 diagramas del sistema.</div></div><div class="istep" style="--sc:var(--grape)"><span class="n">9</span><div><b>Funcionamiento del sistema.</b> Capturas de cada opción del menú funcionando, indicando qué requerimiento (RF) y qué regla (RS) se cumple en cada una.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">10</span><div><b>Archivos de Python.</b> El nombre de los 3 archivos y el código del Día 3 (la versión final), comentado.</div></div><div class="istep" style="--sc:var(--teal)"><span class="n">11</span><div><b>Enlace del repositorio de GitHub.</b> </div></div>
+  </div>
+</section>
+
+<section>
+  <span class="tag" style="background:var(--orange)">Dentro del Word</span>
+  <h2 class="title">🔢 Tablas de verdad</h2>
+  <p class="sub">Para <b>cada regla</b> (RS01 a RS10, en la pestaña <b>Requerimientos</b>) haz su tabla de verdad.</p>
+  <div class="isteps">
+    <div class="istep" style="--sc:var(--orange)"><span class="n">1</span><div>Una columna por cada <b>condición</b> de la regla.</div></div>
+    <div class="istep" style="--sc:var(--orange)"><span class="n">2</span><div>Escribe <b>todas las combinaciones</b> de Verdadero (V) y Falso (F): con 1 condición son 2 renglones, con 2 condiciones son 4 y con 3 condiciones son 8.</div></div>
+    <div class="istep" style="--sc:var(--orange)"><span class="n">3</span><div>Una última columna con el <b>resultado</b>: qué hace el sistema o qué mensaje muestra.</div></div>
+    <div class="istep" style="--sc:var(--orange)"><span class="n">4</span><div>Debajo de la tabla, una <b>captura de tu sistema</b> probando un renglón donde la regla se cumple y otro donde no se cumple.</div></div>
+  </div>
+  <h3 class="h-sub">Formato (ejemplo con una regla de otro negocio)</h3>
+  <div class="card warm"><p>Regla: Un cliente recibe descuento si <b>es estudiante Y su compra es mayor a $200</b>.</p></div>
+  <div class="table-wrap"><table class="kw-table"><thead><tr><th>¿Es estudiante?</th><th>¿Compra mayor a $200?</th><th>Resultado</th></tr></thead><tbody><tr><td>V</td><td>V</td><td><b>Aplica el descuento</b></td></tr><tr><td>V</td><td>F</td><td>"No aplica descuento"</td></tr><tr><td>F</td><td>V</td><td>"No aplica descuento"</td></tr><tr><td>F</td><td>F</td><td>"No aplica descuento"</td></tr></tbody></table></div>
+</section>
+
+<section>
+  <span class="tag" style="background:var(--teal)">Dentro del Word</span>
+  <h2 class="title">🔀 Diagramas de flujo</h2>
+  <p class="sub">Un diagrama por cada parte del sistema:</p>
+  <ul class="checks" style="--c:var(--teal)"><li>Menú principal</li><li>Altas y su formulario</li><li>Bajas</li><li>Cambios y su submenú</li><li>Consultas</li><li>Imprimir</li><li>Salir</li></ul>
+  <div class="tip">📐 Recuerda: <b>input en paralelogramo</b>, <b>print y procesos en rectángulo</b>, <b>condiciones en rombo</b> y <b>Sí a la izquierda, No a la derecha</b>. Hazlos en Canva o draw.io.</div>
+</section>
+
+<section>
+  <span class="tag" style="background:var(--grape)">Entregable 2</span>
+  <h2 class="title">🐍 Archivos de Python</h2>
+  <ul class="checks" style="--c:var(--grape)"><li><code class="in">ProyectoFinal_Dia1_matricula1_matricula2.py</code></li><li><code class="in">ProyectoFinal_Dia2_matricula1_matricula2.py</code></li><li><code class="in">ProyectoFinal_Dia3_matricula1_matricula2.py</code> (la versión final)</li></ul>
+  <p>Cada archivo incluye <b>todo lo del día anterior</b> más lo nuevo. El código va <b>comentado</b>: cada función, cada regla y cada bloque importante debe llevar un comentario que explique qué hace.</p>
+</section>
+
+<section>
+  <span class="tag" style="background:var(--ink)">Entregable 3</span>
+  <h2 class="title">🐙 Repositorio GitHub</h2>
+  <div class="isteps">
+    <div class="istep" style="--sc:var(--ink)"><span class="n">1</span><div>Crea el repositorio <code>ProyectoFinal_matricula1_matricula2</code>.</div></div>
+    <div class="istep" style="--sc:var(--ink)"><span class="n">2</span><div>Sube el Word, los 3 archivos .py y el logo.</div></div>
+    <div class="istep" style="--sc:var(--ink)"><span class="n">3</span><div>Pega el enlace en el Word y en Canvas.</div></div>
+  </div>
+</section>
+
+<section>
   <span class="tag" style="background:var(--coral)">Importante</span>
   <h2 class="title">Uso de Inteligencia Artificial</h2>
   <div class="warn">⚠️ Cada integrante debe poder <b>explicar cualquier parte del código</b> y las decisiones que tomaron. El código <b>copiado de una IA o de internet</b> se penaliza con <b>-50% de la calificación final</b>. Como tienen un template, no hay razón para copiar: el trabajo es adaptarlo y programar las operaciones ustedes.</div>
-  <p style="text-align:center;margin-top:30px"><button class="btn ir-tab" data-tab="instalar" type="button" style="font-size:1rem;padding:8px 20px">Siguiente: Instalar y correr →</button></p>
+  <p style="text-align:center;margin-top:30px"><button class="btn ir-tab" data-tab="dia1" type="button" style="font-size:1rem;padding:8px 20px">Siguiente: Día 1 →</button></p>
 </section>
 
 </div>
 
-<div class="tab-panel" data-panel="instalar" role="tabpanel" hidden>
+<div class="tab-panel" data-panel="dia1" role="tabpanel" hidden>
+
+<section style="padding-bottom:0">
+  <div class="day-head" style="background:var(--sky)">
+    <h2>Día 1 · Ventana, datos e Imprimir</h2>
+    <p>Lunes 23 de noviembre</p>
+    <div class="topics"><span>🎨 Diseño</span><span>📋 Datos</span><span>🖨️ Imprimir</span><span>⚠️ Alertas</span></div>
+  </div>
+</section>
 
 <section>
-  <span class="tag" style="background:var(--sky)">Tkinter</span>
+  <span class="tag" style="background:var(--sky)">Paso 1</span>
   <h2 class="title">Instalar Tkinter</h2>
-
   <div class="reto" style="--c:var(--sky)">
-    <div class="reto-head"><span class="n">1</span><div><small>PASO 1</small><h3>Revisa si ya lo tienes</h3></div></div>
+    <div class="reto-head"><span class="n">1</span><div><small>REVISA</small><h3>¿Ya lo tienes?</h3></div></div>
     <div class="reto-body">
       <p>Generalmente viene instalado con Python. Vamos a revisar si ya lo tienes. Escribe esto en la terminal de VS Code. Si se abre una ventanita que dice <b>"This is Tcl/Tk version..."</b>, ya está listo.</p>
       <div class="lado">
@@ -119,9 +136,8 @@
       </div>
     </div>
   </div>
-
   <div class="reto" style="--c:var(--orange)">
-    <div class="reto-head"><span class="n">2</span><div><small>PASO 2</small><h3>Solo si NO se abrió la ventanita</h3></div></div>
+    <div class="reto-head"><span class="n">2</span><div><small>SOLO SI NO SE ABRIÓ LA VENTANITA</small><h3>Instálalo</h3></div></div>
     <div class="reto-body">
       <div class="analogy">
         <div class="card">
@@ -146,14 +162,35 @@
 </section>
 
 <section>
-  <span class="tag" style="background:var(--mint)">Correr</span>
-  <h2 class="title">Cómo correr tu programa</h2>
+  <span class="tag" style="background:var(--grape)">Paso 2</span>
+  <h2 class="title">Descarga el template y tu logo</h2>
+  <p class="sub">No empiezas de cero. El <b>template (plantilla base)</b> ya abre la ventana con el menú. Tú lo adaptas a tu proyecto y programas las operaciones CRUD día por día.</p>
+  <div class="general">📥 <b>Descarga el template:</b> <a href="ProyectoFinal_Template.py" download style="color:var(--sky);font-weight:800">ProyectoFinal_Template.py</a>. Guárdalo en una carpeta junto con tu logo.</div>
+  <div class="card">
+    <h4>🖼️ Tu logo</h4>
+    <ul class="checks" style="--c:var(--grape)"><li>Archivo <b>PNG</b> llamado <b>logo.png</b>.</li><li>Tamaño de <b>90 x 90 pixeles</b>. Tkinter muestra la imagen de su tamaño real: una imagen grande tapa media ventana.</li><li>En la <b>misma carpeta</b> que tu programa. Para cambiarlo, solo reemplazas el archivo por otro con el mismo nombre.</li></ul>
+  </div>
+  <div class="analogy" style="margin-top:20px">
+    <div class="card alt">
+      <h3>✅ Lo que ya viene hecho</h3>
+      <ul class="checks" style="--c:var(--sky)"><li>La ventana principal con encabezado, logo, menú de 6 botones de color, área de resultados con barra de desplazamiento y pie de página.</li><li>Los botones cambian de color al pasar el mouse (también en Mac).</li><li>Los formularios de cada opción con sus cajas y botones.</li><li>Funciones de apoyo: <code class="in">mostrar</code>, <code class="in">generar_clave</code>, <code class="in">buscar_posicion</code>, <code class="in">etiqueta</code>, <code class="in">caja_texto</code>, <code class="in">boton</code> y <code class="in">nueva_ventanita</code>.</li><li>Una pantalla de bienvenida sencilla.</li></ul>
+    </div>
+    <div class="card warm">
+      <h3>🛠️ Lo que programas tú</h3>
+      <div class="table-wrap"><table class="kw-table"><thead><tr><th>Día</th><th>Qué haces</th></tr></thead><tbody><tr><td><b>Día 1</b></td><td>Nombre, colores, letras, prefijo de la clave y campos de tu proyecto. Mínimo 8 registros. <b>Imprimir</b> (RS07) y <b>alertas</b> (RS08).</td></tr><tr><td><b>Día 2</b></td><td>Tus campos en <b>Altas</b> y sus reglas RS01, RS02 y RS03. <b>Consultas</b> (RS06).</td></tr><tr><td><b>Día 3</b></td><td><b>Bajas</b> (RS04), <b>Cambios</b> (RS05), <b>Salir</b> (RS09) y tu <b>regla propia</b> (RS10).</td></tr></tbody></table></div>
+    </div>
+  </div>
+  <div class="tip">🔎 En el template, cada lugar donde te toca programar dice <b>Día 1</b>, <b>Día 2</b> o <b>Día 3</b> y la regla que debes cumplir (por ejemplo <code class="in"># Día 2: RS01, RS02 y RS03</code>). Busca esas marcas. El template casi no trae comentarios: <b>tú los vas agregando</b> conforme programas.</div>
+</section>
+
+<section>
+  <span class="tag" style="background:var(--mint)">Paso 3</span>
+  <h2 class="title">Corre el template</h2>
   <p class="sub">Si al correrlo desde VS Code la ventana <b>se cierra de repente</b>, córrelo desde la <b>Terminal</b>: así verás el error.</p>
   <div class="isteps">
-    <div class="istep" style="--sc:var(--mint)"><span class="n">1</span><div>Pon en la <b>misma carpeta</b> tu archivo .py y tu <b>logo.png</b>.</div></div>
-    <div class="istep" style="--sc:var(--mint)"><span class="n">2</span><div>Abre la Terminal, escribe <code>cd</code> con un espacio y <b>arrastra la carpeta</b> a la Terminal. Da Enter.</div></div>
-    <div class="istep" style="--sc:var(--mint)"><span class="n">3</span><div>Escribe el comando para correr tu programa (abajo) y da Enter.</div></div>
-    <div class="istep" style="--sc:var(--coral)"><span class="n">4</span><div>Si sale un error, lee las <b>últimas líneas</b>: ahí dice el problema y en qué línea está.</div></div>
+    <div class="istep" style="--sc:var(--mint)"><span class="n">1</span><div>Abre la Terminal, escribe <code>cd</code> con un espacio y <b>arrastra la carpeta</b> del proyecto a la Terminal. Da Enter.</div></div>
+    <div class="istep" style="--sc:var(--mint)"><span class="n">2</span><div>Escribe el comando para correr tu programa (abajo) y da Enter.</div></div>
+    <div class="istep" style="--sc:var(--coral)"><span class="n">3</span><div>Si sale un error, lee las <b>últimas líneas</b>: ahí dice el problema y en qué línea está.</div></div>
   </div>
   <div class="lado" style="margin-top:14px">
     <div><span class="label">Windows</span>
@@ -162,30 +199,24 @@
 <div class="code">python3 ProyectoFinal_Template.py</div></div>
   </div>
   <div class="tip">🧩 <b>Revisa el intérprete de VS Code:</b> abajo a la derecha aparece la versión de Python que usa. Si no es la que instalaste de python.org, cámbiala con <b>Cmd + Shift + P</b> (Mac) o <b>Ctrl + Shift + P</b> (Windows) → <b>Python: Select Interpreter</b>.</div>
-  <div class="tip">🌙 <b>¿Tu Mac está en modo oscuro?</b> El template ya trae los colores de todos los textos, así que se ve bien en modo claro y oscuro.</div>
 </section>
 
 <section>
-  <span class="tag" style="background:var(--grape)">Logo</span>
-  <h2 class="title">Tu logo</h2>
-  <ul class="checks" style="--c:var(--grape)"><li>Archivo <b>PNG</b> llamado <b>logo.png</b>.</li><li>Tamaño de <b>90 x 90 pixeles</b>. Tkinter muestra la imagen de su tamaño real: una imagen grande tapa media ventana.</li><li>En la <b>misma carpeta</b> que tu programa.</li><li>Para cambiarlo, solo reemplazas el archivo por otro con el mismo nombre.</li></ul>
-  <p style="text-align:center;margin-top:30px"><button class="btn ir-tab" data-tab="dia1" type="button" style="font-size:1rem;padding:8px 20px">Siguiente: Día 1 →</button></p>
+  <span class="tag" style="background:var(--orange)">Paso 4</span>
+  <h2 class="title">¿Cómo se guardan los datos?</h2>
+  <p class="sub">En <b>listas</b>. Cada registro es una lista con sus campos, y todos los registros van dentro de una lista principal llamada <code class="in">registros</code>.</p>
+  <span class="label">Ejemplo: Tienda de Sneakers</span>
+<div class="code">registros = [
+    [<span class="str">&quot;SNK001&quot;</span>, <span class="str">&quot;Air Max&quot;</span>, <span class="str">&quot;Nike&quot;</span>, 2499, 5],
+    [<span class="str">&quot;SNK002&quot;</span>, <span class="str">&quot;Samba&quot;</span>, <span class="str">&quot;Adidas&quot;</span>, 2199, 2]
+]</div>
+  <p>En el template, la posición de cada campo tiene nombre para no confundirte: <code class="in">CLAVE = 0</code>, <code class="in">NOMBRE = 1</code>, <code class="in">CATEGORIA = 2</code>, <code class="in">PRECIO = 3</code>, <code class="in">CANTIDAD = 4</code>. Cámbialos por los campos de tu proyecto.</p>
 </section>
 
-</div>
-
-<div class="tab-panel" data-panel="dia1" role="tabpanel" hidden>
-
 <section>
-  <div class="day-head" style="background:var(--sky)">
-    <h2>Día 1 · Ventana, datos e Imprimir</h2>
-    <p>Lunes 23 de noviembre</p>
-    <div class="topics"><span>🎨 Diseño</span><span>📋 Datos</span><span>🖨️ Imprimir</span><span>⚠️ Alertas</span></div>
-  </div>
-
-  <h3 class="h-sub">🎯 Lo que debes lograr hoy</h3>
+  <h3 class="h-sub" style="margin-top:0">🎯 Lo que debes lograr hoy</h3>
   <div class="isteps">
-    <div class="istep" style="--sc:var(--sky)"><span class="n">1</span><div>Instala Tkinter, descarga el template y córrelo.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">2</span><div>En <b>CONFIGURACIÓN</b> cambia: nombre del sistema, integrantes, colores y letras de tu negocio. Fondo blanco o gris.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">3</span><div>Pon tu <b>logo.png</b> de 90 x 90 px.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">4</span><div>En <b>DATOS</b> cambia los campos y el <code class="in">PREFIJO_CLAVE</code> por los de tu proyecto.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">5</span><div>Carga <b>mínimo 8 registros</b> en la lista <code class="in">registros</code>.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">6</span><div>Programa <b>Imprimir</b>: tabla con encabezados, todos los registros y el total.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">7</span><div>Programa las <b>alertas</b> de cantidad en <code class="in">texto_alerta</code>.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">8</span><div>Comenta todo lo que agregaste. Guarda como <code class="in">ProyectoFinal_Dia1_matricula1_matricula2.py</code>.</div></div>
+    <div class="istep" style="--sc:var(--sky)"><span class="n">1</span><div>Haz los Pasos 1 a 4 de arriba: instala Tkinter, descarga el template y córrelo.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">2</span><div>En <b>CONFIGURACIÓN</b> cambia: nombre del sistema, integrantes, colores y letras de tu negocio. Fondo blanco o gris.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">3</span><div>Pon tu <b>logo.png</b> de 90 x 90 px.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">4</span><div>En <b>DATOS</b> cambia los campos y el <code class="in">PREFIJO_CLAVE</code> por los de tu proyecto.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">5</span><div>Carga <b>mínimo 8 registros</b> en la lista <code class="in">registros</code>.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">6</span><div>Programa <b>Imprimir</b>: tabla con encabezados, todos los registros y el total.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">7</span><div>Programa las <b>alertas</b> de cantidad en <code class="in">texto_alerta</code>.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">8</span><div>Comenta todo lo que agregaste. Guarda como <code class="in">ProyectoFinal_Dia1_matricula1_matricula2.py</code>.</div></div>
   </div>
 
   <div class="rules-box" style="margin-top:20px">
@@ -220,14 +251,16 @@ mostrar(texto)</div>
 
 <div class="tab-panel" data-panel="dia2" role="tabpanel" hidden>
 
-<section>
+<section style="padding-bottom:0">
   <div class="day-head" style="background:var(--mint)">
     <h2>Día 2 · Altas y Consultas</h2>
     <p>Miércoles 25 de noviembre</p>
     <div class="topics"><span>➕ Altas</span><span>🔑 Clave automática</span><span>✅ Validaciones</span><span>🔍 Consultas</span></div>
   </div>
+</section>
 
-  <h3 class="h-sub">🎯 Lo que debes lograr hoy</h3>
+<section>
+  <h3 class="h-sub" style="margin-top:0">🎯 Lo que debes lograr hoy</h3>
   <div class="isteps">
     <div class="istep" style="--sc:var(--mint)"><span class="n">1</span><div>Copia tu archivo del Día 1 y guárdalo como <code class="in">ProyectoFinal_Dia2_matricula1_matricula2.py</code>.</div></div><div class="istep" style="--sc:var(--mint)"><span class="n">2</span><div>En <b>Altas</b>, agrega al formulario <b>todos los campos</b> de tu proyecto (usa <code class="in">etiqueta</code> y <code class="in">caja_texto</code>).</div></div><div class="istep" style="--sc:var(--mint)"><span class="n">3</span><div>Programa <code class="in">es_numero_valido</code> (RS02).</div></div><div class="istep" style="--sc:var(--mint)"><span class="n">4</span><div>Programa <code class="in">guardar</code>: revisa RS01 y RS02, pide confirmación (RS03) y agrega el registro.</div></div><div class="istep" style="--sc:var(--mint)"><span class="n">5</span><div>Programa <b>Consultas</b>: busca por clave <b>o</b> por otro campo y muestra los resultados en tabla.</div></div><div class="istep" style="--sc:var(--mint)"><span class="n">6</span><div>Comenta todo lo que agregaste.</div></div>
   </div>
@@ -275,14 +308,16 @@ confirma = messagebox.askyesno(<span class="str">&quot;Confirmar&quot;</span>, <
 
 <div class="tab-panel" data-panel="dia3" role="tabpanel" hidden>
 
-<section>
+<section style="padding-bottom:0">
   <div class="day-head" style="background:var(--orange)">
     <h2>Día 3 · Bajas, Cambios y Salir</h2>
     <p>Jueves 26 de noviembre</p>
     <div class="topics"><span>🗑️ Bajas</span><span>✏️ Cambios</span><span>🚪 Salir</span><span>⭐ Regla propia</span></div>
   </div>
+</section>
 
-  <h3 class="h-sub">🎯 Lo que debes lograr hoy</h3>
+<section>
+  <h3 class="h-sub" style="margin-top:0">🎯 Lo que debes lograr hoy</h3>
   <div class="isteps">
     <div class="istep" style="--sc:var(--orange)"><span class="n">1</span><div>Copia tu archivo del Día 2 y guárdalo como <code class="in">ProyectoFinal_Dia3_matricula1_matricula2.py</code>.</div></div><div class="istep" style="--sc:var(--orange)"><span class="n">2</span><div>Programa <b>Bajas</b>: busca la clave, pide confirmación y elimina.</div></div><div class="istep" style="--sc:var(--orange)"><span class="n">3</span><div>En <b>Cambios</b>, agrega al submenú <b>todos los campos</b> que se pueden cambiar.</div></div><div class="istep" style="--sc:var(--orange)"><span class="n">4</span><div>Programa <code class="in">guardar_cambio</code> con sus 3 condiciones.</div></div><div class="istep" style="--sc:var(--orange)"><span class="n">5</span><div>Programa <b>Salir</b> con confirmación.</div></div><div class="istep" style="--sc:var(--orange)"><span class="n">6</span><div>Programa tu <b>regla propia</b> en <code class="in">cumple_regla_propia</code> y úsala en Imprimir.</div></div><div class="istep" style="--sc:var(--orange)"><span class="n">7</span><div>Prueba <b>todas las reglas</b> y toma las capturas para el Word.</div></div>
   </div>
@@ -435,50 +470,7 @@ registros[posicion][campo] = nuevo_valor</div>
 </section>
 
 <section>
-  <span class="tag" style="background:var(--orange)">C</span>
-  <h2 class="title">Tablas de verdad</h2>
-  <p class="sub">Para <b>cada regla</b> (RS01 a RS10) haz su tabla de verdad.</p>
-  <div class="isteps">
-    <div class="istep" style="--sc:var(--orange)"><span class="n">1</span><div>Una columna por cada <b>condición</b> de la regla.</div></div>
-    <div class="istep" style="--sc:var(--orange)"><span class="n">2</span><div>Escribe <b>todas las combinaciones</b> de Verdadero (V) y Falso (F): con 1 condición son 2 renglones, con 2 condiciones son 4 y con 3 condiciones son 8.</div></div>
-    <div class="istep" style="--sc:var(--orange)"><span class="n">3</span><div>Una última columna con el <b>resultado</b>: qué hace el sistema o qué mensaje muestra.</div></div>
-    <div class="istep" style="--sc:var(--orange)"><span class="n">4</span><div>Debajo de la tabla, una <b>captura de tu sistema</b> probando un renglón donde la regla se cumple y otro donde no se cumple.</div></div>
-  </div>
-  <h3 class="h-sub">Formato (ejemplo con una regla de otro negocio)</h3>
-  <div class="card warm"><p>Regla: Un cliente recibe descuento si <b>es estudiante Y su compra es mayor a $200</b>.</p></div>
-  <div class="table-wrap"><table class="kw-table"><thead><tr><th>¿Es estudiante?</th><th>¿Compra mayor a $200?</th><th>Resultado</th></tr></thead><tbody><tr><td>V</td><td>V</td><td><b>Aplica el descuento</b></td></tr><tr><td>V</td><td>F</td><td>"No aplica descuento"</td></tr><tr><td>F</td><td>V</td><td>"No aplica descuento"</td></tr><tr><td>F</td><td>F</td><td>"No aplica descuento"</td></tr></tbody></table></div>
-  <p style="text-align:center;margin-top:30px"><button class="btn ir-tab" data-tab="word" type="button" style="font-size:1rem;padding:8px 20px">Siguiente: Documento Word →</button></p>
-</section>
-
-</div>
-
-<div class="tab-panel" data-panel="word" role="tabpanel" hidden>
-
-<section>
-  <span class="tag" style="background:var(--sky)">Documento</span>
-  <h2 class="title">El documento Word</h2>
-  <p class="sub">En este orden:</p>
-  <div class="isteps">
-    <div class="istep" style="--sc:var(--coral)"><span class="n">1</span><div><b>Portada.</b> Nombre del proyecto, nombres y matrículas de la pareja, materia, profesora y fecha.</div></div><div class="istep" style="--sc:var(--grape)"><span class="n">2</span><div><b>Índice.</b> </div></div><div class="istep" style="--sc:var(--sky)"><span class="n">3</span><div><b>Descripción del sistema.</b> Qué negocio es, para qué sirve y qué campos tiene cada registro.</div></div><div class="istep" style="--sc:var(--teal)"><span class="n">4</span><div><b>Requerimientos funcionales.</b> RF01 a RF07, escritos para tu proyecto.</div></div><div class="istep" style="--sc:var(--mint)"><span class="n">5</span><div><b>Reglas del sistema.</b> RS01 a RS10, escritas para tu proyecto con sus condiciones, cuándo se cumplen y sus mensajes.</div></div><div class="istep" style="--sc:var(--pink)"><span class="n">6</span><div><b>Datos de entrada y salida.</b> De cada opción del menú: qué pide y qué muestra.</div></div><div class="istep" style="--sc:var(--orange)"><span class="n">7</span><div><b>Tablas de verdad.</b> Una por cada regla (RS01 a RS10), con sus 2 capturas de prueba.</div></div><div class="istep" style="--sc:var(--coral)"><span class="n">8</span><div><b>Diagramas de flujo.</b> Menú principal · Altas y su submenú · Bajas · Cambios y su submenú · Consultas · Imprimir · Salir.</div></div><div class="istep" style="--sc:var(--grape)"><span class="n">9</span><div><b>Funcionamiento del sistema.</b> Capturas de cada opción del menú funcionando, indicando qué requerimiento (RF) y qué regla (RS) se cumple en cada una.</div></div><div class="istep" style="--sc:var(--sky)"><span class="n">10</span><div><b>Archivos de Python.</b> El nombre de los 3 archivos y el código del Día 3 (la versión final), comentado.</div></div><div class="istep" style="--sc:var(--teal)"><span class="n">11</span><div><b>Enlace del repositorio de GitHub.</b> </div></div>
-  </div>
-  <div class="tip">📐 En los diagramas: <b>input en paralelogramo</b>, <b>print y procesos en rectángulo</b>, <b>condiciones en rombo</b> y <b>Sí a la izquierda, No a la derecha</b>.</div>
-</section>
-
-<section>
-  <span class="tag" style="background:var(--grape)">Python</span>
-  <h2 class="title">Archivos de Python</h2>
-  <ul class="checks" style="--c:var(--grape)"><li><code class="in">ProyectoFinal_Dia1_matricula1_matricula2.py</code></li><li><code class="in">ProyectoFinal_Dia2_matricula1_matricula2.py</code></li><li><code class="in">ProyectoFinal_Dia3_matricula1_matricula2.py</code> (la versión final)</li></ul>
-  <p>Cada archivo incluye <b>todo lo del día anterior</b> más lo nuevo. El código va <b>comentado</b>: cada función, cada regla y cada bloque importante debe llevar un comentario que explique qué hace.</p>
-</section>
-
-<section>
-  <span class="tag" style="background:var(--ink)">GitHub</span>
-  <h2 class="title">Repositorio GitHub</h2>
-  <div class="isteps">
-    <div class="istep" style="--sc:var(--ink)"><span class="n">1</span><div>Crea el repositorio <code>ProyectoFinal_matricula1_matricula2</code>.</div></div>
-    <div class="istep" style="--sc:var(--ink)"><span class="n">2</span><div>Sube el Word, los 3 archivos .py y el logo.</div></div>
-    <div class="istep" style="--sc:var(--ink)"><span class="n">3</span><div>Pega el enlace en el Word y en Canvas.</div></div>
-  </div>
+  <div class="tip">🔢 Con estas reglas haces tus <b>tablas de verdad</b>. El formato está en la pestaña <b>Instrucciones</b>.</div>
   <p style="text-align:center;margin-top:30px"><button class="btn ir-tab" data-tab="rubrica" type="button" style="font-size:1rem;padding:8px 20px">Siguiente: Rúbrica →</button></p>
 </section>
 
@@ -511,7 +503,7 @@ registros[posicion][campo] = nuevo_valor</div>
   <span class="tag" style="background:var(--coral)">Entrega</span>
   <h2 class="title">Entrega final</h2>
   <div class="delivery">
-    <div class="date-badge">⏰ Sábado 28 de noviembre, 23:59</div>
+    <div class="date-badge">⏰ Fecha de entrega: Sábado 28 de noviembre, 23:59</div>
     <div class="where">
       <div style="background:var(--sky)"><h4>📄 Canvas</h4><p>Sube tu Word y pega el enlace de tu repositorio.</p></div>
       <div style="background:var(--grape)"><h4>🐙 GitHub</h4><p>Repositorio <b>ProyectoFinal_matricula1_matricula2</b> con el Word, los 3 .py y el logo.</p></div>
@@ -548,7 +540,14 @@ registros[posicion][campo] = nuevo_valor</div>
   const panels = document.querySelectorAll(".tab-panel");
 
   function mostrar(nombre, mover) {
-    tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === nombre));
+    tabs.forEach(t => {
+      const activa = t.dataset.tab === nombre;
+      t.classList.toggle("active", activa);
+      // La sección abierta se ve como botón presionado y con borde grueso
+      t.style.boxShadow = activa ? "none" : "5px 5px 0 var(--ink)";
+      t.style.transform = activa ? "translate(5px, 5px)" : "none";
+      t.style.outline = activa ? "4px solid var(--sun)" : "none";
+    });
     panels.forEach(p => { p.hidden = p.dataset.panel !== nombre; });
     try { history.replaceState(null, "", "#" + nombre); } catch (e) {}
     if (mover) document.querySelector(".tabs").scrollIntoView({ behavior: "smooth" });
@@ -558,7 +557,7 @@ registros[posicion][campo] = nuevo_valor</div>
   document.querySelectorAll(".ir-tab").forEach(b => b.addEventListener("click", () => mostrar(b.dataset.tab, true)));
 
   const inicial = location.hash.replace("#", "");
-  if ([...tabs].some(t => t.dataset.tab === inicial)) mostrar(inicial, false);
+  mostrar([...tabs].some(t => t.dataset.tab === inicial) ? inicial : "instrucciones", false);
 
   // Lista de entrega (se guarda en tu navegador)
   const cajas = document.querySelectorAll(".checklist input");
