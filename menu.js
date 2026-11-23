@@ -6,8 +6,9 @@
     { n: 'S3', paginas: [{ t: 'Semana 3', u: 'semana3.html' }, { t: 'Avance', u: 'avance.html' }] },
     { n: 'S4', paginas: [{ t: 'Semana 4', u: 'semana4.html' }, { t: 'Actividad 3', u: 'actividad3.html' }] },
     { n: 'S5', paginas: [{ t: 'Semana 5', u: 'semana5.html' }, { t: 'Actividad 4', u: 'actividad4.html' }] },
-    { n: 'S6', paginas: [{ t: 'Semana 6', u: 'semana6.html' }, { t: 'Actividad 5', u: 'semana6.html#actividad' }] },
-    { n: 'S7', paginas: [{ t: 'Semana 7', u: 'semana7.html' }] }
+    { n: 'S6', paginas: [{ t: 'Semana 6', u: 'semana6.html' }, { t: 'Actividad 5', u: 'actividad5.html' }] },
+    { n: 'S7', paginas: [{ t: 'Semana 7', u: 'semana7.html' }] },
+    { n: 'S8', paginas: [{ t: 'Semana 8', u: 'semana8.html' }] }
   ];
 
   var actual = location.pathname.split('/').pop() || 'index.html';
